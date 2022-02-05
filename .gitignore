@@ -1,2 +1,2 @@
-Server/target
-Client/target
+target
+/src/main/resources/db.properties
