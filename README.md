@@ -1,2 +1,5 @@
 # Chatting-Application
-chatting java project 
+
+JavaFx Chatting Application
+
+ITI 9-months scholarship java track - JETS
