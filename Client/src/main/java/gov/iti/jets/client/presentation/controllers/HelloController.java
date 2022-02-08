@@ -1,4 +1,4 @@
-package gov.iti.jets.client.presentation;
+package gov.iti.jets.client.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
