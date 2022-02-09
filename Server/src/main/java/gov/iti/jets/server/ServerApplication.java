@@ -1,6 +1,5 @@
 package gov.iti.jets.server;
 
-import gov.iti.jets.server.repository.util.DataSourceFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,11 +8,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 
-public class HelloApplication extends Application {
+public class ServerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/views/hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(ServerApplication.class.getResource("/views/userslist/UsersListView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello Server!");
         stage.setScene(scene);
         stage.show();
