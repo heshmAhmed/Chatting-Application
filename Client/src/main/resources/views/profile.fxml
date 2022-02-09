@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.ProfileController">
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -45,7 +42,7 @@
                                     </FontIcon>
                                  </graphic>
                               </Label>
-                              <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="12.0" layoutY="244.0" lineSpacing="2.0" prefHeight="58.0" prefWidth="218.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
+                              <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="244.0" lineSpacing="2.0" prefHeight="58.0" prefWidth="218.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -82,7 +79,101 @@
                      <children>
                         <AnchorPane HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox prefHeight="300.0" prefWidth="240.0" />
+                              <VBox prefHeight="300.0" prefWidth="240.0" spacing="15.0">
+                                 <children>
+                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
+                                       <children>
+                                          <FontIcon iconColor="#f7f1f1" iconLiteral="fas-bell" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontIcon>
+                                          <Label alignment="TOP_LEFT" text="Notificatins" textFill="#f2f2f2">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
+                                       <children>
+                                          <FontIcon iconColor="#f7f1f1" iconLiteral="fas-id-card-alt" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontIcon>
+                                          <Label alignment="TOP_LEFT" text="Information" textFill="#f2f2f2">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="60.0" style="-fx-border-insets: 5;">
+                                       <children>
+                                          <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontIcon>
+                                          <Label alignment="TOP_LEFT" text="Message" textFill="#f2f2f2">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="75.0" style="-fx-border-insets: 5;">
+                                       <children>
+                                          <FontIcon iconColor="#f7f1f1" iconLiteral="fas-door-open" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontIcon>
+                                          <Label alignment="TOP_LEFT" text="Logout" textFill="#f2f2f2">
+                                             <font>
+                                                <Font name="System Bold" size="22.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Label>
+                                       </children>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </HBox>
+                                 </children></VBox>
                            </children>
                         </AnchorPane>
                      </children>
