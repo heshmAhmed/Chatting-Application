@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0"
+            prefHeight="470.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <left>
+        <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="230.0" style="-fx-background-color: #13123A;" BorderPane.alignment="BOTTOM_CENTER">
+            <effect>
+                <DropShadow />
+            </effect>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <children>
+                <Circle fill="DODGERBLUE" radius="46.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+                    <effect>
+                        <InnerShadow />
+                    </effect>
+                </Circle>
+                <Circle blendMode="SCREEN" fill="#1daf00" focusTraversable="true" radius="5.0" stroke="BLACK" strokeType="INSIDE" VBox.vgrow="NEVER">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Circle>
+                <Label alignment="CENTER" prefHeight="18.0" prefWidth="119.0" text="Hossam " textFill="#fafafa" wrapText="true">
+                    <font>
+                        <Font name="Agency FB Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="109.0" style="-fx-background-radius: 12; -fx-background-color: #242551;" text="Edit" textFill="WHITE">
+                    <font>
+                        <Font name="Agency FB" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <VBox prefHeight="54.0" prefWidth="230.0">
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                    <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <Circle fill="DODGERBLUE" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0">
+                                    <effect>
+                                        <InnerShadow />
+                                    </effect>
+                                </Circle>
+                                <Label prefHeight="24.0" prefWidth="102.0" text="Notifications" textFill="WHITE">
+                                    <font>
+                                        <Font name="Agency FB" size="20.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <Circle fill="DODGERBLUE" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0">
+                                    <effect>
+                                        <InnerShadow />
+                                    </effect>
+                                </Circle>
+                                <Label prefHeight="24.0" prefWidth="102.0" text="Settings" textFill="WHITE">
+                                    <font>
+                                        <Font name="Agency FB" size="20.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <Circle fill="DODGERBLUE" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0">
+                                    <effect>
+                                        <InnerShadow />
+                                    </effect>
+                                </Circle>
+                                <Label prefHeight="24.0" prefWidth="102.0" text="Policy &amp; Privacy" textFill="WHITE">
+                                    <font>
+                                        <Font name="Agency FB" size="20.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                            <children>
+                                <Circle fill="DODGERBLUE" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0">
+                                    <effect>
+                                        <InnerShadow />
+                                    </effect>
+                                </Circle>
+                                <Label prefHeight="24.0" prefWidth="102.0" text="Logout" textFill="WHITE">
+                                    <font>
+                                        <Font name="Agency FB" size="20.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children></VBox>
+    </left>
+    <effect>
+        <DropShadow color="#d5d5d5" />
+    </effect>
+    <center>
+        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #64636e;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+            <padding>
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </padding>
+            <children>
+                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="46.0" prefWidth="474.0">
+                            <font>
+                                <Font name="Agency FB" size="20.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="50.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="46.0" prefWidth="474.0">
+                            <font>
+                                <Font name="Agency FB" size="20.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox layoutX="111.0" layoutY="153.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="39.0" prefWidth="478.0">
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox layoutX="60.0" layoutY="288.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="38.0" prefWidth="486.0">
+                            <font>
+                                <Font name="Agency FB" size="20.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox layoutX="85.0" layoutY="262.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <TextField prefHeight="46.0" prefWidth="474.0">
+                            <font>
+                                <Font name="Agency FB" size="20.0" />
+                            </font>
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox layoutX="85.0" layoutY="262.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="42.0" prefWidth="920.0">
+                    <padding>
+                        <Insets left="25.0" right="15.0" />
+                    </padding>
+                    <children>
+                        <Label prefHeight="38.0" prefWidth="158.0" text="Date Of Birth :" textFill="#f2f2f2">
+                            <font>
+                                <Font name="Agency FB Bold" size="30.0" />
+                            </font>
+                        </Label>
+                        <DatePicker prefHeight="38.0" prefWidth="478.0">
+                            <effect>
+                                <DropShadow color="#323fff" />
+                            </effect>
+                        </DatePicker>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
