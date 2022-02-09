@@ -8,10 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import org.controlsfx.control.CheckComboBox?>
+<!--<?import org.controlsfx.control.CheckComboBox?>-->
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<VBox stylesheets="@../../styles/mainStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
@@ -96,11 +98,18 @@
                <children>
                   <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <CheckComboBox prefHeight="26.0" prefWidth="127.0" title="Gender" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </CheckComboBox>
+<!--                        <CheckComboBox prefHeight="26.0" prefWidth="127.0" title="Gender" HBox.hgrow="ALWAYS">-->
+<!--                           <HBox.margin>-->
+<!--                              <Insets left="5.0" />-->
+<!--                           </HBox.margin>-->
+<!--                        </CheckComboBox>-->
+
+                        <MenuButton mnemonicParsing="false" text="Gender">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Male" />
+                              <MenuItem mnemonicParsing="false" text="Female" />
+                           </items>
+                        </MenuButton>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
