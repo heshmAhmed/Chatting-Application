@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <Label text="Login">
+               <font>
+                  <Font name="Curlz MT" size="64.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <FontIcon iconLiteral="fas-mobile-alt" iconSize="35">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </FontIcon>
+                  <TextField alignment="CENTER" prefHeight="33.0" prefWidth="150.0" promptText="Enter your Number">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <FontIcon iconLiteral="fas-lock" iconSize="33">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </FontIcon>
+                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="150.0" promptText="Enter your Number">
+                     <HBox.margin>
+                        <Insets left="7.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <MFXButton prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #4682B4;" text="Register" textFill="#fff9f9">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                     <children>
+                        <MFXButton prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #4682B4;" text="login" textFill="#fff9f9" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </MFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <MFXButton style="-fx-background-color: #B0C4DE;" text="Forget Password" underline="true">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </MFXButton>
+   </children>
+</VBox>
