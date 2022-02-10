@@ -1,6 +1,7 @@
 package gov.iti.jets.server.presentation.controllers;
 
 import gov.iti.jets.server.presentation.util.PaneCoordinator;
+import io.github.palexdev.materialfx.controls.MFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,10 +18,7 @@ public class SidebarController implements Initializable {
     private Button logoutButton;
 
     @FXML
-    private Button offButton;
-
-    @FXML
-    private Button onButton;
+    private MFXToggleButton onOffButton;
 
     @FXML
     private Button staticsButton;
@@ -58,6 +56,9 @@ public class SidebarController implements Initializable {
     void handleUsersListButton(ActionEvent event) {
         paneCoordinator.switchUsersListPane();
     }
+
+    @FXML
+    public void handleOnOffButton(ActionEvent event){ }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
