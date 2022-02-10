@@ -13,7 +13,7 @@ public class PaneCoordinator {
     private BorderPane borderPane;
     private Map<String, Pane> map;
     private final String ANNOUNCEMENT_VIEW = "ANNOUNCEMENT_VIEW";
-    private final String USERS_LIST_VIEW = "USERSLIST_VIEW";
+    private final String USERS_LIST_VIEW = "USERS_LIST_VIEW";
     private final String STATICS_VIEW = "STATICS_VIEW";
     private final String ANNOUNCEMENT_VIEW_PATH = "/views/announcement/AnnouncementView.fxml";
     private final String USERS_LIST_VIEW_PATH = "/views/usersList/UsersListView.fxml";

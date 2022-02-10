@@ -43,15 +43,12 @@ public class LoginController implements Initializable {
 
     @FXML
     void handelLoginAction(ActionEvent event) {
-        stageCoordinator.switchToChatScene();
-
+        stageCoordinator.switchToLoginScene();
     }
 
     @FXML
     void handelRegisterAction(ActionEvent event) {
-
         stageCoordinator.switchToRegistrationScene();
-
     }
 
 }

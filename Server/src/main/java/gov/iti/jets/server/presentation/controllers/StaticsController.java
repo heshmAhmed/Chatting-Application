@@ -1,4 +1,4 @@
-package gov.iti.jets.server.presentation.controller;
+package gov.iti.jets.server.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
