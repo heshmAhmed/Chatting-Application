@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
-<GridPane alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="grid-pane" stylesheets="@../css/Common.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controller.UsersListController">
+<GridPane alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="grid-pane" stylesheets="@../css/Common.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.UsersListController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" minWidth="10.0" />
     </columnConstraints>

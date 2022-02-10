@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controller.SidebarController">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.SidebarController">
    <top>
       <Pane style="-fx-background-color: #6B519E;" BorderPane.alignment="CENTER">
          <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">

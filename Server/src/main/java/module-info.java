@@ -8,8 +8,8 @@ module gov.iti.jets.server {
     requires javafx.web;
 
 
-    opens gov.iti.jets.server.presentation.controller to javafx.fxml;
+    opens gov.iti.jets.server.presentation.controllers to javafx.fxml;
     exports gov.iti.jets.server;
-    exports gov.iti.jets.server.controller;
-    opens gov.iti.jets.server.controller to javafx.fxml;
+    exports gov.iti.jets.server.controllers;
+    opens gov.iti.jets.server.controllers to javafx.fxml;
 }

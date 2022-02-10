@@ -1,4 +1,4 @@
-package gov.iti.jets.server.presentation.controller;
+package gov.iti.jets.server.presentation.controllers;
 
 import gov.iti.jets.server.presentation.model.UserModel;
 import gov.iti.jets.server.presentation.util.UserFactory;
