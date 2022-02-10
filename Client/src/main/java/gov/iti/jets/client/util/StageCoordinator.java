@@ -60,7 +60,24 @@ public class StageCoordinator {
 
 
 
-  //  public void switchToProfileScene(){
+    public void switchToChatScene(){
+        Scene chatScene = sceneMap.get("chatView");
+        if (chatScene == null){
+            try {
+                Pane root = FXMLLoader.load(getClass().getResource("/views/chatWindow/ChatView.fxml"));
+                chatScene = new Scene(root);
+                sceneMap.put("chatScene", chatScene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }     }
+
+        primaryStage.setScene(chatScene);
+    }
+
+
+
+
+    //  public void switchToProfileScene(){
 
 
   //  }

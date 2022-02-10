@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 
-public class ContactCustomController extends HBox{
+public class ContactControl extends HBox{
 
     ContactDTO contactDTO;
 
@@ -25,7 +25,7 @@ public class ContactCustomController extends HBox{
     @FXML
     private Circle contactPhotoCircle;
 
-    public ContactCustomController(ContactDTO contactDTO){
+    public ContactControl(ContactDTO contactDTO){
         this.contactDTO = contactDTO;
 
 
