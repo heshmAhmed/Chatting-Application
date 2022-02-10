@@ -35,7 +35,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-user" iconSize="20">
+                        <FontIcon fx:id="profileIcon" iconColor="WHITE" iconLiteral="fas-user" iconSize="20" onMouseClicked="#handleProfileIcon">
                            <VBox.margin>
                               <Insets right="5.0" top="5.0" />
                            </VBox.margin>
@@ -61,7 +61,7 @@
                   <VBox id="contactVBox" fx:id="contactListVBox" style="-fx-background-color: #1A1A40;" />
                </content>
             </ScrollPane>
-            <FontIcon iconColor="WHITE" iconLiteral="fas-user-plus" iconSize="20">
+            <FontIcon iconColor="WHITE" iconLiteral="fas-user-plus" iconSize="20" onMouseClicked="#handleAddNewContactIcon">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>

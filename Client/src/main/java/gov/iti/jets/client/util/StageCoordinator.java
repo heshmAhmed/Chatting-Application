@@ -2,6 +2,7 @@ package gov.iti.jets.client.util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -77,7 +78,7 @@ public class StageCoordinator {
         Scene profileScene = sceneMap.get("profileView");
         if (profileScene == null){
             try {
-                Pane root = FXMLLoader.load(getClass().getResource("/views/userProfile/UserInfoView.fxml"));
+                Pane root = FXMLLoader.load(getClass().getResource("/views/userProfile/LeftSideView.fxml"));
                 profileScene = new Scene(root);
                 sceneMap.put("profileScene", profileScene);
             } catch (IOException e) {
@@ -87,14 +88,30 @@ public class StageCoordinator {
         primaryStage.setScene(profileScene);
     }
 
+    Popup pp;
 
+    public void showAddNewContactPopup() {
 
+        pp = new Popup();
+        try {
+            pp.getContent().add(FXMLLoader.load(getClass().getResource("/views/newcontact/NewContactView.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        pp.show(primaryStage);
 
+    }
+
+    public void closeAddContactPP(){
+        pp.hide();
+    }
 
     //  public void switchToProfileScene(){
 
 
   //  }
+
+
 
 
 }

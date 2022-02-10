@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,12 +19,12 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
        // FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //marwa
-        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //mariam
-        //FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml")); //hossam
-        BorderPane borderPane = leftSide.load();
+//        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //mariam
+        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml")); //hossam
+
+
+        Pane borderPane = leftSide.load();
         Scene scene = new Scene(borderPane);
-        paneCoordinator.init(borderPane);
-        paneCoordinator.switchToInformationPane();
 
         stageCoordinator.initStage(primaryStage);
         primaryStage.setTitle("Hello Client");

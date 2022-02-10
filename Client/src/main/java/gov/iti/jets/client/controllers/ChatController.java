@@ -9,11 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,4 +61,14 @@ public class ChatController implements Initializable {
 
     }
 
+    public void handleAddNewContactIcon(MouseEvent mouseEvent) {
+
+        stageCoordinator.showAddNewContactPopup();
+        System.out.println("add");
+    }
+
+    public void handleProfileIcon(MouseEvent mouseEvent) {
+        stageCoordinator.switchToProfileScene();
+        System.out.println("profile");
+    }
 }
