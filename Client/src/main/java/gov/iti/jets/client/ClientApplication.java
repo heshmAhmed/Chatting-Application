@@ -17,8 +17,9 @@ public class ClientApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-       // FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml"));
-        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml"));
+       // FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //marwa
+        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //mariam
+        //FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml")); //hossam
         BorderPane borderPane = leftSide.load();
         Scene scene = new Scene(borderPane);
         paneCoordinator.init(borderPane);
