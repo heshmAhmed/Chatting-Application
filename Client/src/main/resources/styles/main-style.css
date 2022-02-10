@@ -3,25 +3,24 @@
 }
 
 .button{
-     -fx-effect: dropshadow(three-pass-box, grey , 5, 0, 2, 2);
+
      -fx-border-radius: 20;
      -fx-background-radius: 20;
      -fx-font-size: 14;
 }
 
 .menu-button{
-     -fx-effect: dropshadow(three-pass-box, grey , 5, 0, 2, 2);
+
          -fx-border-radius: 20;
          -fx-background-radius: 20;
 }
 
-.label{
+.label-register{
 
      -fx-effect: dropshadow(three-pass-box, grey , 2, 0, 2, 2);
 }
 
 .text-field{
-     -fx-effect: dropshadow(three-pass-box, grey , 5, 0, 2, 2);
      -fx-border-radius: 15;
      -fx-background-radius: 15;
 }
