@@ -2,11 +2,10 @@ package gov.iti.jets.client.presentation.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import org.controlsfx.control.Notifications;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import org.controlsfx.control.Notifications;
 
 public class UserProfileController {
 
@@ -31,7 +30,7 @@ public class UserProfileController {
     }
 
     @FXML
-    void onClick(ActionEvent event , Scene scene){
+    void onClick(ActionEvent event){
         Notifications.create()
                 .title("Feedback")
                 .text("Updated")

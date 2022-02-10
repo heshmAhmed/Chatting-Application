@@ -16,7 +16,7 @@
          </padding>
          <children>
              
-           <fx:include source="notification.fxml" />
+             <fx:include source="notification.fxml" />
              <fx:include source="notification.fxml" />
              <fx:include source="notification.fxml" />
              <fx:include source="notification.fxml" />
