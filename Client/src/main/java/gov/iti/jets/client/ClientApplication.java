@@ -20,11 +20,21 @@ public class ClientApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
        // FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //marwa
 //        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //mariam
-        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml")); //hossam
+        FXMLLoader leftSide = new FXMLLoader(ClientApplication.class.getResource("/views/userProfile/LeftSideView.fxml")); //hossam
 
 
-        Pane borderPane = leftSide.load();
+       // Pane borderPane = leftSide.load();
+       // Scene scene = new Scene(borderPane);
+
+
+
+
+
+        /////Hossam
+        BorderPane borderPane = leftSide.load();
         Scene scene = new Scene(borderPane);
+        paneCoordinator.init(borderPane);
+        paneCoordinator.switchToInformationPane();
 
         stageCoordinator.initStage(primaryStage);
         primaryStage.setTitle("Hello Client");

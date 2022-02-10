@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="81.0" prefWidth="216.0" style="-fx-background-color: #25255b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationController">
+<HBox spacing="5.0" style="-fx-background-color: #25255b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationController">
 
         <effect>
             <DropShadow />
         </effect>
         <children>
-            <AnchorPane prefHeight="82.0" prefWidth="346.0">
-                <children>
-                    <Circle fill="DODGERBLUE" layoutX="32.0" layoutY="50.0" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
-                    <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="10.0" prefWidth="62.0" text="Title" textFill="#fff6f6">
+
+                    <Circle fill="DODGERBLUE" layoutX="32.0" layoutY="50.0" nodeOrientation="LEFT_TO_RIGHT" radius="18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" HBox.hgrow="ALWAYS" />
+      <VBox HBox.hgrow="ALWAYS">
+         <children>
+                          <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Title" textFill="#fff6f6">
+                              <font>
+                                  <Font name="Agency FB Bold" size="18.0" />
+                              </font>
+                          </Label>
+                          <Label alignment="TOP_LEFT" contentDisplay="TOP" nodeOrientation="LEFT_TO_RIGHT" text="Something happend" textAlignment="CENTER" textFill="WHITE">
+                              <font>
+                                  <Font name="Agency FB" size="18.0" />
+                              </font>
+                          </Label>
+         </children>
+      </VBox>
+                    <Label contentDisplay="RIGHT" layoutX="234.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="18.0" prefWidth="104.0" text="07:45PM" textAlignment="CENTER" textFill="#fcfcfc" HBox.hgrow="ALWAYS">
                         <font>
                             <Font name="Agency FB Bold" size="18.0" />
                         </font>
                     </Label>
-                    <Label contentDisplay="RIGHT" layoutX="234.0" layoutY="6.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="18.0" prefWidth="104.0" text="07:45PM" textAlignment="CENTER" textFill="#fcfcfc">
-                        <font>
-                            <Font name="Agency FB Bold" size="18.0" />
-                        </font>
-                    </Label>
-                    <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="59.0" layoutY="31.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="280.0" text="Something happend" textAlignment="CENTER" textFill="WHITE">
-                        <font>
-                            <Font name="Agency FB" size="18.0" />
-                        </font>
-                    </Label>
-                </children>
-            </AnchorPane>
         </children>
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 </HBox>

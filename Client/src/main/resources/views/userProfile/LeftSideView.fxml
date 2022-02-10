@@ -13,7 +13,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.LeftSideController">
-   <center>
+   <left>
     <VBox alignment="TOP_CENTER" maxWidth="240.0" minWidth="150.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
         <effect>
             <DropShadow />
@@ -164,5 +164,5 @@
             </HBox>
         </children>
     </VBox>
-   </center>
+   </left>
 </BorderPane>
