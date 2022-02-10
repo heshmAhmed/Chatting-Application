@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
-public class ChatViewController {
+public class ChatController {
     @FXML
     private Button addNewContactButton;
 

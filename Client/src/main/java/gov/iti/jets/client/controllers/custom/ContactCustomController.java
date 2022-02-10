@@ -5,14 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
-import java.net.URL;
 
-public class ContactViewControl extends HBox{
+public class ContactCustomController extends HBox{
 
     ContactDTO contactDTO;
 
@@ -28,12 +25,12 @@ public class ContactViewControl extends HBox{
     @FXML
     private Circle contactPhotoCircle;
 
-    public ContactViewControl(ContactDTO contactDTO){
+    public ContactCustomController(ContactDTO contactDTO){
         this.contactDTO = contactDTO;
 
 
 //        URL url = new URL("");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/contactView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
 //        loader.setLocation();
         loader.setRoot(this);
         loader.setController(this);

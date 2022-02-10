@@ -14,7 +14,7 @@
 
 <!--<?import org.controlsfx.control.CheckComboBox?>-->
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" stylesheets="@../../styles/mainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.RegistrationViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.RegistrationController">
    <children>
       <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>

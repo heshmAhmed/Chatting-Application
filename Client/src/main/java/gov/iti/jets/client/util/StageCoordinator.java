@@ -31,7 +31,7 @@ public class StageCoordinator {
       Scene loginScene = sceneMap.get("loginView");
      if (loginScene == null){
            try {
-              Pane root = FXMLLoader.load(getClass().getResource("/views/login/loginView.fxml"));
+              Pane root = FXMLLoader.load(getClass().getResource("/views/login/LoginView.fxml"));
               loginScene = new Scene(root);
               sceneMap.put("loginScene", loginScene);
           } catch (IOException e) {
@@ -47,7 +47,7 @@ public class StageCoordinator {
        Scene registrationScene = sceneMap.get("registrationScene");
         if (registrationScene == null){
             try {
-                Pane root = FXMLLoader.load(getClass().getResource("/views/registration/registrationView.fxml"));
+                Pane root = FXMLLoader.load(getClass().getResource("/views/registration/RegistrationView.fxml"));
                 registrationScene = new Scene(root);
                 sceneMap.put("registrationScene", registrationScene);
             } catch (IOException e) {

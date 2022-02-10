@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0"
-            prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationsController">
+            prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationsListController">
    <content>
       <VBox alignment="TOP_CENTER" prefHeight="566.0" prefWidth="346.0" spacing="7.0" style="-fx-background-color: #0058a6;">
          <effect>
@@ -17,10 +17,10 @@
          </padding>
          <children>
              
-             <fx:include source="notification.fxml" />
-             <fx:include source="notification.fxml" />
-             <fx:include source="notification.fxml" />
-             <fx:include source="notification.fxml" />
+             <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
 
          </children>
       </VBox>

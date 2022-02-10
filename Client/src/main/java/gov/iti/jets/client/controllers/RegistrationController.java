@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class RegistrationViewController implements Initializable {
+public class RegistrationController implements Initializable {
 
     private StageCoordinator stageCoordinator ;
 
