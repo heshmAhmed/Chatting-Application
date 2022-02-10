@@ -14,7 +14,7 @@ public class ClientApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/chatWindow/chatView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource("/views/login/loginView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stageCoordinator.initStage(primaryStage);
         primaryStage.setTitle("Hello Client");
@@ -27,3 +27,8 @@ public class ClientApplication extends Application {
         launch();
     }
 }
+
+/* Folders start with small letter
+*
+*
+*/

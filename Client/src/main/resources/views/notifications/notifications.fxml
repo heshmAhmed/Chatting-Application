@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0"
+            prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationsController">
+   <content>
+      <VBox alignment="TOP_CENTER" prefHeight="566.0" prefWidth="346.0" spacing="7.0" style="-fx-background-color: #0058a6;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <padding>
+            <Insets bottom="7.0" top="7.0" />
+         </padding>
+         <children>
+             
+             <fx:include source="notification.fxml" />
+             <fx:include source="notification.fxml" />
+             <fx:include source="notification.fxml" />
+             <fx:include source="notification.fxml" />
+
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
