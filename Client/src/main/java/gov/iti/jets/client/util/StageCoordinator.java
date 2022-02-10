@@ -74,6 +74,21 @@ public class StageCoordinator {
         primaryStage.setScene(chatScene);
     }
 
+    public void switchToProfileScene(){
+        Scene profileScene = sceneMap.get("profileView");
+        if (profileScene == null){
+            try {
+                Pane root = FXMLLoader.load(getClass().getResource("/views/userProfile/UserProfileView.fxml"));
+                profileScene = new Scene(root);
+                sceneMap.put("profileScene", profileScene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }     }
+
+        primaryStage.setScene(profileScene);
+    }
+
+
 
 
 

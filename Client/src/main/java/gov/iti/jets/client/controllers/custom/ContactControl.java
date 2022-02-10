@@ -45,6 +45,7 @@ public class ContactControl extends HBox{
     }
 
 
+
     public void initialize(){
         conatctNameLabel.setText("dummy name");
 //        contactPhotoCircle.setFill();

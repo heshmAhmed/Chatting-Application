@@ -32,7 +32,7 @@
                   </VBox>
                   <VBox prefHeight="122.0" prefWidth="15.0">
                      <children>
-                        <Button id="profile" fx:id="profileButton" mnemonicParsing="false" onAction="#profleButtonPressed" prefHeight="26.0" prefWidth="6.0" text="Button" />
+                        <Button id="profile" fx:id="profileButton" mnemonicParsing="false" onAction="#profileButtonPressed" prefHeight="26.0" prefWidth="6.0" text="Button" />
                      </children>
                      <HBox.margin>
                         <Insets />
