@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -55,6 +56,9 @@ public class ChatController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stageCoordinator = StageCoordinator.getInstance();
+
+//        userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
+
     }
 
 }

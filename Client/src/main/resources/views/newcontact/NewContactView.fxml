@@ -11,7 +11,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #21325E; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NewContactController">
+<BorderPane  stylesheets="@../../styles/main-style.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #21325E; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NewContactController">
    <top>
       <Label text="Add new contact" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>

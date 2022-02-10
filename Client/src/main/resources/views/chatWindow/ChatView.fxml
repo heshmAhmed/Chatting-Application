@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -9,10 +8,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/main-style.css,@../../styles/chat-view-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.ChatController">
    <left>
-      <VBox id="profile-chatlist" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
+      <VBox id="profile-chatlist" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
          <children>
             <HBox id="profile">
                <children>
@@ -23,7 +23,7 @@
                               <Insets left="20.0" top="10.0" />
                            </VBox.margin>
                         </Circle>
-                        <Label fx:id="userNameLabel" text="myName">
+                        <Label fx:id="userNameLabel" text="myName" textFill="WHITE">
                            <VBox.margin>
                               <Insets bottom="5.0" left="25.0" />
                            </VBox.margin>
@@ -31,34 +31,41 @@
                      </children>
                   </VBox>
                   <VBox prefHeight="122.0" prefWidth="15.0">
-                     <children>
-                        <Button id="profile" fx:id="profileButton" mnemonicParsing="false" onAction="#profileButtonPressed" prefHeight="26.0" prefWidth="6.0" text="Button" />
-                     </children>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <children>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-user" iconSize="20">
+                           <VBox.margin>
+                              <Insets right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </FontIcon>
+                     </children>
                   </VBox>
                </children>
             </HBox>
             <HBox id="addNewContact">
                <children>
-                  <Button fx:id="addNewContactButton" styleClass="addContactButton" mnemonicParsing="false" onAction="#addNewContactButtonPressed" prefHeight="26.0" prefWidth="22.0" text="Button">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </Button>
                   <TextField fx:id="searchTextField" prefHeight="26.0" prefWidth="156.0" promptText="🔍  Search" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="10.0" right="5.0" />
                      </HBox.margin>
                   </TextField>
                </children>
+               <padding>
+                  <Insets bottom="5.0" top="3.0" />
+               </padding>
             </HBox>
-            <ScrollPane id="contactList" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <ScrollPane id="contactList" fitToHeight="true" fitToWidth="true" style="-fx-background-color: #1A1A40;" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox id="contactVBox" fx:id="contactListVBox" />
+                  <VBox id="contactVBox" fx:id="contactListVBox" style="-fx-background-color: #1A1A40;" />
                </content>
             </ScrollPane>
+            <FontIcon iconColor="WHITE" iconLiteral="fas-user-plus" iconSize="20">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </FontIcon>
          </children>
       </VBox>
    </left>

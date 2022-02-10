@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<fx:root fx:id="contactHBox" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="contactHBox" style="-fx-background-color: #25255b; -fx-border-color: #1A1A40;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Circle fx:id="contactPhotoCircle" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
          <HBox.margin>
@@ -15,12 +15,12 @@
       </Circle>
       <VBox prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="conatctNameLabel" text="contactName">
+            <Label fx:id="conatctNameLabel" text="contactName" textFill="WHITE">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="contactMessageLabel" text="message">
+            <Label fx:id="contactMessageLabel" text="message" textFill="#fcfbfb">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -28,4 +28,7 @@
          </children>
       </VBox>
    </children>
+   <padding>
+      <Insets bottom="3.0" top="3.0" />
+   </padding>
 </fx:root>
