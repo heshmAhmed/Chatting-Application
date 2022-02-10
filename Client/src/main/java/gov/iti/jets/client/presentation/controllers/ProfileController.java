@@ -12,6 +12,8 @@ public class ProfileController {
     @FXML
     private AnchorPane anchorePane;
 
+
+
     private void controleSize(){
         profileSlide.setMinWidth(anchorePane.getWidth()/3);
     }

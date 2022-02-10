@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -16,9 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="645.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -73,7 +71,7 @@
                            <children>
                               <VBox prefHeight="300.0" prefWidth="240.0" spacing="15.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
+                                    <HBox fx:id="notifications" alignment="CENTER" onMouseClicked="#showNotification" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
                                        <children>
                                           <FontIcon iconColor="#f7f1f1" iconLiteral="fas-bell" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                              <font>
@@ -96,7 +94,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
+                                    <HBox fx:id="information" alignment="CENTER" onMouseClicked="#showInformation" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;">
                                        <children>
                                           <FontIcon iconColor="#f7f1f1" iconLiteral="fas-id-card-alt" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                              <font>
@@ -119,7 +117,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="60.0" style="-fx-border-insets: 5;">
+                                    <HBox fx:id="msg" alignment="CENTER" onMouseClicked="#showMsg" prefHeight="58.0" prefWidth="240.0" spacing="60.0" style="-fx-border-insets: 5;">
                                        <children>
                                           <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                              <font>
@@ -142,7 +140,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="240.0" spacing="75.0" style="-fx-border-insets: 5;">
+                                    <HBox fx:id="logout" alignment="CENTER" onMouseClicked="#logoutClicked" prefHeight="58.0" prefWidth="240.0" spacing="75.0" style="-fx-border-insets: 5;">
                                        <children>
                                           <FontIcon iconColor="#f7f1f1" iconLiteral="fas-door-open" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                              <font>
@@ -312,17 +310,7 @@
                               <Font name="Agency FB Bold" size="30.0" />
                            </font>
                         </Label>
-                        <MFXButton opacity="0.91" prefHeight="36.0" prefWidth="487.0" style="-fx-background-color: #0c172b;" text="Save Changes" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="18.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </MFXButton>
+                        <Button fx:id="update" mnemonicParsing="false" onAction="#onClick" prefHeight="38.0" prefWidth="488.0" text="Save changes" />
                      </children>
                      <padding>
                         <Insets left="25.0" right="15.0" />
