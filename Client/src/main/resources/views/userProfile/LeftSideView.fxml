@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.LeftSideController">
-<left>
-    <VBox alignment="TOP_CENTER" maxWidth="240.0" minWidth="150.0" style="-fx-background-color: #022263;" HBox.hgrow="ALWAYS">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.LeftSideController">
+   <center>
+    <VBox alignment="TOP_CENTER" maxWidth="240.0" minWidth="150.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
         <effect>
             <DropShadow />
         </effect>
@@ -32,7 +35,7 @@
                                     <Font name="Agency FB Bold" size="15.0" />
                                 </font>
                                 <graphic>
-                                    <FontIcon iconLiteral="fas-feather" iconSize="12">
+                                    <FontIcon iconColor="WHITE" iconLiteral="fas-feather" iconSize="12">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
@@ -161,5 +164,5 @@
             </HBox>
         </children>
     </VBox>
-</left>
+   </center>
 </BorderPane>
