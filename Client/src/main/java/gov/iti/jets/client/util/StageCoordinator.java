@@ -24,7 +24,6 @@ public class StageCoordinator {
 
     public void initStage(Stage primaryStage){
         this.primaryStage = primaryStage;
-
     }
 
     public void switchToLoginScene(){

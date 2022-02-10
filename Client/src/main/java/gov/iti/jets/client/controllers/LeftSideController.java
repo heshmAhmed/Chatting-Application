@@ -33,7 +33,7 @@ public class LeftSideController implements Initializable {
     private HBox logout;
 
     @FXML
-    private HBox msg;
+    private HBox chat;
 
     @FXML
     private HBox notifications;
@@ -56,32 +56,18 @@ public class LeftSideController implements Initializable {
 
 
     @FXML
-    void showInformation(MouseEvent event) throws Exception{
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                paneCoordinator.switchToInformationPane();
-                System.out.println("gg");
-            }
-        });
-        Thread.sleep(100);
+    void showInformation(MouseEvent event) {
+        paneCoordinator.switchToInformationPane();
     }
 
     @FXML
-    void showMsg(MouseEvent event) {
-
+    void backToChat(MouseEvent event) {
+        stageCoordinator.switchToChatScene();
     }
 
     @FXML
-    void showNotification(MouseEvent event) throws Exception{
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                paneCoordinator.switchToNotificationsPane();
-                System.out.println("nn");
-            }
-        });
-        Thread.sleep(100);
+    void showNotification(MouseEvent event) {
+        paneCoordinator.switchToNotificationsPane();
     }
 
 }

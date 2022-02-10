@@ -15,8 +15,8 @@ public class PaneCoordinator {
     private Map<String, Pane> map;
     private final String USER_INFO = "USER_INFO";
     private final String USER_INFO_PATH = "/views/userProfile/UserInfoView.fxml";
-    private final String NOTIFICATIONSLIST = "NOTIFICATIONSLIST";
-    private final String NOTIFICATIONSLIST_PATH = "/views/notifications/NotificationsListView.fxml";
+    private final String NOTIFICATIONS_LIST = "NOTIFICATIONS_LIST";
+    private final String NOTIFICATIONS_LIST_PATH = "/views/notifications/NotificationsListView.fxml";
 
     private PaneCoordinator() {
     }
@@ -44,14 +44,14 @@ public class PaneCoordinator {
     }
 
     public void switchToNotificationsPane() {
-        Pane pane = map.get(NOTIFICATIONSLIST);
+        Pane pane = map.get(NOTIFICATIONS_LIST);
         if (pane == null) {
             try {
-                pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(NOTIFICATIONSLIST_PATH)));
+                pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(NOTIFICATIONS_LIST_PATH)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            map.put(NOTIFICATIONSLIST, pane);
+            map.put(NOTIFICATIONS_LIST, pane);
         }
         this.borderPane.setCenter(pane);
     }

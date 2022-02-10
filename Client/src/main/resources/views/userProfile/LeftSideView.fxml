@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
-<?import javafx.geometry.Insets?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gov.iti.jets.client.controllers.LeftSideController">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.LeftSideController">
 <left>
     <VBox alignment="TOP_CENTER" maxWidth="240.0" minWidth="150.0" style="-fx-background-color: #022263;" HBox.hgrow="ALWAYS">
         <effect>
@@ -112,7 +108,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </HBox>
-                                    <HBox fx:id="msg" alignment="CENTER" onMouseClicked="#showMsg" prefHeight="58.0" prefWidth="240.0" spacing="60.0" style="-fx-border-insets: 5;">
+                                    <HBox fx:id="chat" alignment="CENTER" onMouseClicked="#backToChat" prefHeight="58.0" prefWidth="240.0" spacing="30.0" style="-fx-border-insets: 5;">
                                         <children>
                                             <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
@@ -122,7 +118,7 @@
                                                     <Cursor fx:constant="HAND" />
                                                 </cursor>
                                             </FontIcon>
-                                            <Label alignment="TOP_LEFT" text="Message" textFill="#f2f2f2">
+                                            <Label alignment="TOP_LEFT" text="Back to Chat" textFill="#f2f2f2">
                                                 <font>
                                                     <Font name="System Bold" size="22.0" />
                                                 </font>
