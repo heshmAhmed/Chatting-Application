@@ -4,16 +4,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<!--<?import org.controlsfx.control.CheckComboBox?>-->
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<VBox stylesheets="@../../styles/mainStyle.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<!--<?import org.controlsfx.control.CheckComboBox?>-->
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #B0C4DE;" stylesheets="@../../styles/mainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
@@ -33,7 +34,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="227.0" promptText="Enter your Number">
+                  <TextField fx:id="enterYourNumber" alignment="CENTER" prefHeight="34.0" prefWidth="227.0" promptText="Enter your Number">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -47,7 +48,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="226.0" promptText="Enter Your Password">
+                  <TextField fx:id="enterYourPassword" alignment="CENTER" prefHeight="34.0" prefWidth="226.0" promptText="Enter Your Password">
                      <HBox.margin>
                         <Insets left="13.0" />
                      </HBox.margin>
@@ -59,7 +60,7 @@
             </HBox>
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Confermation Password">
+                  <TextField fx:id="confermationPassword" alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Confermation Password">
                      <HBox.margin>
                         <Insets left="42.0" />
                      </HBox.margin>
@@ -73,7 +74,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Enter Your Name">
+                  <TextField fx:id="enterYourName" alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Enter Your Name">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -87,7 +88,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Enter your Email">
+                  <TextField fx:id="enterYourEmail" alignment="CENTER" prefHeight="34.0" prefWidth="230.0" promptText="Enter your Email">
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>
@@ -104,7 +105,7 @@
 <!--                           </HBox.margin>-->
 <!--                        </CheckComboBox>-->
 
-                        <MenuButton mnemonicParsing="false" text="Gender">
+                        <MenuButton fx:id="gender" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" text="Gender">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Male" />
                               <MenuItem mnemonicParsing="false" text="Female" />
@@ -114,7 +115,7 @@
                   </HBox>
                   <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <DatePicker prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" HBox.hgrow="ALWAYS" />
+                        <DatePicker fx:id="dateOfBirth" prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -126,7 +127,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <TextField alignment="CENTER" prefHeight="34.0" prefWidth="233.0" promptText="Country">
+                  <TextField fx:id="country" alignment="CENTER" prefHeight="34.0" prefWidth="233.0" promptText="Country">
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>
@@ -137,7 +138,7 @@
                <children>
                   <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXButton prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #4682B4;" text="Register" textFill="#fff9f9">
+                        <MFXButton fx:id="registerAction" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #4682B4;" text="Register" textFill="#fff9f9">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -151,7 +152,7 @@
             </HBox>
          </children>
       </VBox>
-      <MFXButton style="-fx-background-color: #B0C4DE;" text="Already Have Account " underline="true">
+      <MFXButton fx:id="haveAccountAction" style="-fx-background-color: #B0C4DE;" text="Already Have Account " underline="true">
          <VBox.margin>
             <Insets />
          </VBox.margin>
