@@ -31,7 +31,7 @@ public class StageCoordinator {
       Scene loginScene = sceneMap.get("loginView");
      if (loginScene == null){
            try {
-              Pane root = FXMLLoader.load(getClass().getResource("/views/Login/loginView.fxml"));
+              Pane root = FXMLLoader.load(getClass().getResource("/views/login/loginView.fxml"));
               loginScene = new Scene(root);
               sceneMap.put("loginScene", loginScene);
           } catch (IOException e) {

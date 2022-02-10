@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #21325E; -fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NewContactController">
+   <top>
+      <Label text="Add new contact" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Candara" size="36.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox style="-fx-padding: 20;" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="far-plus-square" iconSize="32" onDragDetected="#handleAddIcon" />
+                  <TextField fx:id="phoneNumberField" alignment="CENTER" onAction="#handlePhoneNumberField" prefColumnCount="20" promptText="Enter phone number">
+                     <font>
+                        <Font name="Candara" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <MFXButton onAction="#handlSendButton" style="-fx-background-color: #3E497A;" text="Send" textFill="WHITE" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
