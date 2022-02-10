@@ -77,7 +77,7 @@ public class StageCoordinator {
         Scene profileScene = sceneMap.get("profileView");
         if (profileScene == null){
             try {
-                Pane root = FXMLLoader.load(getClass().getResource("/views/userProfile/UserProfileView.fxml"));
+                Pane root = FXMLLoader.load(getClass().getResource("/views/userProfile/UserInfoView.fxml"));
                 profileScene = new Scene(root);
                 sceneMap.put("profileScene", profileScene);
             } catch (IOException e) {
