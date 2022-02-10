@@ -5,6 +5,7 @@ module gov.iti.jets.server {
     requires java.sql;
     requires org.slf4j;
     requires MaterialFX;
+    requires javafx.web;
 
 
     opens gov.iti.jets.server.presentation.controller to javafx.fxml;
