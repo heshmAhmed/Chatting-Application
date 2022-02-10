@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="235.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.UserProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="235.0" style="-fx-background-color: #1A1A40;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.UserProfileController">
 
         <HBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" BorderPane.alignment="CENTER">
             <children>
@@ -19,13 +23,13 @@
                         <DropShadow />
                     </effect>
                     <children>
-                        <HBox prefHeight="419.0" prefWidth="240.0">
+                        <HBox prefHeight="419.0" prefWidth="240.0" style="-fx-background-color: #1A1A40;">
                             <children>
                                 <AnchorPane maxHeight="-Infinity" prefHeight="325.0" prefWidth="240.0">
                                     <children>
-                                        <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                                        <Circle fill="#ffaf1f" layoutX="157.0" layoutY="24.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
-                                        <Label layoutX="74.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                                        <Circle fill="DODGERBLUE" layoutX="121.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
+                                        <Circle fill="#ffaf1f" layoutX="160.0" layoutY="17.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+                                        <Label layoutX="83.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Agency FB Bold" size="29.0" />
                                             </font>
@@ -42,7 +46,7 @@
                                                 </FontIcon>
                                             </graphic>
                                         </Label>
-                                        <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="243.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="216.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
+                                        <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="12.0" layoutY="243.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="216.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
                                             <font>
                                                 <Font size="13.0" />
                                             </font>
@@ -50,12 +54,12 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                             </padding>
                                         </Label>
-                                        <Label layoutX="57.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
+                                        <Label layoutX="64.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
                                             <font>
                                                 <Font name="Agency FB Bold" size="19.0" />
                                             </font>
                                         </Label>
-                              <Button layoutX="31.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #434445; -fx-border-radius: 5;" text="Resuest" textFill="#fafafa">
+                              <Button layoutX="33.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #bf4080; -fx-border-radius: 5;" text="Resuest" textFill="#fafafa">
                                  <font>
                                     <Font name="Agency FB Bold" size="14.0" />
                                  </font>
@@ -70,7 +74,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Button layoutX="122.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #434445; -fx-border-radius: 5;" text="Block" textFill="#fafafa">
+                              <Button layoutX="126.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #bf4080; -fx-border-radius: 5;" text="Block" textFill="#fafafa">
                                  <font>
                                     <Font name="Agency FB Bold" size="14.0" />
                                  </font>
