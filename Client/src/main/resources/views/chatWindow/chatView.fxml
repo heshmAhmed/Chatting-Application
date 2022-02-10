@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/mainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.ChatViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/mainStyle.css,@../../styles/chatViewStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.ChatViewController">
    <left>
       <VBox id="profile-chatlist" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
@@ -42,7 +42,7 @@
             </HBox>
             <HBox id="addNewContact">
                <children>
-                  <Button fx:id="addNewContactButton" mnemonicParsing="false" onAction="#addNewContactButtonPressed" prefHeight="26.0" prefWidth="22.0" text="Button">
+                  <Button fx:id="addNewContactButton" styleClass="addContactButton" mnemonicParsing="false" onAction="#addNewContactButtonPressed" prefHeight="26.0" prefWidth="22.0" text="Button">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
