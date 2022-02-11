@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="544.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationsListController">
+<BorderPane prefHeight="544.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.NotificationsListController">
  <center>
-  <ScrollPane fitToHeight="true" fitToWidth="true">
-   <content>
+      <ScrollPane fitToHeight="true" fitToWidth="true">
+      <content>
       <VBox alignment="TOP_CENTER" prefWidth="350.0" spacing="7.0" style="-fx-background-color: #1A1A40;">
          <effect>
             <DropShadow />
@@ -18,25 +19,25 @@
          </padding>
          <children>
              
+                   <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
+             <fx:include source="NotificationView.fxml" />
+      
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
-
+      
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
              <fx:include source="NotificationView.fxml" />
-
-             <fx:include source="NotificationView.fxml" />
-             <fx:include source="NotificationView.fxml" />
-             <fx:include source="NotificationView.fxml" />
-             <fx:include source="NotificationView.fxml" />
-
-
+      
+      
          </children>
       </VBox>
-   </content>
-</ScrollPane>
+      </content>
+      </ScrollPane>
  </center>
 </BorderPane>

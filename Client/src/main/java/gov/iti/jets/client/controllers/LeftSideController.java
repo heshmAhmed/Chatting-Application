@@ -2,13 +2,11 @@ package gov.iti.jets.client.controllers;
 
 import gov.iti.jets.client.util.PaneCoordinator;
 import gov.iti.jets.client.util.StageCoordinator;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
 
@@ -16,9 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
-    private BorderPane borderPane = new BorderPane();
-    private PaneCoordinator paneCoordinator  = PaneCoordinator.getSceneCoordinator();
-
+    private PaneCoordinator paneCoordinator  = PaneCoordinator.getInstance();
     private StageCoordinator stageCoordinator ;
 
     @Override
@@ -54,10 +50,9 @@ public class LeftSideController implements Initializable {
                 .darkStyle().show();
     }
 
-
     @FXML
     void showInformation(MouseEvent event) {
-        paneCoordinator.switchToInformationPane();
+        paneCoordinator.switchToUserInfoPane();
     }
 
     @FXML
