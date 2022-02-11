@@ -32,12 +32,12 @@
       </VBox>
       <VBox alignment="TOP_CENTER" spacing="15.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label text="+02 0110125468" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Label fx:id="phoneNumberLabel" text="+02 0110125468" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="28.0" />
                </font>
             </Label>
-            <Label text="Egypt" textFill="WHITE">
+            <Label fx:id="countryLabel" text="Egypt" textFill="WHITE">
                <font>
                   <Font name="Agency FB" size="25.0" />
                </font>
