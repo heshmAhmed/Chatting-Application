@@ -1,15 +1,17 @@
 package gov.iti.jets.client.util;
 
+import gov.iti.jets.client.controllers.custom.NewContactControl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
+
 import javafx.scene.layout.Pane;
 import java.io.IOException;
-import java.util.Objects;
 
 public class StageCoordinator {
     private static final StageCoordinator stageCoordinator = new StageCoordinator();
@@ -97,17 +99,18 @@ public class StageCoordinator {
         primaryStage.setScene(chatScene);
     }
 
-    public void showAddNewContactPopup() {
+    public void showAddNewContactPopup(List<String> addedNewContacts) {
+
+        ScrollPane pane = new NewContactControl(addedNewContacts);
+
         Stage popupWindow = new Stage();
         popupWindow.initModality(Modality.APPLICATION_MODAL);
         popupWindow.setTitle("Add new content");
-        try {
-            Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(ADD_NEW_CONTACT_PATH))));
-            popupWindow.setScene(scene);
-            popupWindow.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        Scene scene = new Scene(pane);
+        popupWindow.setScene(scene);
+        popupWindow.showAndWait();
+
     }
 
     public void showContactProfilePopup() {

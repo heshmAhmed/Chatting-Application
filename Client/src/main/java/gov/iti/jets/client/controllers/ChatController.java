@@ -1,5 +1,8 @@
 package gov.iti.jets.client.controllers;
 
+import gov.iti.jets.client.controllers.custom.ContactControl;
+import gov.iti.jets.client.controllers.custom.NewContactControl;
+import gov.iti.jets.client.dtos.ContactDTO;
 import gov.iti.jets.client.util.StageCoordinator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,10 +13,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
     private StageCoordinator stageCoordinator;
+
+    List<String> addedContactsList;
 
     @FXML
     private Button addNewContactButton;
@@ -40,7 +47,19 @@ public class ChatController implements Initializable {
     }
 
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {
-        stageCoordinator.showAddNewContactPopup();
+
+        addedContactsList = new ArrayList<>();
+        stageCoordinator.showAddNewContactPopup(addedContactsList);
+
+        if(addedContactsList.size() > 0)
+        {
+            for(var newContact:addedContactsList){
+                ContactControl contactControl = new ContactControl(new ContactDTO());
+                contactListVBox.getChildren().add(contactControl);
+            }
+        }
+
+
     }
 
     public void handleProfileIcon(MouseEvent mouseEvent) {

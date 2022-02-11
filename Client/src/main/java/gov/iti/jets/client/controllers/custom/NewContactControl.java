@@ -1,4 +1,4 @@
-package gov.iti.jets.client.controllers;
+package gov.iti.jets.client.controllers.custom;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -15,10 +16,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class NewContactController {
+public class NewContactControl extends ScrollPane{
 
-    List<String> addedContactsList = new ArrayList<>();
-    BooleanProperty addedNewContacts = new SimpleBooleanProperty(false);
+    List<String> addedContactsList;
+//    BooleanProperty addedNewContacts = new SimpleBooleanProperty(false);
+
+    public  NewContactControl(List<String> list){
+        addedContactsList = list;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/newcontact/NewContactViewControl.fxml"));
+
+        loader.setRoot(this);
+        loader.setController(this);
+        try{
+            loader.load();
+        }catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+
+    }
+
+
 
     @FXML
     private TextField phoneNumberField;
@@ -44,5 +63,13 @@ public class NewContactController {
 
     @FXML
     public void handleSendButton(ActionEvent actionEvent) {
+        if(phoneNumberField.getText() != "")
+            addedContactsList.add(phoneNumberField.getText());
     }
+
+    public void initialize()
+    {
+
+    }
+
 }
