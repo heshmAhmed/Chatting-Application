@@ -1,0 +1,22 @@
+.root{
+
+}
+
+.button{
+     -fx-border-radius: 20;
+     -fx-background-radius: 20;
+     -fx-font-size: 14;
+}
+
+.menu-button{
+         -fx-border-radius: 20;
+         -fx-background-radius: 20;
+}
+.label{
+
+}
+
+.text-field{
+     -fx-border-radius: 15;
+     -fx-background-radius: 15;
+}

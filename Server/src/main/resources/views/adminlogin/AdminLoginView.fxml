@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #1A1A40;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.AdminLoginController">
+    <children>
+        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+            <children>
+                <Label fx:id="Login" styleClass="label-register" text="Admin Login" textFill="#fffcfc">
+                    <font>
+                        <Font name="Curlz MT" size="53.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <VBox VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                        <FontIcon iconColor="#fffdfd" iconLiteral="fas-envelope" iconSize="35">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </FontIcon>
+                        <TextField fx:id="enterYourNumber" alignment="CENTER" prefHeight="34.0" prefWidth="240.0" promptText="Enter your Email">
+                            <HBox.margin>
+                                <Insets left="12.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                        <FontIcon iconColor="#fcfafa" iconLiteral="fas-key" iconSize="33">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </FontIcon>
+                        <TextField fx:id="enterYourPsaaword" alignment="CENTER" prefHeight="34.0" prefWidth="240.0" promptText="Enter your Psaaword">
+                            <HBox.margin>
+                                <Insets left="7.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <children>
+                          <MFXButton fx:id="login" onAction="#handelLoginAction" prefHeight="38.0" prefWidth="179.0" style="-fx-background-color: #bf4080;" text="login" textFill="#fff9f9">
+                                 <font>
+                                  <Font size="18.0" />
+                              </font>
+                          </MFXButton>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+        <MFXButton fx:id="forgetPassword" onAction="#handelForgetPasswordAction" rippleColor="WHITE" style="-fx-background-color: #1A1A40;" text="Forget Password" textFill="#f7f3f3" underline="true">
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </MFXButton>
+    </children>
+</VBox>
