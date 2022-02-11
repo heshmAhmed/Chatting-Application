@@ -1,6 +1,8 @@
 package gov.iti.jets.client.util;
 
+import gov.iti.jets.client.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.controllers.custom.NewContactControl;
+import gov.iti.jets.client.dtos.ContactDTO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -126,4 +128,15 @@ public class StageCoordinator {
             e.printStackTrace();
         }
     }
+
+
+    ////////////this is a pane coordinator task will be modified later////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void setChatScene(){
+        Scene chatScene = sceneMap.get(CHAT_SCENE);
+        BorderPane bp = (BorderPane) chatScene.getRoot();
+        ChatAreaControl chatAreaControl = new ChatAreaControl(new ContactDTO());
+        bp.setCenter(chatAreaControl);
+    }
+
+
 }

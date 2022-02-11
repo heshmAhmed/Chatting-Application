@@ -5,11 +5,13 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +29,9 @@ public class NewContactControl extends ScrollPane{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/newcontact/NewContactViewControl.fxml"));
 
         loader.setRoot(this);
+
         loader.setController(this);
+
         try{
             loader.load();
         }catch (IOException ex)
