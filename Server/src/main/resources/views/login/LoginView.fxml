@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #; -fx-padding: 50;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.LoginController">
+   <children>
+      <HBox alignment="TOP_CENTER" style="-fx-padding: 50;">
+         <children>
+            <Label alignment="TOP_CENTER" styleClass="label-register" text="Login">
+               <font>
+                  <Font name="Curlz MT" size="64.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <FontIcon iconLiteral="fas-mobile-alt" iconSize="35" selectionFill="BLACK">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </FontIcon>
+                  <TextField fx:id="enterYourNumberFiled" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Number">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <FontIcon iconLiteral="fas-lock" iconSize="33" selectionFill="BLACK">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </FontIcon>
+                  <TextField fx:id="enterYourPasswordField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Psaaword">
+                     <HBox.margin>
+                        <Insets left="7.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <MFXButton fx:id="loginButton" onAction="#handelLoginAction" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #6B519E;" text="login" textFill="#fff9f9">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </MFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

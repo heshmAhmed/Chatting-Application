@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,5 +43,6 @@ public class NewContactController {
 
     @FXML
     public void handleSendButton(ActionEvent actionEvent) {
+
     }
 }

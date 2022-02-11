@@ -7,14 +7,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<BorderPane fx:controller="gov.iti.jets.server.presentation.controllers.AnnouncementController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"  >
-   <top>
-      <HBox alignment="CENTER" prefHeight="17.0" prefWidth="664.0" style="-fx-background-color: #23272A;" BorderPane.alignment="CENTER" />
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.AnnouncementController">
    <bottom>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="664.0" style="-fx-background-color: #23272A;">
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="664.0" style="-fx-background-color: #E9E9E9;">
                <children>
                   <Button fx:id="sendButton" mnemonicParsing="false" onAction="#handleSend" style="-fx-background-color: #5663F7;" text="Send" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
@@ -26,12 +23,6 @@
          </children>
       </VBox>
    </bottom>
-   <left>
-      <VBox prefHeight="369.0" prefWidth="21.0" style="-fx-background-color: #23272A;" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <VBox alignment="CENTER" prefHeight="369.0" prefWidth="17.0" style="-fx-background-color: #23272A;" BorderPane.alignment="BOTTOM_LEFT" />
-   </right>
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>

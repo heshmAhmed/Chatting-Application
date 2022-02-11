@@ -12,12 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="579.0" prefWidth="612.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.SidebarController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.SidebarController">
    <top>
       <Pane style="-fx-background-color: #6B519E;" BorderPane.alignment="CENTER">
          <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="36.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../css/iconsPng/icons8_Waxing_Crescent_64px_1.png" />
+               <Image url="@../../css/iconsPng/icons8_Waxing_Crescent_64px_1.png" />
             </image>
          </ImageView>
          <Label layoutX="128.0" layoutY="39.0" text="DashBoard" textFill="#fff7f7">
@@ -30,7 +30,7 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="staticsButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleStaticsButton" prefHeight="89.0" prefWidth="194.0" stylesheets="@../css/styling.css" text="OverView" textFill="#6a519c">
+            <Button fx:id="staticsButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleStaticsButton" prefHeight="89.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="OverView" textFill="#6a519c">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -38,7 +38,7 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="usersListButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleUsersListButton" prefHeight="75.0" prefWidth="194.0" stylesheets="@../css/styling.css" text="Users" textFill="#6b519e">
+            <Button fx:id="usersListButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleUsersListButton" prefHeight="75.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="Users" textFill="#6b519e">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -46,7 +46,7 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="announcementButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleAnnouncement" prefHeight="77.0" prefWidth="194.0" stylesheets="@../css/styling.css" text="Announcement" textFill="#6b519e">
+            <Button fx:id="announcementButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleAnnouncement" prefHeight="77.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="Announcement" textFill="#6b519e">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -64,7 +64,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </MFXToggleButton>
-                  <Button fx:id="logoutButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="27.0" prefWidth="194.0" stylesheets="@../css/styling.css" text="LogOut" textFill="#6b519e">
+                  <Button fx:id="logoutButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="27.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="LogOut" textFill="#6b519e">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

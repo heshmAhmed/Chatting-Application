@@ -1,27 +1,23 @@
 package gov.iti.jets.server;
 
-import gov.iti.jets.server.presentation.util.PaneCoordinator;
+import gov.iti.jets.server.presentation.util.StageCoordinator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
 
 public class ServerApplication extends Application {
-    PaneCoordinator paneCoordinator = PaneCoordinator.getSceneCoordinator();
-
+    StageCoordinator sceneCoordinator = StageCoordinator.getInstance();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader sidebarLoader = new FXMLLoader(ServerApplication.class.getResource("/views/sidebar/SidebarView.fxml"));
-        BorderPane borderPane = sidebarLoader.load();
-        Scene scene = new Scene(borderPane);
-        paneCoordinator.init(borderPane);
-        paneCoordinator.switchToStaticsPane();
-
-        stage.setMinWidth(600);
+        FXMLLoader loginViewLoader = new FXMLLoader(ServerApplication.class.getResource("/views/login/LoginView.fxml"));
+        Pane loginPane = loginViewLoader.load();
+        Scene scene = new Scene(loginPane);
+        sceneCoordinator.init(stage, scene);
+        stage.setMinWidth(1000);
         stage.setMinHeight(600);
         stage.setTitle("Hello Admin!");
         stage.setScene(scene);

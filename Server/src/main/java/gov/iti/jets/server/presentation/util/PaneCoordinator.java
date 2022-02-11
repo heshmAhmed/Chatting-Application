@@ -15,14 +15,14 @@ public class PaneCoordinator {
     private final String ANNOUNCEMENT_VIEW = "ANNOUNCEMENT_VIEW";
     private final String USERS_LIST_VIEW = "USERS_LIST_VIEW";
     private final String STATICS_VIEW = "STATICS_VIEW";
-    private final String ANNOUNCEMENT_VIEW_PATH = "/views/announcement/AnnouncementView.fxml";
-    private final String USERS_LIST_VIEW_PATH = "/views/usersList/UsersListView.fxml";
-    private final String STATICS_VIEW_PATH = "/views/statics/StaticsView.fxml";
+    private final String ANNOUNCEMENT_VIEW_PATH = "/views/dashboard/announcement/AnnouncementView.fxml";
+    private final String USERS_LIST_VIEW_PATH = "/views/dashboard/usersList/UsersListView.fxml";
+    private final String STATICS_VIEW_PATH = "/views/dashboard/statics/StaticsView.fxml";
 
     private PaneCoordinator() {
     }
 
-    public static PaneCoordinator getSceneCoordinator() {
+    public static PaneCoordinator getPaneCoordinator() {
         return PANE_COORDINATOR;
     }
 
@@ -69,4 +69,5 @@ public class PaneCoordinator {
         }
         this.borderPane.setCenter(pane);
     }
+
 }

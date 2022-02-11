@@ -15,8 +15,7 @@ import javax.swing.*;
 
 import java.io.IOException;
 
-public class ContactControl extends HBox{
-
+public class ContactControl extends HBox {
     StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     ContactDTO contactDTO;
 
@@ -33,27 +32,22 @@ public class ContactControl extends HBox{
     private Circle contactPhotoCircle;
 
 
-    public ContactControl(ContactDTO contactDTO){
+    public ContactControl(ContactDTO contactDTO) {
         this.contactDTO = contactDTO;
 
-
-//        URL url = new URL("");
+//      URL url = new URL("");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
-//        loader.setLocation();
+//      loader.setLocation();
         loader.setRoot(this);
         loader.setController(this);
 
         try{
             loader.load();
-        }catch (IOException ex)
+        } catch (IOException ex)
         {
             ex.printStackTrace();
         }
-
-
     }
-
-
 
     public void initialize(){
         conatctNameLabel.setText("dummy name");
@@ -62,6 +56,4 @@ public class ContactControl extends HBox{
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene());
 //        contactPhotoCircle.setFill();
     }
-
-
 }

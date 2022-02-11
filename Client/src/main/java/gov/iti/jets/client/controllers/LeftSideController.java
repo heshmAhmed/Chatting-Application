@@ -14,12 +14,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
-    private PaneCoordinator paneCoordinator  = PaneCoordinator.getInstance();
+    private PaneCoordinator paneCoordinator;
     private StageCoordinator stageCoordinator ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stageCoordinator = StageCoordinator.getInstance();
+        paneCoordinator = PaneCoordinator.getInstance();
     }
 
     @FXML
@@ -72,5 +73,4 @@ public class LeftSideController implements Initializable {
     void showNotification(MouseEvent event) {
         paneCoordinator.switchToNotificationsPane();
     }
-
 }

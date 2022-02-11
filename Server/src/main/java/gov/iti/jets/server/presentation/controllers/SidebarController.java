@@ -1,6 +1,7 @@
 package gov.iti.jets.server.presentation.controllers;
 
 import gov.iti.jets.server.presentation.util.PaneCoordinator;
+import gov.iti.jets.server.presentation.util.StageCoordinator;
 import io.github.palexdev.materialfx.controls.MFXToggleButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +29,8 @@ public class SidebarController implements Initializable {
 
     private PaneCoordinator paneCoordinator;
 
+    private StageCoordinator stageCoordinator;
+
     @FXML
     void handleAnnouncement(ActionEvent event) {
         paneCoordinator.switchToAnnouncementPane();
@@ -35,6 +38,7 @@ public class SidebarController implements Initializable {
 
     @FXML
     void handleLogout(ActionEvent event) {
+        stageCoordinator.switchToLoginScene();
     }
 
     @FXML
@@ -62,6 +66,7 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.paneCoordinator = PaneCoordinator.getSceneCoordinator();
+        this.paneCoordinator = PaneCoordinator.getPaneCoordinator();
+        this.stageCoordinator = StageCoordinator.getInstance();
     }
 }

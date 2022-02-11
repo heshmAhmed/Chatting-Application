@@ -27,10 +27,8 @@ public class ClientApplication extends Application {
         primaryStage.setTitle("Hello Client");
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(950);
-        primaryStage.setMinHeight(600);
+        primaryStage.setMinHeight(630);
         primaryStage.show();
-
-
     }
 
     public static void main(String[] args) {
