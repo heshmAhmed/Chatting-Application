@@ -67,7 +67,7 @@
                                 <children>
                                     <HBox fx:id="notifications" alignment="CENTER" onMouseClicked="#showNotification" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
-                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-bell" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-bell" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
                                                     <Font size="27.0" />
                                                 </font>
@@ -90,7 +90,7 @@
                                     </HBox>
                                     <HBox fx:id="information" alignment="CENTER" onMouseClicked="#showInformation" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
-                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-id-card-alt" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-id-card-alt" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
                                                     <Font size="27.0" />
                                                 </font>
@@ -113,7 +113,7 @@
                                     </HBox>
                               <HBox fx:id="invitations" alignment="CENTER" layoutX="10.0" layoutY="84.0" onMouseClicked="#showInvitations" prefHeight="58.0" prefWidth="240.0" spacing="40.0" style="-fx-border-insets: 5;" styleClass="nav">
                                  <children>
-                                    <FontIcon iconColor="#f7f1f1" iconLiteral="fas-inbox" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                    <FontIcon iconColor="#f7f1f1" iconLiteral="fas-inbox" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                        <font>
                                           <Font size="27.0" />
                                        </font>
@@ -136,7 +136,7 @@
                               </HBox>
                                     <HBox fx:id="chat" alignment="CENTER" onMouseClicked="#backToChat" prefHeight="58.0" prefWidth="240.0" spacing="30.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
-                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
                                                     <Font size="27.0" />
                                                 </font>
@@ -159,7 +159,7 @@
                                     </HBox>
                                     <HBox fx:id="logout" alignment="CENTER" onMouseClicked="#logoutClicked" prefHeight="58.0" prefWidth="240.0" spacing="75.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
-                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-door-open" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
+                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-door-open" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
                                                     <Font size="27.0" />
                                                 </font>

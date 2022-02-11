@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -9,28 +10,86 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" style="-fx-background-color: #EAEEF2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.UserProfileController">
+<VBox alignment="CENTER" style="-fx-background-color: #21325E;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.UserProfileController">
    <children>
-      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="#080808">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="26.0" />
+                  <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="userName" prefHeight="46.0" prefWidth="474.0">
+            <TextField prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="25.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB" size="20.0" />
+                  <Font name="Agency FB Bold" size="22.0" />
                </font>
-               <effect>
-                  <DropShadow color="#323fff" />
-               </effect>
+            </Label>
+            <TextField prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="25.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Agency FB Bold" size="22.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="25.0" right="15.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Agency FB Bold" size="22.0" />
+               </font>
                <HBox.margin>
-                  <Insets />
+                  <Insets left="5.0" />
                </HBox.margin>
-            </TextField>
+            </Label>
+            <TextField prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label prefHeight="38.0" prefWidth="158.0" text="Country:" textFill="WHITE" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Agency FB Bold" size="22.0" />
+               </font>
+            </Label>
+            <ChoiceBox focusTraversable="false" prefHeight="50.0" prefWidth="300.0" styleClass="text-field" HBox.hgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ChoiceBox>
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -39,24 +98,14 @@
             <Insets left="25.0" right="15.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#080808">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Date Of Birth :" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="26.0" />
+                  <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <TextField prefHeight="46.0" prefWidth="474.0">
-               <font>
-                  <Font name="Agency FB" size="20.0" />
-               </font>
-               <effect>
-                  <DropShadow color="#323fff" />
-               </effect>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </TextField>
+            <DatePicker focusTraversable="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -65,96 +114,21 @@
             <Insets left="25.0" right="15.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#080808">
+            <Label prefHeight="38.0" prefWidth="160.0" text="Update Profile : " textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="26.0" />
                </font>
             </Label>
-            <TextField prefHeight="46.0" prefWidth="474.0">
-               <effect>
-                  <DropShadow color="#323fff" />
-               </effect>
-            </TextField>
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="25.0" right="15.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#080808">
+            <MFXButton prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #bf4080;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="26.0" />
+                  <Font name="Agency FB" size="23.0" />
                </font>
-            </Label>
-            <TextField prefHeight="46.0" prefWidth="474.0">
-               <font>
-                  <Font name="Agency FB" size="20.0" />
-               </font>
-               <effect>
-                  <DropShadow color="#323fff" />
-               </effect>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextField>
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="25.0" right="15.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Country:" textFill="#080808">
-               <font>
-                  <Font name="Agency FB Bold" size="26.0" />
-               </font>
-            </Label>
-            <ChoiceBox prefHeight="42.0" prefWidth="470.0" styleClass="text-field" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="25.0" right="15.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Date Of Birth :" textFill="#080808">
-               <font>
-                  <Font name="Agency FB Bold" size="26.0" />
-               </font>
-            </Label>
-            <DatePicker prefHeight="38.0" prefWidth="472.0" style="-fx-background-color: #EAEEF2;">
-               <effect>
-                  <DropShadow color="#323fff" />
-               </effect>
-            </DatePicker>
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="25.0" right="15.0" />
-         </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label prefHeight="38.0" prefWidth="160.0" text="Update Profile : " textFill="#080808">
-               <font>
-                  <Font name="Agency FB Bold" size="26.0" />
-               </font>
-            </Label>
-            <Button fx:id="update" mnemonicParsing="false" onAction="#onClick" prefHeight="38.0" prefWidth="469.0" style="-fx-background-color: white;" text="Save changes" />
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MFXButton>
          </children>
          <padding>
             <Insets left="25.0" right="15.0" />
@@ -165,6 +139,13 @@
       </HBox>
    </children>
    <padding>
-      <Insets bottom="100.0" right="50.0" top="100.0" />
+      <Insets right="50.0" top="150.0" />
    </padding>
+   <effect>
+      <DropShadow>
+         <color>
+            <Color red="0.12941177189350128" green="0.19607843458652496" blue="0.3686274588108063" />
+         </color>
+      </DropShadow>
+   </effect>
 </VBox>
