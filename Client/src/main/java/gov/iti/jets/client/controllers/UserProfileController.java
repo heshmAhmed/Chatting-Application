@@ -2,12 +2,20 @@ package gov.iti.jets.client.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
-public class UserProfileController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserProfileController implements Initializable {
+    ValidationSupport validationSupport;
 
     @FXML
     private HBox information;
@@ -25,12 +33,21 @@ public class UserProfileController {
     private Button update;
 
     @FXML
+    private TextField userName;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        validationSupport = new ValidationSupport();
+    }
+
+    @FXML
     void logoutClicked(MouseEvent event) {
 
     }
 
     @FXML
     void onClick(ActionEvent event){
+        validationSupport.registerValidator(userName, Validator.createPredicateValidator(s->userName.getText().length()>3,"4 characters at least"));
         Notifications.create()
                 .title("Feedback")
                 .text("Updated")
@@ -52,5 +69,6 @@ public class UserProfileController {
     void showNotification(MouseEvent event) {
 
     }
+
 
 }
