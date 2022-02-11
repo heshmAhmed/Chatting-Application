@@ -1,10 +1,14 @@
 package gov.iti.jets.client.controllers.custom;
 
 import gov.iti.jets.client.dtos.ContactDTO;
+import gov.iti.jets.client.dtos.MessageDTO;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
@@ -57,6 +61,16 @@ public class ChatAreaControl extends BorderPane {
     }
 
     public void initialize(){
+        sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e-> {
+            String message = messageTextArea.getText();
+            if(!(message.equals(""))){
 
+                Pane messagePane =  new SentMessageControl(message);
+
+                chatAreaVBox.getChildren().add(messagePane);
+
+                messageTextArea.setText("");
+            }
+        });
     }
 }

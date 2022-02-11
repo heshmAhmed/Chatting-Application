@@ -49,15 +49,8 @@ public class NewContactControl extends ScrollPane{
     public VBox vbox;
 
     @FXML
-    void handlePlusIcon(MouseEvent event) {
-        try {
-            Label label = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/newcontact/contact.fxml")));
-            label.setText(phoneNumberField.getText());
-            this.vbox.getChildren().add(label);
-            phoneNumberField.clear();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    void handlePlusIcon(MouseEvent event){
+
     }
 
     @FXML
@@ -67,8 +60,12 @@ public class NewContactControl extends ScrollPane{
 
     @FXML
     public void handleSendButton(ActionEvent actionEvent) {
-        if(phoneNumberField.getText() != "")
+        if( !(phoneNumberField.getText().equals("") )){
+
             addedContactsList.add(phoneNumberField.getText());
+            phoneNumberField.setText("");
+
+        }
     }
 
     public void initialize()
