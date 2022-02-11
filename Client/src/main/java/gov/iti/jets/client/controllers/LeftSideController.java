@@ -26,6 +26,9 @@ public class LeftSideController implements Initializable {
     private HBox information;
 
     @FXML
+    private HBox invitations;
+
+    @FXML
     private HBox logout;
 
     @FXML
@@ -53,6 +56,11 @@ public class LeftSideController implements Initializable {
     @FXML
     void showInformation(MouseEvent event) {
         paneCoordinator.switchToUserInfoPane();
+    }
+
+    @FXML
+    void showInvitations(MouseEvent event) {
+        paneCoordinator.switchToInvitationsPane();
     }
 
     @FXML

@@ -26,6 +26,7 @@ public class ClientApplication extends Application {
         stageCoordinator.init(primaryStage);
         primaryStage.setTitle("Hello Client");
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 

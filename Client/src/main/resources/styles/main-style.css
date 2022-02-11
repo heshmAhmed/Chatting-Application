@@ -20,3 +20,12 @@
      -fx-border-radius: 15;
      -fx-background-radius: 15;
 }
+.icon{
+     -fx-font-size:25;
+}
+
+.nav:hover{
+      -fx-background-color: #2969c0;
+        -fx-border-right-radius: 50px;
+}
+
