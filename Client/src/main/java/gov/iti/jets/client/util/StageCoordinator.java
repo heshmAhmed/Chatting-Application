@@ -37,6 +37,7 @@ public class StageCoordinator {
     public void init(Stage primaryStage){
         this.primaryStage = primaryStage;
         this.paneCoordinator = PaneCoordinator.getInstance();
+
     }
 
     public void switchToUserProfileScene() {
@@ -65,7 +66,7 @@ public class StageCoordinator {
           } catch (IOException e) {
               e.printStackTrace();
           }     }
-       primaryStage.setScene(loginScene);
+         primaryStage.setScene(loginScene);
     }
 
     public void switchToRegistrationScene(){

@@ -26,7 +26,11 @@ public class ClientApplication extends Application {
         stageCoordinator.init(primaryStage);
         primaryStage.setTitle("Hello Client");
         primaryStage.setScene(scene);
+        primaryStage.setMinWidth(950);
+        primaryStage.setMinHeight(600);
         primaryStage.show();
+
+
     }
 
     public static void main(String[] args) {
