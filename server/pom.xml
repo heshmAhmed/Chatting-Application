@@ -8,9 +8,9 @@
         <groupId>gov.iti.jets</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>server</artifactId>
+    <artifactId>Server</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>server</name>
+    <name>Server</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>gov.iti.jets</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>Common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
