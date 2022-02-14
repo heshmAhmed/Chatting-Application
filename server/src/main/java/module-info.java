@@ -7,7 +7,7 @@ module gov.iti.jets.server {
     requires MaterialFX;
     requires javafx.web;
     requires java.sql.rowset;
-    requires common;
+    requires Common;
     requires java.rmi;
 
     opens gov.iti.jets.server.presentation.controllers to javafx.fxml;
