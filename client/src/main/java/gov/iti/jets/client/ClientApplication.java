@@ -1,12 +1,16 @@
 package gov.iti.jets.client;
 
-import gov.iti.jets.client.util.StageCoordinator;
+import gov.iti.jets.client.network.service.LoginService;
+import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 /* folders & packages start with small letter
  *  naming camelCase functions/variables/.......
@@ -31,7 +35,7 @@ public class ClientApplication extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
         launch();
     }
 }

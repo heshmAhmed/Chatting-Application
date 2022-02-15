@@ -11,7 +11,7 @@
 
 <VBox alignment="CENTER" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1A1A40; -fx-padding: 50;"
       stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="gov.iti.jets.client.controllers.LoginController">
+      fx:controller="gov.iti.jets.client.presentation.controllers.LoginController">
    <children>
       <HBox alignment="TOP_CENTER" style="-fx-padding: 50;">
          <children>

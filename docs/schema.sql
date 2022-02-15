@@ -1,41 +1,49 @@
-create table user_status (
-	id int primary key,
-	status varchar(20) unique not null
-);
-
 create table users (
 	phone_number varchar(20) primary key,
-	status_id int not null,
-    first_name varchar(50) not null,
-	last_name varchar(50) not null,
+    username varchar(50) not null,
 	email varchar(100) unique not null,
-	picture varchar(200) default('/')  not null,
+	image varchar(200) default('/')  not null,
 	gender varchar(1) default ('m') not null,
 	country varchar(20) not null,
 	date_of_birth datetime not null,
 	bio varchar(200),
-    created_at datetime not null default (sysdate()),
-	foreign key (status_id) references user_status(id)
+    user_status varchar(50)
 );
 
 create table user_contacts (
 	user_number varchar(20) not null,
 	contact_number varchar(20) not null,
-	is_blocked bit default (0), 
-	blocks bit default(0),    
     foreign key (user_number) references users(phone_number),
     foreign key (contact_number) references users(phone_number),
     primary key (user_number, contact_number)
 );
 
 create table user_invetations (
-	inviter_number varchar(20) not null,
-	invitee_number varchar(20) not null,
+	sender_number varchar(20) not null,
+	reciever_number varchar(20) not null,
 	date datetime default(sysdate()) not null, 
 	state bit,
-	foreign key (inviter_number) references users(phone_number),
-    foreign key (invitee_number) references users(phone_number)
+	foreign key (sender_number) references users(phone_number),
+    foreign key (reciever_number) references users(phone_number)
 );
+
+create table user_blocks (
+	user_number varchar(20) not null,
+	contact_number varchar(20) not null,
+	foreign key (user_number) references users(phone_number),
+	foreign key (contact_number) references users(phone_number),
+	primary key (user_number, contact_number)
+);
+
+-- create table user_messages (
+-- 	sender_number foreign key not null,
+-- 	receive_number foreign key not null,
+-- 	msg_body text not null,
+-- date date not null, 
+-- style text
+-- );
+
+
 
 -- CREATE TRIGGER CHECK_USERCONTACTS_FOREIGNKEYS 
 -- 	BEFORE INSERT ON USER_CONTACTS FOR EACH ROW
