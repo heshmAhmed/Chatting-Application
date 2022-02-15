@@ -13,8 +13,6 @@ public abstract class Validation{
     }
 
     //add new contact
-    //confirm password
-    //remove label
 
     public static boolean validateUserName(TextField userNameField , Label label){
         if(userNameField.getText().length() <=2){
@@ -50,7 +48,7 @@ public abstract class Validation{
     }
 
     public static boolean validatePhoneNumber(TextField phoneField,Label label) {
-        if (!phoneField.getText().matches("^\\d{10}$")) {
+        if (!phoneField.getText().matches("\\d{11,15}")) {
             label.setText("Enter a valid number");
             return false;
         } else {
