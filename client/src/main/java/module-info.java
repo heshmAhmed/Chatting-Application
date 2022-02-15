@@ -4,9 +4,10 @@ module gov.iti.jets.client {
     requires MaterialFX;
     requires org.controlsfx.controls;
     opens gov.iti.jets.client to javafx.fxml;
-    opens gov.iti.jets.client.controllers to javafx.fxml;
-    opens gov.iti.jets.client.controllers.custom to javafx.fxml;
+    opens gov.iti.jets.client.presentation.controllers to javafx.fxml;
+    opens gov.iti.jets.client.presentation.controllers.custom to javafx.fxml;
     requires Common;
+    requires java.rmi;
 
     exports gov.iti.jets.client;
 }

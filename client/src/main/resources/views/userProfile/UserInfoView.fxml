@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" style="-fx-background-color: #21325E;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.controllers.UserProfileController">
+<VBox alignment="CENTER" style="-fx-background-color: #21325E;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>

@@ -1,6 +1,7 @@
 package gov.iti.jets.server;
 
-import gov.iti.jets.common.HelloInt;
+import gov.iti.jets.common.server.IRemoteLoginService;
+import gov.iti.jets.server.network.RemoteLoginServiceImpl;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class ServerApplication extends Application {
+    static Registry  registry;
     StageCoordinator sceneCoordinator = StageCoordinator.getInstance();
 
     @Override
@@ -26,7 +30,11 @@ public class ServerApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws RemoteException {
         launch();
+        Registry registry = LocateRegistry.getRegistry(3060);
     }
+
+
 }
