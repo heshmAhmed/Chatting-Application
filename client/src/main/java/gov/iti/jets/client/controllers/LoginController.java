@@ -10,14 +10,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
-    private StageCoordinator stageCoordinator ;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        stageCoordinator = StageCoordinator.getInstance();
-    }
-
+public class LoginController{
+    private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     @FXML
     private Label loginLabel;
 
@@ -37,17 +31,13 @@ public class LoginController implements Initializable {
     private MFXButton registerButton;
 
     @FXML
-    void handelForgetPasswordAction(ActionEvent event) {
-
-    }
+    void handelForgetPasswordAction(ActionEvent event) { }
 
     @FXML
-    void handelLoginAction(ActionEvent event) {
-//        stageCoordinator.switchToChatScene();
-    }
+    void loginClicked(ActionEvent event) {stageCoordinator.switchToChatScene();}
 
     @FXML
-    void handelRegisterAction(ActionEvent event) {
+    void registerClicked (ActionEvent event) {
         stageCoordinator.switchToRegistrationScene();
     }
 
