@@ -1,7 +1,8 @@
 package gov.iti.jets.server;
 
-import gov.iti.jets.common.server.IRemoteLoginService;
-import gov.iti.jets.server.network.RemoteLoginServiceImpl;
+
+import gov.iti.jets.common.server.IRemoteRegistrationService;
+import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,8 @@ public class ServerApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+
         FXMLLoader loginViewLoader = new FXMLLoader(ServerApplication.class.getResource("/views/login/LoginView.fxml"));
         Pane loginPane = loginViewLoader.load();
         Scene scene = new Scene(loginPane);
@@ -32,8 +35,11 @@ public class ServerApplication extends Application {
 
 
     public static void main(String[] args) throws RemoteException {
+        Registry registry = LocateRegistry.getRegistry(3000);
+        IRemoteRegistrationService service=new RemoteRegistrationServiceImpl();
+        registry.rebind("RemoteRegistrationService",service);
         launch();
-        Registry registry = LocateRegistry.getRegistry(3060);
+
     }
 
 
