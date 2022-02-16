@@ -82,6 +82,7 @@ public class RegistrationController implements Initializable {
 
 
                 System.out.println(service.checkPhoneNumber(phoneField.getText()));
+                System.out.println(service.checkPhoneNumber(emailField.getText()));
 
             stageCoordinator.switchToChatScene();
         }

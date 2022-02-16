@@ -9,6 +9,8 @@ module gov.iti.jets.server {
     requires java.sql.rowset;
     requires Common;
     requires java.rmi;
+    requires org.mapstruct;
+    requires org.apache.commons.codec;
 
     opens gov.iti.jets.server.presentation.controllers to javafx.fxml;
     exports gov.iti.jets.server;

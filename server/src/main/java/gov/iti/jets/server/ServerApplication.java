@@ -35,7 +35,7 @@ public class ServerApplication extends Application {
 
 
     public static void main(String[] args) throws RemoteException {
-        Registry registry = LocateRegistry.getRegistry(3000);
+        Registry registry = LocateRegistry.getRegistry("localhost",1099);
         IRemoteRegistrationService service=new RemoteRegistrationServiceImpl();
         registry.rebind("RemoteRegistrationService",service);
         launch();

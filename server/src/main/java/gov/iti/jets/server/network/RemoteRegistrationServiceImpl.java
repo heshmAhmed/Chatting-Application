@@ -1,17 +1,17 @@
 package gov.iti.jets.server.network;
 
-import gov.iti.jets.common.dtos.UserDTO;
+import gov.iti.jets.common.dtos.RegistrationDTO;
+
 import gov.iti.jets.common.server.IRemoteRegistrationService;
-import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.impls.UserRepoImpl;
+import gov.iti.jets.server.services.impls.RegistrationServiceImpl;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.SQLException;
-import java.util.Optional;
 
 public class RemoteRegistrationServiceImpl extends UnicastRemoteObject implements IRemoteRegistrationService {
     UserRepoImpl userRepo = UserRepoImpl.getInstance();
+    RegistrationServiceImpl service = new RegistrationServiceImpl();
 
     public RemoteRegistrationServiceImpl() throws RemoteException {
         super();
@@ -19,25 +19,17 @@ public class RemoteRegistrationServiceImpl extends UnicastRemoteObject implement
 
     @Override
     public boolean isPhoneRegistered(String userPhoneNumber) throws RemoteException {
-        System.out.println("isPhoneRegistered");
-        Optional<UserEntity> user = null;
-        try {
-            user = userRepo.findUserByNumber(userPhoneNumber);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(user.isPresent());
-        return user.isPresent();
+        return service.isPhoneExisted(userPhoneNumber);
     }
 
     @Override
     public boolean isEmailRegistered(String userEmail) throws RemoteException {
-        return false;
+        return service.isEmailExisted(userEmail);
+
     }
 
     @Override
-    public UserDTO createNewUser(UserDTO user) throws RemoteException {
-        return null;
+    public boolean createNewUser(RegistrationDTO user) throws RemoteException {
+        return service.createNewUser(user);
     }
 }
