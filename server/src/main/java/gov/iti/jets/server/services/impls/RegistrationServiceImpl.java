@@ -7,23 +7,24 @@ import gov.iti.jets.server.repository.mapper.RegistrationMapper;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IRegistrationService;
 import gov.iti.jets.server.services.util.HashPassword;
+
 import java.sql.SQLException;
 
 
 public class RegistrationServiceImpl implements IRegistrationService {
-    private  final RepoFactory repoFactory=RepoFactory.getInstance();
-    private  final  IUserRepository userRepo = repoFactory.getUserRepo();
+    private final RepoFactory repoFactory = RepoFactory.getInstance();
+    private final IUserRepository userRepo = repoFactory.getUserRepo();
 
     @Override
     public boolean isPhoneExisted(String userPhone) {
 
         boolean founded = false;
-         try {
+        try {
             founded = userRepo.checkUserPhone(userPhone);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println( "in service"+founded);
+        System.out.println("in service" + founded);
         return founded;
     }
 
@@ -35,7 +36,7 @@ public class RegistrationServiceImpl implements IRegistrationService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println( "in service"+founded);
+        System.out.println("in service" + founded);
         return founded;
 
     }
@@ -43,12 +44,16 @@ public class RegistrationServiceImpl implements IRegistrationService {
     @Override
     public boolean createNewUser(RegistrationDTO registrationDTO) {
 
-        HashPassword.getInstance().hashPassword(registrationDTO.getPassword());
-        UserEntity user= RegistrationMapper.REGISTRATION_MAPPER.USER(registrationDTO);
+        HashPassword Password = HashPassword.getInstance();
+        String hashedPassword = Password.hashPassword(registrationDTO.getPassword());
 
-
-      // userRepo.insertUser(user);
-
+        UserEntity user = RegistrationMapper.REGISTRATION_MAPPER.USER(registrationDTO);
+        user.setPassword(hashedPassword);
+        try {
+            userRepo.insertUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
