@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
-    private  Connection connection;
+    private Connection connection;
     private final static UserRepoImpl userRepo = new UserRepoImpl();
 
     private UserRepoImpl() {
@@ -37,11 +37,55 @@ public class UserRepoImpl implements IUserRepository {
 
     @Override
     public Optional<UserEntity> findUserByNumber(String number) throws SQLException {
+
         return Optional.empty();
     }
 
     @Override
-    public boolean insertUser(UserEntity userEntity) throws SQLException {
+    public boolean checkUserPhone(String number) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from users where phone_number = ?");
+        preparedStatement.setString(1, number);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (!resultSet.next()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean checkUserEmail(String email) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("select * from users where email = ?");
+        preparedStatement.setString(1, email);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (!resultSet.next()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean insertUser(UserEntity userEntity) {
+        int status = 0;
+        try {
+
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into users " +
+                    "(phone_number ,username,email,gender,country,date_of_birth,password )values (?,?,?,?,?,?,?)");
+
+            preparedStatement.setString(1, userEntity.getPhoneNumber());
+            preparedStatement.setString(2, userEntity.getUsername());
+            preparedStatement.setString(3, userEntity.getEmail());
+            preparedStatement.setString(4, userEntity.getGender());
+            preparedStatement.setString(5, userEntity.getCountry().name());
+            preparedStatement.setDate(6, userEntity.getDateOfBirth());
+            preparedStatement.setString(7, userEntity.getPassword());
+            status = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (status > 0)
+            return true;
+
         return false;
     }
 

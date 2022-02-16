@@ -11,4 +11,6 @@ public interface IUserRepository {
     public boolean insertUser(UserEntity userEntity) throws SQLException;
     public boolean deleteUser(String phoneNumber) throws SQLException;
     public boolean updateUser(UserEntity userEntity) throws SQLException;
+    public boolean checkUserPhone(String number) throws SQLException;
+    public boolean checkUserEmail(String email) throws SQLException;
 }

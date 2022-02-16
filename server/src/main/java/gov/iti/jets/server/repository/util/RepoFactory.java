@@ -5,10 +5,16 @@ import gov.iti.jets.server.repository.interfaces.IUserRepository;
 
 public class RepoFactory {
     private final static RepoFactory repoFactory = new RepoFactory();
+    
+    
 
     private RepoFactory() {}
 
-    public static IUserRepository getUserRepo() {
+    public static RepoFactory getInstance() {
+        return repoFactory;
+    }
+    
+    public  IUserRepository getUserRepo() {
         return UserRepoImpl.getInstance();
     }
 }

@@ -32,5 +32,17 @@ public class RegistrationService {
         return founded;
     }
 
+    public boolean checkEmail(String email) {
+        boolean founded = false;
+        try {
+            founded = remoteRegistrationService.isEmailRegistered(email);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        return founded;
+    }
+
+
 
 }
