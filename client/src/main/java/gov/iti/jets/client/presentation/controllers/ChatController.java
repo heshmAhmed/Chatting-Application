@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 public class ChatController implements Initializable {
     private StageCoordinator stageCoordinator;
 
+
     List<String> addedContactsList;
 
     @FXML

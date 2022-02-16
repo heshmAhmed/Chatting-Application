@@ -21,6 +21,7 @@ public class LoginController{
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     LoginService myLoginService = LoginService.getInstance();
 
+
     boolean isPasswordkFieldOn;
 
     PasswordFieldControl passwordFieldControl;
@@ -86,6 +87,8 @@ public class LoginController{
         }else{
 
             if(myLoginService.validatePassword(phoneNumber,passwordFieldControl.getPasswordFieldText())){
+//                password validated
+
                 stageCoordinator.switchToChatScene();
             }
             else
@@ -95,6 +98,8 @@ public class LoginController{
 
         }
     }
+
+
 
     private void checkPhoneNumberValidity(String phoneNumber) throws RemoteException {
 
