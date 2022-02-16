@@ -10,23 +10,30 @@ import javafx.scene.control.TextField;
 
 public class LoginController{
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+
     @FXML
-    private Label loginLabel;
+    private MFXButton forgetPassword;
+
+    @FXML
+    private MFXButton login;
 
     @FXML
     private TextField numberField;
 
     @FXML
+    private Label numberLabel;
+
+    @FXML
     private TextField passwordField;
 
     @FXML
-    private MFXButton forgetPasswordButton;
+    private Label passwordLabel;
 
     @FXML
-    private MFXButton loginButton;
+    private MFXButton register;
 
-    @FXML
-    private MFXButton registerButton;
+    public LoginController() {
+    }
 
     @FXML
     void handelForgetPasswordAction(ActionEvent event) { }

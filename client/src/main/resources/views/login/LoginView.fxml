@@ -9,13 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1A1A40; -fx-padding: 50;"
-      stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="gov.iti.jets.client.presentation.controllers.LoginController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #1A1A40; -fx-padding: 50;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LoginController">
    <children>
       <HBox alignment="TOP_CENTER" style="-fx-padding: 50;">
          <children>
-            <Label fx:id="loginLabel" alignment="TOP_CENTER" styleClass="label-register" text="Login" textFill="#fffcfc">
+            <Label alignment="TOP_CENTER" styleClass="label-register" text="Login" textFill="#fffcfc">
                <font>
                   <Font name="Curlz MT" size="64.0" />
                </font>
@@ -27,45 +25,63 @@
       </HBox>
       <VBox alignment="CENTER">
          <children>
-            <HBox alignment="CENTER">
-               <children>
-                  <FontIcon iconColor="#fffdfd" iconLiteral="fas-mobile-alt" iconSize="35">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </FontIcon>
-                  <TextField fx:id="numberField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Number">
-                     <HBox.margin>
-                        <Insets left="12.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
+            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER">
                <children>
-                  <FontIcon iconColor="#fcfafa" iconLiteral="fas-lock" iconSize="33">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </FontIcon>
-                  <TextField fx:id="passwordField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Psaaword">
-                     <HBox.margin>
-                        <Insets left="7.0" />
-                     </HBox.margin>
-                  </TextField>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <FontIcon iconColor="#fffdfd" iconLiteral="fas-mobile-alt" iconSize="35">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </FontIcon>
+                        <TextField fx:id="numberField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Number">
+                           <HBox.margin>
+                              <Insets left="12.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label fx:id="numberLabel" alignment="CENTER" contentDisplay="CENTER" textFill="#e40808" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
+            </VBox>
+            <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
-            </HBox>
+               <children>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <FontIcon iconColor="#fcfafa" iconLiteral="fas-lock" iconSize="33">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </FontIcon>
+                        <TextField fx:id="passwordField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Psaaword">
+                           <HBox.margin>
+                              <Insets left="7.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label fx:id="passwordLabel" alignment="CENTER" contentDisplay="CENTER" textFill="#e40808" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
             <HBox alignment="CENTER">
                <children>
                   <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXButton fx:id="registerButton" onAction="#registerClicked" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #bf4080;" text="Register" textFill="#fff9f9">
+                        <MFXButton fx:id="register" onAction="#registerClicked" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #bf4080;" text="Register" textFill="#fff9f9">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -77,7 +93,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXButton fx:id="loginButton" onAction="#loginClicked" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #bf4080;" text="login" textFill="#fff9f9">
+                        <MFXButton fx:id="login" onAction="#loginClicked" prefHeight="38.0" prefWidth="99.0" style="-fx-background-color: #bf4080;" text="login" textFill="#fff9f9">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -100,7 +116,7 @@
             </HBox>
          </children>
       </VBox>
-      <MFXButton fx:id="forgetPasswordButton" onAction="#handelForgetPasswordAction" rippleColor="WHITE" style="-fx-background-color: #1A1A40;" text="Forget Password" textFill="#f7f3f3" underline="true">
+      <MFXButton fx:id="forgetPassword" onAction="#handelForgetPasswordAction" rippleColor="WHITE" style="-fx-background-color: #1A1A40;" text="Forget Password" textFill="#f7f3f3" underline="true">
          <VBox.margin>
             <Insets />
          </VBox.margin>
