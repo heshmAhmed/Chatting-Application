@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
 
@@ -52,6 +53,8 @@ public class LoginController{
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
         System.out.println("skip");
+        Stage stage = (Stage) skipHyperlink.getScene().getWindow();
+        stage.close();
     }
 
     private Label notValidLabel = new Label("");
@@ -59,7 +62,6 @@ public class LoginController{
 
 
     public void initialize(){
-
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
         notValidLabel.setTextFill(Color.web("#ffffff"));
         passwordLabel.setTextFill(Color.web("#ffffff"));
