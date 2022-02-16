@@ -19,15 +19,15 @@ public class LoginService {
         return loginService;
     }
 
-    public boolean checkPhoneNumber(String phoneNumber) throws RemoteException {
-        remoteLoginService.checkUserPhoneNumber(phoneNumber);
-        return true;
+    public boolean validatePhoneNumber(String phoneNumber) throws RemoteException {
+//        remoteLoginService.checkUserPhoneNumber(phoneNumber);
+        return false;
     }
 
-    public boolean checkPassword(String phoneNumber, String password) throws RemoteException {
+    public boolean validatePassword(String phoneNumber, String password) throws RemoteException {
         remoteLoginService.checkUserPassword(phoneNumber, password);
 
-        return true;
+        return false;
     }
 
     public boolean connect() throws RemoteException {

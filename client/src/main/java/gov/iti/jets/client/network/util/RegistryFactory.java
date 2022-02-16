@@ -12,7 +12,7 @@ public class RegistryFactory {
 
     private RegistryFactory(){
         try {
-            registry = LocateRegistry.getRegistry(3060);
+            registry = LocateRegistry.getRegistry(3000);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -27,6 +27,7 @@ public class RegistryFactory {
         try {
             remoteLoginService = (IRemoteLoginService) registry.lookup("RemoteLoginService");
         } catch (RemoteException | NotBoundException e) {
+//            System.out.println("lookup exeption");
             e.printStackTrace();
         }
         return remoteLoginService;

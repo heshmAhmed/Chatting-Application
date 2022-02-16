@@ -33,7 +33,11 @@ public class ServerApplication extends Application {
 
     public static void main(String[] args) throws RemoteException {
         launch();
-        Registry registry = LocateRegistry.getRegistry(3060);
+        Registry registry = LocateRegistry.createRegistry(3000);
+
+        IRemoteLoginService iRemoteLoginService = (IRemoteLoginService) new RemoteLoginServiceImpl();
+        registry.rebind("RemoteLoginService", iRemoteLoginService);
+
     }
 
 

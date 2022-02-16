@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -42,23 +43,12 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <FontIcon iconColor="#fcfafa" iconLiteral="fas-lock" iconSize="33">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </FontIcon>
-                  <TextField fx:id="passwordField" alignment="CENTER" prefHeight="33.0" prefWidth="350.0" promptText="Enter your Psaaword">
-                     <HBox.margin>
-                        <Insets left="7.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
+            <HBox fx:id="PasswordPlaceholderHBox" alignment="CENTER">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </HBox>
+            <Label fx:id="passwordLabel" />
             <HBox alignment="CENTER">
                <children>
                   <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
@@ -98,10 +88,6 @@
             </HBox>
          </children>
       </VBox>
-      <MFXButton fx:id="forgetPasswordButton" onAction="#handelForgetPasswordAction" rippleColor="WHITE" style="-fx-background-color: #1A1A40;" text="Forget Password" textFill="#f7f3f3" underline="true">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </MFXButton>
+      <Hyperlink fx:id="skipHyperlink" onAction="#handleSkipHyperLink" text="Skip" />
    </children>
 </VBox>
