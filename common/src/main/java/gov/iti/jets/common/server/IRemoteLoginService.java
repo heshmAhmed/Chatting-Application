@@ -10,3 +10,5 @@ public interface IRemoteLoginService extends Remote {
     boolean checkUserPassword(String phoneNumber, String Password) throws RemoteException;
     UserDTO getUser(String phoneNumber, IClientCallback client) throws RemoteException;
 }
+
+
