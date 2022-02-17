@@ -1,10 +1,10 @@
 create table users (
-	phone_number varchar(20) primary key,
-    username varchar(50) not null,
+	phone_number varchar(30) primary key,
+    username varchar(100) not null,
 	email varchar(100) unique not null,
 	pass text not null,   
 	image text,
-	gender varchar(1) default ('m') not null,
+	gender varchar(10) not null,
 	country varchar(20) not null,
 	date_of_birth datetime not null,
 	bio varchar(200),
@@ -19,13 +19,14 @@ create table user_contacts (
     primary key (user_number, contact_number)
 );
 
-create table user_invetations (
+create table user_invitations (
 	sender_number varchar(20) not null,
 	reciever_number varchar(20) not null,
 	date datetime default(sysdate()) not null, 
 	state bit,
 	foreign key (sender_number) references users(phone_number),
-    foreign key (reciever_number) references users(phone_number)
+    foreign key (reciever_number) references users(phone_number),
+    primary key (sender_number, reciever_number)
 );
 
 -- create table user_blocks (
@@ -44,8 +45,12 @@ create table user_invetations (
 -- style text
 -- );
 
-CREATE TRIGGER AFTER_INSERT_IN_CONTACTS
-	AFTER INSERT ON user_contacts FOR EACH ROW
-    BEGIN
-		INSERT INTO user_contacts VALUES (new.contact_number, new.user_number);
-    END;
+-- drop table users;
+-- drop table user_contacts;
+-- drop table user_invetations;
+
+-- CREATE TRIGGER AFTER_INSERT_IN_CONTACTS
+-- 	AFTER INSERT ON user_contacts FOR EACH ROW
+--     BEGIN
+-- 		INSERT INTO user_contacts VALUES (new.contact_number, new.user_number);
+--     END;
