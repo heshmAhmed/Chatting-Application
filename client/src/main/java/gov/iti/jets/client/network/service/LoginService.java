@@ -23,7 +23,6 @@ public class LoginService {
     }
 
     public boolean validatePhoneNumber(String phoneNumber) throws RemoteException {
-//        return true;
         return remoteLoginService.checkUserPhoneNumber(phoneNumber);
     }
 

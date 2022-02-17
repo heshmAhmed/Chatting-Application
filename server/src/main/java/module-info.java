@@ -7,9 +7,11 @@ module gov.iti.jets.server {
     requires MaterialFX;
     requires javafx.web;
     requires java.sql.rowset;
-    requires Common;
+    requires common;
     requires java.rmi;
+    requires org.mapstruct;
 
+    opens gov.iti.jets.server.services.mapper to org.mapstruct;
     opens gov.iti.jets.server.presentation.controllers to javafx.fxml;
     exports gov.iti.jets.server;
     exports gov.iti.jets.server.presentation.controllers;

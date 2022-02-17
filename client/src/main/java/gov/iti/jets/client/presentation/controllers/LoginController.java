@@ -20,18 +20,13 @@ import java.rmi.RemoteException;
 public class LoginController{
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     LoginService myLoginService = LoginService.getInstance();
-
-
     boolean isPasswordkFieldOn;
-
     PasswordFieldControl passwordFieldControl;
-
     @FXML
     private Label loginLabel;
 
     @FXML
     private Label passwordLabel;
-
 
     @FXML
     private TextField numberField;
@@ -51,16 +46,14 @@ public class LoginController{
     @FXML
     private Hyperlink skipHyperlink;
 
+    private Label notValidLabel = new Label("");
+
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
         System.out.println("skip");
         Stage stage = (Stage) skipHyperlink.getScene().getWindow();
         stage.close();
     }
-
-    private Label notValidLabel = new Label("");
-
-
 
     public void initialize(){
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
@@ -71,7 +64,6 @@ public class LoginController{
         isPasswordkFieldOn = false;
         numberField.setOnMouseClicked(event -> {notValidLabel.setText("");});
     }
-
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {

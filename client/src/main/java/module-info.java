@@ -6,7 +6,7 @@ module gov.iti.jets.client {
     opens gov.iti.jets.client to javafx.fxml;
     opens gov.iti.jets.client.presentation.controllers to javafx.fxml;
     opens gov.iti.jets.client.presentation.controllers.custom to javafx.fxml;
-    requires Common;
+    requires common;
     requires java.rmi;
 
     exports gov.iti.jets.client;
