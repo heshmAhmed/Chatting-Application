@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class RegistrationDTO implements Serializable {
-
     private static final long serialVersionUID = 1420672609912364060L;
     private String phoneNumber;
     private String email;

@@ -11,7 +11,6 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class RemoteRegistrationServiceImpl extends UnicastRemoteObject implements IRemoteRegistrationService {
-    IUserRepository userRepo = UserRepoImpl.getInstance();
     RegistrationServiceImpl service = new RegistrationServiceImpl();
 
     public RemoteRegistrationServiceImpl() throws RemoteException {
@@ -20,12 +19,12 @@ public class RemoteRegistrationServiceImpl extends UnicastRemoteObject implement
 
     @Override
     public boolean isPhoneRegistered(String userPhoneNumber) throws RemoteException {
-        return service.isPhoneExisted(userPhoneNumber);
+        return service.checkPhoneNumber(userPhoneNumber);
     }
 
     @Override
     public boolean isEmailRegistered(String userEmail) throws RemoteException {
-        return service.isEmailExisted(userEmail);
+        return service.checkEmail(userEmail);
 
     }
 

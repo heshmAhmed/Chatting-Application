@@ -1,7 +1,10 @@
 package gov.iti.jets.server.network.util;
 
 import gov.iti.jets.common.server.IRemoteLoginService;
+import gov.iti.jets.common.server.IRemoteRegistrationService;
 import gov.iti.jets.server.network.RemoteLoginServiceImpl;
+import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
+
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -29,8 +32,10 @@ public class RegistryManager {
 
     public void publishServices() {
         try {
-            IRemoteLoginService iRemoteLoginService = (IRemoteLoginService) new RemoteLoginServiceImpl();
+            IRemoteLoginService iRemoteLoginService = new RemoteLoginServiceImpl();
+            IRemoteRegistrationService iRemoteRegistrationService = new RemoteRegistrationServiceImpl();
             registry.rebind("RemoteLoginService", iRemoteLoginService);
+            registry.rebind("RemoteRegistrationService", iRemoteRegistrationService);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

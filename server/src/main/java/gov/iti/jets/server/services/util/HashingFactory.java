@@ -4,17 +4,17 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public  class HashPassword {
-    private final static HashPassword hashPassword=new HashPassword();
+public  class HashingFactory {
+    private final static HashingFactory hashPassword=new HashingFactory();
 
-    private HashPassword() {
+    private HashingFactory() {
     }
 
-    public static HashPassword getInstance() {
+    public static HashingFactory getInstance() {
         return hashPassword;
     }
 
-    public  String hashPassword(String password){
+    public String hashPassword(String password){
         byte[] encodedHash = null;
         StringBuilder stringBuilder = new StringBuilder();
         try {

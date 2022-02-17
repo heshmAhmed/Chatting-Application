@@ -1,11 +1,13 @@
 package gov.iti.jets.common.dtos;
 
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1420672609912364060L;
-
     private String phoneNumber;
     private String email;
     private String image;

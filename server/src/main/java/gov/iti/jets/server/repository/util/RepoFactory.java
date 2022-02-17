@@ -5,8 +5,6 @@ import gov.iti.jets.server.repository.interfaces.IUserRepository;
 
 public class RepoFactory {
     private final static RepoFactory repoFactory = new RepoFactory();
-    
-    
 
     private RepoFactory() {}
 

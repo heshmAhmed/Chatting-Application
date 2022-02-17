@@ -1,9 +1,8 @@
-package gov.iti.jets.server.services.utils;
+package gov.iti.jets.server.services.util;
 
 import gov.iti.jets.common.client.IClientCallback;
 
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ServerUtil {
