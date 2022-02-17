@@ -2,7 +2,7 @@ package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.presentation.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewContactControl;
-import gov.iti.jets.client.presentation.models.ContactDTO;
+import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;

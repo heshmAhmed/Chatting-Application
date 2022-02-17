@@ -11,9 +11,10 @@
     <dependencies>
       <dependency>
         <groupId>gov.iti.jets</groupId>
-        <artifactId>Common</artifactId>
+        <artifactId>common</artifactId>
         <version>1.0-SNAPSHOT</version>
       </dependency>
+
       <dependency>
         <groupId>com.zaxxer</groupId>
         <artifactId>HikariCP</artifactId>
@@ -29,11 +30,11 @@
   </dependencyManagement>
     
   <dependencies>
-      <dependency>
-        <groupId>org.mapstruct</groupId>
-        <artifactId>mapstruct</artifactId>
-        <version>1.4.2.Final</version>
-      </dependency>
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>1.4.2.Final</version>
+    </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
@@ -50,12 +51,6 @@
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-web</artifactId>
       <version>17.0.2</version>
-    </dependency>
-        
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>2.0.0-alpha6</version>
     </dependency>
 
     <dependency>
@@ -128,9 +123,6 @@
   </dependencies>
 
   <build>
-    <pluginManagement>
-
-    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -139,6 +131,13 @@
         <configuration>
           <source>11</source>
           <target>11</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>1.4.2.Final</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
     </plugins>

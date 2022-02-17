@@ -1,6 +1,6 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
-import gov.iti.jets.client.presentation.models.ContactDTO;
+import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
