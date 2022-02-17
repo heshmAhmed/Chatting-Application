@@ -2,6 +2,7 @@ package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.LoginService;
 import gov.iti.jets.client.presentation.controllers.custom.PasswordFieldControl;
+import gov.iti.jets.client.presentation.util.LoginHelper;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.client.presentation.util.Validation;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -18,15 +19,18 @@ import java.rmi.RemoteException;
 
 
 public class LoginController{
+
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     LoginService myLoginService = LoginService.getInstance();
-    boolean isPasswordkFieldOn;
+    boolean isPasswordFieldOn;
     PasswordFieldControl passwordFieldControl;
+    LoginHelper loginHelper;
+
     @FXML
     private Label loginLabel;
 
     @FXML
-    private Label passwordLabel;
+    public Label validatePasswordLabel;
 
     @FXML
     private TextField numberField;
@@ -41,12 +45,12 @@ public class LoginController{
     private MFXButton registerButton;
 
     @FXML
-    private HBox PasswordPlaceholderHBox;
+    private HBox passwordPlaceholderHBox;
 
     @FXML
     private Hyperlink skipHyperlink;
 
-    private Label notValidLabel = new Label("");
+    private Label validateUserLabel = new Label("");
 
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
@@ -56,58 +60,28 @@ public class LoginController{
     }
 
     public void initialize(){
+        loginHelper = new LoginHelper(passwordPlaceholderHBox, validatePasswordLabel,loginButton);
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
-        notValidLabel.setTextFill(Color.web("#ffffff"));
-        passwordLabel.setTextFill(Color.web("#ffffff"));
-        PasswordPlaceholderHBox.getChildren().add(notValidLabel);
+        validateUserLabel.setTextFill(Color.web("#ffffff"));
+        validatePasswordLabel.setTextFill(Color.web("#ffffff"));
+        passwordPlaceholderHBox.getChildren().add(validateUserLabel);
         loginButton.setText("next");
-        isPasswordkFieldOn = false;
-        numberField.setOnMouseClicked(event -> {notValidLabel.setText("");});
+        isPasswordFieldOn = false;
+        numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
     }
+
+
+
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {
-        String phoneNumber = null;
 
-        if(!isPasswordkFieldOn){
-            phoneNumber = numberField.getText();
-
-            if (Validation.validatePhoneNumber(numberField,notValidLabel)) {
-                    checkPhoneNumberValidity(phoneNumber);
-            }
-
+        if(!isPasswordFieldOn){
+            isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
         }else{
-
-            if(myLoginService.validatePassword(phoneNumber,passwordFieldControl.getPasswordFieldText())){
-//                password validated
-
-                stageCoordinator.switchToChatScene();
-            }
-            else
-            {
-                passwordLabel.setText("Wrong Password");
-            }
-
+            loginHelper.handlePasswordValidation();
         }
     }
-
-
-
-    private void checkPhoneNumberValidity(String phoneNumber) throws RemoteException {
-
-        if (myLoginService.validatePhoneNumber(phoneNumber)) {
-
-            passwordFieldControl = new PasswordFieldControl(passwordLabel);
-            PasswordPlaceholderHBox.getChildren().add(passwordFieldControl);
-            numberField.setDisable(true);
-            loginButton.setText("login");
-            isPasswordkFieldOn = true;
-
-        } else {
-            notValidLabel.setText("Phone number not registered!!");
-        }
-    }
-
 
     @FXML
     void registerClicked(ActionEvent event) {
