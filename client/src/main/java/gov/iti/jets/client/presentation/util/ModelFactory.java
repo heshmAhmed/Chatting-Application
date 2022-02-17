@@ -20,7 +20,6 @@ public class ModelFactory {
         userModel.setCountry(userDTO.getCountry());
         userModel.setGender(userDTO.getGender());
         // decode image
-
     }
 
 }

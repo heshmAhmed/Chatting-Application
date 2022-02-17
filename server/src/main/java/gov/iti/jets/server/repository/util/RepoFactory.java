@@ -8,7 +8,11 @@ public class RepoFactory {
 
     private RepoFactory() {}
 
-    public static IUserRepository getUserRepo() {
+    public static RepoFactory getInstance() {
+        return repoFactory;
+    }
+    
+    public  IUserRepository getUserRepo() {
         return UserRepoImpl.getInstance();
     }
 }

@@ -9,13 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
+import java.util.Date;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
-    private  Connection connection;
+    private Connection connection;
     private final static UserRepoImpl userRepo = new UserRepoImpl();
-    private final ResultSetMapper mapper = ResultSetMapper.getInstance();
+    private final ResultSetMapper resultSetMapper = ResultSetMapper.getInstance();
 
     private UserRepoImpl() {
         try {
@@ -30,22 +30,68 @@ public class UserRepoImpl implements IUserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findUserByNumber(String number) {
+    public Optional<UserEntity> findUserByNumber(String phoneNumber)  {
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        Optional<UserEntity> optionalUserEntity = Optional.empty();
         try {
             preparedStatement = connection.prepareStatement("select * from users where phone_number = ?");
-            preparedStatement.setString(1, number);
-            resultSet = preparedStatement.executeQuery();
+            preparedStatement.setString(1, phoneNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            optionalUserEntity = resultSetMapper.mapToUserEntity(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return mapper.mapToUserEntity(Objects.requireNonNull(resultSet));
+        return optionalUserEntity;
+    }
+
+    @Override
+    public boolean isPhoneNumberExist(String phoneNumber) {
+        boolean found = false;
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("select phone_number from users where phone_number = ?");
+            preparedStatement.setString(1, phoneNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            found = resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return found;
+    }
+
+    @Override
+    public boolean isEmailExist(String email) {
+        boolean found = false;
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("select email from users where email = ?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            found = resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return found;
     }
 
     @Override
     public boolean insertUser(UserEntity userEntity) {
-        return false;
+        int rowsInserted = 0;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into users " +
+                    "(phone_number ,username,email,gender,country,date_of_birth,password )values (?,?,?,?,?,?,?)");
+            preparedStatement.setString(1, userEntity.getPhoneNumber());
+            preparedStatement.setString(2, userEntity.getUsername());
+            preparedStatement.setString(3, userEntity.getEmail());
+            preparedStatement.setString(4, userEntity.getGender());
+            preparedStatement.setString(5, userEntity.getCountry());
+            preparedStatement.setDate(6, userEntity.getDateOfBirth());
+            preparedStatement.setString(7, userEntity.getPassword());
+            rowsInserted = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowsInserted > 0;
     }
 
     @Override
@@ -57,6 +103,4 @@ public class UserRepoImpl implements IUserRepository {
     public boolean updateUser(UserEntity userEntity) {
         return false;
     }
-
-
 }

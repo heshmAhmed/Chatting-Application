@@ -1,9 +1,6 @@
 package gov.iti.jets.server.repository.util;
 
-import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.server.repository.entity.UserEntity;
-import gov.iti.jets.server.services.mapper.UserEntityMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;

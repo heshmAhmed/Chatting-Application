@@ -5,7 +5,7 @@ import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
 import gov.iti.jets.server.services.impls.LoginServiceImpl;
 import gov.iti.jets.server.services.interfaces.ILoginService;
-import gov.iti.jets.server.services.utils.ServerUtil;
+import gov.iti.jets.server.services.util.ServerUtil;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

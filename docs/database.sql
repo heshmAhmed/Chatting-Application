@@ -42,31 +42,31 @@ LOCK TABLES `user_contacts` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user_invetations`
+-- Table structure for table `user_invitations`
 --
 
-DROP TABLE IF EXISTS `user_invetations`;
+DROP TABLE IF EXISTS `user_invitations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_invetations` (
+CREATE TABLE `user_invitations` (
   `sender_number` varchar(20) NOT NULL,
   `reciever_number` varchar(20) NOT NULL,
   `date` datetime NOT NULL DEFAULT (sysdate()),
   `state` bit(1) DEFAULT NULL,
-  KEY `sender_number` (`sender_number`),
+  PRIMARY KEY (`sender_number`,`reciever_number`),
   KEY `reciever_number` (`reciever_number`),
-  CONSTRAINT `user_invetations_ibfk_1` FOREIGN KEY (`sender_number`) REFERENCES `users` (`phone_number`),
-  CONSTRAINT `user_invetations_ibfk_2` FOREIGN KEY (`reciever_number`) REFERENCES `users` (`phone_number`)
+  CONSTRAINT `user_invitations_ibfk_1` FOREIGN KEY (`sender_number`) REFERENCES `users` (`phone_number`),
+  CONSTRAINT `user_invitations_ibfk_2` FOREIGN KEY (`reciever_number`) REFERENCES `users` (`phone_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_invetations`
+-- Dumping data for table `user_invitations`
 --
 
-LOCK TABLES `user_invetations` WRITE;
-/*!40000 ALTER TABLE `user_invetations` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_invetations` ENABLE KEYS */;
+LOCK TABLES `user_invitations` WRITE;
+/*!40000 ALTER TABLE `user_invitations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_invitations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -77,16 +77,16 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `phone_number` varchar(20) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `phone_number` varchar(30) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `user_password` text NOT NULL,
-  `image` varchar(200) NOT NULL DEFAULT (_utf8mb4'/'),
-  `gender` varchar(1) NOT NULL DEFAULT (_utf8mb4'm'),
+  `pass` text NOT NULL,
+  `image` text,
+  `gender` varchar(10) NOT NULL,
   `country` varchar(20) NOT NULL,
   `date_of_birth` datetime NOT NULL,
   `bio` varchar(200) DEFAULT NULL,
-  `user_status` varchar(50) DEFAULT NULL,
+  `user_status` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`phone_number`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -110,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-16 18:16:52
+-- Dump completed on 2022-02-18  0:35:03

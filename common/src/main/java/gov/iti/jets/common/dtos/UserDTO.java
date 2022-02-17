@@ -1,5 +1,8 @@
 package gov.iti.jets.common.dtos;
 
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 import java.util.Date;
 

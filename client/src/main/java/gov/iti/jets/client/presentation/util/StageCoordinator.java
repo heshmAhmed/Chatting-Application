@@ -31,8 +31,7 @@ public class StageCoordinator {
 //    private final String ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
     private final String ADD_NEW_CONTACT_PATH = "/views/newcontact/NewContactView.fxml";
 
-    private StageCoordinator(){
-    }
+    private StageCoordinator(){}
 
     public static StageCoordinator getInstance(){
         return stageCoordinator;

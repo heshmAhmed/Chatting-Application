@@ -11,8 +11,8 @@ public interface UserEntityMapper {
      UserEntityMapper INSTANCE = Mappers.getMapper(UserEntityMapper.class);
 
      @Mapping(source = "country", target = "country")
-     UserDTO UserEntityToDTO(UserEntity entity);
+     UserDTO userEntityToDTO(UserEntity entity);
 
      @Mapping(source = "country", target = "country")
-     UserEntity USERDTOToEntity(UserDTO dto);
+     UserEntity userDTOToEntity(UserDTO dto);
 }
