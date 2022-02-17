@@ -2,6 +2,7 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.util.RegistryFactory;
 
+import gov.iti.jets.common.dtos.RegistrationDTO;
 import gov.iti.jets.common.server.IRemoteRegistrationService;
 
 import java.rmi.RemoteException;
@@ -43,6 +44,15 @@ public class RegistrationService {
         return founded;
     }
 
+    public boolean createNewUser(RegistrationDTO dto) {
+        boolean created = false;
+        try {
+            created=remoteRegistrationService.createNewUser(dto);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return  created;
+    }
 
 
 }

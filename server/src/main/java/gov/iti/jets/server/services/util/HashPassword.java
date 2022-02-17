@@ -16,13 +16,19 @@ public  class HashPassword {
 
     public  String hashPassword(String password){
         byte[] encodedHash = null;
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             encodedHash = digest.digest( password.getBytes(StandardCharsets.UTF_8));
+
+            for ( byte unit: encodedHash) {
+                stringBuilder.append(unit);
+            }
+
         }catch (NoSuchAlgorithmException e){
             e.printStackTrace();
         }
-
-        return encodedHash.toString();
+        System.out.println("Hashed ---->");
+        return stringBuilder.toString();
     }
 }

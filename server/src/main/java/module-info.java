@@ -12,7 +12,9 @@ module gov.iti.jets.server {
     requires org.mapstruct;
     requires org.apache.commons.codec;
 
+
     opens gov.iti.jets.server.presentation.controllers to javafx.fxml;
     exports gov.iti.jets.server;
     exports gov.iti.jets.server.presentation.controllers;
+    exports gov.iti.jets.server.repository.mapper;
 }

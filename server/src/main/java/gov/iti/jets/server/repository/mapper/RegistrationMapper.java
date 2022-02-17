@@ -12,8 +12,4 @@ public interface RegistrationMapper {
     RegistrationMapper REGISTRATION_MAPPER = Mappers.getMapper(RegistrationMapper.class);
     UserEntity USER (RegistrationDTO dto);
 
-
-
-
-
 }
