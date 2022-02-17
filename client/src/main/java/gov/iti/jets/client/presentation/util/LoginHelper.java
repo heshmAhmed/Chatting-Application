@@ -12,6 +12,8 @@ import java.rmi.RemoteException;
 
 public class LoginHelper{
 
+    ModelFactory modelFactory = ModelFactory.getInstance();
+
     HBox passwordPlaceHolderHBox;
     Label validatePasswordLabel;
     Label validateUserLabel;
@@ -67,8 +69,7 @@ public class LoginHelper{
         if(myLoginService.validatePassword(numberField.getText(),passwordFieldControl.getPasswordFieldText())){
 //                password validated
 
-//                create userModel
-
+            myLoginService.submitLogin(numberField.getText());
             stageCoordinator.switchToChatScene();
         }
         else

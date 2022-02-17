@@ -29,7 +29,7 @@ public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemo
 
     @Override
     public boolean checkUserPassword(String phoneNumber, String password) throws RemoteException {
-        if( !(password.equals(""))) {
+        if( password.length() > 0 ) {
             return loginService.isPasswordCorrect(phoneNumber, password);
         }
         return false;

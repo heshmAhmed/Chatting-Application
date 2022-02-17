@@ -12,6 +12,11 @@ public class ModelFactory {
         return modelFactory;
     }
 
+    public UserModel getUserModel(){
+        return userModel;
+    }
+
+
     public void fillUserModel(UserDTO userDTO) {
         userModel.setPhoneNumber(userDTO.getPhoneNumber());
         userModel.setUsername(userDTO.getUsername());

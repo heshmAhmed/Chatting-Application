@@ -37,7 +37,7 @@ public class ServerApplication extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        registryManager.createRegistry(5000);
+        registryManager.createRegistry(2000);
         registryManager.publishServices();
     }
 

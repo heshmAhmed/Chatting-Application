@@ -25,7 +25,7 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public boolean isPasswordCorrect(String phoneNumber, String password) {
         boolean result = false;
-        password = hashPassword.hashPassword(password);
+//        password = hashPassword.hashPassword(password);
         Optional<UserEntity> user = userRepository.findUserByNumber(phoneNumber);
         if (user.isPresent()) {
             result = (user.get().getPassword()).equals(password);
