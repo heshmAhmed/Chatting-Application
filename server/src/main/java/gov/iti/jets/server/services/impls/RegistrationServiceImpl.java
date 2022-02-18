@@ -1,10 +1,16 @@
 package gov.iti.jets.server.services.impls;
 
-import gov.iti.jets.common.dtos.RegistrationDTO;
+import gov.iti.jets.common.dtos.UserDTO;
+import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IRegistrationService;
+import gov.iti.jets.server.services.mapper.UserEntityMapper;
+import gov.iti.jets.server.services.mapper.UserEntityMapperImpl;
 import gov.iti.jets.server.services.util.HashingFactory;
+
+import java.sql.SQLOutput;
+import java.util.Optional;
 
 public class RegistrationServiceImpl implements IRegistrationService {
     private final RepoFactory repoFactory = RepoFactory.getInstance();
@@ -27,14 +33,24 @@ public class RegistrationServiceImpl implements IRegistrationService {
     }
 
     @Override
-    public boolean createNewUser(RegistrationDTO registrationDTO) {
-        String hashedPassword = hashingFactory.hashPassword(registrationDTO.getPassword());
+    public boolean addNewUser(UserDTO userDTO){
+        String hashedPassword = hashingFactory.hashPassword(userDTO.getPassword());
+
+        UserEntity user = UserEntityMapper.INSTANCE.userDTOToEntity(userDTO);
+        userRepo.insertUser(user);
+
+
+        System.err.print("RemoteService");
+        return true;
 
 //      RegistrationDTO registrationDTO1
 //      UserEntity user = RegistrationMapper.REGISTRATION_MAPPER.USER(registrationDTO);
 //      user.setPassword(hashedPassword);
 //        UserEntity userEntity = UserEntityMapper.INSTANCE.userDTOToEntity();
 //        userRepo.insertUser(userEntity);
-        return false;
+
+
+        //userRepo.insertUser(userDTO);
+      //  return false;
     }
 }
