@@ -25,13 +25,6 @@ public class RegistrationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         genderBox.getItems().addAll("Male", "Female");
         countryBox.getItems().addAll("Egypt", "Iran", "Syria");
-//        datePicker.setDayCellFactory(param -> new DateCell() {
-//            @Override
-//            public void updateItem(LocalDate date, boolean empty) {
-//                super.updateItem(date, empty);
-//                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
-//            }
-//        });
         service = RegistrationService.getInstance();
     }
 
