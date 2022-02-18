@@ -2,7 +2,11 @@ package gov.iti.jets.server;
 
 import gov.iti.jets.common.server.IRemoteLoginService;
 import gov.iti.jets.server.network.RemoteLoginServiceImpl;
+import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
+import gov.iti.jets.server.repository.impls.UserRepoImpl;
+import gov.iti.jets.server.repository.util.ResultSetMapper;
+import gov.iti.jets.server.services.mapper.UserEntityMapper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,8 +18,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class ServerApplication extends Application {
-    static Registry  registry;
-    StageCoordinator sceneCoordinator = StageCoordinator.getInstance();
+    private StageCoordinator sceneCoordinator = StageCoordinator.getInstance();
+    private final RegistryManager registryManager = RegistryManager.getInstance();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -30,11 +34,19 @@ public class ServerApplication extends Application {
         stage.show();
     }
 
+    @Override
+    public void init() throws Exception {
+        super.init();
+        registryManager.createRegistry(5000);
+        registryManager.publishServices();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+    }
 
     public static void main(String[] args) throws RemoteException {
         launch();
-        Registry registry = LocateRegistry.getRegistry(3060);
     }
-
-
 }

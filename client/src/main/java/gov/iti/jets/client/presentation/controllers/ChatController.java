@@ -1,7 +1,7 @@
 package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
-import gov.iti.jets.client.presentation.models.ContactDTO;
+import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
     private StageCoordinator stageCoordinator;
+
 
     List<String> addedContactsList;
 

@@ -8,9 +8,9 @@
         <groupId>gov.iti.jets</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>Server</artifactId>
+    <artifactId>server</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Server</name>
+    <name>server</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>gov.iti.jets</groupId>
-            <artifactId>Common</artifactId>
+            <artifactId>common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -28,6 +28,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -2,6 +2,9 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.impls.ClientCallbackImpl;
 import gov.iti.jets.client.network.util.RegistryFactory;
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
 import java.rmi.RemoteException;
 
@@ -19,20 +22,30 @@ public class LoginService {
         return loginService;
     }
 
-    public boolean checkPhoneNumber(String phoneNumber) throws RemoteException {
-        remoteLoginService.checkUserPhoneNumber(phoneNumber);
-        return true;
+    public boolean validatePhoneNumber(String phoneNumber) throws RemoteException {
+        return remoteLoginService.checkUserPhoneNumber(phoneNumber);
     }
 
-    public boolean checkPassword(String phoneNumber, String password) throws RemoteException {
-        remoteLoginService.checkUserPassword(phoneNumber, password);
-
-        return true;
+    public boolean validatePassword(String phoneNumber, String password) throws RemoteException {
+//        return remoteLoginService.checkUserPassword(phoneNumber, password);
+    return true;
     }
 
-    public boolean connect() throws RemoteException {
-        remoteLoginService.getUser("01151", new ClientCallbackImpl());
-        return true;
+
+    public UserModel submitLogin(String id){
+
+        UserDTO userDTO = new UserDTO();
+
+        try {
+            userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
+        //map to user model and return
+        return new UserModel();
+
     }
 
 
