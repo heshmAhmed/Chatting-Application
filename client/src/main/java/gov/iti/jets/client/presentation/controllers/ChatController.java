@@ -2,6 +2,7 @@ package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
+import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,6 +45,11 @@ public class ChatController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         stageCoordinator = StageCoordinator.getInstance();
 //        userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
+
+        /////////testing sending message
+        ContactControl contactControl = new ContactControl(new ContactModel());
+        contactListVBox.getChildren().add(contactControl);
+
     }
 
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {
@@ -54,7 +60,7 @@ public class ChatController implements Initializable {
         if(addedContactsList.size() > 0)
         {
             for(var newContact:addedContactsList){
-                ContactControl contactControl = new ContactControl(new ContactDTO());
+                ContactControl contactControl = new ContactControl(new ContactModel());
                 contactListVBox.getChildren().add(contactControl);
             }
         }

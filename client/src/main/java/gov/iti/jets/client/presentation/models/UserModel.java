@@ -16,6 +16,8 @@ public class UserModel {
     private StringProperty country = new SimpleStringProperty();
     private StringProperty bio = new SimpleStringProperty();
 
+//    add status to userModel
+
     public String getPhoneNumber() {
         return phoneNumber.get();
     }

@@ -130,11 +130,10 @@ public class StageCoordinator {
 
 
     ////////////this is a pane coordinator task will be modified later////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void setChatScene(){
+    public void setChatScene(ChatAreaControl myChatArea){
         Scene chatScene = sceneMap.get(CHAT_SCENE);
         BorderPane bp = (BorderPane) chatScene.getRoot();
-        ChatAreaControl chatAreaControl = new ChatAreaControl(new ContactDTO());
-        bp.setCenter(chatAreaControl);
+        bp.setCenter(myChatArea);
     }
 
 

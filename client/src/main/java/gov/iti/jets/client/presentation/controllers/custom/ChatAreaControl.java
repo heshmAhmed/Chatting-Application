@@ -45,7 +45,7 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     private Button sendMessageButton;
 
-    public ChatAreaControl(ContactDTO contactDTO){
+    public ChatAreaControl(){
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/chat-area-view.fxml"));
 

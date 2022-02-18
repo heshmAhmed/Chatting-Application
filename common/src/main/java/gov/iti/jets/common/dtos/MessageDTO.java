@@ -1,9 +1,11 @@
 package gov.iti.jets.common.dtos;
 
-public class MessageDTO {
+import java.io.Serializable;
+
+public class MessageDTO implements Serializable{
 
     private String senderId;
-    private String resiverId;
+    private String receiverId;
     private String messageText;
     private String messageStyle;
 
@@ -15,12 +17,12 @@ public class MessageDTO {
         this.senderId = senderId;
     }
 
-    public String getResiverId() {
-        return resiverId;
+    public String getReceiverId() {
+        return receiverId;
     }
 
-    public void setResiverId(String resiverId) {
-        this.resiverId = resiverId;
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
     }
 
     public String getMessageText() {

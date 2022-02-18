@@ -1,6 +1,7 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
+import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,9 +15,10 @@ import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 
-public class ContactControl extends HBox {
+public class ContactControl extends HBox{
     StageCoordinator stageCoordinator = StageCoordinator.getInstance();
-    ContactDTO contactDTO;
+    ContactModel contactModel;
+    ChatAreaControl myChatArea;
 
     @FXML
     private Label conatctNameLabel;
@@ -31,8 +33,8 @@ public class ContactControl extends HBox {
     private Circle contactPhotoCircle;
 
 
-    public ContactControl(ContactDTO contactDTO) {
-        this.contactDTO = contactDTO;
+    public ContactControl(ContactModel contactModel) {
+        this.contactModel = contactModel;
 
 //      URL url = new URL("");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
@@ -49,10 +51,13 @@ public class ContactControl extends HBox {
     }
 
     public void initialize(){
+
+        myChatArea = new ChatAreaControl();
+
         conatctNameLabel.setText("dummy name");
 
         contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene());
+                (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
 //        contactPhotoCircle.setFill();
     }
 }
