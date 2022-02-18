@@ -9,13 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
     private Connection connection;
     private final static UserRepoImpl userRepo = new UserRepoImpl();
     private final ResultSetMapper resultSetMapper = ResultSetMapper.getInstance();
+
 
     private UserRepoImpl() {
         try {
@@ -30,7 +30,7 @@ public class UserRepoImpl implements IUserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findUserByNumber(String phoneNumber)  {
+    public Optional<UserEntity> findUserByNumber(String phoneNumber) {
         PreparedStatement preparedStatement = null;
         Optional<UserEntity> optionalUserEntity = Optional.empty();
         try {
@@ -43,6 +43,9 @@ public class UserRepoImpl implements IUserRepository {
         }
         return optionalUserEntity;
     }
+
+
+
 
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {

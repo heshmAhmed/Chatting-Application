@@ -81,13 +81,14 @@ public class RegistrationController implements Initializable {
             System.out.println(service.checkPhoneNumber(phoneField.getText()));
             System.out.println(service.checkPhoneNumber(emailField.getText()));
 
-            RegistrationDTO dto = new RegistrationDTO();
-            dto.setUsername(nameField.getText());
-            dto.setPhoneNumber(phoneField.getText());
-            dto.setEmail(emailField.getText());
-            dto.setPassword(passwordField.getText());
-            boolean check = service.createNewUser(dto);
-            System.out.println(check);
+//            RegistrationDTO dto = new RegistrationDTO();
+//            dto.setUsername(nameField.getText());
+//            dto.setPhoneNumber(phoneField.getText());
+//            dto.setEmail(emailField.getText());
+//            dto.setPassword(passwordField.getText());
+//            boolean check = service.createNewUser(dto);
+//            System.out.println(check);
+
             stageCoordinator.switchToChatScene();
         }
     }

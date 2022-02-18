@@ -1,6 +1,8 @@
 package gov.iti.jets.server.repository.util;
 
+import gov.iti.jets.server.repository.impls.ContactRepoImpl;
 import gov.iti.jets.server.repository.impls.UserRepoImpl;
+import gov.iti.jets.server.repository.interfaces.IContactRepository;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 
 public class RepoFactory {
@@ -14,5 +16,11 @@ public class RepoFactory {
     
     public  IUserRepository getUserRepo() {
         return UserRepoImpl.getInstance();
+    }
+
+    public IContactRepository getContactRepo(){
+
+
+        return ContactRepoImpl.getInstance();
     }
 }
