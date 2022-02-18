@@ -1,23 +1,44 @@
 package gov.iti.jets.common.dtos;
 
-import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
-
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1420672609912364060L;
+
+    @NotNull(message = "phone number is required")
+    @Size(min = 11 , max = 15 , message = "number should be min=11 max=15")
+    @Pattern(regexp="\\d{11,15}" ,message = "invalid phone number")
     private String phoneNumber;
+
+    @NotNull(message = "email is required")
+    @Email(message = "invalid email")
     private String email;
-    private String image;
+
+    private String image="";
+
+    @NotNull(message = "user name is required")
+    @Size(min = 3 , message = "user name should min=3")
     private String username;
+
+    @NotNull(message = "password is required")
     private String password;
-    private String status;
-    private Date dob;
+
+    private String status="";
+
+    @NotNull(message = "date of birth is required")
+    @Past(message = "future or present date is invalid")
+    private String dob;
+
+    @NotNull(message = "gender is required")
     private String gender;
+
+    @NotNull(message = "country is required")
     private String country;
-    private String bio;
+
+
+    private String bio="";
 
     public String getEmail() {
         return email;
@@ -43,11 +64,11 @@ public class UserDTO implements Serializable {
         this.status = status;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

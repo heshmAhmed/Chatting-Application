@@ -1,15 +1,20 @@
 package gov.iti.jets.client.presentation.util;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import gov.iti.jets.client.presentation.models.UserModel;
+import javafx.scene.control.*;
+
+import java.time.LocalDate;
 
 
-
-public abstract class Validation{
+public class Validation{
+    private final static Validation validation = new Validation();
 
     private Validation(){
 
+    }
+
+    public static Validation getInstance() {
+        return validation;
     }
 
     //add new contact
@@ -66,5 +71,40 @@ public abstract class Validation{
             return true;
         }
     }
+
+    public static boolean validateDatePicker(){return false;};
+
+    public static boolean validateGenderBox(){return false;};
+
+    public static boolean validateCountryBox(ComboBox<String> comboBox , Label label){
+        boolean isComboBoxEmpty = comboBox.getSelectionModel().isEmpty();
+        if(!isComboBoxEmpty){
+            label.setText("Country is required");
+            return false;
+        }else{
+            label.setText("");
+            return true;
+        }
+    };
+
+
+    public static boolean validateGenderBox(ComboBox<String> comboBox , Label label){
+        boolean isComboBoxEmpty = comboBox.getSelectionModel().isEmpty();
+        if(!isComboBoxEmpty){
+            label.setText("Gender is required");
+            return false;
+        }else{
+            label.setText("");
+            return true;
+        }
+    };
+
+
+    public static boolean validateDateOfBirth(DatePicker datePicker , Label label){
+        LocalDate localDate = datePicker.getValue();
+        System.out.println(localDate.toString());
+        return true;
+    };
+
 
 }

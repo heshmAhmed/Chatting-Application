@@ -3,73 +3,55 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.RegistrationService;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.client.presentation.util.Validation;
-import gov.iti.jets.common.dtos.RegistrationDTO;
+import gov.iti.jets.common.dtos.UserDTO;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
 public class RegistrationController implements Initializable {
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private RegistrationService service;
+    @FXML
+    private DatePicker datePicker;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         genderBox.getItems().addAll("Male", "Female");
         countryBox.getItems().addAll("Egypt", "Iran", "Syria");
+//        datePicker.setDayCellFactory(param -> new DateCell() {
+//            @Override
+//            public void updateItem(LocalDate date, boolean empty) {
+//                super.updateItem(date, empty);
+//                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
+//            }
+//        });
         service = RegistrationService.getInstance();
     }
 
-    @FXML
-    private PasswordField confirmPasswordField;
+
 
     @FXML
-    private Label confirmPasswordLabel;
+    private ComboBox genderBox , countryBox;
+
 
     @FXML
-    private ComboBox countryBox;
+    private PasswordField passwordField , confirmPasswordField;
 
     @FXML
-    private DatePicker dateField;
+    private TextField phoneField , nameField , emailField ;
 
     @FXML
-    private TextField emailField;
+    private MFXButton register , haveAccountLink;
 
     @FXML
-    private Label emailLabel;
-
-    @FXML
-    private ComboBox genderBox;
-
-    @FXML
-    private MFXButton haveAccountLink;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private Label nameLabel;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Label passwordLabel;
-
-    @FXML
-    private TextField phoneField;
-
-    @FXML
-    private Label phoneLabel;
-
-    @FXML
-    private MFXButton register;
+    private Label countryLabel ,genderLabel , dateLabel , phoneLabel , nameLabel , emailLabel , confirmPasswordLabel , passwordLabel ;
 
 
     @FXML
@@ -81,12 +63,19 @@ public class RegistrationController implements Initializable {
             System.out.println(service.checkPhoneNumber(phoneField.getText()));
             System.out.println(service.checkPhoneNumber(emailField.getText()));
 
-            RegistrationDTO dto = new RegistrationDTO();
-            dto.setUsername(nameField.getText());
-            dto.setPhoneNumber(phoneField.getText());
-            dto.setEmail(emailField.getText());
-            dto.setPassword(passwordField.getText());
-            boolean check = service.createNewUser(dto);
+            UserDTO userDTO = new UserDTO();
+            userDTO.setUsername(nameField.getText());
+            userDTO.setPhoneNumber(phoneField.getText());
+            userDTO.setEmail(emailField.getText());
+            userDTO.setPassword(passwordField.getText());
+            userDTO.setCountry(countryBox.getValue().toString());
+            userDTO.setCountry(genderBox.getValue().toString());
+
+            //userDTO.setDob(datePicker.);
+            System.out.println(countryBox.getValue().toString());
+            System.out.println(genderBox.getValue().toString());
+            //System.out.println(datePicker.getValue().toString());
+            boolean check = service.createNewUser(userDTO);
             System.out.println(check);
             stageCoordinator.switchToChatScene();
         }
