@@ -28,7 +28,6 @@ public class UserDTO implements Serializable {
     private String status="";
 
     @NotNull(message = "date of birth is required")
-    @Past(message = "future or present date is invalid")
     private long dob;
 
     @NotNull(message = "gender is required")
@@ -36,7 +35,6 @@ public class UserDTO implements Serializable {
 
     @NotNull(message = "country is required")
     private String country;
-
 
     private String bio="";
 
@@ -118,6 +116,18 @@ public class UserDTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserDTO(){}
+
+    public UserDTO(String phoneNumber , String email , String username , String password , String gender ,long dob, String country){
+        this.phoneNumber=phoneNumber;
+        this.email=email;
+        this.username=username;
+        this.password=password;
+        this.gender=gender;
+        this.country=country;
+        this.dob=dob;
     }
 
 }

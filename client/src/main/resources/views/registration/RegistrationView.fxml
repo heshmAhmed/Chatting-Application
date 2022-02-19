@@ -157,7 +157,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" style="-fx-background-color: #1A1A40;" HBox.hgrow="ALWAYS" />
+                        <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" style="-fx-background-color: #1A1A40;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
@@ -206,6 +206,7 @@
                         <Font size="18.0" />
                      </font>
                   </MFXButton>
+                  <Label fx:id="validateLabel" textFill="#e40808" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" />

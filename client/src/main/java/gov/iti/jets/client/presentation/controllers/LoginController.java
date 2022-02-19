@@ -62,8 +62,8 @@ public class LoginController{
     public void initialize(){
         loginHelper = new LoginHelper(passwordPlaceholderHBox, validatePasswordLabel,loginButton);
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
-        validateUserLabel.setTextFill(Color.web("#ffffff"));
-        validatePasswordLabel.setTextFill(Color.web("#ffffff"));
+        validateUserLabel.setTextFill(Color.web("#e40808"));
+        validatePasswordLabel.setTextFill(Color.web("#e40808"));
         passwordPlaceholderHBox.getChildren().add(validateUserLabel);
         loginButton.setText("next");
         isPasswordFieldOn = false;

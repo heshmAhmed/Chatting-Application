@@ -12,17 +12,17 @@ import java.rmi.RemoteException;
 
 public class LoginHelper{
 
-    ModelFactory modelFactory = ModelFactory.getInstance();
-
     HBox passwordPlaceHolderHBox;
     Label validatePasswordLabel;
     Label validateUserLabel;
-    Button loginButton;
     TextField numberField;
-    PasswordFieldControl passwordFieldControl;
-    StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    Button loginButton;
 
+    PasswordFieldControl passwordFieldControl;
+    Validation validation = Validation.getInstance();
+    ModelFactory modelFactory = ModelFactory.getInstance();
     LoginService myLoginService = LoginService.getInstance();
+    StageCoordinator stageCoordinator = StageCoordinator.getInstance();
 
     public LoginHelper(HBox passwordPlaceHolderHBox, Label validatePasswordLabel, Button loginButton){
         this.passwordPlaceHolderHBox = passwordPlaceHolderHBox;
@@ -30,11 +30,10 @@ public class LoginHelper{
         this.loginButton = loginButton;
     }
 
-
     public boolean handlePhoneNumberValidation(TextField numberField, Label validateUserLabel){
         this.validateUserLabel = validateUserLabel;
         this.numberField = numberField;
-        if (Validation.validatePhoneNumber(numberField,validateUserLabel)) {
+        if (validation.validatePhoneNumber(numberField,validateUserLabel)) {
             try {
                return checkPhoneNumberValidity(numberField);
             } catch (RemoteException e) {

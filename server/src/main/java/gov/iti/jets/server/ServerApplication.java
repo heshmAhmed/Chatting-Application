@@ -48,18 +48,6 @@ public class ServerApplication extends Application {
     }
 
     public static void main(String[] args) throws RemoteException {
-        RemoteRegistrationServiceImpl service=new RemoteRegistrationServiceImpl();
-        UserDTO dto = new UserDTO();
-
-        dto.setPassword("123456");
-        dto.setEmail("elsisi901@gmail.com");
-        dto.setGender("m");
-        dto.setPhoneNumber("01095282056");
-        dto.setUsername("mohamed elsisi");
-        dto.setCountry("Egypt");
-        dto.setDob(new Date());
-
-        service.createNewUser(dto);
         launch();
 
 
