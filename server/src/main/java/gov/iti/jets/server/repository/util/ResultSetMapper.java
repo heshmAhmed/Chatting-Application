@@ -16,7 +16,6 @@ public class ResultSetMapper {
     public Optional<UserEntity> mapToUserEntity(ResultSet resultSet) {
         Optional<UserEntity> userEntityOptional = Optional.empty();
         try {
-            resultSet.next();
             UserEntity userEntity = new UserEntity();
             userEntity.setPhoneNumber(resultSet.getString("phone_number"));
             userEntity.setUsername(resultSet.getString("username"));
@@ -34,4 +33,6 @@ public class ResultSetMapper {
         }
         return userEntityOptional;
     }
+
+
 }

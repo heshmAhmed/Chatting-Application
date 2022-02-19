@@ -1,19 +1,19 @@
-package gov.iti.jets.server.repository.entity;
+package gov.iti.jets.common.dtos;
 
+import java.io.Serializable;
+import java.util.Date;
 
-import java.sql.Date;
-
-public class UserEntity {
+public class ContactDTO implements Serializable {
+    private static final long serialVersionUID = 1420672609912364060L;
     private String phoneNumber;
-    private String username;
     private String email;
     private String image;
-    private String password;
+    private String username;
+    private String status;
+    private Date dob;
     private String gender;
     private String country;
-    private Date dateOfBirth;
     private String bio;
-    private String status;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -21,14 +21,6 @@ public class UserEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -47,12 +39,28 @@ public class UserEntity {
         this.image = image;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public String getGender() {
@@ -71,14 +79,6 @@ public class UserEntity {
         this.country = country;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
     public String getBio() {
         return bio;
     }
@@ -87,27 +87,19 @@ public class UserEntity {
         this.bio = bio;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
-        return "UserEntity{" +
+        return "ContactDTO{" +
                 "phoneNumber='" + phoneNumber + '\'' +
-                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", image='" + image + '\'' +
-                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", status='" + status + '\'' +
+                ", dob=" + dob +
                 ", gender='" + gender + '\'' +
                 ", country='" + country + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
                 ", bio='" + bio + '\'' +
-                ", status='" + status + '\'' +
                 '}';
     }
+
 }
