@@ -16,13 +16,12 @@ public class RemoteMessageHandelImpl extends UnicastRemoteObject implements IRem
     ServerUtil serverUtil = ServerUtil.getInstance();
     MessageServiceImpl service = new MessageServiceImpl();
 
-    protected RemoteMessageHandelImpl() throws RemoteException {
+    public RemoteMessageHandelImpl() throws RemoteException {
         super();
     }
 
     @Override
     public void sendMessage(MessageDTO messageDTO) throws RemoteException {
         service.sendMessage(messageDTO);
-
     }
 }

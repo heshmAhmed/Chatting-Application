@@ -10,7 +10,7 @@
 
 <fx:root id="sentMessage" alignment="TOP_RIGHT" stylesheets="@../../../../styles/main-style.css" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="messageBox" style="-fx-background-color: #25255b; -fx-background-radius: 20; -fx-border-radius: 20;">
+      <VBox fx:id="messageBox" maxWidth="200.0" style="-fx-background-color: #25255b; -fx-background-radius: 20; -fx-border-radius: 20;">
          <HBox.margin>
             <Insets right="5.0" top="5.0" />
          </HBox.margin>

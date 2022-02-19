@@ -21,12 +21,7 @@ public class MessageServiceImpl implements IMessageService {
 
     @Override
     public void sendMessage(MessageDTO messageDTO) {
-
-        try {
-            serverUtil.sendMessage(messageDTO);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        serverUtil.sendMessageToUser(messageDTO);
     }
 
 }

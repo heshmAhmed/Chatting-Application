@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
+import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -25,8 +26,8 @@ public class SentMessageControl extends HBox {
     @FXML
     private Label timeLabel;
 
-    public SentMessageControl(String message){
-        this.message = message;
+    public SentMessageControl(MessageDTO messageDTO){
+        this.message = messageDTO.getMessageText();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/sentmessageview/SentMessageView.fxml"));
 

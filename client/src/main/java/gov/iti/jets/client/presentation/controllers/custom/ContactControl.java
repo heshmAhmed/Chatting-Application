@@ -2,7 +2,9 @@ package gov.iti.jets.client.presentation.controllers.custom;
 
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.models.ContactModel;
+import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +19,10 @@ import java.io.IOException;
 
 public class ContactControl extends HBox{
     StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    ContactListHelper contactListHelper = ContactListHelper.getInstance();
     ContactModel contactModel;
     ChatAreaControl myChatArea;
+    ObservableList<HBox> list;
 
     @FXML
     private Label conatctNameLabel;
@@ -34,7 +38,10 @@ public class ContactControl extends HBox{
 
 
     public ContactControl(ContactModel contactModel) {
+
         this.contactModel = contactModel;
+        contactModel.setContactId("11111111111");
+        list = contactListHelper.createMessageList(contactModel.getContactId());
 
 //      URL url = new URL("");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
@@ -52,7 +59,7 @@ public class ContactControl extends HBox{
 
     public void initialize(){
 
-        myChatArea = new ChatAreaControl();
+        myChatArea = new ChatAreaControl(list);
 
         conatctNameLabel.setText("dummy name");
 
@@ -60,4 +67,9 @@ public class ContactControl extends HBox{
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
 //        contactPhotoCircle.setFill();
     }
+
+    public ChatAreaControl getChatArea (){
+        return myChatArea;
+    }
+
 }

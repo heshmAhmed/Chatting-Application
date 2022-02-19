@@ -26,11 +26,11 @@ public class ServerUtil {
 
       //////test remove later////////////////////
 
-        try {
-            callback.receiveMessage(new MessageDTO());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            callback.receiveMessage(new MessageDTO());
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
 
         ///////////////////////////////////////////////
         for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
@@ -41,4 +41,13 @@ public class ServerUtil {
     public void removeUserFromOnline(String phoneNumber){
         onlineUsers.remove(phoneNumber);
     }
+
+    public void sendMessageToUser(MessageDTO messageDTO){
+        try {
+            onlineUsers.get(messageDTO.getReceiverId()).receiveMessage(messageDTO);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
