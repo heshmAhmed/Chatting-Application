@@ -42,6 +42,5 @@ public class RegistrationServiceImpl implements IRegistrationService {
         userDTO.setPassword(hashedPassword);
         UserEntity user = UserEntityMapper.INSTANCE.userDTOToEntity(userDTO);
         return userRepo.insertUser(user);
-
     }
 }

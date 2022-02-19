@@ -24,7 +24,7 @@ public class ResultSetMapper {
             userEntity.setImage(resultSet.getString("image"));
             userEntity.setGender(resultSet.getString("gender"));
             userEntity.setCountry(resultSet.getString("country"));
-            userEntity.setDateOfBirth(resultSet.getDate("date_of_birth"));
+            userEntity.setDateOfBirth(resultSet.getDate("date_of_birth").getTime());
             userEntity.setBio(resultSet.getString("bio"));
             userEntity.setStatus(resultSet.getString("user_status"));
             userEntityOptional = Optional.of(userEntity);

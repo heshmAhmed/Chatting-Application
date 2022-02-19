@@ -4,11 +4,7 @@ import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 import gov.iti.jets.server.repository.util.DataSourceFactory;
 import gov.iti.jets.server.repository.util.ResultSetMapper;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
@@ -89,7 +85,7 @@ public class UserRepoImpl implements IUserRepository {
             preparedStatement.setString(3, userEntity.getEmail());
             preparedStatement.setString(4, userEntity.getGender());
             preparedStatement.setString(5, userEntity.getCountry());
-            preparedStatement.setDate(6, userEntity.getDateOfBirth());
+            preparedStatement.setDate(6, new Date(userEntity.getDateOfBirth()));
             preparedStatement.setString(7, userEntity.getPassword());
             rowsInserted = preparedStatement.executeUpdate();
         } catch (SQLException e) {

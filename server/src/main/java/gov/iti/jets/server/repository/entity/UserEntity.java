@@ -1,7 +1,6 @@
 package gov.iti.jets.server.repository.entity;
 
 
-import java.sql.Date;
 
 public class UserEntity {
     private String phoneNumber;
@@ -11,7 +10,7 @@ public class UserEntity {
     private String password;
     private String gender;
     private String country;
-    private Date dateOfBirth;
+    private long dateOfBirth;
     private String bio;
     private String status;
 
@@ -71,11 +70,11 @@ public class UserEntity {
         this.country = country;
     }
 
-    public Date getDateOfBirth() {
+    public long getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(long dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
