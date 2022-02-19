@@ -11,9 +11,6 @@ public interface ContactDtoMapper {
 
     ContactDtoMapper INSTANCE = Mappers.getMapper(ContactDtoMapper.class);
 
-    @Mapping(source = "phoneNumber", target = "contactId")
-    @Mapping(source = "username", target = "contactName")
-    @Mapping(source = "image", target = "contactImage")
-    @Mapping(source = "status", target = "contactStatus")
+
     ContactDTO userEntityToDTO(UserEntity entity);
 }

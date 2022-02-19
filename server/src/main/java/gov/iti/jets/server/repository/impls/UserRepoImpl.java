@@ -37,6 +37,7 @@ public class UserRepoImpl implements IUserRepository {
             preparedStatement = connection.prepareStatement("select * from users where phone_number = ?");
             preparedStatement.setString(1, phoneNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             optionalUserEntity = resultSetMapper.mapToUserEntity(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,7 +83,7 @@ public class UserRepoImpl implements IUserRepository {
         int rowsInserted = 0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into users " +
-                    "(phone_number ,username,email,gender,country,date_of_birth,password )values (?,?,?,?,?,?,?)");
+                    "(phone_number ,username,email,gender,country,date_of_birth,pass )values (?,?,?,?,?,?,?)");
             preparedStatement.setString(1, userEntity.getPhoneNumber());
             preparedStatement.setString(2, userEntity.getUsername());
             preparedStatement.setString(3, userEntity.getEmail());

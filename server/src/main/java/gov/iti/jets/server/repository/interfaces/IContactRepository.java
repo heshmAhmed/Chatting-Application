@@ -5,6 +5,6 @@ import gov.iti.jets.server.repository.entity.UserEntity;
 import java.util.List;
 
 public interface IContactRepository {
-    public List<UserEntity> getUserContacts(String userId) ;
+    public List<UserEntity> getUserContacts( String phoneNumber) ;
 
 }
