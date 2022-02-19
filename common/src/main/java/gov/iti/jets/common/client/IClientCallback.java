@@ -4,4 +4,5 @@ import java.rmi.Remote;
 
 public interface IClientCallback extends Remote {
 
+    public void receiveMessage(MessageDTO messageDTO);
 }
