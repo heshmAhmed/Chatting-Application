@@ -17,6 +17,6 @@ JavaFx Chatting Application with rmi client server model
   
   
 ## DB
-useing Hikaricp pooling to handle multiple connection to database
+using Hikaricp pooling to handle multiple connection to database
 
 
