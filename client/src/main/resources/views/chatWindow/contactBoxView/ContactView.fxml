@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<fx:root fx:id="contactHBox" style="-fx-background-color: #25255b; -fx-border-color: #1A1A40;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="contactHBox" styleClass="body" stylesheets="@../../../styles/contact-box-style.css" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Circle fx:id="contactPhotoCircle" fill="DODGERBLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
          <HBox.margin>

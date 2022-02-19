@@ -4,12 +4,15 @@ import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import java.net.URL;
@@ -22,6 +25,9 @@ public class ChatController implements Initializable {
 
 
     List<String> addedContactsList;
+
+    @FXML
+    private ListView<HBox> contactListView;
 
     @FXML
     private Button addNewContactButton;

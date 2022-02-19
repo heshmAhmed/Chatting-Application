@@ -1,0 +1,10 @@
+
+.body{
+-fx-background-color: #25255b;
+-fx-border-color:  #1A1A40;
+
+}
+
+.body:hover{
+    -fx-background-color: #4a4ab5;
+}

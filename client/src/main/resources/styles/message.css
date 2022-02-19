@@ -1,0 +1,18 @@
+.message-box{
+    -fx-border-radius:20;
+    -fx-background-radius:20;
+
+    /*-fx-background-color:  #25255b ;*/
+    -fx-background-color:  #1e40af ;
+}
+
+.message-text{
+
+}
+
+.message-name{
+    -fx-font-size:10px;
+}
+
+.message-date{
+}

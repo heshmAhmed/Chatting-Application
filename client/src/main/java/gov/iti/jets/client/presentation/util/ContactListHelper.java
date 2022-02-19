@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.util;
 
+import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
 import gov.iti.jets.client.presentation.controllers.custom.SentMessageControl;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.collections.FXCollections;
@@ -21,6 +22,8 @@ public class ContactListHelper {
         return  contactListHelper;
     }
 
+
+
     public ObservableList<HBox> createMessageList(String contactId){
 
         ObservableList<HBox> list;
@@ -37,7 +40,7 @@ public class ContactListHelper {
 
 
     public void addMessageToList(MessageDTO messageDTO){
-        messageListMap.get(messageDTO.getSenderId()).add(new SentMessageControl(messageDTO));
+        messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO));
     }
 
 }

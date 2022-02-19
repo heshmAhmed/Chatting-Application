@@ -4,3 +4,28 @@
 .list-cell:odd {
   -fx-background-color: transparent;
 }
+
+.text-area .content{
+    -fx-background-radius:40;
+    -fx-border-color: transparent;
+}
+
+.text-area{
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-border-color: transparent;
+}
+
+text-area.scroll-pane {
+    -fx-hbar-policy : never;
+    -fx-vbar-policy : never;
+}
+
+.border{
+    -fx-background-color:  #EAEEF2 ;
+    -fx-border-color: #EAEEF2 ;
+}
+
+.center{
+-fx-background-color: #eff6ff;
+}
