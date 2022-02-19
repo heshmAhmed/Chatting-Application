@@ -13,15 +13,19 @@ import java.sql.SQLOutput;
 import java.util.Optional;
 
 public class RegistrationServiceImpl implements IRegistrationService {
+    private final static RegistrationServiceImpl registrationService = new RegistrationServiceImpl();
     private final RepoFactory repoFactory = RepoFactory.getInstance();
     private final IUserRepository userRepo = repoFactory.getUserRepo();
     private final HashingFactory hashingFactory = HashingFactory.getInstance();
-    // validation
-    /*
-        phone_number -> null
-        phone_number -> ""
-        phone_number "dsd0555s"
-     */
+
+    private RegistrationServiceImpl() {
+
+    }
+
+    public static RegistrationServiceImpl getInstance() {
+        return registrationService;
+    }
+
     @Override
     public boolean checkPhoneNumber(String phoneNumber) {
         return userRepo.isPhoneNumberExist(phoneNumber);
@@ -33,24 +37,11 @@ public class RegistrationServiceImpl implements IRegistrationService {
     }
 
     @Override
-    public boolean addNewUser(UserDTO userDTO){
+    public boolean addNewUser(UserDTO userDTO) {
         String hashedPassword = hashingFactory.hashPassword(userDTO.getPassword());
-
+        userDTO.setPassword(hashedPassword);
         UserEntity user = UserEntityMapper.INSTANCE.userDTOToEntity(userDTO);
-        userRepo.insertUser(user);
+        return userRepo.insertUser(user);
 
-
-        System.err.print("RemoteService");
-        return true;
-
-//      RegistrationDTO registrationDTO1
-//      UserEntity user = RegistrationMapper.REGISTRATION_MAPPER.USER(registrationDTO);
-//      user.setPassword(hashedPassword);
-//        UserEntity userEntity = UserEntityMapper.INSTANCE.userDTOToEntity();
-//        userRepo.insertUser(userEntity);
-
-
-        //userRepo.insertUser(userDTO);
-      //  return false;
     }
 }

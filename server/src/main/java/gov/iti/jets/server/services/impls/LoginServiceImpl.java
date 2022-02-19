@@ -10,10 +10,18 @@ import gov.iti.jets.server.services.util.HashingFactory;
 import java.util.Optional;
 
 public class LoginServiceImpl implements ILoginService {
+    private final static LoginServiceImpl loginServiceImpl=new LoginServiceImpl();
     private final RepoFactory repoFactory = RepoFactory.getInstance();
     private final IUserRepository userRepository = repoFactory.getUserRepo();
     private final HashingFactory hashPassword = HashingFactory.getInstance();
 
+    private LoginServiceImpl(){
+
+    }
+
+    public static LoginServiceImpl getInstance() {
+        return loginServiceImpl;
+    }
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {
         boolean result = false;

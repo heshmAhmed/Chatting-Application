@@ -29,7 +29,7 @@ public class UserDTO implements Serializable {
 
     @NotNull(message = "date of birth is required")
     @Past(message = "future or present date is invalid")
-    private String dob;
+    private Date dob;
 
     @NotNull(message = "gender is required")
     private String gender;
@@ -64,11 +64,11 @@ public class UserDTO implements Serializable {
         this.status = status;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 

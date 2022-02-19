@@ -15,6 +15,7 @@ public class ContactDTO implements Serializable {
     private String country;
     private String bio;
 
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

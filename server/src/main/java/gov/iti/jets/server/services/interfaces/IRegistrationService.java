@@ -7,5 +7,5 @@ import java.sql.SQLException;
 public interface IRegistrationService {
     public boolean checkPhoneNumber(String userPhone);
     public boolean checkEmail(String userPhone);
-    public boolean addNewUser(UserDTO userDTO) throws SQLException;
+    public boolean addNewUser(UserDTO userDTO);
 }

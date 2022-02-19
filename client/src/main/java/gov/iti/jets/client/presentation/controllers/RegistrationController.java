@@ -11,13 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 
 public class RegistrationController implements Initializable {
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private RegistrationService service;
+
     @FXML
     private DatePicker datePicker;
 
@@ -70,7 +70,7 @@ public class RegistrationController implements Initializable {
             //System.out.println(datePicker.getValue().toString());
             boolean check = service.createNewUser(userDTO);
             System.out.println(check);
-            stageCoordinator.switchToChatScene();
+            stageCoordinator.switchToLoginScene();
         }
     }
 
