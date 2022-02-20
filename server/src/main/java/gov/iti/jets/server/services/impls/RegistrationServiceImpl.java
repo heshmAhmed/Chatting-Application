@@ -6,7 +6,6 @@ import gov.iti.jets.server.repository.interfaces.IUserRepository;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IRegistrationService;
 import gov.iti.jets.server.services.mapper.UserEntityMapper;
-import gov.iti.jets.server.services.mapper.UserEntityMapperImpl;
 import gov.iti.jets.server.services.util.HashingFactory;
 
 import java.sql.SQLOutput;
