@@ -1,7 +1,7 @@
 package gov.iti.jets.server.services.impls;
 
 import gov.iti.jets.common.dtos.ContactDTO;
-import gov.iti.jets.server.repository.entity.UserEntity;
+import gov.iti.jets.server.repository.entity.ContactEntity;
 import gov.iti.jets.server.repository.interfaces.IContactRepository;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IContactService;
@@ -25,13 +25,12 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public List<ContactDTO> getAllUserContacts(String userId) {
-
-        List<UserEntity> contacts = contactRepository.getUserContacts(userId);
+        List<ContactEntity> contacts = contactRepository.getUserContacts(userId);
         List<ContactDTO> contactDTOS = new ArrayList<>();
-        for (UserEntity user : contacts) {
-            contactDTOS.add(ContactDtoMapper.INSTANCE.userEntityToDTO(user));
+        for (ContactEntity user : contacts) {
+            contactDTOS.add(ContactDtoMapper.INSTANCE.contactEntityToDTO(user));
         }
-
+        System.out.println("contact service: " + contactDTOS);
         return contactDTOS;
     }
 }

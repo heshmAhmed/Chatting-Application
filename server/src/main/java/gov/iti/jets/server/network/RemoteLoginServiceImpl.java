@@ -4,6 +4,7 @@ import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
 import gov.iti.jets.server.services.impls.LoginServiceImpl;
+import gov.iti.jets.server.services.interfaces.IContactService;
 import gov.iti.jets.server.services.interfaces.ILoginService;
 import gov.iti.jets.server.services.util.ServerUtil;
 import gov.iti.jets.server.services.util.ServiceFactory;
@@ -13,6 +14,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemoteLoginService {
     ILoginService loginService = ServiceFactory.getInstance().loginService();
+    IContactService contactService = ServiceFactory.getInstance().getContactService();
     ServerUtil serverUtil = ServerUtil.getInstance();
 
     public RemoteLoginServiceImpl() throws RemoteException {
@@ -38,6 +40,10 @@ public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemo
     @Override
     public UserDTO getUser(String phoneNumber, IClientCallback clientCallback) throws RemoteException {
         UserDTO userDTO = loginService.getUserData(phoneNumber);
+        userDTO.setContacts(contactService.getAllUserContacts(phoneNumber));
+
+        System.out.println(userDTO);
+
         serverUtil.addUserToOnline(phoneNumber, clientCallback);
         return userDTO;
     }

@@ -6,13 +6,9 @@ import java.util.Date;
 public class ContactDTO implements Serializable {
     private static final long serialVersionUID = 1420672609912364060L;
     private String phoneNumber;
-    private String email;
     private String image;
     private String username;
     private String status;
-    private Date dob;
-    private String gender;
-    private String country;
     private String bio;
 
 
@@ -22,14 +18,6 @@ public class ContactDTO implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getImage() {
@@ -56,30 +44,6 @@ public class ContactDTO implements Serializable {
         this.status = status;
     }
 
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public String getBio() {
         return bio;
     }
@@ -92,13 +56,9 @@ public class ContactDTO implements Serializable {
     public String toString() {
         return "ContactDTO{" +
                 "phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
                 ", image='" + image + '\'' +
                 ", username='" + username + '\'' +
                 ", status='" + status + '\'' +
-                ", dob=" + dob +
-                ", gender='" + gender + '\'' +
-                ", country='" + country + '\'' +
                 ", bio='" + bio + '\'' +
                 '}';
     }
