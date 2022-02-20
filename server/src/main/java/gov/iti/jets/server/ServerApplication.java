@@ -9,6 +9,7 @@ import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
 import gov.iti.jets.server.services.impls.LoginServiceImpl;
 import gov.iti.jets.server.services.interfaces.ILoginService;
+import gov.iti.jets.server.services.util.ServerUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

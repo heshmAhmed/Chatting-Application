@@ -19,8 +19,6 @@ public class RepoFactory {
     }
 
     public IContactRepository getContactRepo(){
-
-
         return ContactRepoImpl.getInstance();
     }
 }
