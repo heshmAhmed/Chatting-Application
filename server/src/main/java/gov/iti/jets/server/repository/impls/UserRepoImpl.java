@@ -41,9 +41,6 @@ public class UserRepoImpl implements IUserRepository {
         return optionalUserEntity;
     }
 
-
-
-
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {
         boolean found = false;

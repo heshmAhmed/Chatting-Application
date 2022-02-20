@@ -1,5 +1,6 @@
 package gov.iti.jets.server.repository.util;
 
+import gov.iti.jets.server.repository.entity.ContactEntity;
 import gov.iti.jets.server.repository.entity.UserEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +33,22 @@ public class ResultSetMapper {
             e.printStackTrace();
         }
         return userEntityOptional;
+    }
+
+    public Optional<ContactEntity> mapToContactEntity(ResultSet resultSet) {
+        Optional<ContactEntity> contactEntityOptional = Optional.empty();
+        try {
+            ContactEntity contactEntity = new ContactEntity();
+            contactEntity.setPhoneNumber(resultSet.getString("phone_number"));
+            contactEntity.setUsername(resultSet.getString("username"));
+            contactEntity.setStatus(resultSet.getString("user_status"));
+            contactEntity.setBio(resultSet.getString("bio"));
+            contactEntity.setImage(resultSet.getString("image"));
+            contactEntityOptional = Optional.of(contactEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contactEntityOptional;
     }
 
 

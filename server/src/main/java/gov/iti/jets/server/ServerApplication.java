@@ -3,9 +3,12 @@ package gov.iti.jets.server;
 
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.server.network.RemoteContactServiceImpl;
+import gov.iti.jets.server.network.RemoteLoginServiceImpl;
 import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
 import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
+import gov.iti.jets.server.services.impls.LoginServiceImpl;
+import gov.iti.jets.server.services.interfaces.ILoginService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -49,7 +52,5 @@ public class ServerApplication extends Application {
 
     public static void main(String[] args) throws RemoteException {
         launch();
-
-
     }
 }
