@@ -1,6 +1,7 @@
 package gov.iti.jets.client.network.util;
 
 import gov.iti.jets.common.server.IRemoteLoginService;
+import gov.iti.jets.common.server.IRemoteMessageHandler;
 import gov.iti.jets.common.server.IRemoteRegistrationService;
 
 import java.rmi.NotBoundException;
@@ -14,7 +15,7 @@ public class RegistryFactory {
 
     private RegistryFactory(){
         try {
-            registry = LocateRegistry.getRegistry("localhost",2000);
+            registry = LocateRegistry.getRegistry(2020);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -44,5 +45,15 @@ public class RegistryFactory {
         return remoteRegistrationService;
     }
 
+
+    public IRemoteMessageHandler getRemoteMessageHandler() {
+        IRemoteMessageHandler remoteMessageHandler = null;
+        try {
+            remoteMessageHandler = (IRemoteMessageHandler) registry.lookup("RemoteMessageHandler");
+        } catch (RemoteException | NotBoundException e) {
+            e.printStackTrace();
+        }
+        return remoteMessageHandler;
+    }
 
 }
