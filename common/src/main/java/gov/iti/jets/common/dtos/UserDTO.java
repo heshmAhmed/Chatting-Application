@@ -28,15 +28,13 @@ public class UserDTO implements Serializable {
     private String status="";
 
     @NotNull(message = "date of birth is required")
-    @Past(message = "future or present date is invalid")
-    private String dob;
+    private long dob;
 
     @NotNull(message = "gender is required")
     private String gender;
 
     @NotNull(message = "country is required")
     private String country;
-
 
     private String bio="";
 
@@ -64,11 +62,11 @@ public class UserDTO implements Serializable {
         this.status = status;
     }
 
-    public String getDob() {
+    public long getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(long dob) {
         this.dob = dob;
     }
 
@@ -118,6 +116,18 @@ public class UserDTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserDTO(){}
+
+    public UserDTO(String phoneNumber , String email , String username , String password , String gender ,long dob, String country){
+        this.phoneNumber=phoneNumber;
+        this.email=email;
+        this.username=username;
+        this.password=password;
+        this.gender=gender;
+        this.country=country;
+        this.dob=dob;
     }
 
 }

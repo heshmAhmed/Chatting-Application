@@ -1,18 +1,20 @@
 package gov.iti.jets.client.presentation.models;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 
 public class UserModel {
-    private StringProperty phoneNumber;
-    private StringProperty email;
-    private ObjectProperty<Image> image;
-    private StringProperty username;
-    private StringProperty dob;
-    private StringProperty gender;
-    private StringProperty country;
-    private String bio;
+    private StringProperty phoneNumber = new SimpleStringProperty();
+    private StringProperty email = new SimpleStringProperty();
+    private ObjectProperty<Image> image = new SimpleObjectProperty<>();
+    private StringProperty username = new SimpleStringProperty();
+    private StringProperty dob = new SimpleStringProperty();
+    private StringProperty gender = new SimpleStringProperty();
+    private StringProperty country = new SimpleStringProperty();
+    private StringProperty bio = new SimpleStringProperty();
 
     public String getPhoneNumber() {
         return phoneNumber.get();
@@ -98,11 +100,11 @@ public class UserModel {
         this.country.set(country);
     }
 
-    public String getBio() {
+    public StringProperty getBio() {
         return bio;
     }
 
     public void setBio(String bio) {
-        this.bio = bio;
+        this.bio.set(bio);
     }
 }

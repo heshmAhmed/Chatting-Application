@@ -23,8 +23,8 @@
                 <children>
                     <AnchorPane maxHeight="-Infinity" prefHeight="313.0" prefWidth="240.0">
                         <children>
+                        <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="20" layoutX="142.0" layoutY="103.0" onMouseDragEntered="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125" />
                             <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                            <Circle fill="#ffaf1f" layoutX="157.0" layoutY="24.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
                             <Label layoutX="74.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />

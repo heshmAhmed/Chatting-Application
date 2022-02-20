@@ -21,6 +21,9 @@ public class ServerUtil {
 
     public void addUserToOnline(String phoneNumber, IClientCallback callback){
         onlineUsers.put(phoneNumber, callback);
+        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
     }
 
     public void removeUserFromOnline(String phoneNumber){

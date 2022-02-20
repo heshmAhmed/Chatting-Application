@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,11 +18,12 @@
    <top>
       <HBox id="otherContactInfo" alignment="CENTER_LEFT" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <Circle fx:id="currentChatPhotoCircle" fill="DODGERBLUE" radius="23.0" stroke="BLACK" strokeType="INSIDE">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="10.0" top="5.0" />
-               </HBox.margin>
-            </Circle>
+            <AnchorPane prefHeight="54.0" prefWidth="56.0">
+               <children>
+                  <Circle fx:id="currentChatPhotoCircle" fill="DODGERBLUE" layoutX="26.0" layoutY="27.0" nodeOrientation="LEFT_TO_RIGHT" radius="26.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+                  <Circle fill="#ffaf1f" layoutX="42.0" layoutY="40.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+               </children>
+            </AnchorPane>
             <Label fx:id="currentChatName" text="name">
                <HBox.margin>
                   <Insets left="10.0" />

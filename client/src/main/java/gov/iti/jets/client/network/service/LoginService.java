@@ -12,6 +12,7 @@ public class LoginService {
     private static LoginService loginService;
     private static RegistryFactory registryFactory = RegistryFactory.getInstance();
     private IRemoteLoginService remoteLoginService = registryFactory.getRemoteLoginService();
+    private ModelFactory modelFactory = ModelFactory.getInstance();
 
     private LoginService() {
     }
@@ -27,24 +28,26 @@ public class LoginService {
     }
 
     public boolean validatePassword(String phoneNumber, String password) throws RemoteException {
-//        return remoteLoginService.checkUserPassword(phoneNumber, password);
-    return true;
+        return remoteLoginService.checkUserPassword(phoneNumber, password);
+//    return true;
     }
 
 
-    public UserModel submitLogin(String id){
+    public void submitLogin(String id){
 
         UserDTO userDTO = new UserDTO();
 
         try {
+
             userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
+        System.out.println(userDTO.getPhoneNumber());
 
-        //map to user model and return
-        return new UserModel();
+        modelFactory.fillUserModel(userDTO);
 
     }
 

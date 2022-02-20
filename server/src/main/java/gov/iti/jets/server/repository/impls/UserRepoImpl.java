@@ -4,18 +4,14 @@ import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 import gov.iti.jets.server.repository.util.DataSourceFactory;
 import gov.iti.jets.server.repository.util.ResultSetMapper;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Date;
+import java.sql.*;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
     private Connection connection;
     private final static UserRepoImpl userRepo = new UserRepoImpl();
     private final ResultSetMapper resultSetMapper = ResultSetMapper.getInstance();
+
 
     private UserRepoImpl() {
         try {
@@ -30,19 +26,23 @@ public class UserRepoImpl implements IUserRepository {
     }
 
     @Override
-    public Optional<UserEntity> findUserByNumber(String phoneNumber)  {
+    public Optional<UserEntity> findUserByNumber(String phoneNumber) {
         PreparedStatement preparedStatement = null;
         Optional<UserEntity> optionalUserEntity = Optional.empty();
         try {
             preparedStatement = connection.prepareStatement("select * from users where phone_number = ?");
             preparedStatement.setString(1, phoneNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             optionalUserEntity = resultSetMapper.mapToUserEntity(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return optionalUserEntity;
     }
+
+
+
 
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {
@@ -79,13 +79,13 @@ public class UserRepoImpl implements IUserRepository {
         int rowsInserted = 0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into users " +
-                    "(phone_number ,username,email,gender,country,date_of_birth,password )values (?,?,?,?,?,?,?)");
+                    "(phone_number ,username,email,gender,country,date_of_birth,pass )values (?,?,?,?,?,?,?)");
             preparedStatement.setString(1, userEntity.getPhoneNumber());
             preparedStatement.setString(2, userEntity.getUsername());
             preparedStatement.setString(3, userEntity.getEmail());
             preparedStatement.setString(4, userEntity.getGender());
             preparedStatement.setString(5, userEntity.getCountry());
-            preparedStatement.setDate(6, userEntity.getDateOfBirth());
+            preparedStatement.setDate(6, new Date(userEntity.getDateOfBirth()));
             preparedStatement.setString(7, userEntity.getPassword());
             rowsInserted = preparedStatement.executeUpdate();
         } catch (SQLException e) {

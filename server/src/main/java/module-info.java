@@ -10,6 +10,7 @@ module gov.iti.jets.server {
     requires common;
     requires java.rmi;
     requires org.mapstruct;
+    requires jakarta.validation;
 
     opens gov.iti.jets.server.services.mapper to org.mapstruct;
     opens gov.iti.jets.server.presentation.controllers to javafx.fxml;

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
@@ -72,5 +73,9 @@ public class LeftSideController implements Initializable {
     @FXML
     void showNotification(MouseEvent event) {
         paneCoordinator.switchToNotificationsPane();
+    }
+
+    @FXML
+    public void handleChangeProfilePictureIcon(MouseDragEvent mouseDragEvent) {
     }
 }

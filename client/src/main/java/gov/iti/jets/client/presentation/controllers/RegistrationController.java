@@ -1,6 +1,7 @@
 package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.RegistrationService;
+import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.client.presentation.util.Validation;
 import gov.iti.jets.common.dtos.UserDTO;
@@ -17,29 +18,28 @@ import java.util.ResourceBundle;
 
 public class RegistrationController implements Initializable {
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private Validation validation = Validation.getInstance();
     private RegistrationService service;
-    @FXML
-    private DatePicker datePicker;
+    private UserModel userModel = new UserModel();
+    UserDTO user = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         genderBox.getItems().addAll("Male", "Female");
         countryBox.getItems().addAll("Egypt", "Iran", "Syria");
-//        datePicker.setDayCellFactory(param -> new DateCell() {
-//            @Override
-//            public void updateItem(LocalDate date, boolean empty) {
-//                super.updateItem(date, empty);
-//                setDisable(empty || date.compareTo(LocalDate.now()) > 0 );
-//            }
-//        });
         service = RegistrationService.getInstance();
+        datePicker.setValue(LocalDate.of(2011,10,1));
+        datePicker.setDayCellFactory(param -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.of(2011,10,1)) > 0 );
+            }
+        });
     }
-
-
 
     @FXML
     private ComboBox genderBox , countryBox;
-
 
     @FXML
     private PasswordField passwordField , confirmPasswordField;
@@ -51,33 +51,47 @@ public class RegistrationController implements Initializable {
     private MFXButton register , haveAccountLink;
 
     @FXML
-    private Label countryLabel ,genderLabel , dateLabel , phoneLabel , nameLabel , emailLabel , confirmPasswordLabel , passwordLabel ;
+    private Label validateLabel , countryLabel ,genderLabel , dateLabel , phoneLabel , nameLabel , emailLabel , confirmPasswordLabel , passwordLabel ;
+
+    @FXML
+    private DatePicker datePicker;
 
 
     @FXML
     void handelRegisterAction(ActionEvent event) {
-        if (Validation.validateUserName(nameField, nameLabel) &&
-            Validation.validatePhoneNumber(phoneField, phoneLabel) &&
-            Validation.validateEmail(emailField, emailLabel) && Validation.validatePassword(passwordField, passwordLabel) &&
-            Validation.validateConfirmPassword(confirmPasswordField, passwordField, confirmPasswordLabel)) {
-            System.out.println(service.checkPhoneNumber(phoneField.getText()));
-            System.out.println(service.checkPhoneNumber(emailField.getText()));
+        boolean check = false;
+        if (validation.validateUserName(nameField, nameLabel) &&
+                validation.validatePhoneNumber(phoneField, phoneLabel) &&
+                validation.validateEmail(emailField, emailLabel) &&
+                validation.validatePassword(passwordField, passwordLabel) &&
+                validation.validateConfirmPassword(confirmPasswordField, passwordField, confirmPasswordLabel) &&
+                validation.validateGenderBox(genderBox,genderLabel) &&
+                validation.validateDateOfBirth(datePicker,dateLabel) &&
+                validation.validateCountryBox(countryBox,countryLabel)){
 
-            UserDTO userDTO = new UserDTO();
-            userDTO.setUsername(nameField.getText());
-            userDTO.setPhoneNumber(phoneField.getText());
-            userDTO.setEmail(emailField.getText());
-            userDTO.setPassword(passwordField.getText());
-            userDTO.setCountry(countryBox.getValue().toString());
-            userDTO.setCountry(genderBox.getValue().toString());
+            String name = nameField.getText();
+            String phone = phoneField.getText();
+            String password = passwordField.getText();
+            String confirmedPassword = confirmPasswordField.getText();
+            String email = emailField.getText();
+            String country = (String) countryBox.getValue();
+            String gender = (String) genderBox.getValue();
+            LocalDate dob =  datePicker.getValue().minusYears(10);
+            Long dobLong = dob.toEpochDay();
 
-            //userDTO.setDob(datePicker.);
-            System.out.println(countryBox.getValue().toString());
-            System.out.println(genderBox.getValue().toString());
-            //System.out.println(datePicker.getValue().toString());
-            boolean check = service.createNewUser(userDTO);
+            user = new UserDTO(phone,email,name,password,gender,dobLong,country);
+
+            check = service.createNewUser(user);
             System.out.println(check);
-            stageCoordinator.switchToChatScene();
+            if(check){
+                System.err.println("Succissful reg");
+                stageCoordinator.switchToLoginScene();
+            }else{
+                System.err.println("not succissful");
+                validateLabel.setText("Already exists");
+            }
+        }else{
+            System.out.println(check);
         }
     }
 

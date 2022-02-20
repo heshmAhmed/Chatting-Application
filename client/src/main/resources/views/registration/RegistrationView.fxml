@@ -157,19 +157,19 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" style="-fx-background-color: #1A1A40;" HBox.hgrow="ALWAYS" />
+                        <DatePicker fx:id="datePicker" prefHeight="26.0" prefWidth="165.0" promptText="Date Of Birth" style="-fx-background-color: #1A1A40;" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="75.0">
                <children>
-                  <Label fx:id="genderLabel" text="date and gender" textFill="#e40808">
+                  <Label fx:id="genderLabel" text="" textFill="#e40808">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="dateLabel" layoutX="10.0" layoutY="10.0" text="date and gender" textFill="#e40808">
+                  <Label fx:id="dateLabel" layoutX="10.0" layoutY="10.0" text="" textFill="#e40808">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -190,7 +190,7 @@
                   <ComboBox fx:id="countryBox" prefWidth="150.0" styleClass="text-field" />
                </children>
             </HBox>
-            <Label fx:id="countryLabel" text="country" textFill="#e40808">
+            <Label fx:id="countryLabel" text="" textFill="#e40808">
                <font>
                   <Font size="13.0" />
                </font>
@@ -206,6 +206,7 @@
                         <Font size="18.0" />
                      </font>
                   </MFXButton>
+                  <Label fx:id="validateLabel" textFill="#e40808" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" />

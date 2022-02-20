@@ -6,5 +6,4 @@ public interface ILoginService {
     public boolean isPhoneNumberExist(String phoneNumber);
     public boolean isPasswordCorrect(String phoneNumber, String password);
     public UserDTO getUserData(String phoneNumber);
-
 }

@@ -16,7 +16,6 @@ public class ResultSetMapper {
     public Optional<UserEntity> mapToUserEntity(ResultSet resultSet) {
         Optional<UserEntity> userEntityOptional = Optional.empty();
         try {
-            resultSet.next();
             UserEntity userEntity = new UserEntity();
             userEntity.setPhoneNumber(resultSet.getString("phone_number"));
             userEntity.setUsername(resultSet.getString("username"));
@@ -25,7 +24,7 @@ public class ResultSetMapper {
             userEntity.setImage(resultSet.getString("image"));
             userEntity.setGender(resultSet.getString("gender"));
             userEntity.setCountry(resultSet.getString("country"));
-            userEntity.setDateOfBirth(resultSet.getDate("date_of_birth"));
+            userEntity.setDateOfBirth(resultSet.getDate("date_of_birth").getTime());
             userEntity.setBio(resultSet.getString("bio"));
             userEntity.setStatus(resultSet.getString("user_status"));
             userEntityOptional = Optional.of(userEntity);
@@ -34,4 +33,6 @@ public class ResultSetMapper {
         }
         return userEntityOptional;
     }
+
+
 }

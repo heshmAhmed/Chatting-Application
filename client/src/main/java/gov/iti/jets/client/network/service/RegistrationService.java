@@ -48,6 +48,7 @@ public class RegistrationService {
         boolean created = false;
         try {
             created=remoteRegistrationService.createNewUser(userDTO);
+            System.out.print(userDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

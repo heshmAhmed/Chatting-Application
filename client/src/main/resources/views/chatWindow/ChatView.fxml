@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,16 +19,13 @@
                <children>
                   <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <Circle id="userPhoto" fx:id="userPhotoCircle" fill="DODGERBLUE" radius="40.0" stroke="BLACK" strokeType="INSIDE" styleClass="text-field">
-                           <VBox.margin>
-                              <Insets left="20.0" top="10.0" />
-                           </VBox.margin>
-                        </Circle>
-                        <Label fx:id="userNameLabel" text="myName" textFill="WHITE">
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="25.0" />
-                           </VBox.margin>
-                        </Label>
+                        <AnchorPane prefHeight="46.0" prefWidth="34.0">
+                           <children>
+                              <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="89.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" radius="44.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Circle fill="#ffaf1f" layoutX="119.0" layoutY="76.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="userNameLabel" prefHeight="8.0" prefWidth="51.0" text="myName" textFill="WHITE" />
                      </children>
                   </VBox>
                   <VBox prefHeight="122.0" prefWidth="15.0">
