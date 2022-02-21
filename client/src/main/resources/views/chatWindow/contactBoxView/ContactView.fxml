@@ -17,7 +17,7 @@
       </AnchorPane>
       <VBox prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="conatctNameLabel" text="contactName" textFill="WHITE">
+            <Label fx:id="contactNameLabel" text="contactName" textFill="WHITE">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>

@@ -13,16 +13,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.rmi.RemoteException;
 
 
 public class LoginController {
-    private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
-    LoginService myLoginService = LoginService.getInstance();
+    private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private final LoginService myLoginService = LoginService.getInstance();
     boolean isPasswordFieldOn;
-    PasswordFieldControl passwordFieldControl;
-    LoginHelper loginHelper;
+    private PasswordFieldControl passwordFieldControl;
+    private LoginHelper loginHelper;
 
     @FXML
     private Label loginLabel;
@@ -70,7 +69,6 @@ public class LoginController {
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {
-
         if(!isPasswordFieldOn){
             isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
         }else{
@@ -82,5 +80,4 @@ public class LoginController {
     void registerClicked(ActionEvent event) {
         stageCoordinator.switchToRegistrationScene();
     }
-
 }

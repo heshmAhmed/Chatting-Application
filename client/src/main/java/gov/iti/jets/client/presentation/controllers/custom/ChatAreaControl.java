@@ -18,12 +18,9 @@ import javafx.scene.shape.Circle;
 import java.io.IOException;
 
 public class ChatAreaControl extends BorderPane {
-
-    SendMessageService sendMessageService = SendMessageService.getInstance();
-
+    private final SendMessageService sendMessageService = SendMessageService.getInstance();
     @FXML
     private final ObservableList<HBox> list;
-
 
     @FXML
     private MenuButton attachButton;
@@ -60,10 +57,7 @@ public class ChatAreaControl extends BorderPane {
 
     public ChatAreaControl(ObservableList<HBox> list){
         this.list = list;
-
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/chat-area-view.fxml"));
-
         loader.setRoot(this);
         loader.setController(this);
         try{
@@ -71,7 +65,6 @@ public class ChatAreaControl extends BorderPane {
         }catch (IOException ex){
             ex.printStackTrace();
         }
-
         chatAreaListView.setItems(list);
     }
 
@@ -83,7 +76,6 @@ public class ChatAreaControl extends BorderPane {
             myMessageDTO.setMessageText(message);
             myMessageDTO.setReceiverId("12345123456");
             myMessageDTO.setSenderId("11111111111");
-
 
             if(!(message.equals(""))){
                 list.add(new SentMessageControl(myMessageDTO));

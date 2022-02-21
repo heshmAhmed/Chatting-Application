@@ -22,9 +22,8 @@ public class ContactControl extends HBox{
     private ContactModel contactModel;
     private ChatAreaControl myChatArea;
     private ObservableList<HBox> list;
-    private StringProperty status = new SimpleStringProperty();
-    private StringProperty bio = new SimpleStringProperty();
-
+    private final StringProperty status = new SimpleStringProperty();
+    private final StringProperty bio = new SimpleStringProperty();
     @FXML
     private Label contactNameLabel;
     @FXML
@@ -38,12 +37,9 @@ public class ContactControl extends HBox{
     @FXML
     private ImageView image;
 
-    public ContactControl() {
-
-        list = contactListHelper.createMessageList(contactModel.getPhoneNumber());
-//      URL url = new URL("");
+    public ContactControl(String phoneNumber) {
+        list = contactListHelper.createMessageList(phoneNumber);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
-//      loader.setLocation();
         loader.setRoot(this);
         loader.setController(this);
         try {
@@ -59,7 +55,11 @@ public class ContactControl extends HBox{
         contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
 //        contactPhotoCircle.setFill();
+        this.image = new ImageView();
     }
+
+
+
 
 
 
@@ -187,5 +187,24 @@ public class ContactControl extends HBox{
 
     public void setBio(String bio) {
         this.bio.set(bio);
+    }
+
+    @Override
+    public String toString() {
+        return "ContactControl{" +
+                "stageCoordinator=" + stageCoordinator +
+                ", contactListHelper=" + contactListHelper +
+                ", contactModel=" + contactModel +
+                ", myChatArea=" + myChatArea +
+                ", list=" + list +
+                ", status=" + status +
+                ", bio=" + bio +
+                ", contactNameLabel=" + contactNameLabel +
+                ", contactHBox=" + contactHBox +
+                ", contactMessageLabel=" + contactMessageLabel +
+                ", contactPhotoCircle=" + contactPhotoCircle +
+                ", statusIcon=" + statusIcon +
+                ", image=" + image +
+                '}';
     }
 }

@@ -72,4 +72,15 @@ public class ContactModel {
     public void setBio(String bio) {
         this.bio.set(bio);
     }
+
+    @Override
+    public String toString() {
+        return "ContactModel{" +
+                "phoneNumber=" + phoneNumber +
+                ", image=" + image +
+                ", username=" + username +
+                ", status=" + status +
+                ", bio=" + bio +
+                '}';
+    }
 }

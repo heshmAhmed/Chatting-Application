@@ -13,8 +13,6 @@ public class UserModel {
     private StringProperty gender = new SimpleStringProperty();
     private StringProperty country = new SimpleStringProperty();
     private StringProperty bio = new SimpleStringProperty();
-    private final ListProperty<ContactModel> contactModels = new SimpleListProperty<>();
-
 //    add status to userModel
 
     public String getPhoneNumber() {
@@ -111,17 +109,5 @@ public class UserModel {
 
     public StringProperty bioProperty() {
         return bio;
-    }
-
-    public ObservableList<ContactModel> getContactModels() {
-        return contactModels.get();
-    }
-
-    public ListProperty<ContactModel> contactModelsProperty() {
-        return contactModels;
-    }
-
-    public void setContactModels(ObservableList<ContactModel> contactModels) {
-        this.contactModels.set(contactModels);
     }
 }
