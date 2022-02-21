@@ -13,17 +13,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ContactListHelper {
+
     private static final ContactListHelper contactListHelper = new ContactListHelper();
     private final Map<String, ObservableList<HBox> > messageListMap = new HashMap<>();
-    //private final ObservableList<HBox> observableList= new ObservableList<>;
+    private final ObservableList<HBox> contactList = FXCollections.observableArrayList();
     private final Map<String, ContactControl> contactControlMap = new HashMap<>();
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
 
     private ContactListHelper(){
     }
 
+
+
     public static ContactListHelper getInstance(){
         return  contactListHelper;
+    }
+
+
+    public ObservableList<HBox> getContactList(){
+        return contactList;
     }
 
     public ObservableList<HBox> createMessageList(String contactId){
@@ -43,13 +51,23 @@ public class ContactListHelper {
     }
 
     public void addNewContact(ContactModel contactModel) {
+        userModel.getContactModels().add(contactModel);
+        loadContact(contactModel);
+    }
+
+
+    public void loadContact(ContactModel contactModel){
+
         ContactControl contactControl = new ContactControl();
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
         contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
         // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
-        userModel.getContactModels().add(contactModel);
-    }
 
+        contactList.add(contactControl);
+
+        contactControlMap.put(contactModel.getPhoneNumber(), contactControl);
+
+    }
 }

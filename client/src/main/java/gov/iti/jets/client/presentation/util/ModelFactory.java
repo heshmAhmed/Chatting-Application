@@ -15,6 +15,7 @@ import java.util.List;
 public class ModelFactory {
     private final static ModelFactory modelFactory = new ModelFactory();
     private final UserModel userModel = new UserModel();
+    ContactListHelper contactListHelper = ContactListHelper.getInstance();
     private ModelFactory() {}
 
     public static ModelFactory getInstance() {
@@ -45,6 +46,7 @@ public class ModelFactory {
             contactModel.setImage(getImageFromString(contactDTO.getImage()));
             contactModel.setBio(contactDTO.getBio());
             contactModels.add(contactModel);
+            contactListHelper.loadContact(contactModel);
         });
         return contactModels;
     }

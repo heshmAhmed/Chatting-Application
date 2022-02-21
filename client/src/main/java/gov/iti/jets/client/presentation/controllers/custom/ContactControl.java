@@ -39,8 +39,7 @@ public class ContactControl extends HBox{
     private ImageView image;
 
     public ContactControl() {
-        this.contactModel = contactModel;
-        contactModel.setPhoneNumber("11111111111");
+
         list = contactListHelper.createMessageList(contactModel.getPhoneNumber());
 //      URL url = new URL("");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
@@ -62,6 +61,18 @@ public class ContactControl extends HBox{
 //        contactPhotoCircle.setFill();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////clean up
     public ChatAreaControl getChatArea (){
         return myChatArea;
     }

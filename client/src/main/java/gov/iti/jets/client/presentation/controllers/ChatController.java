@@ -4,6 +4,7 @@ import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.collections.ObservableList;
@@ -23,13 +24,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
-    private StageCoordinator stageCoordinator;
-    private UserModel userModel;
+
+    private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private UserModel userModel = ModelFactory.getInstance().getUserModel();
+    private ContactListHelper contactListHelper = ContactListHelper.getInstance();
 
     List<String> addedContactsList;
 
     @FXML
-    private ListView<HBox> contactListView;
+    private ListView<HBox> contactListView = new ListView<>(contactListHelper.getContactList());
 
     @FXML
     private Button addNewContactButton;
@@ -51,13 +54,11 @@ public class ChatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        stageCoordinator = StageCoordinator.getInstance();
 //        userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
-        userModel = ModelFactory.getInstance().getUserModel();
-        /////////testing sending message
-        ContactControl contactControl = new ContactControl();
-        contactListVBox.getChildren().add(contactControl);
 
+        /////////testing sending message
+
+        contactListHelper.addNewContact(new ContactModel());
     }
 
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {
