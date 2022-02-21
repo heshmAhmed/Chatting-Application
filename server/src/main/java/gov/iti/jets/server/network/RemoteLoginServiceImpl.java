@@ -39,6 +39,8 @@ public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemo
 
     @Override
     public UserDTO getUser(String phoneNumber, IClientCallback clientCallback) throws RemoteException {
+
+        clientCallback.receiveNotification("You're logged in!!!!");
         UserDTO userDTO = loginService.getUserData(phoneNumber);
         userDTO.setContacts(contactService.getAllUserContacts(phoneNumber));
 

@@ -15,7 +15,7 @@ public class RegistryFactory {
 
     private RegistryFactory(){
         try {
-            registry = LocateRegistry.getRegistry(2020);
+            registry = LocateRegistry.getRegistry("localhost",3200);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
