@@ -50,4 +50,12 @@ public class ServerUtil {
         }
     }
 
+
+    public void sendAnnouncement (String announcement){
+
+        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+            entry.getValue().receiveNonification(announcement);
+    }
 }
+
+
