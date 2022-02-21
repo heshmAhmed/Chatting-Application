@@ -12,7 +12,7 @@
       <AnchorPane prefHeight="46.0" prefWidth="39.0">
          <children>
             <Circle fx:id="contactPhotoCircle" fill="DODGERBLUE" layoutX="20.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
-            <Circle fill="#ffaf1f" layoutX="27.0" layoutY="32.0" radius="5.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+            <Circle fx:id="statusIcon" fill="#ffaf1f" layoutX="27.0" layoutY="32.0" radius="5.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
          </children>
       </AnchorPane>
       <VBox prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">

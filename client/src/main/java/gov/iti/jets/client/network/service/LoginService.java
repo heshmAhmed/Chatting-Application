@@ -34,21 +34,13 @@ public class LoginService {
 
 
     public void submitLogin(String id){
-
         UserDTO userDTO = new UserDTO();
-
         try {
-
             userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
-
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
-        System.out.println(userDTO.getPhoneNumber());
-
         modelFactory.fillUserModel(userDTO);
-
     }
 
 

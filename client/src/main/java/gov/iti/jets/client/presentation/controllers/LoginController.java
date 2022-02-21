@@ -4,7 +4,6 @@ import gov.iti.jets.client.network.service.LoginService;
 import gov.iti.jets.client.presentation.controllers.custom.PasswordFieldControl;
 import gov.iti.jets.client.presentation.util.LoginHelper;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
-import gov.iti.jets.client.presentation.util.Validation;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,8 +17,7 @@ import javafx.stage.Stage;
 import java.rmi.RemoteException;
 
 
-public class LoginController{
-
+public class LoginController {
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     LoginService myLoginService = LoginService.getInstance();
     boolean isPasswordFieldOn;
@@ -69,9 +67,6 @@ public class LoginController{
         isPasswordFieldOn = false;
         numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
     }
-
-
-
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {

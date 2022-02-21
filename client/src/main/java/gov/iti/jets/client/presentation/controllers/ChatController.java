@@ -3,6 +3,8 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import gov.iti.jets.client.presentation.models.ContactModel;
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
     private StageCoordinator stageCoordinator;
-
+    private UserModel userModel;
 
     List<String> addedContactsList;
 
@@ -51,9 +53,9 @@ public class ChatController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         stageCoordinator = StageCoordinator.getInstance();
 //        userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
-
+        userModel = ModelFactory.getInstance().getUserModel();
         /////////testing sending message
-        ContactControl contactControl = new ContactControl(new ContactModel());
+        ContactControl contactControl = new ContactControl();
         contactListVBox.getChildren().add(contactControl);
 
     }
@@ -66,7 +68,7 @@ public class ChatController implements Initializable {
         if(addedContactsList.size() > 0)
         {
             for(var newContact:addedContactsList){
-                ContactControl contactControl = new ContactControl(new ContactModel());
+                ContactControl contactControl = new ContactControl();
                 contactListVBox.getChildren().add(contactControl);
             }
         }

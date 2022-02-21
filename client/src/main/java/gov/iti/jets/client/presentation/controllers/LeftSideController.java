@@ -10,7 +10,6 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 

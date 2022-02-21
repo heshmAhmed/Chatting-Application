@@ -1,9 +1,7 @@
 package gov.iti.jets.client.presentation.models;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 public class UserModel {
@@ -15,6 +13,7 @@ public class UserModel {
     private StringProperty gender = new SimpleStringProperty();
     private StringProperty country = new SimpleStringProperty();
     private StringProperty bio = new SimpleStringProperty();
+    private final ListProperty<ContactModel> contactModels = new SimpleListProperty<>();
 
 //    add status to userModel
 
@@ -108,5 +107,21 @@ public class UserModel {
 
     public void setBio(String bio) {
         this.bio.set(bio);
+    }
+
+    public StringProperty bioProperty() {
+        return bio;
+    }
+
+    public ObservableList<ContactModel> getContactModels() {
+        return contactModels.get();
+    }
+
+    public ListProperty<ContactModel> contactModelsProperty() {
+        return contactModels;
+    }
+
+    public void setContactModels(ObservableList<ContactModel> contactModels) {
+        this.contactModels.set(contactModels);
     }
 }
