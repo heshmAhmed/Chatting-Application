@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.util.*;
 
 import javafx.scene.layout.Pane;
+import org.controlsfx.control.Notifications;
+
 import java.io.IOException;
 
 public class StageCoordinator {
@@ -33,14 +35,11 @@ public class StageCoordinator {
 
     private StageCoordinator(){}
 
-    public static StageCoordinator getInstance(){
-        return stageCoordinator;
-    }
+    public static StageCoordinator getInstance(){return stageCoordinator;}
 
     public void init(Stage primaryStage){
         this.primaryStage = primaryStage;
         this.paneCoordinator = PaneCoordinator.getInstance();
-
     }
 
     public void switchToUserProfileScene() {
@@ -135,6 +134,7 @@ public class StageCoordinator {
         BorderPane bp = (BorderPane) chatScene.getRoot();
         bp.setCenter(myChatArea);
     }
+
 
 
 }

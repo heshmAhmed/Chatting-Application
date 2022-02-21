@@ -3,6 +3,7 @@ package gov.iti.jets.client.network.impls;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.MessageDTO;
+import org.controlsfx.control.Notifications;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -24,6 +25,10 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void receiveNotification(String notification) throws RemoteException {
-
+        Notifications.create()
+                .title("Notification")
+                .text(notification)
+                .threshold(3, Notifications.create().title("Collapsed Notification"))
+                .showInformation();
     }
 }

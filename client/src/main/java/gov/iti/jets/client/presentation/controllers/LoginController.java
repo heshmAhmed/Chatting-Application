@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 import java.rmi.RemoteException;
 
@@ -75,7 +76,6 @@ public class LoginController{
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {
-
         if(!isPasswordFieldOn){
             isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
         }else{
