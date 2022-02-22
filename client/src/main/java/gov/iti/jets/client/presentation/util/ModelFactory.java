@@ -2,6 +2,7 @@ package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.UserDTO;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ public class ModelFactory {
     private final UserModel userModel = new UserModel();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
     private final ObservableList<ContactModel> contactModels = FXCollections.observableArrayList();
+    private final DateHandler dateHandler = DateHandler.getInstance();
 
     private ModelFactory() {}
 
@@ -38,7 +40,7 @@ public class ModelFactory {
         userModel.setBio(userDTO.getBio());
         userModel.setCountry(userDTO.getCountry());
         userModel.setGender(userDTO.getGender());
-        userModel.setDob(Instant.ofEpochMilli(userDTO.getDob()).atZone(ZoneId.systemDefault()).toLocalDate());
+        userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
     }
 
     public void fillContactModels(List<ContactDTO> contacts) {
