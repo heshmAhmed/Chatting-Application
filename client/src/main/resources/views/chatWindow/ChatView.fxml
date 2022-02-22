@@ -23,11 +23,11 @@
                      <children>
                         <AnchorPane prefHeight="46.0" prefWidth="34.0">
                            <children>
-                              <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="89.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" radius="44.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
-                              <Circle fill="#ffaf1f" layoutX="119.0" layoutY="76.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="114.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" radius="44.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Circle fill="#ffaf1f" layoutX="136.0" layoutY="82.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Label fx:id="userNameLabel" layoutX="88.0" layoutY="101.0" prefHeight="8.0" prefWidth="51.0" text="myName" textFill="WHITE" />
                            </children>
                         </AnchorPane>
-                        <Label fx:id="userNameLabel" prefHeight="8.0" prefWidth="51.0" text="myName" textFill="WHITE" />
                      </children>
                   </VBox>
                   <VBox prefHeight="122.0" prefWidth="15.0">
@@ -76,4 +76,7 @@
       <URL value="@../../styles/main-style.css" />
       <URL value="@../../styles/chat-view-style.css" />
    </stylesheets>
+   <center>
+      <FontIcon iconColor="#2e2e76" iconLiteral="fab-weixin" iconSize="300" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
