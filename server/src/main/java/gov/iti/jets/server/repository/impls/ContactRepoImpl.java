@@ -6,10 +6,7 @@ import gov.iti.jets.server.repository.interfaces.IContactRepository;
 import gov.iti.jets.server.repository.util.DataSourceFactory;
 import gov.iti.jets.server.repository.util.ResultSetMapper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,5 +53,21 @@ public class ContactRepoImpl implements IContactRepository {
             e.printStackTrace();
         }
         return contacts;
+    }
+
+    @Override
+    public boolean addNewContact(String user1Phone, String user2Phone) {
+        String query ="INSERT INTO user_contacts (user_number, contact_number) VALUES (?, ?);";
+        int rowsInserted = 0;
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, user1Phone);
+            statement.setString(2, user2Phone);
+            rowsInserted = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowsInserted > 0;
     }
 }

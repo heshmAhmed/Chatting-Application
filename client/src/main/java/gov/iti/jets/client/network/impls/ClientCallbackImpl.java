@@ -2,6 +2,8 @@ package gov.iti.jets.client.network.impls;
 
 import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.common.client.IClientCallback;
+import gov.iti.jets.common.dtos.ContactDTO;
+import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
 
 import java.io.Serializable;
@@ -20,6 +22,16 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException {
         System.out.println("receiveMessage invoked");
         contactListHelper.addMessageToList(messageDTO);
+    }
+
+    @Override
+    public void receiveInvitation(InvitationDTO invitationDTO) throws RemoteException {
+
+    }
+
+    @Override
+    public void receiveNewContact(ContactDTO contactDTO) throws RemoteException {
+
     }
 
 

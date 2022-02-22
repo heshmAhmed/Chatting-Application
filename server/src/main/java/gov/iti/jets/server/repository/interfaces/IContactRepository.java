@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IContactRepository {
     public List<ContactEntity> getUserContacts(String phoneNumber) ;
+boolean addNewContact(String user1Phone,String user2Phone);
 
 }

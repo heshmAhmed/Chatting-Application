@@ -23,7 +23,6 @@ public class ServiceFactory {
     public IContactService getContactService() {
         return ContactServiceImpl.getInstance();
     }
-
     public IRegistrationService registrationService() {
         return RegistrationServiceImpl.getInstance();
     }
