@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 
@@ -76,8 +77,8 @@ public class RegistrationController implements Initializable {
             String email = emailField.getText();
             String country = (String) countryBox.getValue();
             String gender = (String) genderBox.getValue();
-            LocalDate dob =  datePicker.getValue().minusYears(10);
-            Long dobLong = dob.toEpochDay();
+            LocalDate dob =  datePicker.getValue();
+            Long dobLong = dob.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 
             user = new UserDTO(phone,email,name,password,gender,dobLong,country);
 
