@@ -33,10 +33,10 @@ public class LoginService {
     }
 
 
-    public void submitLogin(String id) {
+    public void submitLogin(String id){
         UserDTO userDTO;
         try {
-            userDTO = remoteLoginService.getUser(id, new ClientCallbackImpl());
+            userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
             modelFactory.fillUserModel(userDTO);
             modelFactory.fillContactModels(userDTO.getContacts());
         } catch (RemoteException e) {

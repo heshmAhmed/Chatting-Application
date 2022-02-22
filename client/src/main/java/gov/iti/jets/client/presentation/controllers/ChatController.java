@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class ChatController implements Initializable {
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    private UserModel userModel;
     private List<String> addedContactsList;
     @FXML
     private ListView<HBox> contactListView;
@@ -51,6 +52,8 @@ public class ChatController implements Initializable {
 //      userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
         /////////testing sending message
         contactListView.setItems(contactListHelper.getContactList());
+        this.userModel = ModelFactory.getInstance().getUserModel();
+        this.userNameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
     }
 
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {

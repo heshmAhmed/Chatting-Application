@@ -4,6 +4,7 @@ import gov.iti.jets.client.network.service.RegistrationService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.client.presentation.util.Validation;
+import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.UserDTO;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -13,13 +14,13 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 
 public class RegistrationController implements Initializable {
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private Validation validation = Validation.getInstance();
+    private DateHandler dateHandler = DateHandler.getInstance();
     private RegistrationService service;
     private UserModel userModel = new UserModel();
     UserDTO user = null;
@@ -78,8 +79,7 @@ public class RegistrationController implements Initializable {
             String country = (String) countryBox.getValue();
             String gender = (String) genderBox.getValue();
             LocalDate dob =  datePicker.getValue();
-            Long dobLong = dob.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-
+            long dobLong =  dateHandler.localDateToMillis(dob);
             user = new UserDTO(phone,email,name,password,gender,dobLong,country);
 
             check = service.createNewUser(user);

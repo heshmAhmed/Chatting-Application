@@ -101,8 +101,9 @@ public class UserModel {
         this.country.set(country);
     }
 
-    public StringProperty getBio() {
-        return bio;
+
+    public String getBio() {
+        return bio.get();
     }
 
     public void setBio(String bio) {
