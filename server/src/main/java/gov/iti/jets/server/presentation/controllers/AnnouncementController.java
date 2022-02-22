@@ -26,7 +26,6 @@ public class AnnouncementController implements Initializable {
     @FXML
     void handleSend(ActionEvent event) {
        String announcement = htmlEditor.getHtmlText();
-       ServerUtil.sendAnnouncement(announcement);
     }
 
     @Override
