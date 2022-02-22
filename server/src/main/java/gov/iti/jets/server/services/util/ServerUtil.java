@@ -13,18 +13,18 @@ public class ServerUtil {
     private static ServerUtil serverUtil = new ServerUtil();
     public Map<String, IClientCallback> onlineUsers = new ConcurrentHashMap<>();
 
-    private ServerUtil(){
+    private ServerUtil() {
 
     }
 
-    public static ServerUtil getInstance(){
+    public static ServerUtil getInstance() {
         return serverUtil;
     }
 
-    public void addUserToOnline(String phoneNumber, IClientCallback callback){
+    public void addUserToOnline(String phoneNumber, IClientCallback callback) {
         onlineUsers.put(phoneNumber, callback);
 
-      //////test remove later////////////////////
+        //////test remove later////////////////////
 
 //        try {
 //            callback.receiveMessage(new MessageDTO());
@@ -38,11 +38,11 @@ public class ServerUtil {
         }
     }
 
-    public void removeUserFromOnline(String phoneNumber){
+    public void removeUserFromOnline(String phoneNumber) {
         onlineUsers.remove(phoneNumber);
     }
 
-    public void sendMessageToUser(MessageDTO messageDTO){
+    public void sendMessageToUser(MessageDTO messageDTO) {
         try {
             onlineUsers.get(messageDTO.getReceiverId()).receiveMessage(messageDTO);
         } catch (RemoteException e) {
@@ -50,4 +50,13 @@ public class ServerUtil {
         }
     }
 
+
+    public void sendAnnouncement(String announcement) {
+
+        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+            entry.getValue().receiveNonification(announcement);
+        }
+
+
+    }
 }

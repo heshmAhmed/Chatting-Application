@@ -10,32 +10,47 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<fx:root type="ScrollPane"   fitToHeight="true" fitToWidth="true" prefHeight="322.0" prefWidth="485.0" style="-fx-background-color: #21325E;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" prefHeight="322.0" prefWidth="485.0" style="-fx-background-color: #1A1A40;" type="ScrollPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox fx:id="vbox" style="-fx-padding: 20; -fx-background-color: #21325E;">
+      <VBox fx:id="vbox" alignment="TOP_RIGHT" style="-fx-padding: 20; -fx-background-color: #1A1A40;" stylesheets="@../../styles/main-style.css">
          <children>
+            <FontIcon iconColor="WHITE" iconLiteral="far-window-close" iconSize="19" textAlignment="CENTER" />
             <HBox alignment="CENTER">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Add new contact" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="Candara" size="36.0" />
+                        <Font name="Bodoni MT" size="36.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="13.0" />
+                     </padding>
                   </Label>
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER">
                <children>
-                  <FontIcon iconColor="WHITE" iconLiteral="far-plus-square" iconSize="32" onMouseClicked="#handlePlusIcon" />
-                  <TextField fx:id="phoneNumberField" alignment="CENTER" onAction="#handlePhoneNumberField" prefColumnCount="20" promptText="Enter phone number">
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-plus-circle" iconSize="32" onMouseClicked="#handlePlusIcon" />
+                  <TextField fx:id="phoneNumberField" alignment="CENTER" onAction="#handlePhoneNumberField" prefColumnCount="20" prefHeight="33.0" prefWidth="333.0" promptText="Enter phone number">
                      <font>
-                        <Font name="Candara" size="18.0" />
+                        <Font name="Bookshelf Symbol 7" size="18.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="15.0" right="15.0" />
                      </HBox.margin>
                   </TextField>
-                  <MFXButton onAction="#handleSendButton" style="-fx-background-color: #3E497A;" text="Send" textFill="WHITE" />
+                  <MFXButton onAction="#handleSendButton" prefHeight="34.0" prefWidth="60.0" style="-fx-background-color: #bf4080;" text="Send" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="12.0" />
+                     </font></MFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="444.0">
+               <children>
+                  <Label fx:id="phoneNumberLabel" textAlignment="JUSTIFY" textFill="#e40808">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
          </children>

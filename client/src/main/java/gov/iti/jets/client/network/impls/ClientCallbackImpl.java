@@ -21,4 +21,6 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
         System.out.println("receiveMessage invoked");
         contactListHelper.addMessageToList(messageDTO);
     }
+
+
 }
