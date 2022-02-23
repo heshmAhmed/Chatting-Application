@@ -8,9 +8,15 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IRemoteContactService extends Remote {
-    List<ContactDTO> getAllUserContacts (String userId)throws RemoteException;
-    boolean sendInvitation(InvitationDTO invitationDTO)throws RemoteException;
-    void acceptInvitation(InvitationDTO  invitationDTO)throws RemoteException;
+    List<ContactDTO> getAllUserContacts(String userId) throws RemoteException;
+
+    boolean sendInvitation(InvitationDTO invitationDTO) throws RemoteException;
+
+    void acceptInvitation(InvitationDTO invitationDTO) throws RemoteException;
+
+    void ignoreInvitation(InvitationDTO invitationDTO) throws RemoteException;
+
+    List<InvitationDTO> getAllUserInvitation(String userNumber) throws RemoteException;
 
 
 }

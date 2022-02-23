@@ -8,6 +8,7 @@ import gov.iti.jets.server.services.util.ServiceFactory;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RemoteContactServiceImpl extends UnicastRemoteObject implements IRemoteContactService {
@@ -32,4 +33,21 @@ public class RemoteContactServiceImpl extends UnicastRemoteObject implements IRe
 
         contactService.acceptInvitation(invitationDTO);
     }
+
+    @Override
+    public void ignoreInvitation(InvitationDTO invitationDTO) throws RemoteException {
+        contactService.ignoreInvitation(invitationDTO);
+
+    }
+
+    @Override
+    public List<InvitationDTO> getAllUserInvitation(String userNumber) throws RemoteException {
+        List<InvitationDTO> invitationList = new ArrayList<>();
+        invitationList = contactService.getAllUserInvitation(userNumber);
+
+        return invitationList;
+    }
+
+
+
 }

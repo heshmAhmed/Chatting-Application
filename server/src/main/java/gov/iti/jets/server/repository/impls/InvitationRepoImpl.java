@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InvitationRepoImpl implements IInvitationRepository {
@@ -82,6 +83,34 @@ public class InvitationRepoImpl implements IInvitationRepository {
 
     @Override
     public List<InvitationEntity> getAllUserInvitations(String userPhoneNumber) {
-        return null;
+        List<InvitationEntity> entityList = new ArrayList<>();
+
+        String query = "select d.phone_number, d.username ,u.phone_number ,u.username,us.date\n" +
+                "from users u inner join user_invitations us\n" +
+                "on u.phone_number = us.sender_number\n" +
+                "inner join users d on us.reciever_number = d.phone_number\n" +
+                "where d.phone_number = ? ;";
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, userPhoneNumber);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                InvitationEntity invitation = new InvitationEntity();
+                invitation.setReceiverPhoneNumber(resultSet.getString(1));
+                invitation.setReceiverName(resultSet.getString(2));
+                invitation.setSenderPhoneNumber(resultSet.getString(3));
+                invitation.setSenderName(resultSet.getString(4));
+                invitation.setDate(resultSet.getDate(5).getTime());
+                entityList.add(invitation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return entityList;
     }
+
+
 }

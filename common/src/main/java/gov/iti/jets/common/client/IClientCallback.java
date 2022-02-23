@@ -10,6 +10,6 @@ public interface IClientCallback extends Remote {
 
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException;
     public void receiveInvitation(InvitationDTO invitationDTO)throws RemoteException;
-    public  void receiveNewContact(ContactDTO contactDTO)throws RemoteException;s
+    public  void receiveNewContact(ContactDTO contactDTO)throws RemoteException;
 
 }
