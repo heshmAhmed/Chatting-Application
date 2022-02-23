@@ -1,6 +1,8 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
 import gov.iti.jets.client.network.service.SendMessageService;
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +21,7 @@ import java.io.IOException;
 
 public class ChatAreaControl extends BorderPane {
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
+    UserModel userModel = ModelFactory.getInstance().getUserModel();
     @FXML
     private final ObservableList<HBox> list;
 
@@ -55,8 +58,11 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     private ListView<HBox> chatAreaListView;
 
-    public ChatAreaControl(ObservableList<HBox> list){
+    private String contactId;
+
+    public ChatAreaControl(ObservableList<HBox> list, String contactId){
         this.list = list;
+        this.contactId = contactId;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/chat-area-view.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -70,27 +76,23 @@ public class ChatAreaControl extends BorderPane {
 
     public void initialize(){
         sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e-> {
-            String message = messageTextArea.getText();
-            MessageDTO myMessageDTO = new MessageDTO();
-
-            myMessageDTO.setMessageText(message);
-            myMessageDTO.setReceiverId("12345123456");
-            myMessageDTO.setSenderId("11111111111");
-
-            if(!(message.equals(""))){
-                list.add(new SentMessageControl(myMessageDTO));
-                sendMessageService.sendMessage(myMessageDTO);
-                messageTextArea.setText("");
-            }
+            sendMessage();
         });
     }
 
 
-    public void addMessageToArea(MessageDTO messageDTO){
+    public void sendMessage(){
+        String message = messageTextArea.getText();
+        MessageDTO myMessageDTO = new MessageDTO();
 
-        chatAreaVBox.getChildren().add( (Pane)new SentMessageControl(messageDTO));
+        myMessageDTO.setMessageText(message);
+        myMessageDTO.setReceiverId(contactId);
+        myMessageDTO.setSenderId(userModel.getPhoneNumber());
+
+        if(!(message.equals(""))){
+            list.add(new SentMessageControl(myMessageDTO));
+            sendMessageService.sendMessage(myMessageDTO);
+            messageTextArea.setText("");
+        }
     }
-
-
-
 }
