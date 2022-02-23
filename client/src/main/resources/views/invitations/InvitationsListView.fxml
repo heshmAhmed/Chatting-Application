@@ -3,8 +3,9 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
    <center>
-      <ListView BorderPane.alignment="CENTER" />
+      <ListView fx:id="listView" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

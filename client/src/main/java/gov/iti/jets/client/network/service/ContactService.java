@@ -2,6 +2,7 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.InvitationsListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.server.IRemoteContactService;
@@ -13,6 +14,7 @@ public class ContactService {
     private final static ContactService contactService = new ContactService();
     private final static IRemoteContactService remoteContactService = RegistryFactory.getInstance().getRemoteContactService();
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
+    private final InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
 
     private ContactService() {}
 
@@ -33,4 +35,26 @@ public class ContactService {
             }
         }
     }
+
+    public void acceptInvitation(InvitationDTO invitationDTO){
+        try{
+            remoteContactService.acceptInvitation(invitationDTO);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void denyInvitation(InvitationDTO invitationDTO){
+        try{
+            remoteContactService.ignoreInvitation(invitationDTO);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadUserInvitations() throws RemoteException {
+        List<InvitationDTO> invitationDTOS = remoteContactService.getAllUserInvitation(userModel.getPhoneNumber());
+        invitationDTOS.forEach(invitationsListHelper::loadInvitation);
+    }
+
 }

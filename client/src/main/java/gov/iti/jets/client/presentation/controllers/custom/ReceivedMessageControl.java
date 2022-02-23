@@ -30,13 +30,9 @@ public class ReceivedMessageControl extends HBox {
         @FXML
         private TextFlow textWrapperTextFlow;
 
-
-
         public ReceivedMessageControl(MessageDTO messageDTO){
                 this.messageDTO = messageDTO;
-
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/receivedmessageview/receivedMessageView.fxml"));
-
                 loader.setRoot(this);
                 loader.setController(this);
                 try{
@@ -44,17 +40,11 @@ public class ReceivedMessageControl extends HBox {
                 }catch(IOException ex){
                         ex.printStackTrace();
                 }
-
         }
 
-
         public void initialize(){
-
                 textOfMessage.setText(messageDTO.getMessageText());
                 nameLabel.setText(messageDTO.getSenderId());
                 messageTimeLabel.setText("1-1-1999");
-
         }
-
-
 }

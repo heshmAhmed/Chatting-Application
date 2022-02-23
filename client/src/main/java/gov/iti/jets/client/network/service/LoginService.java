@@ -12,6 +12,7 @@ public class LoginService {
     private static RegistryFactory registryFactory = RegistryFactory.getInstance();
     private IRemoteLoginService remoteLoginService = registryFactory.getRemoteLoginService();
     private ModelFactory modelFactory = ModelFactory.getInstance();
+    private ContactService contactService = ContactService.getInstance();
 
     private LoginService() {
     }
@@ -36,6 +37,7 @@ public class LoginService {
             userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
             modelFactory.fillUserModel(userDTO);
             modelFactory.fillContactModels(userDTO.getContacts());
+            contactService.loadUserInvitations();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
