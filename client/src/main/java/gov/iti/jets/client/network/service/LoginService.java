@@ -2,7 +2,6 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.impls.ClientCallbackImpl;
 import gov.iti.jets.client.network.util.RegistryFactory;
-import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
@@ -28,10 +27,8 @@ public class LoginService {
     }
 
     public boolean validatePassword(String phoneNumber, String password) throws RemoteException {
-//        return remoteLoginService.checkUserPassword(phoneNumber, password);
-    return true;
+        return remoteLoginService.checkUserPassword(phoneNumber, password);
     }
-
 
     public void submitLogin(String id){
         UserDTO userDTO;

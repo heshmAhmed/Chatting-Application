@@ -8,9 +8,7 @@ import java.time.LocalDate;
 
 public class Validation{
     private final static Validation validation = new Validation();
-
     private Validation(){}
-
     public static Validation getInstance() {
         return validation;
     }
@@ -50,15 +48,25 @@ public class Validation{
         }
     }
 
-    public boolean validatePhoneNumber(TextField phoneField,Label label) {
+    public boolean validatePhoneNumber(TextField phoneField, Label label) {
         if (!phoneField.getText().trim().matches("\\d{11,15}")) {
             label.setText("Enter a valid number");
             return false;
         } else {
             label.setText("");
             return true;
-             }
         }
+    }
+
+    public boolean validatePhoneNumber(String phoneNumber, TextField phoneField, Label label) {
+        if (!phoneField.getText().trim().matches("\\d{11,15}") || phoneNumber.equals(phoneField.getText())) {
+            label.setText("Enter a valid number");
+            return false;
+        } else {
+            label.setText("");
+            return true;
+        }
+    }
 
     public boolean validateConfirmPassword(PasswordField passwordField ,PasswordField confirmPasswordField, Label label) {
         if (!passwordField.getText().trim().equals(confirmPasswordField.getText())) {

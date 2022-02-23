@@ -53,4 +53,8 @@ public class ContactListHelper {
         contactList.add(contactControl);
         contactControlMap.put(contactModel.getPhoneNumber(), contactControl);
     }
+
+    public boolean checkIfPhoneExist(String phoneNumber) {
+        return this.contactControlMap.containsKey(phoneNumber);
+    }
 }
