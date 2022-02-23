@@ -2,7 +2,6 @@ package gov.iti.jets.common.client;
 
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.dtos.*;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 

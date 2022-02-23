@@ -41,12 +41,7 @@ public class ModelFactory {
 
     public void fillContactModels(List<ContactDTO> contacts) {
         contacts.forEach(contactDTO -> {
-            ContactModel contactModel = new ContactModel();
-            contactModel.setPhoneNumber(contactDTO.getPhoneNumber());
-            contactModel.setUsername(contactDTO.getUsername());
-            contactModel.setStatus(contactDTO.getStatus());
-            // contactModel.setImage(getImageFromString(contactDTO.getImage()));
-            contactModel.setBio(contactDTO.getBio());
+            ContactModel contactModel= mapUserModelToDTO(contactDTO);
             contactModels.add(contactModel);
             contactListHelper.loadContact(contactModel);
         });
@@ -55,6 +50,15 @@ public class ModelFactory {
     // under testing & need refactoring
     public Image getImageFromString(String decodedImage) {
         return new Image(Arrays.toString(Base64.getDecoder().decode(decodedImage)));
+    }
+    public ContactModel mapUserModelToDTO(ContactDTO contactDTO) {
+        ContactModel contactModel = new ContactModel();
+        contactModel.setPhoneNumber(contactDTO.getPhoneNumber());
+        contactModel.setUsername(contactDTO.getUsername());
+        contactModel.setStatus(contactDTO.getStatus());
+        // contactModel.setImage(getImageFromString(contactDTO.getImage()));
+        contactModel.setBio(contactDTO.getBio());
+        return contactModel;
     }
 
 }

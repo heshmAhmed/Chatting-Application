@@ -60,7 +60,8 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public void acceptInvitation(InvitationDTO invitationDTO) throws RemoteException {
-        ContactDTO contactDTO=new ContactDTO();
+        System.out.println(invitationDTO);
+        ContactDTO contactDTO= new ContactDTO();
         contactRepository.addNewContact(invitationDTO.getReceiverPhoneNumber(), invitationDTO.getSenderPhoneNumber());
         contactRepository.addNewContact(invitationDTO.getSenderPhoneNumber(), invitationDTO.getReceiverPhoneNumber());
         //send accept
