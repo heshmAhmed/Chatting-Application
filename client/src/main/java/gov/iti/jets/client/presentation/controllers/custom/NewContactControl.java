@@ -90,7 +90,8 @@ public class NewContactControl extends ToolBar {
 
     @FXML
     public void handleSendButton(ActionEvent actionEvent) {
-        contactService.sendInvitation(contactList);
+        contactService.sendInvitations(contactList);
+        stageCoordinator.closeAddNewContactPopup();
     }
 
     @FXML

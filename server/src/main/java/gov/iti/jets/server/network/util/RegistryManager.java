@@ -1,13 +1,7 @@
 package gov.iti.jets.server.network.util;
 
-import gov.iti.jets.common.server.IRemoteLoginService;
-import gov.iti.jets.common.server.IRemoteMessageHandler;
-import gov.iti.jets.common.server.IRemoteProfileService;
-import gov.iti.jets.common.server.IRemoteRegistrationService;
-import gov.iti.jets.server.network.RemoteLoginServiceImpl;
-import gov.iti.jets.server.network.RemoteMessageHandelImpl;
-import gov.iti.jets.server.network.RemoteProfileServiceImpl;
-import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
+import gov.iti.jets.common.server.*;
+import gov.iti.jets.server.network.*;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -40,11 +34,13 @@ public class RegistryManager {
             IRemoteRegistrationService iRemoteRegistrationService = new RemoteRegistrationServiceImpl();
             IRemoteMessageHandler iRemoteMessageHandler = new RemoteMessageHandelImpl();
             IRemoteProfileService iRemoteProfileService = new RemoteProfileServiceImpl();
+            IRemoteContactService iRemoteContactService = new RemoteContactServiceImpl();
 
             registry.rebind("RemoteLoginService", iRemoteLoginService);
             registry.rebind("RemoteRegistrationService", iRemoteRegistrationService);
             registry.rebind("RemoteMessageHandler", iRemoteMessageHandler);
             registry.rebind("RemoteProfileService", iRemoteProfileService);
+            registry.rebind("RemoteContactService", iRemoteContactService);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
