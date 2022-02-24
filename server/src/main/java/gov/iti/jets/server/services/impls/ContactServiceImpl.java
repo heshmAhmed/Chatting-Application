@@ -81,7 +81,7 @@ public class ContactServiceImpl implements IContactService {
     @Override
     public void ignoreInvitation(InvitationDTO invitationDTO) throws RemoteException {
 
-        invitationRepo.deleteInvitation(invitationDTO.getSenderPhoneNumber(),invitationDTO.getReceiverPhoneNumber());
+        invitationRepo.deleteInvitation(invitationDTO.getReceiverPhoneNumber(),invitationDTO.getSenderPhoneNumber());
     }
 
     @Override
