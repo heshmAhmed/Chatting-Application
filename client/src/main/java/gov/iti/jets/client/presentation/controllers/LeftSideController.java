@@ -1,29 +1,31 @@
 package gov.iti.jets.client.presentation.controllers;
 
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.PaneCoordinator;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
+    private UserModel userModel;
     private PaneCoordinator paneCoordinator;
     private StageCoordinator stageCoordinator ;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        stageCoordinator = StageCoordinator.getInstance();
-        paneCoordinator = PaneCoordinator.getInstance();
-    }
-
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label bioLabel;
+    @FXML
+    private Label phoneLabel;
     @FXML
     private HBox information;
 
@@ -41,6 +43,16 @@ public class LeftSideController implements Initializable {
 
     @FXML
     private Button update;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        stageCoordinator = StageCoordinator.getInstance();
+        paneCoordinator = PaneCoordinator.getInstance();
+        this.userModel = ModelFactory.getInstance().getUserModel();
+        this.usernameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
+        this.phoneLabel.textProperty().bindBidirectional(userModel.phoneNumberProperty());
+        this.bioLabel.textProperty().bindBidirectional(userModel.bioProperty());
+    }
 
     @FXML
     void logoutClicked(MouseEvent event) {

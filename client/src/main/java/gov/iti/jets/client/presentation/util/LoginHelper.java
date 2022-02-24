@@ -64,15 +64,11 @@ public class LoginHelper{
 
 
     public void handlePasswordValidation() throws RemoteException {
-
         if(myLoginService.validatePassword(numberField.getText(),passwordFieldControl.getPasswordFieldText())){
-//                password validated
-
             myLoginService.submitLogin(numberField.getText());
             stageCoordinator.switchToChatScene();
         }
-        else
-        {
+        else {
             validatePasswordLabel.setText("Wrong Password");
         }
     }

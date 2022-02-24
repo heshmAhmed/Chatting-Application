@@ -1,26 +1,30 @@
 package gov.iti.jets.client.presentation.controllers;
 
-import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
-import gov.iti.jets.client.presentation.dtos.ContactDTO;
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ContactListHelper;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
-    private StageCoordinator stageCoordinator;
-
-
-    List<String> addedContactsList;
+    private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    private UserModel userModel;
+    private List<String> addedContactsList;
+    @FXML
+    private ListView<HBox> contactListView;
 
     @FXML
     private Button addNewContactButton;
@@ -42,24 +46,15 @@ public class ChatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        stageCoordinator = StageCoordinator.getInstance();
-//        userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
+//      userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
+        /////////testing sending message
+        contactListView.setItems(contactListHelper.getContactList());
+        this.userModel = ModelFactory.getInstance().getUserModel();
+        this.userNameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
     }
 
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {
-
-        addedContactsList = new ArrayList<>();
-        stageCoordinator.showAddNewContactPopup(addedContactsList);
-
-        if(addedContactsList.size() > 0)
-        {
-            for(var newContact:addedContactsList){
-                ContactControl contactControl = new ContactControl(new ContactDTO());
-                contactListVBox.getChildren().add(contactControl);
-            }
-        }
-
-
+        stageCoordinator.showAddNewContactPopup();
     }
 
     public void handleProfileIcon(MouseEvent mouseEvent) {

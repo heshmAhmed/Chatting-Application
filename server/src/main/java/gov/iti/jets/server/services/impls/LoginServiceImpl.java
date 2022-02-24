@@ -44,6 +44,7 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public UserDTO getUserData(String phoneNumber) {
         Optional<UserEntity> user = userRepository.findUserByNumber(phoneNumber);
+        System.out.println("login service: " + user);
         return UserEntityMapper.INSTANCE.userEntityToDTO(user.orElseThrow());
     }
 

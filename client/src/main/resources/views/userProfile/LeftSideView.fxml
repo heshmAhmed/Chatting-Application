@@ -25,7 +25,7 @@
                         <children>
                         <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="20" layoutX="142.0" layoutY="103.0" onMouseDragEntered="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125" />
                             <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                            <Label layoutX="74.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                            <Label fx:id="usernameLabel" layoutX="74.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />
                                 </font>
@@ -42,7 +42,7 @@
                                     </FontIcon>
                                 </graphic>
                             </Label>
-                            <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="216.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
+                            <Label fx:id="bioLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="216.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
                                 <font>
                                     <Font size="13.0" />
                                 </font>
@@ -50,7 +50,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </padding>
                             </Label>
-                            <Label layoutX="57.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
+                            <Label fx:id="phoneLabel" layoutX="57.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
                                 <font>
                                     <Font name="Agency FB Bold" size="19.0" />
                                 </font>

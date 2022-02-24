@@ -1,5 +1,6 @@
 package gov.iti.jets.server.presentation.controllers;
 
+import gov.iti.jets.server.services.util.ServerUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,10 +22,12 @@ public class AnnouncementController implements Initializable {
     @FXML
     private Label maleLabel;
 
+
     @FXML
     void handleSend(ActionEvent event) {
-
+       String announcement = htmlEditor.getHtmlText();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

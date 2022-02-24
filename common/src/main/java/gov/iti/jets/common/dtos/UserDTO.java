@@ -2,7 +2,7 @@ package gov.iti.jets.common.dtos;
 
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1420672609912364060L;
@@ -37,6 +37,8 @@ public class UserDTO implements Serializable {
     private String country;
 
     private String bio="";
+
+    private List<ContactDTO> contacts;
 
     public String getEmail() {
         return email;
@@ -118,6 +120,14 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
+    public List<ContactDTO> getContacts() {
+        return this.contacts;
+    }
+
+    public void setContacts(List<ContactDTO> contacts) {
+        this.contacts = contacts;
+    }
+
     public UserDTO(){}
 
     public UserDTO(String phoneNumber , String email , String username , String password , String gender ,long dob, String country){
@@ -130,4 +140,20 @@ public class UserDTO implements Serializable {
         this.dob=dob;
     }
 
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", image='" + image + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", status='" + status + '\'' +
+                ", dob=" + dob +
+                ", gender='" + gender + '\'' +
+                ", country='" + country + '\'' +
+                ", bio='" + bio + '\'' +
+                ", contacts=" + contacts +
+                '}';
+    }
 }

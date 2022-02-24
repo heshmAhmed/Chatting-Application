@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -22,7 +23,7 @@
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <TextField prefHeight="50.0" prefWidth="300.0" />
+            <TextField fx:id="usernameField" prefHeight="50.0" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -38,7 +39,7 @@
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <TextField prefHeight="50.0" prefWidth="300.0" />
+            <TextField fx:id="emailField" prefHeight="50.0" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -54,7 +55,7 @@
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <TextField prefHeight="50.0" prefWidth="300.0" />
+            <TextField fx:id="bioField" prefHeight="50.0" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -73,7 +74,7 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Label>
-            <TextField prefHeight="50.0" prefWidth="300.0" />
+            <TextField fx:id="phoneField" prefHeight="50.0" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -86,7 +87,7 @@
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <ChoiceBox focusTraversable="false" prefHeight="50.0" prefWidth="300.0" styleClass="text-field" HBox.hgrow="ALWAYS">
+            <ChoiceBox fx:id="countryField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" styleClass="text-field" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ChoiceBox>
@@ -105,7 +106,7 @@
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
             </Label>
-            <DatePicker focusTraversable="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
+            <DatePicker fx:id="dateField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -121,7 +122,7 @@
                   <Font name="Agency FB Bold" size="26.0" />
                </font>
             </Label>
-            <MFXButton prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #bf4080;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="23.0" />
                </font>
@@ -148,4 +149,8 @@
          </color>
       </DropShadow>
    </effect>
+   <stylesheets>
+      <URL value="@../../styles/main-style.css" />
+      <URL value="@../../styles/UserInfoView.css" />
+   </stylesheets>
 </VBox>

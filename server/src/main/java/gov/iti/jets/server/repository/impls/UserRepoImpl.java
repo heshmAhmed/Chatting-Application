@@ -41,9 +41,6 @@ public class UserRepoImpl implements IUserRepository {
         return optionalUserEntity;
     }
 
-
-
-
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {
         boolean found = false;
@@ -101,6 +98,19 @@ public class UserRepoImpl implements IUserRepository {
 
     @Override
     public boolean updateUser(UserEntity userEntity) {
-        return false;
+        int rowUpdated = 0;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update users set\n" +
+                    "bio = ?, username = ?, country = ?, date_of_birth = ? where phone_number = ?");
+            preparedStatement.setString(1, userEntity.getBio());
+            preparedStatement.setString(2, userEntity.getUsername());
+            preparedStatement.setString(3, userEntity.getCountry());
+            preparedStatement.setDate(4, new Date(userEntity.getDateOfBirth()));
+            preparedStatement.setString(5, userEntity.getPhoneNumber());
+            rowUpdated = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rowUpdated > 0;
     }
 }

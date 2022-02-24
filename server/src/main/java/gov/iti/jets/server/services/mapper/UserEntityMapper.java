@@ -10,9 +10,9 @@ import org.mapstruct.factory.Mappers;
 public interface UserEntityMapper {
      UserEntityMapper INSTANCE = Mappers.getMapper(UserEntityMapper.class);
 
-     @Mapping(source = "country", target = "country")
+     @Mapping(source = "dateOfBirth", target = "dob")
      UserDTO userEntityToDTO(UserEntity entity);
 
-     @Mapping(source = "country", target = "country")
+     @Mapping(source = "dob", target = "dateOfBirth")
      UserEntity userDTOToEntity(UserDTO dto);
 }

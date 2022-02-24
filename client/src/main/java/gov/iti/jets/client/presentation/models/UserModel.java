@@ -1,20 +1,20 @@
 package gov.iti.jets.client.presentation.models;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.scene.image.Image;
+
+import java.time.LocalDate;
 
 public class UserModel {
     private StringProperty phoneNumber = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private ObjectProperty<Image> image = new SimpleObjectProperty<>();
     private StringProperty username = new SimpleStringProperty();
-    private StringProperty dob = new SimpleStringProperty();
+    private Property<LocalDate> dob = new SimpleObjectProperty<>();
     private StringProperty gender = new SimpleStringProperty();
     private StringProperty country = new SimpleStringProperty();
     private StringProperty bio = new SimpleStringProperty();
+//    add status to userModel
 
     public String getPhoneNumber() {
         return phoneNumber.get();
@@ -64,16 +64,16 @@ public class UserModel {
         this.username.set(username);
     }
 
-    public String getDob() {
-        return dob.get();
+    public LocalDate getDob() {
+        return dob.getValue();
     }
 
-    public StringProperty dobProperty() {
+    public Property<LocalDate> dobProperty() {
         return dob;
     }
 
-    public void setDob(String dob) {
-        this.dob.set(dob);
+    public void setDob(LocalDate dob) {
+        this.dob.setValue(dob);
     }
 
     public String getGender() {
@@ -100,11 +100,30 @@ public class UserModel {
         this.country.set(country);
     }
 
-    public StringProperty getBio() {
-        return bio;
+
+    public String getBio() {
+        return bio.get();
     }
 
     public void setBio(String bio) {
         this.bio.set(bio);
+    }
+
+    public StringProperty bioProperty() {
+        return bio;
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "phoneNumber=" + phoneNumber +
+                ", email=" + email +
+                ", image=" + image +
+                ", username=" + username +
+                ", dob=" + dob +
+                ", gender=" + gender +
+                ", country=" + country +
+                ", bio=" + bio +
+                '}';
     }
 }

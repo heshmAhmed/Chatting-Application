@@ -2,7 +2,6 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.impls.ClientCallbackImpl;
 import gov.iti.jets.client.network.util.RegistryFactory;
-import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
@@ -13,6 +12,7 @@ public class LoginService {
     private static RegistryFactory registryFactory = RegistryFactory.getInstance();
     private IRemoteLoginService remoteLoginService = registryFactory.getRemoteLoginService();
     private ModelFactory modelFactory = ModelFactory.getInstance();
+    private ContactService contactService = ContactService.getInstance();
 
     private LoginService() {
     }
@@ -29,26 +29,18 @@ public class LoginService {
 
     public boolean validatePassword(String phoneNumber, String password) throws RemoteException {
         return remoteLoginService.checkUserPassword(phoneNumber, password);
-//    return true;
     }
 
-
     public void submitLogin(String id){
-
-        UserDTO userDTO = new UserDTO();
-
+        UserDTO userDTO;
         try {
-
             userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
-
+            modelFactory.fillUserModel(userDTO);
+            modelFactory.fillContactModels(userDTO.getContacts());
+            contactService.loadUserInvitations();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
-        System.out.println(userDTO.getPhoneNumber());
-
-        modelFactory.fillUserModel(userDTO);
-
     }
 
 
