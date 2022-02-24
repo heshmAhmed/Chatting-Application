@@ -1,27 +1,19 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
 import gov.iti.jets.client.network.service.ContactService;
-import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.util.InvitationsListHelper;
-import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.common.dtos.InvitationDTO;
-import gov.iti.jets.common.server.IRemoteContactService;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.URL;
 
 
 public class InvitationCardControl extends HBox {
-    private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
-    private IRemoteContactService remoteContactService = RegistryFactory.getInstance().getRemoteContactService();
-    private ContactService contactService = ContactService.getInstance();
+    private final ContactService contactService = ContactService.getInstance();
     private InvitationDTO invitationDTO;
 
     @FXML
@@ -68,8 +60,8 @@ public class InvitationCardControl extends HBox {
 
     public void initialize() {
         acceptBtn.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED,
-                (EventHandler<javafx.scene.input.MouseEvent>) e -> contactService.acceptInvitation(invitationDTO));
+                e -> contactService.acceptInvitation(invitationDTO));
         denyBtn.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED,
-                (EventHandler<javafx.scene.input.MouseEvent>) e -> contactService.denyInvitation(invitationDTO));
+                e -> contactService.denyInvitation(invitationDTO));
     }
 }

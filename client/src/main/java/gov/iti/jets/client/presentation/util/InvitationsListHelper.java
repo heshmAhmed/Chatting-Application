@@ -11,9 +11,7 @@ import java.util.Map;
 public class InvitationsListHelper {
     public static final InvitationsListHelper invitationsListHelper = new InvitationsListHelper();
     private final ObservableList<HBox> invitationsList = FXCollections.observableArrayList();
-    private final Map<String, ObservableList<HBox> > invitationsListMap = new HashMap<>();
-    private final Map<String, InvitationCardControl> contactControlMap = new HashMap<>();
-
+    private final Map<String, HBox> invitationsListMap = new HashMap<>();
 
     private InvitationsListHelper(){}
 
@@ -23,33 +21,14 @@ public class InvitationsListHelper {
         return invitationsList;
     }
 
-    public ObservableList<HBox> createInvitationList(String senderPhoneNumber){
-        ObservableList<HBox> list;
-        if(invitationsListMap.containsKey(senderPhoneNumber))
-        {
-            list = invitationsListMap.get(senderPhoneNumber);
-        } else {
-            list = FXCollections.observableArrayList();
-            invitationsListMap.put(senderPhoneNumber, list);
-        }
-        return list;
-    }
-
-    public void addInvitationToList(InvitationDTO invitationDTO){
-        InvitationCardControl card = new InvitationCardControl(invitationDTO);
-        invitationsList.add(card);
-    }
-
-    public void denyInvitationFromList(InvitationDTO invitationDTO ,InvitationCardControl invitationCardControl){
-        invitationsListMap.get(invitationDTO.getSenderName()).remove(invitationCardControl);
+    public void removeInvitationCard(InvitationDTO invitationDTO) {
+        invitationsList.remove(invitationsListMap.get(invitationDTO.getSenderPhoneNumber()));
     }
 
     public void loadInvitation(InvitationDTO invitationDTO) {
         InvitationCardControl invitationCardControl = new InvitationCardControl(invitationDTO);
-       // invitationCardControl.getInvitationBody().setText(invitationDTO.getSenderName()+": Sent an invitation");
-        // invitationCardControl.getInvitationTime().setText(invitationDTO.getDate()+"");
         invitationsList.add(invitationCardControl);
-        contactControlMap.put(invitationDTO.getSenderPhoneNumber(), invitationCardControl);
+        invitationsListMap.put(invitationDTO.getSenderPhoneNumber(), invitationCardControl);
     }
 
 }

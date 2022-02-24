@@ -6,7 +6,6 @@ import gov.iti.jets.client.presentation.util.InvitationsListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.server.IRemoteContactService;
-
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class ContactService {
     public void acceptInvitation(InvitationDTO invitationDTO){
         try{
             remoteContactService.acceptInvitation(invitationDTO);
+            invitationsListHelper.removeInvitationCard(invitationDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -47,6 +47,7 @@ public class ContactService {
     public void denyInvitation(InvitationDTO invitationDTO){
         try{
             remoteContactService.ignoreInvitation(invitationDTO);
+            invitationsListHelper.removeInvitationCard(invitationDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
