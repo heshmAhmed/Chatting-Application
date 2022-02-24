@@ -2,10 +2,9 @@ package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.presentation.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewContactControl;
-import gov.iti.jets.client.presentation.dtos.ContactDTO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -13,6 +12,8 @@ import javafx.stage.Stage;
 import java.util.*;
 
 import javafx.scene.layout.Pane;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 public class StageCoordinator {
@@ -28,8 +29,8 @@ public class StageCoordinator {
     private final String REGISTRATION_SCENE_PATH = "/views/registration/RegistrationView.fxml";
     private final String CHAT_SCENE = "CHAT_SCENE";
     private final String CHAT_SCENE_PATH = "/views/chatWindow/ChatView.fxml";
-//    private final String ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
     private final String ADD_NEW_CONTACT_PATH = "/views/newcontact/NewContactView.fxml";
+    private Stage addNewContactPopupStage;
 
     private StageCoordinator(){}
 
@@ -40,7 +41,6 @@ public class StageCoordinator {
     public void init(Stage primaryStage){
         this.primaryStage = primaryStage;
         this.paneCoordinator = PaneCoordinator.getInstance();
-
     }
 
     public void switchToUserProfileScene() {
@@ -100,18 +100,19 @@ public class StageCoordinator {
         primaryStage.setScene(chatScene);
     }
 
-    public void showAddNewContactPopup(List<String> addedNewContacts) {
-
-        ScrollPane pane = new NewContactControl(addedNewContacts);
-
-        Stage popupWindow = new Stage();
-        popupWindow.initModality(Modality.APPLICATION_MODAL);
-        popupWindow.setTitle("Add new content");
-
+    public void showAddNewContactPopup() {
+        ToolBar pane = new NewContactControl();
+        addNewContactPopupStage = new Stage();
+        addNewContactPopupStage.initStyle(StageStyle.UNDECORATED);
+        addNewContactPopupStage.initModality(Modality.WINDOW_MODAL);
+        addNewContactPopupStage.setTitle("Add new content");
         Scene scene = new Scene(pane);
-        popupWindow.setScene(scene);
-        popupWindow.showAndWait();
+        addNewContactPopupStage.setScene(scene);
+        addNewContactPopupStage.showAndWait();
+    }
 
+    public void closeAddNewContactPopup() {
+        this.addNewContactPopupStage.close();
     }
 
     public void showContactProfilePopup() {
@@ -137,4 +138,7 @@ public class StageCoordinator {
     }
 
 
+    public void closePrimaryStage() {
+        this.primaryStage.close();
+    }
 }

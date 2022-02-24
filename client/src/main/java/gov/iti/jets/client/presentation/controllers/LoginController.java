@@ -5,6 +5,7 @@ import gov.iti.jets.client.presentation.controllers.custom.PasswordFieldControl;
 import gov.iti.jets.client.presentation.util.LoginHelper;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -47,16 +48,14 @@ public class LoginController {
     @FXML
     private Hyperlink skipHyperlink;
 
-    private Label validateUserLabel = new Label("");
-
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
-        System.out.println("skip");
-        Stage stage = (Stage) skipHyperlink.getScene().getWindow();
-        stage.close();
+        stageCoordinator.closePrimaryStage();
     }
+    private Label validateUserLabel = new Label("");
 
-    public void initialize(){
+
+    public void initialize() {
         loginHelper = new LoginHelper(passwordPlaceholderHBox, validatePasswordLabel,loginButton);
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
         validateUserLabel.setTextFill(Color.web("#e40808"));
@@ -69,11 +68,18 @@ public class LoginController {
 
     @FXML
     void loginClicked(ActionEvent event) throws RemoteException {
-        if(!isPasswordFieldOn){
-            isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
-        }else{
-            loginHelper.handlePasswordValidation();
-        }
+        Platform.runLater(()->{
+            if(!isPasswordFieldOn){
+                isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
+            }else{
+                try {
+                    loginHelper.handlePasswordValidation();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @FXML

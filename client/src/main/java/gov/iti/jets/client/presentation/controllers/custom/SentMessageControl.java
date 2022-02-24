@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
+import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class SentMessageControl extends HBox {
     MessageDTO messageDTO;
@@ -45,13 +48,10 @@ public class SentMessageControl extends HBox {
     }
 
 
-    public void initialize(){
-
+    public void initialize() {
         textOfMessage.setText(messageDTO.getMessageText());
         nameLabel.setText(messageDTO.getSenderId());
-        timeLabel.setText("1-1-1999");
-
-
+        timeLabel.setText(DateHandler.getInstance().getCurrentTime());
     }
 
 }

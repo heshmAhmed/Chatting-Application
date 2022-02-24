@@ -4,6 +4,7 @@ import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.common.dtos.MessageDTO;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
@@ -39,8 +40,8 @@ public class ContactListHelper {
         return list;
     }
 
-    public void addMessageToList(MessageDTO messageDTO){
-        messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO));
+    public void addMessageToList(MessageDTO messageDTO) {
+        Platform.runLater(()-> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
     }
 
     public void loadContact(ContactModel contactModel) {
@@ -50,7 +51,13 @@ public class ContactListHelper {
         // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
-        contactList.add(contactControl);
-        contactControlMap.put(contactModel.getPhoneNumber(), contactControl);
+        Platform.runLater(() -> {
+            contactList.add(contactControl);
+            contactControlMap.put(contactModel.getPhoneNumber(), contactControl);
+        });
+    }
+
+    public boolean checkIfPhoneExist(String phoneNumber) {
+        return this.contactControlMap.containsKey(phoneNumber);
     }
 }

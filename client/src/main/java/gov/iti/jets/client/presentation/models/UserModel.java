@@ -1,7 +1,6 @@
 package gov.iti.jets.client.presentation.models;
 
 import javafx.beans.property.*;
-import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 import java.time.LocalDate;

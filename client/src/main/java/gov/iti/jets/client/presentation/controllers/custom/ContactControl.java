@@ -24,6 +24,7 @@ public class ContactControl extends HBox{
     private ObservableList<HBox> list;
     private final StringProperty status = new SimpleStringProperty();
     private final StringProperty bio = new SimpleStringProperty();
+
     @FXML
     private Label contactNameLabel;
     @FXML
@@ -37,8 +38,11 @@ public class ContactControl extends HBox{
     @FXML
     private ImageView image;
 
+    private String contactId;
+
     public ContactControl(String phoneNumber) {
         list = contactListHelper.createMessageList(phoneNumber);
+        contactId = phoneNumber;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/contactBoxView/ContactView.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -50,7 +54,7 @@ public class ContactControl extends HBox{
     }
 
     public void initialize(){
-        myChatArea = new ChatAreaControl(list);
+        myChatArea = new ChatAreaControl(list, contactId);
         contactNameLabel.setText("dummy name");
         contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));

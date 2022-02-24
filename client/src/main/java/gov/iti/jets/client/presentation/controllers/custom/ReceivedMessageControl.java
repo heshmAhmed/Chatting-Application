@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
+import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +11,10 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ReceivedMessageControl extends HBox {
-
+        DateHandler dateHandler;
         MessageDTO messageDTO;
 
         @FXML
@@ -30,13 +32,9 @@ public class ReceivedMessageControl extends HBox {
         @FXML
         private TextFlow textWrapperTextFlow;
 
-
-
         public ReceivedMessageControl(MessageDTO messageDTO){
                 this.messageDTO = messageDTO;
-
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/receivedmessageview/receivedMessageView.fxml"));
-
                 loader.setRoot(this);
                 loader.setController(this);
                 try{
@@ -44,17 +42,12 @@ public class ReceivedMessageControl extends HBox {
                 }catch(IOException ex){
                         ex.printStackTrace();
                 }
-
         }
-
 
         public void initialize(){
-
+                this.dateHandler = DateHandler.getInstance();
                 textOfMessage.setText(messageDTO.getMessageText());
                 nameLabel.setText(messageDTO.getSenderId());
-                messageTimeLabel.setText("1-1-1999");
-
+                messageTimeLabel.setText(DateHandler.getInstance().getCurrentTime());
         }
-
-
 }

@@ -1,40 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
-    <center>
-        <ScrollPane fitToHeight="true" fitToWidth="true" BorderPane.alignment="CENTER">
-            <content>
-                <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="520.0" spacing="7.0" style="-fx-background-color: #1A1A40;">
-                    <effect>
-                        <DropShadow />
-                    </effect>
-                    <padding>
-                        <Insets bottom="7.0" top="7.0" />
-                    </padding>
-                    <children>
-
-                              <fx:include source="InvitationView.fxml" VBox.vgrow="ALWAYS" />
-                        <fx:include source="InvitationView.fxml" />
-                        <fx:include source="InvitationView.fxml" />
-                        <fx:include source="InvitationView.fxml" />
-
-                              <fx:include source="InvitationView.fxml" />
-                        <fx:include source="InvitationView.fxml" />
-                        <fx:include source="InvitationView.fxml" />
-                        <fx:include source="InvitationView.fxml" />
-
-                              <fx:include source="InvitationView.fxml" />
-
-      
-                          </children>
-                </VBox>
-            </content>
-        </ScrollPane>
-    </center>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
+   <center>
+      <ListView fx:id="listView" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
