@@ -1,9 +1,11 @@
 package gov.iti.jets.server.repository.util;
 
 import gov.iti.jets.server.repository.impls.ContactRepoImpl;
+import gov.iti.jets.server.repository.impls.GroupChatImpl;
 import gov.iti.jets.server.repository.impls.InvitationRepoImpl;
 import gov.iti.jets.server.repository.impls.UserRepoImpl;
 import gov.iti.jets.server.repository.interfaces.IContactRepository;
+import gov.iti.jets.server.repository.interfaces.IGroupChatRepo;
 import gov.iti.jets.server.repository.interfaces.IInvitationRepository;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 
@@ -29,5 +31,9 @@ public class RepoFactory {
 
     public IInvitationRepository getInvitationRepo() {
         return InvitationRepoImpl.getInstance();
+    }
+
+    public IGroupChatRepo getGroupChatRepo() {
+        return GroupChatImpl.getInstance();
     }
 }
