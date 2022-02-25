@@ -23,4 +23,28 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public void serverDisconnected() throws RemoteException {
+
+    }
+
+
 }

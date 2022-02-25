@@ -9,4 +9,12 @@ public interface IClientCallback extends Remote {
 
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException;
 
+
+
+
+
+
+
+    public void serverDisconnected()throws RemoteException;
+
 }
