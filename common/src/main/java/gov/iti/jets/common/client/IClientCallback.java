@@ -6,9 +6,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IClientCallback extends Remote {
-
-    public void receiveMessage(MessageDTO messageDTO) throws RemoteException;
-    public void receiveInvitation(InvitationDTO invitationDTO)throws RemoteException;
-    public  void receiveNewContact(ContactDTO contactDTO)throws RemoteException;
+    void receiveMessage(MessageDTO messageDTO) throws RemoteException;
+    void receiveInvitation(InvitationDTO invitationDTO)throws RemoteException;
+    void receiveNewContact(ContactDTO contactDTO)throws RemoteException;
+    void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException;
 
 }

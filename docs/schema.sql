@@ -89,6 +89,8 @@ insert into chat_groups(group_name, group_img) values("fe la la land2", "/");
 insert into chat_groups(group_name, group_img) values("fe la la land3", "/");
 
 insert into group_users values("01151303667", 1);
+insert into group_users values("01151303667", 2);
+insert into group_users values("01151303667", 3);
 insert into group_users values("01151303668", 2);
 insert into group_users(user_number, group_id) values("01116610853", 1);
   

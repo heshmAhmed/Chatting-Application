@@ -42,15 +42,6 @@ public class ServerUtil {
         onlineUsers.remove(phoneNumber);
     }
 
-    public void sendMessageToUser(MessageDTO messageDTO) {
-        try {
-            onlineUsers.get(messageDTO.getReceiverId()).receiveMessage(messageDTO);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public void sendAnnouncement(String announcement) {
 
     }

@@ -7,13 +7,11 @@ import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
-
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCallback, Serializable {
-
     ContactListHelper contactListHelper = ContactListHelper.getInstance();
     ModelFactory modelFactory = ModelFactory.getInstance();
     InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
@@ -38,6 +36,11 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveNewContact(ContactDTO contactDTO) throws RemoteException {
         System.out.println("recieved new contact");
        contactListHelper.loadContact(modelFactory.mapUserModelToDTO(contactDTO));
+    }
+
+    @Override
+    public void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException {
+        System.out.println(messageDTO);
     }
 
 

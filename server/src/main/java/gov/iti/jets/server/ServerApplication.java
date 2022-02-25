@@ -1,6 +1,7 @@
 package gov.iti.jets.server;
 
 
+import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteProfileService;
 import gov.iti.jets.server.network.RemoteContactServiceImpl;
@@ -9,17 +10,25 @@ import gov.iti.jets.server.network.RemoteProfileServiceImpl;
 import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
 import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
+import gov.iti.jets.server.repository.entity.GroupEntity;
+import gov.iti.jets.server.repository.interfaces.IGroupChatRepo;
+import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.impls.LoginServiceImpl;
+import gov.iti.jets.server.services.interfaces.IGroupService;
 import gov.iti.jets.server.services.interfaces.ILoginService;
+import gov.iti.jets.server.services.mapper.GroupMapper;
+import gov.iti.jets.server.services.util.ServiceFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.mapstruct.Mapper;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -43,7 +52,7 @@ public class ServerApplication extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        registryManager.createRegistry(2005);
+        registryManager.createRegistry(3060);
         registryManager.publishServices();
     }
 
@@ -52,7 +61,7 @@ public class ServerApplication extends Application {
         super.stop();
     }
 
-    public static void main(String[] args) throws RemoteException {
+    public static void main(String[] args) {
         launch();
     }
 }
