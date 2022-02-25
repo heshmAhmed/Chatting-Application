@@ -46,7 +46,6 @@ create table chat_groups (
 create table group_users (
 	user_number varchar(30) not null,
     group_id int not null,
-    username varchar(100),
     foreign key (user_number) references users(phone_number),
     foreign key (group_id) references chat_groups(id)
 );
@@ -89,8 +88,8 @@ insert into chat_groups(group_name, group_img) values("fe la la land1", "/");
 insert into chat_groups(group_name, group_img) values("fe la la land2", "/");
 insert into chat_groups(group_name, group_img) values("fe la la land3", "/");
 
-insert into group_users values("01151303667", 1, "hesham");
-insert into group_users values("01151303668", 2, "hatem");
+insert into group_users values("01151303667", 1);
+insert into group_users values("01151303668", 2);
 insert into group_users(user_number, group_id) values("01116610853", 1);
   
 -- create table user_blocks (
