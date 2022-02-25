@@ -1,15 +1,13 @@
 package gov.iti.jets.client.presentation.controllers;
 
+import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
-import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.common.dtos.Status;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,10 +19,18 @@ import java.util.ResourceBundle;
 public class ChatController implements Initializable {
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
-    private UserModel userModel;
+    private ProfileService profileService;
     private List<String> addedContactsList;
+    private MenuItem availableMenuItem;
+    private MenuItem busyMenuItem;
+    private MenuItem awayMenuItem;
+    private MenuItem offlineMenuItem;
+    private ContextMenu contextMenu;
+
     @FXML
     private ListView<HBox> contactListView;
+    @FXML
+    private Button statusButton;
 
     @FXML
     private Button addNewContactButton;
@@ -46,13 +52,35 @@ public class ChatController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//      userPhotoCircle.addEventHandler(MouseEvent mouseEvent);
-        /////////testing sending message
+        this.profileService = ProfileService.getInstance();
         contactListView.setItems(contactListHelper.getContactList());
-        this.userModel = ModelFactory.getInstance().getUserModel();
-        this.userNameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
+        createContextMenu();
+        handleEventsOnMenuItems();
     }
 
+    private void createContextMenu() {
+        this.contextMenu = new ContextMenu();
+        this.availableMenuItem = new MenuItem(Status.AVAILABLE.name());
+        this.awayMenuItem = new MenuItem(Status.AWAY.name());
+        this.busyMenuItem = new MenuItem(Status.BUSY.name());
+        this.offlineMenuItem = new MenuItem(Status.OFFLINE.name());
+        this.contextMenu.getItems().add(availableMenuItem);
+        this.contextMenu.getItems().add(awayMenuItem);
+        this.contextMenu.getItems().add(busyMenuItem);
+        this.contextMenu.getItems().add(offlineMenuItem);
+    }
+
+    private void handleEventsOnMenuItems() {
+        this.availableMenuItem.setOnAction(event -> profileService.changeStatus(Status.AVAILABLE));
+        this.awayMenuItem.setOnAction(event -> profileService.changeStatus(Status.AWAY));
+        this.busyMenuItem.setOnAction(event -> profileService.changeStatus(Status.BUSY));
+        this.offlineMenuItem.setOnAction(event -> profileService.changeStatus(Status.OFFLINE));
+    }
+
+    @FXML
+    private void handleStatusButton(MouseEvent event) {
+        this.contextMenu.show(this.statusButton, event.getScreenX() + 5, event.getScreenY() + 5);
+    }
     public void handleAddNewContactIcon(MouseEvent mouseEvent) {
         stageCoordinator.showAddNewContactPopup();
     }
@@ -63,4 +91,6 @@ public class ChatController implements Initializable {
 
     public void handleStatusIcon(MouseEvent mouseEvent) {
     }
+
+
 }
