@@ -4,8 +4,14 @@ drop table user_contacts;
 drop table group_users;
 drop table group_chats;
 drop table users;
+DROP TABLE IF EXISTS admin_login;
 
 -- creation -------------------------
+create table admin_login (
+	phone varchar(50) primary key ,
+    password varchar(50) default '123456'
+);
+
 create table users (
 	phone_number varchar(30) primary key,
     username varchar(100) not null,
@@ -80,11 +86,12 @@ create table group_users (
 
 insert into user_contacts values('01555528056','01151303667');
 insert into user_contacts values('01151303667','01555528056');
-  
 insert into user_contacts values('01151303667','01002528056');
 insert into user_contacts values('01002528056','01151303667');
-  
-  
+
+-- admin_login table insertion
+insert into admin_login (`phone`,`password`) values('01097961674','123456789');
+insert into admin_login (`phone`,`password`) values('01297961674','123456789');
   
 -- create table user_blocks (
 -- 	user_number varchar(20) not null,
