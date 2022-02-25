@@ -8,6 +8,8 @@ import gov.iti.jets.common.dtos.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -45,6 +47,12 @@ public class ModelFactory {
             contactModels.add(contactModel);
             contactListHelper.loadContact(contactModel);
         });
+    }
+
+    public List<String> getContactList() {
+        List<String> list = new ArrayList<>();
+        this.contactModels.forEach(contactModel -> list.add(contactModel.getPhoneNumber()));
+        return list;
     }
 
     // under testing & need refactoring

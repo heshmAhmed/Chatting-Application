@@ -60,4 +60,7 @@ public class ChatController implements Initializable {
     public void handleProfileIcon(MouseEvent mouseEvent) {
         stageCoordinator.switchToUserProfileScene();
     }
+
+    public void handleStatusIcon(MouseEvent mouseEvent) {
+    }
 }

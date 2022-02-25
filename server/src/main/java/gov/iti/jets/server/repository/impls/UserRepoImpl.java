@@ -1,5 +1,6 @@
 package gov.iti.jets.server.repository.impls;
 
+import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
 import gov.iti.jets.server.repository.util.DataSourceFactory;
@@ -113,4 +114,20 @@ public class UserRepoImpl implements IUserRepository {
         }
         return rowUpdated > 0;
     }
+
+    @Override
+    public boolean updateStatus(String phoneNumber, Status status) {
+        PreparedStatement preparedStatement;
+        boolean updated = false;
+        try {
+            preparedStatement = connection.prepareStatement("update users set user_status = ? where phone_number = ?");
+            preparedStatement.setString(1, status.toString());
+            preparedStatement.setString(2, phoneNumber);
+            updated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updated;
+    }
+
 }

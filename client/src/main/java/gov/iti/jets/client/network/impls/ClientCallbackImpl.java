@@ -7,6 +7,7 @@ import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
+import gov.iti.jets.common.dtos.Status;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
@@ -38,6 +39,11 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveNewContact(ContactDTO contactDTO) throws RemoteException {
         System.out.println("recieved new contact");
        contactListHelper.loadContact(modelFactory.mapUserModelToDTO(contactDTO));
+    }
+
+    @Override
+    public void receiveStatusChange(String phoneNumber, Status status) throws RemoteException {
+        System.out.println("status changed for user " + phoneNumber + " with status " + status);
     }
 
 
