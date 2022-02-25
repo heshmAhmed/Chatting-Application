@@ -3,6 +3,7 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.common.dtos.Status;
 import javafx.fxml.FXML;
@@ -26,11 +27,15 @@ public class ChatController implements Initializable {
     private MenuItem awayMenuItem;
     private MenuItem offlineMenuItem;
     private ContextMenu contextMenu;
-
+    private UserModel userModel;
     @FXML
     private ListView<HBox> contactListView;
+
     @FXML
     private Button statusButton;
+
+    @FXML
+    private Circle statusIcon;
 
     @FXML
     private Button addNewContactButton;
@@ -53,6 +58,8 @@ public class ChatController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.profileService = ProfileService.getInstance();
+        this.userModel = ModelFactory.getInstance().getUserModel();
+        statusIcon.fillProperty().bindBidirectional(userModel.statusIconPropertyProperty().get().fillProperty());
         contactListView.setItems(contactListHelper.getContactList());
         createContextMenu();
         handleEventsOnMenuItems();

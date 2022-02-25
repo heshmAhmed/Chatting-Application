@@ -8,7 +8,6 @@ import gov.iti.jets.common.dtos.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
@@ -39,6 +38,7 @@ public class ModelFactory {
         userModel.setCountry(userDTO.getCountry());
         userModel.setGender(userDTO.getGender());
         userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
+        userModel.setStatus(userDTO.getStatus());
     }
 
     public void fillContactModels(List<ContactDTO> contacts) {

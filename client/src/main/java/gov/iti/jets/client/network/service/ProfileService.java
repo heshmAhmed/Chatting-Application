@@ -39,6 +39,7 @@ public class ProfileService {
     public void changeStatus(Status status) {
         try {
             iRemoteProfileService.updateUserStatus(userModel.getPhoneNumber(), status, modelFactory.getContactList());
+            userModel.setStatus(status.name());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
