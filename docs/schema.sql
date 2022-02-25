@@ -2,7 +2,7 @@
 drop table user_invitations;
 drop table user_contacts;
 drop table group_users;
-drop table group_chats;
+drop table chat_groups;
 drop table users;
 
 -- creation -------------------------
@@ -37,17 +37,18 @@ create table user_invitations (
     primary key (sender_number, reciever_number)
 );
 
-create table group_chats (
+create table chat_groups (
 	id int auto_increment primary key,
-	name varchar(250) not null,
-    img text
+	group_name varchar(250) not null,
+    group_img text
 );
 
 create table group_users (
 	user_number varchar(30) not null,
     group_id int not null,
+    username varchar(100),
     foreign key (user_number) references users(phone_number),
-    foreign key (group_id) references group_chats(id)
+    foreign key (group_id) references chat_groups(id)
 );
 
 -- ----------- seed ------------------------------------
@@ -57,13 +58,13 @@ create table group_users (
  VALUES ('01151303667', 'hesham', 'hesham901@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('0115928056', ' Elsisi', 'elsisi@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01002528056', ' Elsisi', 'elsisi@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('01555528056', 'hosaam', 'hosam1@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01002528056', 'hatem', 'hatem@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01151303668', 'hatem', 'hatem@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('01095201234', 'shawky', 'eshawky@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
@@ -73,7 +74,7 @@ create table group_users (
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('01095012457', 'essam', 'essam901@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01012458888', 'tarek', 'tareki901@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01116610853', 'tarek', 'tareki901@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('0100215455', 'MElsisi', 'tarek@gmail.com', 'cccc', 'm', 'egypt', '2022-02-18', 'hello', 'online', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  
@@ -84,7 +85,13 @@ insert into user_contacts values('01151303667','01555528056');
 insert into user_contacts values('01151303667','01002528056');
 insert into user_contacts values('01002528056','01151303667');
   
-  
+insert into chat_groups(group_name, group_img) values("fe la la land1", "/");
+insert into chat_groups(group_name, group_img) values("fe la la land2", "/");
+insert into chat_groups(group_name, group_img) values("fe la la land3", "/");
+
+insert into group_users values("01151303667", 1, "hesham");
+insert into group_users values("01151303668", 2, "hatem");
+insert into group_users(user_number, group_id) values("01116610853", 1);
   
 -- create table user_blocks (
 -- 	user_number varchar(20) not null,
