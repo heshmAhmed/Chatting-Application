@@ -8,7 +8,6 @@ import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.dtos.Status;
-
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -44,7 +43,6 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     @Override
     public void receiveStatusChange(String phoneNumber, Status status) throws RemoteException {
         System.out.println("status changed for user " + phoneNumber + " with status " + status);
+        contactListHelper.changeContactStatus(phoneNumber, status);
     }
-
-
 }

@@ -4,7 +4,6 @@ import gov.iti.jets.client.network.service.SendMessageService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.MessageDTO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,10 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-
 import java.io.IOException;
 
 public class ChatAreaControl extends BorderPane {

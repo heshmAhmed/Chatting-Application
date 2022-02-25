@@ -61,5 +61,4 @@ public class ContactService {
         List<InvitationDTO> invitationDTOS = remoteContactService.getAllUserInvitation(userModel.getPhoneNumber());
         invitationDTOS.forEach(invitationsListHelper::loadInvitation);
     }
-
 }
