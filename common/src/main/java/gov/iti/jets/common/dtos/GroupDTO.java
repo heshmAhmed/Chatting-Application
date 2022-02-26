@@ -2,10 +2,11 @@ package gov.iti.jets.common.dtos;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupDTO {
+public class GroupDTO implements Serializable {
     private String id;
     @NotNull
     private String name;

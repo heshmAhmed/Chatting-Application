@@ -12,7 +12,7 @@ public class RegistryFactory {
 
     private RegistryFactory(){
         try {
-            registry = LocateRegistry.getRegistry(3060);
+            registry = LocateRegistry.getRegistry(3000);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -73,4 +73,13 @@ public class RegistryFactory {
         return iRemoteContactService;
     }
 
+    public IRemoteGroupService getRemoteGroupService() {
+        IRemoteGroupService iRemoteGroupService = null;
+        try {
+            iRemoteGroupService = (IRemoteGroupService) registry.lookup("RemoteGroupService");
+        } catch (RemoteException | NotBoundException e) {
+            e.printStackTrace();
+        }
+        return iRemoteGroupService;
+    }
 }

@@ -48,6 +48,7 @@ public class ContactListHelper {
         ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
         contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
+        contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.phoneNumberProperty());
         // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());

@@ -21,6 +21,7 @@ import java.rmi.registry.Registry;
  *  views files must end with View
  *  Controllers naming => subj+Controller no view with it ex: LoginController not LoginViewController
  */
+
 public class ClientApplication extends Application {
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
 

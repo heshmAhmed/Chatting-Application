@@ -2,9 +2,11 @@ package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.presentation.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewContactControl;
+import gov.iti.jets.client.presentation.controllers.custom.NewGroupControl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -31,6 +33,7 @@ public class StageCoordinator {
     private final String CHAT_SCENE_PATH = "/views/chatWindow/ChatView.fxml";
     private final String ADD_NEW_CONTACT_PATH = "/views/newcontact/NewContactView.fxml";
     private Stage addNewContactPopupStage;
+    private Stage addNewGroupPopupStage;
 
     private StageCoordinator(){}
 
@@ -114,6 +117,29 @@ public class StageCoordinator {
     public void closeAddNewContactPopup() {
         this.addNewContactPopupStage.close();
     }
+
+
+    public void showAddNewGroupPopup(){
+
+        AnchorPane pane = new NewGroupControl();
+        addNewGroupPopupStage = new Stage();
+        addNewGroupPopupStage.initStyle(StageStyle.UNDECORATED);
+        addNewGroupPopupStage.initModality(Modality.WINDOW_MODAL);
+        addNewGroupPopupStage.initStyle(StageStyle.TRANSPARENT);
+        Scene scene = new Scene(pane);
+        addNewGroupPopupStage.setScene(scene);
+        addNewGroupPopupStage.showAndWait();
+
+    }
+
+    public void closeAddNewGroupPopup() {
+        this.addNewGroupPopupStage.close();
+    }
+
+    public void showAddContactToGroupPopup(){
+
+    }
+
 
     public void showContactProfilePopup() {
         Stage popupWindow = new Stage();

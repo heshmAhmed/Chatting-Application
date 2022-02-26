@@ -4,22 +4,27 @@ import gov.iti.jets.client.network.service.SendMessageService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.MessageDTO;
-import javafx.collections.FXCollections;
+import gov.iti.jets.common.server.IRemoteMessageHandler;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 
-public class ChatAreaControl extends BorderPane {
+public class  GroupChatAreaControl extends BorderPane{
+
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
     UserModel userModel = ModelFactory.getInstance().getUserModel();
 
@@ -36,16 +41,13 @@ public class ChatAreaControl extends BorderPane {
     private MenuItem attachMenuItem2;
 
     @FXML
-    private MenuItem blockContactAction;
+    private ListView<HBox> chatAreaListView;
 
     @FXML
     private VBox chatAreaVBox;
 
     @FXML
     private Label currentChatName;
-
-    @FXML
-    private MenuButton currentChatOptionsMenuButton;
 
     @FXML
     private Circle currentChatPhotoCircle;
@@ -56,15 +58,12 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     private Button sendMessageButton;
 
-    @FXML
-    private ListView<HBox> chatAreaListView;
+    private String groupId;
 
-    private String contactId;
-
-    public ChatAreaControl(ObservableList<HBox> list, String contactId){
+    public GroupChatAreaControl(ObservableList<HBox> list, String groupId){
         this.list = list;
-        this.contactId = contactId;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/chat-area-view.fxml"));
+        this.groupId = groupId;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/chatareaview/group-chat-area-view.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try{
@@ -75,6 +74,7 @@ public class ChatAreaControl extends BorderPane {
         chatAreaListView.setItems(list);
     }
 
+
     public void initialize(){
         sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e-> {
             sendMessage();
@@ -84,16 +84,24 @@ public class ChatAreaControl extends BorderPane {
 
     private void sendMessage(){
         String message = messageTextArea.getText();
+
         MessageDTO myMessageDTO = new MessageDTO();
 
         myMessageDTO.setMessageText(message);
-        myMessageDTO.setReceiverId(contactId);
+        myMessageDTO.setReceiverId(groupId);
         myMessageDTO.setSenderId(userModel.getPhoneNumber());
 
         if(!(message.equals(""))){
             list.add(new SentMessageControl(myMessageDTO));
-            sendMessageService.sendMessage(myMessageDTO);
+            sendMessageService.sendGroupMessage(myMessageDTO);
             messageTextArea.setText("");
         }
     }
+
+
+    @FXML
+    void handleAddNewContactIcon(MouseEvent event) {
+
+    }
+
 }

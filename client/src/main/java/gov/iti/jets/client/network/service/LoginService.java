@@ -38,6 +38,7 @@ public class LoginService {
             modelFactory.fillUserModel(userDTO);
             modelFactory.fillContactModels(userDTO.getContacts());
             contactService.loadUserInvitations();
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
