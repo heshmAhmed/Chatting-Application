@@ -5,6 +5,9 @@ import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.client.presentation.util.Validation;
 import gov.iti.jets.client.util.DateHandler;
+import gov.iti.jets.common.dtos.Country;
+import gov.iti.jets.common.dtos.Gender;
+import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.common.dtos.UserDTO;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -27,8 +30,8 @@ public class RegistrationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        genderBox.getItems().addAll("Male", "Female");
-        countryBox.getItems().addAll("Egypt", "Iran", "Syria");
+        genderBox.getItems().addAll(Gender.values());
+        countryBox.getItems().addAll(Country.values());
         service = RegistrationService.getInstance();
         datePicker.setValue(LocalDate.of(2011,10,1));
         datePicker.setDayCellFactory(param -> new DateCell() {
