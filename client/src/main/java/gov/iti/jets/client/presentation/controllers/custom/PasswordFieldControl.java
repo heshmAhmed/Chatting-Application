@@ -18,6 +18,9 @@ public class PasswordFieldControl extends HBox{
         return passwordField.getText();
     }
 
+    public void setPasswordFieldText(String string){
+       passwordField.setText(string);
+    }
 
     public PasswordFieldControl(Label passwordLabel){
         this.passwordLabel = passwordLabel;
