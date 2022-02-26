@@ -1,5 +1,6 @@
 package gov.iti.jets.client.network.impls;
 
+import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.InvitationsListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
@@ -37,7 +38,9 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     @Override
     public void receiveNewContact(ContactDTO contactDTO) throws RemoteException {
         System.out.println("recieved new contact");
-       contactListHelper.loadContact(modelFactory.mapUserModelToDTO(contactDTO));
+        ContactModel contactModel = modelFactory.mapContactModelToDTO(contactDTO);
+        modelFactory.addToContactModels(contactModel);
+        contactListHelper.loadContact(contactModel);
     }
 
     @Override
