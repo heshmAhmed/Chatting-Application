@@ -37,7 +37,6 @@ public class ContactControl extends HBox{
     private Circle statusIcon;
     @FXML
     private ImageView image;
-
     private String contactId;
 
     public ContactControl(String phoneNumber) {
@@ -192,6 +191,15 @@ public class ContactControl extends HBox{
     public void setBio(String bio) {
         this.bio.set(bio);
     }
+
+    public String getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
+    }
+
 
     @Override
     public String toString() {

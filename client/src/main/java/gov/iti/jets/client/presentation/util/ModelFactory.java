@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.util;
 
+import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.util.DateHandler;
@@ -8,6 +9,7 @@ import gov.iti.jets.common.dtos.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -37,21 +39,10 @@ public class ModelFactory {
         userModel.setCountry(userDTO.getCountry());
         userModel.setGender(userDTO.getGender());
         userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
+        userModel.setStatus(userDTO.getStatus());
     }
 
-    public void fillContactModels(List<ContactDTO> contacts) {
-        contacts.forEach(contactDTO -> {
-            ContactModel contactModel= mapUserModelToDTO(contactDTO);
-            contactModels.add(contactModel);
-            contactListHelper.loadContact(contactModel);
-        });
-    }
-
-    // under testing & need refactoring
-    public Image getImageFromString(String decodedImage) {
-        return new Image(Arrays.toString(Base64.getDecoder().decode(decodedImage)));
-    }
-    public ContactModel mapUserModelToDTO(ContactDTO contactDTO) {
+    public ContactModel mapContactModelToDTO(ContactDTO contactDTO) {
         ContactModel contactModel = new ContactModel();
         contactModel.setPhoneNumber(contactDTO.getPhoneNumber());
         contactModel.setUsername(contactDTO.getUsername());
@@ -61,4 +52,27 @@ public class ModelFactory {
         return contactModel;
     }
 
+    public void fillContactModels(List<ContactDTO> contacts) {
+        contacts.forEach(contactDTO -> {
+            ContactModel contactModel= mapContactModelToDTO(contactDTO);
+            contactModels.add(contactModel);
+            contactListHelper.loadContact(contactModel);
+        });
+    }
+
+    public List<String> getContactList() {
+        List<String> list = new ArrayList<>();
+        this.contactModels.forEach(contactModel -> list.add(contactModel.getPhoneNumber()));
+        return list;
+    }
+
+    // under testing & need refactoring
+    public Image getImageFromString(String decodedImage) {
+        return new Image(Arrays.toString(Base64.getDecoder().decode(decodedImage)));
+    }
+
+
+    public void addToContactModels(ContactModel contactModel) {
+        this.contactModels.add(contactModel);
+    }
 }

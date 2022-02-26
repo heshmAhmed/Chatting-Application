@@ -19,6 +19,7 @@ public class DataSourceFactory {
     private DataSourceFactory() {
         this.connectionProperties = readConnectionProperties();
         this.hikariConfig = prepareHikariConfig();
+
         this.hikariDataSource = new HikariDataSource(hikariConfig);
     }
 
@@ -35,10 +36,15 @@ public class DataSourceFactory {
         hikariConfig.setJdbcUrl(connectionProperties.getProperty("url"));
         hikariConfig.setUsername(connectionProperties.getProperty("username"));
         hikariConfig.setPassword(connectionProperties.getProperty("password"));
+        //hikariConfig.setMinimumIdle(20);
+        //hikariConfig.setMaximumPoolSize(50);
+        //hikariConfig.setAutoCommit(true);
+        //hikariConfig.setConnectionTimeout(34000);
+        //hikariConfig.setLeakDetectionThreshold(30000);
         hikariConfig.addDataSourceProperty( "cachePrepStmts" , "true" );
         hikariConfig.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         hikariConfig.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
-        //hikariConfig.addDataSourceProperty("maximumPoolSize", 10);
+       // hikariConfig.addDataSourceProperty("maximumPoolSize", "10");
         return hikariConfig;
     }
 

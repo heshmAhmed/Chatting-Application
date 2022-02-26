@@ -4,6 +4,7 @@ import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.common.dtos.MessageDTO;
+import gov.iti.jets.common.dtos.Status;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,6 +49,7 @@ public class ContactListHelper {
         ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
         contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
+        contactControl.getStatusIcon().fillProperty().bindBidirectional(contactModel.statusIconPropertyProperty().get().fillProperty());
         // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
@@ -59,5 +61,9 @@ public class ContactListHelper {
 
     public boolean checkIfPhoneExist(String phoneNumber) {
         return this.contactControlMap.containsKey(phoneNumber);
+    }
+
+    public void changeContactStatus(String phoneNumber, Status status) {
+        this.contactControlMap.get(phoneNumber).setStatus(status.name());
     }
 }

@@ -3,6 +3,7 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.common.dtos.Country;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +20,11 @@ import org.controlsfx.validation.Validator;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserProfileController implements Initializable {
     private ProfileService profileService;
@@ -42,6 +47,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.countryField.getItems().addAll(Stream.of(Country.values()).map(Enum::name).collect(Collectors.toList()));
         this.emailField.setDisable(true);
         this.phoneField.setDisable(true);
         validationSupport = new ValidationSupport();
