@@ -47,6 +47,7 @@ public class ReceivedMessageControl extends HBox {
         public void initialize(){
                 this.dateHandler = DateHandler.getInstance();
                 textOfMessage.setText(messageDTO.getMessageText());
+                textOfMessage.setStyle(messageDTO.getMessageStyle());
                 nameLabel.setText(messageDTO.getSenderId());
                 messageTimeLabel.setText(DateHandler.getInstance().getCurrentTime());
         }
