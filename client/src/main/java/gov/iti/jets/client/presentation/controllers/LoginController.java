@@ -10,10 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+
+import java.io.File;
 import java.rmi.RemoteException;
 
 
 public class LoginController {
+    private SessionManager sessionManager = SessionManager.getInstance();
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final LoginService myLoginService = LoginService.getInstance();
     boolean isPasswordFieldOn = true;
@@ -44,6 +47,8 @@ public class LoginController {
     @FXML
     private Hyperlink skipHyperlink;
 
+    File session = sessionManager.createSession();
+
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
         stageCoordinator.closePrimaryStage();
@@ -59,6 +64,17 @@ public class LoginController {
         loginButton.setText("next");
         isPasswordFieldOn = false;
         numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
+//        if(session.exists()){
+//            String str = sessionManager.readSession(session);
+//            String[] text =  sessionManager.decryption(str);
+//            if(text.length ==2){
+//                System.out.println(text[0]);
+//                System.out.println(text[1]);
+//                numberField.setText(text[0]);
+//                .setText(text[1]);
+//            }
+//
+//        }
     }
 
 
@@ -69,6 +85,7 @@ public class LoginController {
             }else{
                 try {
                     loginHelper.handlePasswordValidation();
+                //    sessionManager.saveSession(session,numberField.getText() , );
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
