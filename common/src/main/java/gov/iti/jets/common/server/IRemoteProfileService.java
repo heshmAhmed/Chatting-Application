@@ -9,5 +9,5 @@ import java.util.List;
 public interface IRemoteProfileService extends Remote {
     boolean updateProfile(UserDTO userDTO) throws RemoteException;
     boolean updateUserStatus(String phoneNumber, Status status, List<String> contacts) throws RemoteException;
-
+    boolean updateUserImage(String phoneNumber, String imagePath, String encodedImage) throws RemoteException;
 }

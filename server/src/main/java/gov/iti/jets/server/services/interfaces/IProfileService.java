@@ -7,4 +7,5 @@ import java.util.List;
 public interface IProfileService {
     boolean updateProfile(UserDTO userDTO);
     boolean updateUserStatus(String phoneNumber, Status status, List<String> contacts);
+    boolean updateUserImage(String phoneNumber, String imagePath, String decodedImage);
 }

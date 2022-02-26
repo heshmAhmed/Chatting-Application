@@ -4,6 +4,7 @@ import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
+import gov.iti.jets.server.repository.util.ImageUtility;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IProfileService;
 import gov.iti.jets.server.services.mapper.UserEntityMapper;
@@ -16,6 +17,7 @@ public class ProfileServiceImpl implements IProfileService {
     private final IUserRepository userRepository = RepoFactory.getInstance().getUserRepo();
     private final static ProfileServiceImpl profileService = new ProfileServiceImpl();
     private final ServerUtil serverUtil = ServerUtil.getInstance();
+    private final ImageUtility imageUtility = ImageUtility.getInstance();
     private ProfileServiceImpl() {}
 
     public static ProfileServiceImpl getInstance() {
@@ -43,5 +45,11 @@ public class ProfileServiceImpl implements IProfileService {
             }
         });
         return true;
+    }
+
+    @Override
+    public boolean updateUserImage(String phoneNumber,String imagePath, String decodedImage) {
+       return imageUtility.writeImageToDisk(phoneNumber + "-" + imagePath,  decodedImage)
+               && userRepository.updateUserImage(phoneNumber, phoneNumber + "-" + imagePath);
     }
 }

@@ -3,6 +3,7 @@ package gov.iti.jets.server.services.impls;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.server.repository.entity.UserEntity;
 import gov.iti.jets.server.repository.interfaces.IUserRepository;
+import gov.iti.jets.server.repository.util.ImageUtility;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.ILoginService;
 import gov.iti.jets.server.services.mapper.UserEntityMapper;
@@ -14,6 +15,7 @@ public class LoginServiceImpl implements ILoginService {
     private final RepoFactory repoFactory = RepoFactory.getInstance();
     private final IUserRepository userRepository = repoFactory.getUserRepo();
     private final HashingFactory hashPassword = HashingFactory.getInstance();
+    private final ImageUtility imageUtility = ImageUtility.getInstance();
 
     private LoginServiceImpl(){
 
@@ -44,8 +46,10 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public UserDTO getUserData(String phoneNumber) {
         Optional<UserEntity> user = userRepository.findUserByNumber(phoneNumber);
-        System.out.println("login service: " + user);
-        return UserEntityMapper.INSTANCE.userEntityToDTO(user.orElseThrow());
+        UserDTO userDTO = UserEntityMapper.INSTANCE.userEntityToDTO(user.orElseThrow());
+        userDTO.setImage(imageUtility.readImage(userDTO.getImage()));
+        System.out.println(userDTO);
+        return userDTO;
     }
 
 }

@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
 
 public class ContactModel {
     private final StringProperty phoneNumber = new SimpleStringProperty();
-    private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Circle> imageCircle = new SimpleObjectProperty<>();
     private final StringProperty username = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
     private final StringProperty bio = new SimpleStringProperty();
@@ -19,6 +19,10 @@ public class ContactModel {
 
     public ContactModel() {
         this.setStatusIconProperty(new Circle());
+        this.setImageCircle(new Circle());
+        addListenerToStatus();
+    }
+    private void addListenerToStatus() {
         status.addListener((observable, oldValue, newValue) -> {
             if(newValue.equals(Status.AVAILABLE.name()))
                 statusIconProperty.get().setFill(Color.valueOf("1AC23C"));
@@ -30,7 +34,6 @@ public class ContactModel {
                 statusIconProperty.get().setFill(Color.valueOf("806A6D"));
         });
     }
-
     public String getPhoneNumber() {
         return phoneNumber.get();
     }
@@ -43,16 +46,16 @@ public class ContactModel {
         this.phoneNumber.set(phoneNumber);
     }
 
-    public Image getImage() {
-        return image.get();
+    public Circle getImageCircle() {
+        return imageCircle.get();
     }
 
-    public ObjectProperty<Image> imageProperty() {
-        return image;
+    public SimpleObjectProperty<Circle> imageCircleProperty() {
+        return imageCircle;
     }
 
-    public void setImage(Image image) {
-        this.image.set(image);
+    public void setImageCircle(Circle imageCircle) {
+        this.imageCircle.set(imageCircle);
     }
 
     public String getUsername() {
@@ -107,7 +110,7 @@ public class ContactModel {
     public String toString() {
         return "ContactModel{" +
                 "phoneNumber=" + phoneNumber +
-                ", image=" + image +
+                ", image=" + imageCircle +
                 ", username=" + username +
                 ", status=" + status +
                 ", bio=" + bio +
