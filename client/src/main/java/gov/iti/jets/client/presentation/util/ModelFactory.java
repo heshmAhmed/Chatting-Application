@@ -16,6 +16,11 @@ public class ModelFactory {
     private final static ModelFactory modelFactory = new ModelFactory();
     private final UserModel userModel = new UserModel();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+
+    public ObservableList<ContactModel> getContactModels() {
+        return contactModels;
+    }
+
     private final ObservableList<ContactModel> contactModels = FXCollections.observableArrayList();
     private final DateHandler dateHandler = DateHandler.getInstance();
 

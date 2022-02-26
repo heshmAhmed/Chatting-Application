@@ -28,6 +28,15 @@ public class ContactListHelper {
         return contactList;
     }
 
+//
+//    public ObservableList<HBox> getContactListCopy(){
+//
+//
+//        ObservableList<HBox> listCopy =  FXCollections.observableArrayList();
+//        FXCollections.copy(listCopy, contactList);
+//        return listCopy;
+//    }
+
     public ObservableList<HBox> createMessageList(String contactId){
         ObservableList<HBox> list;
         if(messageListMap.containsKey(contactId))
@@ -48,7 +57,7 @@ public class ContactListHelper {
         ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
         contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
-        contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.phoneNumberProperty());
+        contactControl.getContactNumberLabel().textProperty().bindBidirectional(contactModel.phoneNumberProperty());
         // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());

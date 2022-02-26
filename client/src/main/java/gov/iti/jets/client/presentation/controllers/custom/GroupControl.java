@@ -20,7 +20,7 @@ public class GroupControl extends HBox{
 
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private GroupListHelper groupListHelper = GroupListHelper.getInstance();
-    private ChatAreaControl myChatArea;
+    private GroupChatAreaControl myChatArea;
     private ObservableList<HBox> list;
 
 
@@ -41,7 +41,6 @@ public class GroupControl extends HBox{
 
     public GroupControl(String groupId){
         this.groupId = groupId;
-        list = groupListHelper.createMessageList(groupId);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/chatWindow/groupBoxView/GroupView.fxml"));
         loader.setRoot(this);
@@ -55,13 +54,15 @@ public class GroupControl extends HBox{
     }
 
     public void initialize(){
-//        myChatArea = new ChatAreaControl(list, groupId);
+        list = groupListHelper.createMessageList(groupId);
+        myChatArea = new GroupChatAreaControl(list, groupId);
+        myChatArea.getCurrentChatName().textProperty().bind(groupNameLabel.textProperty());
+
 //        groupNameLabel.setText("dummy name");
-//        groupHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
-//                (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
+        groupHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
 ////        contactPhotoCircle.setFill();
     }
-
 
     @FXML
     void handleGroupBox(MouseEvent event) {

@@ -5,8 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="TOP_RIGHT" style="-fx-background-color: #1A1A40;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_RIGHT" style="-fx-background-color: #1A1A40;" stylesheets="@../../../styles/main-style.css" type="VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ListView fx:id="contactsList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
       <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" stylesheets="@../../../styles/main-style.css" text="add">
@@ -15,4 +14,4 @@
          </VBox.margin>
       </Button>
    </children>
-</VBox>
+</fx:root>

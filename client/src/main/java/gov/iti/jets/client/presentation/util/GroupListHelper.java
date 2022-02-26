@@ -56,16 +56,16 @@ public class GroupListHelper {
         groupDTO.setImg(new String("encodedImage"));
 
         try {
+
             groupDTO.setId(groupService.createGroup(groupDTO));
+            GroupControl groupControl = new GroupControl(groupDTO.getId());
+            groupControl.getGroupNameLabel().setText(name);
+            groupList.add(groupControl);
+            groupControlMap.put(groupDTO.getId(), groupControl);
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
-        GroupControl groupControl = new GroupControl(groupDTO.getId());
-        groupControl.getGroupNameLabel().setText(name);
-        groupList.add(groupControl);
-
-        groupControlMap.put(groupDTO.getId(), groupControl);
 
     }
 

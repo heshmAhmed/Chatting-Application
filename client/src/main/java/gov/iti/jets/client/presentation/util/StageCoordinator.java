@@ -1,19 +1,19 @@
 package gov.iti.jets.client.presentation.util;
 
+import gov.iti.jets.client.presentation.controllers.custom.AddNewContactToGroupControl;
 import gov.iti.jets.client.presentation.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewContactControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewGroupControl;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.*;
 
-import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
@@ -136,8 +136,17 @@ public class StageCoordinator {
         this.addNewGroupPopupStage.close();
     }
 
-    public void showAddContactToGroupPopup(){
+    public void showAddContactToGroupPopup(ObservableList<String> list){
 
+        VBox pane =  new AddNewContactToGroupControl(list);
+
+        addNewGroupPopupStage = new Stage();
+        addNewGroupPopupStage.initStyle(StageStyle.UNDECORATED);
+        addNewGroupPopupStage.initModality(Modality.WINDOW_MODAL);
+        addNewGroupPopupStage.initStyle(StageStyle.TRANSPARENT);
+        Scene scene = new Scene(pane);
+        addNewGroupPopupStage.setScene(scene);
+        addNewGroupPopupStage.showAndWait();
     }
 
 
@@ -157,7 +166,8 @@ public class StageCoordinator {
 
 
     ////////////this is a pane coordinator task will be modified later////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void setChatScene(ChatAreaControl myChatArea){
+
+    public void setChatScene(BorderPane myChatArea){
         Scene chatScene = sceneMap.get(CHAT_SCENE);
         BorderPane bp = (BorderPane) chatScene.getRoot();
         bp.setCenter(myChatArea);
