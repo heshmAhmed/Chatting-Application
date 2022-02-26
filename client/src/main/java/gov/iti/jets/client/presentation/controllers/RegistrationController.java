@@ -18,6 +18,8 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class RegistrationController implements Initializable {
@@ -30,8 +32,8 @@ public class RegistrationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        genderBox.getItems().addAll(Gender.values());
-        countryBox.getItems().addAll(Country.values());
+        genderBox.getItems().addAll(Stream.of(Gender.values()).map(Enum::name).collect(Collectors.toList()));
+        countryBox.getItems().addAll(Stream.of(Country.values()).map(Enum::name).collect(Collectors.toList()));
         service = RegistrationService.getInstance();
         datePicker.setValue(LocalDate.of(2011,10,1));
         datePicker.setDayCellFactory(param -> new DateCell() {

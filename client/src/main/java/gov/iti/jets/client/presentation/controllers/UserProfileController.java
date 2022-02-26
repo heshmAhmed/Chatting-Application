@@ -20,7 +20,11 @@ import org.controlsfx.validation.Validator;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserProfileController implements Initializable {
     private ProfileService profileService;
@@ -43,7 +47,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.countryField.getItems().addAll(Country.values());
+        this.countryField.getItems().addAll(Stream.of(Country.values()).map(Enum::name).collect(Collectors.toList()));
         this.emailField.setDisable(true);
         this.phoneField.setDisable(true);
         validationSupport = new ValidationSupport();
