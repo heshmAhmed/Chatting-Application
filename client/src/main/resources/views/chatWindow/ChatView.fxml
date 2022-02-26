@@ -76,7 +76,7 @@
                      </children></VBox>
                </content>
             </ScrollPane>
-            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #1A1A40;">
+            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #1A1A40;" VBox.vgrow="ALWAYS">
                <content>
                   <VBox id="contactVBox" fx:id="contactListVBox1" style="-fx-background-color: #1A1A40;">
                      <children>

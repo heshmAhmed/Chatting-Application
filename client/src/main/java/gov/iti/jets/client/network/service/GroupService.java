@@ -1,7 +1,10 @@
 package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.util.RegistryFactory;
+import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.GroupListHelper;
+import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.server.IRemoteGroupService;
 
 import java.rmi.RemoteException;
@@ -11,6 +14,7 @@ public class GroupService {
 
     IRemoteGroupService iRemoteGroupService = RegistryFactory.getInstance().getRemoteGroupService();
     GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    UserModel userModel = ModelFactory.getInstance().getUserModel();
 
     private static final GroupService groupService = new GroupService();
 
@@ -30,6 +34,20 @@ public class GroupService {
         }
         groupListHelper.addContactsToGroup(groupId, selectedContacts);
 
+    }
+
+    public void loadGroups(){
+        try {
+
+            List<GroupDTO> groups = iRemoteGroupService.getUserGroups(userModel.getPhoneNumber());
+
+            groups.forEach(g-> {groupListHelper.getGroupDtosList().put(g.getId(),g);
+                groupListHelper.appenndGroup(g);
+            });
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 }

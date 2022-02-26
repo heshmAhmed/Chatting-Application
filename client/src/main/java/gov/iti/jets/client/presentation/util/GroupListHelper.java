@@ -22,6 +22,11 @@ public class GroupListHelper {
     private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
     private final ObservableList<HBox> groupList = FXCollections.observableArrayList();
     private final Map<String, GroupControl> groupControlMap = new HashMap<>();
+
+    public Map<String, GroupDTO> getGroupDtosList() {
+        return groupDtosList;
+    }
+
     private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
 
     private GroupListHelper(){
@@ -60,15 +65,20 @@ public class GroupListHelper {
         try {
 
             groupDTO.setId(groupService.createGroup(groupDTO));
-            GroupControl groupControl = new GroupControl(groupDTO.getId());
-            groupControl.getGroupNameLabel().setText(name);
-            groupList.add(groupControl);
-            groupDtosList.put(groupDTO.getId(),groupDTO);
-            groupControlMap.put(groupDTO.getId(), groupControl);
-
+            appenndGroup(groupDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void appenndGroup(GroupDTO groupDTO){
+        GroupControl groupControl = new GroupControl(groupDTO.getId());
+        groupControl.getGroupNameLabel().setText(groupDTO.getName());
+
+        groupList.add(groupControl);
+//        groupDtosList.put(groupDTO.getId(),groupDTO);
+        groupControlMap.put(groupDTO.getId(), groupControl);
 
     }
 

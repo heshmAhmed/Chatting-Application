@@ -26,4 +26,9 @@ public class RemoteGroupServiceImpl extends UnicastRemoteObject implements IRemo
 
         ///////////////////////Modify let return weather a successful operation or not
     }
+
+    @Override
+    public List<GroupDTO> getUserGroups(String userId) throws RemoteException {
+        return groupService.getUserGroups(userId);
+    }
 }

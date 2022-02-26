@@ -61,6 +61,7 @@ public class ChatController implements Initializable {
         /////////testing sending message
         contactListView.setItems(contactListHelper.getContactList());
         groupListView.setItems(groupListHelper.getGroupList());
+
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.userNameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
     }

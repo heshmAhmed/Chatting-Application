@@ -10,4 +10,5 @@ public interface IRemoteGroupService extends Remote {
 
     public String createGroup(GroupDTO groupDTO) throws RemoteException;
     public void addContactsToGroup(String groupId, List<String> contacts) throws RemoteException;
+    public List<GroupDTO> getUserGroups(String userId) throws RemoteException;
 }
