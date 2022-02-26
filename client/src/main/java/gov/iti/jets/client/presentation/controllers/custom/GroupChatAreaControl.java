@@ -7,6 +7,7 @@ import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.GroupListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.server.IRemoteMessageHandler;
 import javafx.collections.FXCollections;
@@ -33,6 +34,7 @@ public class  GroupChatAreaControl extends BorderPane{
 
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
     UserModel userModel = ModelFactory.getInstance().getUserModel();
+    GroupListHelper groupListHelper = GroupListHelper.getInstance();
 
     @FXML
     private final ObservableList<HBox> list;
@@ -119,9 +121,17 @@ public class  GroupChatAreaControl extends BorderPane{
     @FXML
     void handleAddNewContactIcon(MouseEvent event) {
 
+        GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
+
         ObservableList<String> list = FXCollections.observableArrayList();
 
-        ModelFactory.getInstance().getContactModels().stream().forEach(c -> list.add(c.getPhoneNumber()));
+        ModelFactory.getInstance().getContactModels().forEach(c -> {
+            if(!(groupDTO.getContacts().contains(c.getPhoneNumber())))
+            {
+                System.out.println(c +"---" + groupDTO.getContacts());
+                list.add(c.getPhoneNumber());
+            }
+        });
 
         System.out.println(list);
 
