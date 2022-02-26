@@ -12,4 +12,6 @@ public interface IUserRepository {
     public boolean insertUser(UserEntity userEntity);
     public boolean deleteUser(String phoneNumber);
     public boolean updateUser(UserEntity userEntity);
+
+
 }

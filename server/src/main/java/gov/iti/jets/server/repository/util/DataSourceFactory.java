@@ -35,6 +35,7 @@ public class DataSourceFactory {
         hikariConfig.setJdbcUrl(connectionProperties.getProperty("url"));
         hikariConfig.setUsername(connectionProperties.getProperty("username"));
         hikariConfig.setPassword(connectionProperties.getProperty("password"));
+        hikariConfig.setMinimumIdle(20);
         hikariConfig.addDataSourceProperty( "cachePrepStmts" , "true" );
         hikariConfig.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         hikariConfig.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
