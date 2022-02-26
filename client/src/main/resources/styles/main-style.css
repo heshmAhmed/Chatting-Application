@@ -29,4 +29,5 @@
 .list-cell:even,
 .list-cell:odd {
   -fx-background-color: transparent;
+  -fx-font-color: white;
 }

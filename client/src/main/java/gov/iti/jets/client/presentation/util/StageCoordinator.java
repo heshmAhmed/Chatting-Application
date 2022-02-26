@@ -136,9 +136,9 @@ public class StageCoordinator {
         this.addNewGroupPopupStage.close();
     }
 
-    public void showAddContactToGroupPopup(ObservableList<String> list){
+    public void showAddContactToGroupPopup(String groupId,ObservableList<String> list){
 
-        VBox pane =  new AddNewContactToGroupControl(list);
+        VBox pane =  new AddNewContactToGroupControl(groupId ,list);
 
         addNewGroupPopupStage = new Stage();
         addNewGroupPopupStage.initStyle(StageStyle.UNDECORATED);
@@ -149,6 +149,9 @@ public class StageCoordinator {
         addNewGroupPopupStage.showAndWait();
     }
 
+    public void closeAddContactToGroupPopup() {
+        this.addNewGroupPopupStage.close();
+    }
 
     public void showContactProfilePopup() {
         Stage popupWindow = new Stage();

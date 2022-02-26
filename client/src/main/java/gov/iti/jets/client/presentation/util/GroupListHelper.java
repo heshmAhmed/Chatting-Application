@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GroupListHelper {
@@ -21,6 +22,7 @@ public class GroupListHelper {
     private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
     private final ObservableList<HBox> groupList = FXCollections.observableArrayList();
     private final Map<String, GroupControl> groupControlMap = new HashMap<>();
+    private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
 
     private GroupListHelper(){
     }
@@ -61,12 +63,17 @@ public class GroupListHelper {
             GroupControl groupControl = new GroupControl(groupDTO.getId());
             groupControl.getGroupNameLabel().setText(name);
             groupList.add(groupControl);
+            groupDtosList.put(groupDTO.getId(),groupDTO);
             groupControlMap.put(groupDTO.getId(), groupControl);
 
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void addContactsToGroup(String groupId, List<String> contacts){
+        groupDtosList.get(groupId).getContacts().addAll(contacts);
     }
 
 

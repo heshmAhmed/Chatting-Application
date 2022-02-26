@@ -55,7 +55,6 @@ public class NewGroupControl extends AnchorPane{
     }
 
 
-
     public void initialize(){
 
         groupNameTextField.addEventHandler(MouseEvent.MOUSE_CLICKED,

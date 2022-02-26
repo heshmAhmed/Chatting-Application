@@ -120,8 +120,9 @@ public class  GroupChatAreaControl extends BorderPane{
 
         ModelFactory.getInstance().getContactModels().stream().forEach(c -> list.add(c.getPhoneNumber()));
 
+        System.out.println(list);
 
-        StageCoordinator.getInstance().showAddContactToGroupPopup(list);
+        StageCoordinator.getInstance().showAddContactToGroupPopup(groupId , list);
 
     }
 
