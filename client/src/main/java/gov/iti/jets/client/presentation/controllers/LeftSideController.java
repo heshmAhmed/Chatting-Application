@@ -10,14 +10,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
-
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+import java.io.FileFilter;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -97,10 +97,13 @@ public class LeftSideController implements Initializable {
     @FXML
     public void handleChangeProfilePictureIcon(MouseEvent mouseClicked) {
         Optional<File> fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
-        fileOptional.ifPresent(file -> profileService.updateProfilePicture(file, file.getName()));
+        fileOptional.ifPresent(file -> {
+            if(file.length() <= 1000000)
+                profileService.updateProfilePicture(file, file.getName());
+        });
     }
     private void initFileChooser() {
         this.fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
     }
 }
