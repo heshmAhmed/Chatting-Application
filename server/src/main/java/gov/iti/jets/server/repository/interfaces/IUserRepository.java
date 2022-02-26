@@ -2,8 +2,6 @@ package gov.iti.jets.server.repository.interfaces;
 
 import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.server.repository.entity.UserEntity;
-
-import java.util.List;
 import java.util.Optional;
 
 public interface IUserRepository {
