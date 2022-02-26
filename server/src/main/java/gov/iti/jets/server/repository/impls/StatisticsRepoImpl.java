@@ -42,6 +42,7 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
             while (resultSet.next()) {
                usersNumByGenderMap.put(resultSet.getString(1),resultSet.getInt(2));
             }
+            System.out.println("get user by gender");
         } catch (SQLException e) {
             e.printStackTrace();
             try {

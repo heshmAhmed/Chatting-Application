@@ -19,16 +19,8 @@ import java.security.Key;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class StaticsController implements Initializable  {
-
+public class StaticsController implements Initializable {
     StatisticServiceImpl statistic = StatisticServiceImpl.getInstance();
-    Map<String, Integer> genderMap = statistic.getGenderStatistic();
-    Map<String, Integer> countryMap = statistic.getCountryStatistic();
-    Map<String, Integer> statusMap = statistic.getStatusStatistic();
-    XYChart.Series series1;
-
-
-
     @FXML
     private BarChart barChart;
 
@@ -55,16 +47,40 @@ public class StaticsController implements Initializable  {
 
     @FXML
     void handelRefreshActionIcon(MouseEvent event) {
+        getStattistics();
+    }
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        getStattistics();
+    }
+
+    private void getStattistics(){
+        Map<String, Integer> countryMap = statistic.getCountryStatistic();
+        System.out.println(barChart.getData().size());
+        if(barChart.getData().size() > 0) {
+            barChart.getData().clear();
+        }
+        System.out.println("After clear "+barChart.getData().size());
+        for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
+            countryMap = statistic.getCountryStatistic();
+            XYChart.Series series = new XYChart.Series();
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            series.getData().add(new XYChart.Data(key, value));
+            barChart.getData().addAll(series);
+        }
+        Map<String, Integer> genderMap = statistic.getGenderStatistic();
         ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
         for (Map.Entry<String, Integer> entry : genderMap.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             chartData.add(new PieChart.Data(key, value));
         }
-
         pieChart.setData(chartData);
 
+        Map<String, Integer> statusMap = statistic.getStatusStatistic();
         for (Map.Entry<String, Integer> entry : statusMap.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
@@ -79,28 +95,6 @@ public class StaticsController implements Initializable  {
             }
 
         }
-
-
-        for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
-            series1 = new XYChart.Series();
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            series1.getData().add(new XYChart.Data(key, value));
-            barChart.getData().addAll(series1);
-
-        }
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
-            series1 = new XYChart.Series();
-            String key = entry.getKey();
-            Integer value = entry.getValue();
-            series1.getData().add(new XYChart.Data(key, value));
-            barChart.getData().addAll(series1);
-
-        }
-    }
 }

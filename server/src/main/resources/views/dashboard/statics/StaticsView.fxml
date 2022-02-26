@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<VBox fx:id="staticsVBox" alignment="CENTER_RIGHT" prefHeight="662.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.StaticsController">
+<VBox fx:id="staticsVBox" alignment="CENTER_RIGHT" prefHeight="662.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.StaticsController">
    <children>
       <HBox prefHeight="57.0" prefWidth="998.0" VBox.vgrow="ALWAYS">
          <children>
@@ -99,12 +94,12 @@
             </Pane>
             <Pane prefHeight="479.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
                <children>
-                  <BarChart fx:id="barChart" layoutX="-3.0" prefHeight="437.0" prefWidth="427.0" title="Countries Statistics">
+                  <BarChart fx:id="barChart" barGap="2.0" categoryGap="5.0" layoutX="-3.0" prefHeight="437.0" prefWidth="427.0" title="Countries Statistics">
                     <xAxis>
                       <CategoryAxis label="Countries" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="Number of users" side="LEFT" />
+                      <NumberAxis autoRanging="false" label="Number of users" minorTickCount="1" minorTickLength="0.0" side="LEFT" tickLabelGap="0.0" tickLength="10.0" tickUnit="1.0" upperBound="15.0" />
                     </yAxis>
                   </BarChart>
                </children>
