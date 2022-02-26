@@ -58,11 +58,11 @@ public class StaticsController implements Initializable {
 
     private void getStattistics(){
         Map<String, Integer> countryMap = statistic.getCountryStatistic();
-        System.out.println(barChart.getData().size());
+        //System.out.println(barChart.getData().size());
         if(barChart.getData().size() > 0) {
             barChart.getData().clear();
         }
-        System.out.println("After clear "+barChart.getData().size());
+        //System.out.println("After clear "+barChart.getData().size());
         for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
             countryMap = statistic.getCountryStatistic();
             XYChart.Series series = new XYChart.Series();
