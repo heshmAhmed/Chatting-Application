@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox fx:id="staticsVBox" prefHeight="662.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.StaticsController">
+<VBox fx:id="staticsVBox" alignment="CENTER_RIGHT" prefHeight="662.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.server.presentation.controllers.StaticsController">
    <children>
       <HBox prefHeight="57.0" prefWidth="998.0" VBox.vgrow="ALWAYS">
          <children>
@@ -89,7 +90,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox prefHeight="446.0" prefWidth="846.0" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="403.0" prefWidth="998.0" VBox.vgrow="ALWAYS">
          <children>
             <Pane prefHeight="446.0" prefWidth="381.0" HBox.hgrow="ALWAYS">
                <children>
@@ -110,5 +111,10 @@
             </Pane>
          </children>
       </HBox>
+      <FontIcon iconColor="#6048d4" iconLiteral="fas-redo" iconSize="20" onMouseClicked="#handelRefreshActionIcon">
+         <VBox.margin>
+            <Insets bottom="30.0" right="30.0" />
+         </VBox.margin>
+      </FontIcon>
    </children>
 </VBox>

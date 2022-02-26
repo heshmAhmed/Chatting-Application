@@ -10,6 +10,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.chart.XYChart;
 import java.net.URL;
@@ -17,13 +19,13 @@ import java.security.Key;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class StaticsController implements Initializable {
+public class StaticsController implements Initializable  {
 
     StatisticServiceImpl statistic = StatisticServiceImpl.getInstance();
     Map<String, Integer> genderMap = statistic.getGenderStatistic();
     Map<String, Integer> countryMap = statistic.getCountryStatistic();
     Map<String, Integer> statusMap = statistic.getStatusStatistic();
-
+    XYChart.Series series1;
 
 
 
@@ -50,49 +52,55 @@ public class StaticsController implements Initializable {
     @FXML
     private VBox staticsVBox;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    @FXML
+    void handelRefreshActionIcon(MouseEvent event) {
+
         ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList();
-        for ( Map.Entry<String,Integer> entry : genderMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : genderMap.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            chartData.add(new PieChart.Data(key , value));
+            chartData.add(new PieChart.Data(key, value));
         }
 
         pieChart.setData(chartData);
 
-
-
-        for ( Map.Entry<String,Integer> entry : countryMap.entrySet()) {
-            XYChart.Series series1 = new XYChart.Series();
+        for (Map.Entry<String, Integer> entry : statusMap.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            series1.getData().add(new XYChart.Data(key,value));
+            if (key.equals("available")) {
+                noAvailableLabel.setText(String.valueOf(value));
+            } else if (key.equals("busy")) {
+                noBusyLabel.setText(String.valueOf(value));
+            } else if (key.equals("away")) {
+                noAwayLabel.setText(String.valueOf(value));
+            } else if (key.equals("offline")) {
+                noOflineLabel.setText(String.valueOf(value));
+            }
+
+        }
+
+
+        for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
+            series1 = new XYChart.Series();
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            series1.getData().add(new XYChart.Data(key, value));
             barChart.getData().addAll(series1);
 
         }
+    }
 
 
-        for ( Map.Entry<String,Integer> entry : statusMap.entrySet()) {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        for (Map.Entry<String, Integer> entry : countryMap.entrySet()) {
+            series1 = new XYChart.Series();
             String key = entry.getKey();
             Integer value = entry.getValue();
-             if(key.equals("available")) {
-                 noAvailableLabel.setText(String.valueOf(value));
-             }
-            else if(key.equals("busy")) {
-                 noBusyLabel.setText(String.valueOf(value));
-            }
-
-            else if(key.equals("away")) {
-                 noAwayLabel.setText(String.valueOf(value));
-            }
-
-             else if(key.equals("offline")) {
-                 noOflineLabel.setText(String.valueOf(value));
-             }
+            series1.getData().add(new XYChart.Data(key, value));
+            barChart.getData().addAll(series1);
 
         }
-
-
     }
 }
