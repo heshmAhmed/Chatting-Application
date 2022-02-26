@@ -28,6 +28,9 @@ public class AddNewContactToGroupControl extends VBox{
     private Button addButton;
 
     @FXML
+    private Button cancelButton;
+
+    @FXML
     private ListView<String> contactsList ;
 
     public ObservableList<String> list;
@@ -63,8 +66,11 @@ public class AddNewContactToGroupControl extends VBox{
             groupService.addContactToGroup(id, selected);
         }
 
+    }
 
-
+    @FXML
+    public void handleCancelButton(ActionEvent event) {
+        StageCoordinator.getInstance().closeAddNewGroupPopup();
     }
 
 

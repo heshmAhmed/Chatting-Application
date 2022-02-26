@@ -1,8 +1,10 @@
 package gov.iti.jets.client.presentation.util;
 
+import gov.iti.jets.client.network.service.GroupService;
 import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.controllers.custom.GroupControl;
 import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
+import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.server.IRemoteGroupService;
 import javafx.application.Platform;
@@ -10,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import org.controlsfx.control.PropertySheet;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
@@ -17,11 +20,13 @@ import java.util.List;
 import java.util.Map;
 
 public class GroupListHelper {
+//    private final GroupService groupService = GroupService.getInstance();
     IRemoteGroupService groupService = RegistryFactory.getInstance().getRemoteGroupService();
     private static final GroupListHelper groupListHelper = new GroupListHelper();
     private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
     private final ObservableList<HBox> groupList = FXCollections.observableArrayList();
     private final Map<String, GroupControl> groupControlMap = new HashMap<>();
+    UserModel userModel = ModelFactory.getInstance().getUserModel();
 
     public Map<String, GroupDTO> getGroupDtosList() {
         return groupDtosList;
@@ -56,19 +61,24 @@ public class GroupListHelper {
 
 
     public void createNewGroup(String name, Image image){
+
         GroupDTO groupDTO = new GroupDTO();
+
         groupDTO.setName(name);
+
+        groupDTO.getContacts().add(userModel.getPhoneNumber());
 
         /////////////////////// Image ///////////////////
         groupDTO.setImg(new String("encodedImage"));
 
         try {
-
             groupDTO.setId(groupService.createGroup(groupDTO));
-            appenndGroup(groupDTO);
+            groupService.addContactsToGroup(groupDTO.getId(), List.of(userModel.getPhoneNumber()));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+        appenndGroup(groupDTO);
 
     }
 
@@ -87,28 +97,12 @@ public class GroupListHelper {
     }
 
 
-
     /*
 
     public void addMessageToList(MessageDTO messageDTO) {
         Platform.runLater(()-> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
     }
 
-
-
-
-    public void loadContact(ContactModel contactModel) {
-        ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
-        contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
-        contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
-        // testing
-        contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
-        contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
-        Platform.runLater(() -> {
-            contactList.add(contactControl);
-            contactControlMap.put(contactModel.getPhoneNumber(), contactControl);
-        });
-    }
 */
 
 }

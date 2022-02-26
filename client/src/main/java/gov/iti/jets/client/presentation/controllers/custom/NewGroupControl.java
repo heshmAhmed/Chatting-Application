@@ -76,6 +76,7 @@ public class NewGroupControl extends AnchorPane{
 
     public void handleAddbutton(){
         String groupName = groupNameTextField.getText();
+
         if(groupName.length() > 0){
             groupListHelper.createNewGroup(groupName, groupPhotoImageView.getImage());
             stageCoordinator.closeAddNewGroupPopup();

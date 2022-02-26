@@ -22,8 +22,8 @@ public class RemoteGroupServiceImpl extends UnicastRemoteObject implements IRemo
 
     @Override
     public void addContactsToGroup(String groupId, List<String> contacts) throws RemoteException {
-        contacts.forEach(u -> groupService.addUserToGroup(u,groupId));
 
+        contacts.forEach(u -> groupService.addUserToGroup(u,groupId));
         ///////////////////////Modify let return weather a successful operation or not
     }
 

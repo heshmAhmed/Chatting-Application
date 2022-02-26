@@ -8,6 +8,7 @@ import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.server.IRemoteGroupService;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupService {

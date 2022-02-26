@@ -52,7 +52,7 @@ public class ServerApplication extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        registryManager.createRegistry(3111);
+        registryManager.createRegistry(3112);
         registryManager.publishServices();
     }
 
