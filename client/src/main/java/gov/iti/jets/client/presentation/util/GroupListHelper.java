@@ -6,6 +6,7 @@ import gov.iti.jets.client.presentation.controllers.custom.GroupControl;
 import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.common.dtos.GroupDTO;
+import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.server.IRemoteGroupService;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -97,12 +98,10 @@ public class GroupListHelper {
     }
 
 
-    /*
-
     public void addMessageToList(MessageDTO messageDTO) {
-        Platform.runLater(()-> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
-    }
 
-*/
+        Platform.runLater(()-> messageListMap.get(messageDTO.getReceiverId()).add(new ReceivedMessageControl(messageDTO)));
+
+    }
 
 }

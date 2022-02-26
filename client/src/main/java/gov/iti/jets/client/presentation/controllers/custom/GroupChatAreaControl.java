@@ -89,28 +89,31 @@ public class  GroupChatAreaControl extends BorderPane{
     }
 
 
-//    public void initialize(){
-//        sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e-> {
-//            sendMessage();
-//        });
-//    }
-//
-//
-//    private void sendMessage(){
-//        String message = messageTextArea.getText();
-//
-//        MessageDTO myMessageDTO = new MessageDTO();
-//
-//        myMessageDTO.setMessageText(message);
-//        myMessageDTO.setReceiverId(groupId);
-//        myMessageDTO.setSenderId(userModel.getPhoneNumber());
-//
-//        if(!(message.equals(""))){
-//            list.add(new SentMessageControl(myMessageDTO));
-//            sendMessageService.sendGroupMessage(myMessageDTO);
-//            messageTextArea.setText("");
-//        }
-//    }
+    public void initialize(){
+        sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e-> {
+            sendMessage();
+        });
+    }
+
+
+    private void sendMessage(){
+        String message = messageTextArea.getText();
+
+        MessageDTO myMessageDTO = new MessageDTO();
+
+        myMessageDTO.setMessageText(message);
+        myMessageDTO.setReceiverId(groupId);
+        myMessageDTO.setSenderId(userModel.getPhoneNumber());
+
+        if(!(message.equals(""))){
+
+            list.add(new SentMessageControl(myMessageDTO));
+
+            sendMessageService.sendGroupMessage(myMessageDTO);
+            messageTextArea.setText("");
+
+        }
+    }
 
 
     @FXML

@@ -22,6 +22,7 @@ public class RemoteMessageHandelImpl extends UnicastRemoteObject implements IRem
 
     @Override
     public void sendGroupMessage(MessageDTO messageDTO, List<String> groupContacts) {
+        System.out.println("message to group is here" + messageDTO.getMessageText() + messageDTO.getSenderId());
         messageService.sendMsgToGroup(messageDTO, groupContacts);
     }
 }
