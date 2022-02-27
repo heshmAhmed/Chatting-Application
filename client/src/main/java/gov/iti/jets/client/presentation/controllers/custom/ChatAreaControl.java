@@ -39,6 +39,25 @@ public class ChatAreaControl extends BorderPane {
     private VBox chatAreaVBox;
 
     @FXML
+    private Circle chatStatusCircle;
+
+    public Label getCurrentChatName() {
+        return currentChatName;
+    }
+
+    public void setCurrentChatName(Label currentChatName) {
+        this.currentChatName = currentChatName;
+    }
+
+    public Circle getCurrentChatPhotoCircle() {
+        return currentChatPhotoCircle;
+    }
+
+    public void setCurrentChatPhotoCircle(Circle currentChatPhotoCircle) {
+        this.currentChatPhotoCircle = currentChatPhotoCircle;
+    }
+
+    @FXML
     private Label currentChatName;
 
     @FXML
@@ -92,5 +111,13 @@ public class ChatAreaControl extends BorderPane {
             sendMessageService.sendMessage(myMessageDTO);
             messageTextArea.setText("");
         }
+    }
+
+    public Circle getChatStatusCircle() {
+        return chatStatusCircle;
+    }
+
+    public void setChatStatusCircle(Circle chatStatusCircle) {
+        this.chatStatusCircle = chatStatusCircle;
     }
 }

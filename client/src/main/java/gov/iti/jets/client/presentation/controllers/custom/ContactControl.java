@@ -63,6 +63,9 @@ public class ContactControl extends HBox{
 
     public void initialize(){
         myChatArea = new ChatAreaControl(list, contactId);
+        myChatArea.getCurrentChatName().textProperty().bindBidirectional(contactNameLabel.textProperty());
+        myChatArea.getCurrentChatPhotoCircle().fillProperty().bindBidirectional(contactPhotoCircle.fillProperty());
+        myChatArea.getChatStatusCircle().fillProperty().bindBidirectional(statusIcon.fillProperty());
         contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
 //        contactPhotoCircle.setFill();
