@@ -23,6 +23,7 @@ public class LoginHelper{
     ModelFactory modelFactory = ModelFactory.getInstance();
     LoginService myLoginService = LoginService.getInstance();
     StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private static int COUNTER = 0 ;
 
     public LoginHelper(HBox passwordPlaceHolderHBox, Label validatePasswordLabel, Button loginButton){
         this.passwordPlaceHolderHBox = passwordPlaceHolderHBox;
@@ -43,16 +44,15 @@ public class LoginHelper{
         return false;
     }
 
-
-
     private boolean checkPhoneNumberValidity(TextField numberField) throws RemoteException {
         String phoneNumber = numberField.getText();
-
         if (myLoginService.validatePhoneNumber(phoneNumber)) {
-
             passwordFieldControl = new PasswordFieldControl(validatePasswordLabel);
             passwordPlaceHolderHBox.getChildren().add(passwordFieldControl);
-            numberField.setDisable(true);
+            while (COUNTER <= 0){
+                numberField.setDisable(true);
+                COUNTER++;
+            }
             loginButton.setText("login");
             return true;
         } else {
@@ -67,6 +67,7 @@ public class LoginHelper{
         if(myLoginService.validatePassword(numberField.getText(),passwordFieldControl.getPasswordFieldText())){
             myLoginService.submitLogin(numberField.getText());
             stageCoordinator.switchToChatScene();
+            passwordFieldControl.setPasswordFieldText("");
         }
         else {
             validatePasswordLabel.setText("Wrong Password");

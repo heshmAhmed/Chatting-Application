@@ -23,9 +23,12 @@
                 <children>
                     <AnchorPane maxHeight="-Infinity" prefHeight="313.0" prefWidth="240.0">
                         <children>
-                        <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="20" layoutX="142.0" layoutY="103.0" onMouseDragEntered="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125" />
-                            <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                            <Label fx:id="usernameLabel" layoutX="74.0" layoutY="95.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                        <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="25" layoutX="144.0" layoutY="110.0" onMouseClicked="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></FontIcon>
+                            <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
+                            <Label fx:id="usernameLabel" layoutX="79.0" layoutY="120.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />
                                 </font>
@@ -50,7 +53,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </padding>
                             </Label>
-                            <Label fx:id="phoneLabel" layoutX="57.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
+                            <Label fx:id="phoneLabel" layoutX="62.0" layoutY="156.0" text="+0201097961674" textFill="#acacac">
                                 <font>
                                     <Font name="Agency FB Bold" size="19.0" />
                                 </font>

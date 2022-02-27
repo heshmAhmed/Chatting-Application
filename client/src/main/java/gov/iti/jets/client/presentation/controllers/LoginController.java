@@ -2,25 +2,21 @@ package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.LoginService;
 import gov.iti.jets.client.presentation.controllers.custom.PasswordFieldControl;
-import gov.iti.jets.client.presentation.util.LoginHelper;
-import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.client.presentation.util.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import java.rmi.RemoteException;
 
 
 public class LoginController {
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final LoginService myLoginService = LoginService.getInstance();
-    boolean isPasswordFieldOn;
+    boolean isPasswordFieldOn = true;
     private PasswordFieldControl passwordFieldControl;
     private LoginHelper loginHelper;
 
@@ -54,7 +50,6 @@ public class LoginController {
     }
     private Label validateUserLabel = new Label("");
 
-
     public void initialize() {
         loginHelper = new LoginHelper(passwordPlaceholderHBox, validatePasswordLabel,loginButton);
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
@@ -66,9 +61,9 @@ public class LoginController {
         numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
     }
 
+
     @FXML
-    void loginClicked(ActionEvent event) throws RemoteException {
-        Platform.runLater(()->{
+    void loginClicked(ActionEvent event){
             if(!isPasswordFieldOn){
                 isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
             }else{
@@ -78,8 +73,6 @@ public class LoginController {
                     e.printStackTrace();
                 }
             }
-        });
-
     }
 
     @FXML

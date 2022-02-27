@@ -9,18 +9,9 @@ import java.sql.*;
 import java.util.Optional;
 
 public class UserRepoImpl implements IUserRepository {
-    private Connection connection;
     private final static UserRepoImpl userRepo = new UserRepoImpl();
     private final ResultSetMapper resultSetMapper = ResultSetMapper.getInstance();
-
-
-    private UserRepoImpl() {
-        try {
-            connection = DataSourceFactory.getInstance().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    private UserRepoImpl() {}
 
     public static UserRepoImpl getInstance() {
         return userRepo;
@@ -30,7 +21,7 @@ public class UserRepoImpl implements IUserRepository {
     public Optional<UserEntity> findUserByNumber(String phoneNumber) {
         PreparedStatement preparedStatement = null;
         Optional<UserEntity> optionalUserEntity = Optional.empty();
-        try {
+        try(Connection connection = DataSourceFactory.getInstance().getConnection()) {
             preparedStatement = connection.prepareStatement("select * from users where phone_number = ?");
             preparedStatement.setString(1, phoneNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -45,7 +36,7 @@ public class UserRepoImpl implements IUserRepository {
     @Override
     public boolean isPhoneNumberExist(String phoneNumber) {
         boolean found = false;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("select phone_number from users where phone_number = ?");
             preparedStatement.setString(1, phoneNumber);
@@ -60,7 +51,7 @@ public class UserRepoImpl implements IUserRepository {
     @Override
     public boolean isEmailExist(String email) {
         boolean found = false;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("select email from users where email = ?");
             preparedStatement.setString(1, email);
@@ -75,7 +66,7 @@ public class UserRepoImpl implements IUserRepository {
     @Override
     public boolean insertUser(UserEntity userEntity) {
         int rowsInserted = 0;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement("insert into users " +
                     "(phone_number ,username,email,gender,country,date_of_birth,pass )values (?,?,?,?,?,?,?)");
             preparedStatement.setString(1, userEntity.getPhoneNumber());
@@ -100,7 +91,7 @@ public class UserRepoImpl implements IUserRepository {
     @Override
     public boolean updateUser(UserEntity userEntity) {
         int rowUpdated = 0;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement("update users set\n" +
                     "bio = ?, username = ?, country = ?, date_of_birth = ? where phone_number = ?");
             preparedStatement.setString(1, userEntity.getBio());
@@ -119,9 +110,24 @@ public class UserRepoImpl implements IUserRepository {
     public boolean updateStatus(String phoneNumber, Status status) {
         PreparedStatement preparedStatement;
         boolean updated = false;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()){
             preparedStatement = connection.prepareStatement("update users set user_status = ? where phone_number = ?");
             preparedStatement.setString(1, status.toString());
+            preparedStatement.setString(2, phoneNumber);
+            updated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updated;
+    }
+
+    @Override
+    public boolean updateUserImage(String phoneNumber, String imgPath) {
+        PreparedStatement preparedStatement;
+        boolean updated = false;
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
+            preparedStatement = connection.prepareStatement("update users set image = ? where phone_number = ?");
+            preparedStatement.setString(1, imgPath);
             preparedStatement.setString(2, phoneNumber);
             updated = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {

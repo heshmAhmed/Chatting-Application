@@ -13,6 +13,8 @@ public class LoginService {
     private IRemoteLoginService remoteLoginService = registryFactory.getRemoteLoginService();
     private ModelFactory modelFactory = ModelFactory.getInstance();
     private ContactService contactService = ContactService.getInstance();
+    private UserDTO userDTO;
+    private GroupService groupService = GroupService.getInstance();
 
     private LoginService() {
     }
@@ -38,6 +40,8 @@ public class LoginService {
             modelFactory.fillUserModel(userDTO);
             modelFactory.fillContactModels(userDTO.getContacts());
             contactService.loadUserInvitations();
+            groupService.loadGroups();
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
