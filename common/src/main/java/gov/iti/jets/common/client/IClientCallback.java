@@ -10,4 +10,6 @@ public interface IClientCallback extends Remote {
     void receiveInvitation(InvitationDTO invitationDTO)throws RemoteException;
     void receiveNewContact(ContactDTO contactDTO) throws RemoteException;
     void receiveStatusChange(String phoneNumber, Status status) throws RemoteException;
+    void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException;
+
 }

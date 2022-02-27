@@ -4,13 +4,14 @@ import gov.iti.jets.common.dtos.Status;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import java.time.LocalDate;
 
 public class UserModel {
     private final StringProperty phoneNumber = new SimpleStringProperty();
     private final StringProperty email = new SimpleStringProperty();
-    private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Circle> userImageCircle = new SimpleObjectProperty<>();
     private final StringProperty username = new SimpleStringProperty();
     private final Property<LocalDate> dob = new SimpleObjectProperty<>();
     private final StringProperty gender = new SimpleStringProperty();
@@ -21,6 +22,11 @@ public class UserModel {
 
     public UserModel() {
         this.setStatusIconProperty(new Circle());
+        this.setUserImageCircle(new Circle());
+        addListenerToStatus();
+    }
+
+    private void addListenerToStatus() {
         status.addListener((observable, oldValue, newValue) -> {
             if(newValue.equals(Status.AVAILABLE.name()))
                 statusIconProperty.get().setFill(Color.valueOf("1AC23C"));
@@ -57,16 +63,16 @@ public class UserModel {
         this.email.set(email);
     }
 
-    public Image getImage() {
-        return image.get();
+    public Circle getUserImageCircle() {
+        return userImageCircle.get();
     }
 
-    public ObjectProperty<Image> imageProperty() {
-        return image;
+    public SimpleObjectProperty<Circle> userImageCircleProperty() {
+        return userImageCircle;
     }
 
-    public void setImage(Image image) {
-        this.image.set(image);
+    public void setUserImageCircle(Circle userImageCircle) {
+        this.userImageCircle.set(userImageCircle);
     }
 
     public String getUsername() {
@@ -158,7 +164,6 @@ public class UserModel {
         return "UserModel{" +
                 "phoneNumber=" + phoneNumber +
                 ", email=" + email +
-                ", image=" + image +
                 ", username=" + username +
                 ", dob=" + dob +
                 ", gender=" + gender +

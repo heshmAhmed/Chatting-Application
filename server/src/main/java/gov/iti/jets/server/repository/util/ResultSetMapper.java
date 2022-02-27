@@ -1,6 +1,7 @@
 package gov.iti.jets.server.repository.util;
 
 import gov.iti.jets.server.repository.entity.ContactEntity;
+import gov.iti.jets.server.repository.entity.GroupEntity;
 import gov.iti.jets.server.repository.entity.UserEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 public class ResultSetMapper {
     private static final ResultSetMapper mapper = new ResultSetMapper();
+    private ImageUtility imageUtility = ImageUtility.getInstance();
     private ResultSetMapper() {}
 
     public static ResultSetMapper getInstance() {
@@ -22,7 +24,7 @@ public class ResultSetMapper {
             userEntity.setUsername(resultSet.getString("username"));
             userEntity.setEmail(resultSet.getString("email"));
             userEntity.setPassword(resultSet.getString("pass"));
-            userEntity.setImage(resultSet.getString("image"));
+            userEntity.setImage(imageUtility.readImage(resultSet.getString("image")));
             userEntity.setGender(resultSet.getString("gender"));
             userEntity.setCountry(resultSet.getString("country"));
             userEntity.setDateOfBirth(resultSet.getDate("date_of_birth").getTime());
@@ -43,12 +45,26 @@ public class ResultSetMapper {
             contactEntity.setUsername(resultSet.getString("username"));
             contactEntity.setStatus(resultSet.getString("user_status"));
             contactEntity.setBio(resultSet.getString("bio"));
-            contactEntity.setImage(resultSet.getString("image"));
+            contactEntity.setImage(imageUtility.readImage(resultSet.getString("image")));
             contactEntityOptional = Optional.of(contactEntity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return contactEntityOptional;
+    }
+
+    public Optional<GroupEntity> mapToGroupEntity(ResultSet resultSet) {
+        Optional<GroupEntity> groupEntityOptional = Optional.empty();
+        try {
+            GroupEntity groupEntity = new GroupEntity();
+            groupEntity.setId(resultSet.getLong("id"));
+            groupEntity.setName(resultSet.getString("group_name"));
+            groupEntity.setImg(resultSet.getString("group_img"));
+            groupEntityOptional = Optional.of(groupEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return groupEntityOptional;
     }
 
 

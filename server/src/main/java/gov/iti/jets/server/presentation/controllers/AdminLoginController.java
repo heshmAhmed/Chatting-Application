@@ -38,6 +38,7 @@ public class AdminLoginController implements Initializable {
         if(validation.validatePhoneNumber(phoneFiled,phoneLabel) && validation.validatePassword(passwordField,passwordLabel)){
             if(adminLoginHelper.getAdmin(phoneNumber,currentPassword)){
                 validAdminLabel.setText("");
+                passwordField.setText("");
             }else{
                 validAdminLabel.setText("Admin not exists");
             }

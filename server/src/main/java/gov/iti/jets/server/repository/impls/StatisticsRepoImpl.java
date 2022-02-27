@@ -11,19 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StatisticsRepoImpl implements IStatisticsRepository  {
-    private Connection connection;
     private final static StatisticsRepoImpl statisticsRepo = new StatisticsRepoImpl();
 
-    private StatisticsRepoImpl() {
-        try {
-            connection = DataSourceFactory.getInstance().getConnection();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-
-    }
+    private StatisticsRepoImpl() {}
 
     public static StatisticsRepoImpl getInstance() {
         return statisticsRepo;
@@ -36,7 +26,7 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
                 "from users \n" +
                 "group by  (gender);";
 
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -45,16 +35,6 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
             System.out.println("get user by gender");
         } catch (SQLException e) {
             e.printStackTrace();
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                try {
-                    connection.close();
-                } catch (SQLException exc) {
-                    exc.printStackTrace();
-                }
-            }
         }
         return usersNumByGenderMap;
     }
@@ -67,7 +47,7 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
                 "FROM users\n" +
                 "GROUP BY user_status ;";
 
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -75,24 +55,18 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
         return usersStatusMap;
     }
 
     @Override
     public Map<String, Integer> getUserByCounty() {
-
         Map<String,Integer>usersCountyMap = new HashMap<>();
         String query = "SELECT country ,COUNT(*)\n" +
                 "FROM users\n" +
                 "GROUP BY country;";
 
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -100,14 +74,8 @@ public class StatisticsRepoImpl implements IStatisticsRepository  {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            try {
-                connection.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
         }
         return usersCountyMap;
-
     }
 
 }

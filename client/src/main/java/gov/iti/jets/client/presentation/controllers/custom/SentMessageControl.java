@@ -52,6 +52,7 @@ public class SentMessageControl extends HBox {
         textOfMessage.setText(messageDTO.getMessageText());
         nameLabel.setText(messageDTO.getSenderId());
         timeLabel.setText(DateHandler.getInstance().getCurrentTime());
+        textOfMessage.setStyle(messageDTO.getMessageStyle());
     }
 
 }

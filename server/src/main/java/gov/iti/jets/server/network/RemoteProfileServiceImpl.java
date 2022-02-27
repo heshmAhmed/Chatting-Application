@@ -24,4 +24,9 @@ public class RemoteProfileServiceImpl extends UnicastRemoteObject implements IRe
     public boolean updateUserStatus(String phoneNumber, Status status, List<String> contacts) throws RemoteException{
        return profileService.updateUserStatus(phoneNumber, status, contacts);
     }
+
+    @Override
+    public boolean updateUserImage(String phoneNumber,String imagePath, String encodedImage) throws RemoteException {
+        return profileService.updateUserImage(phoneNumber, imagePath, encodedImage);
+    }
 }
