@@ -22,7 +22,7 @@
                   <Insets top="3.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="contactMessageLabel" text="message" textFill="#fcfbfb">
+            <Label fx:id="contactNumberLabel" text="message" textFill="#fcfbfb">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

@@ -6,10 +6,7 @@ import gov.iti.jets.server.services.interfaces.*;
 public class ServiceFactory {
     private final static ServiceFactory serviceFactory = new ServiceFactory();
 
-    private ServiceFactory() {
-
-    }
-
+    private ServiceFactory() {}
     public static ServiceFactory getInstance() {
         return serviceFactory;
     }
@@ -29,4 +26,6 @@ public class ServiceFactory {
         return StatisticServiceImpl.getInstance();
     }
 
+    public IGroupService getGroupService() { return GroupService.getInstance(); }
+    public MessageServiceImpl getMessageService() {return MessageServiceImpl.getInstance();}
 }

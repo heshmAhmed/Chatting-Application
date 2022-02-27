@@ -19,6 +19,7 @@ import java.io.IOException;
 public class ChatAreaControl extends BorderPane {
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
     UserModel userModel = ModelFactory.getInstance().getUserModel();
+
     @FXML
     private final ObservableList<HBox> list;
 
@@ -78,7 +79,7 @@ public class ChatAreaControl extends BorderPane {
     }
 
 
-    public void sendMessage(){
+    private void sendMessage(){
         String message = messageTextArea.getText();
         MessageDTO myMessageDTO = new MessageDTO();
 

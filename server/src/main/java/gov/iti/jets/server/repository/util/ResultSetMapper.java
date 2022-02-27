@@ -1,6 +1,7 @@
 package gov.iti.jets.server.repository.util;
 
 import gov.iti.jets.server.repository.entity.ContactEntity;
+import gov.iti.jets.server.repository.entity.GroupEntity;
 import gov.iti.jets.server.repository.entity.UserEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,6 +51,20 @@ public class ResultSetMapper {
             e.printStackTrace();
         }
         return contactEntityOptional;
+    }
+
+    public Optional<GroupEntity> mapToGroupEntity(ResultSet resultSet) {
+        Optional<GroupEntity> groupEntityOptional = Optional.empty();
+        try {
+            GroupEntity groupEntity = new GroupEntity();
+            groupEntity.setId(resultSet.getLong("id"));
+            groupEntity.setName(resultSet.getString("group_name"));
+            groupEntity.setImg(resultSet.getString("group_img"));
+            groupEntityOptional = Optional.of(groupEntity);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return groupEntityOptional;
     }
 
 

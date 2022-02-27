@@ -1,11 +1,15 @@
 package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.ProfileService;
+import gov.iti.jets.client.presentation.controllers.custom.GroupControl;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
+import gov.iti.jets.client.presentation.util.GroupListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.common.dtos.Status;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -21,6 +25,10 @@ public class ChatController implements Initializable {
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
     private ProfileService profileService;
+    private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+
+    private UserModel userModel;
+
     private List<String> addedContactsList;
     private MenuItem availableMenuItem;
     private MenuItem busyMenuItem;
@@ -28,6 +36,10 @@ public class ChatController implements Initializable {
     private MenuItem offlineMenuItem;
     private ContextMenu contextMenu;
     private UserModel userModel;
+
+    @FXML
+    private ListView<HBox> groupListView;
+
     @FXML
     private ListView<HBox> contactListView;
 
@@ -76,6 +88,10 @@ public class ChatController implements Initializable {
         this.contextMenu.getItems().add(awayMenuItem);
         this.contextMenu.getItems().add(busyMenuItem);
         this.contextMenu.getItems().add(offlineMenuItem);
+        groupListView.setItems(groupListHelper.getGroupList());
+
+        this.userModel = ModelFactory.getInstance().getUserModel();
+        this.userNameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
     }
 
     private void handleEventsOnMenuItems() {
@@ -101,4 +117,13 @@ public class ChatController implements Initializable {
     }
 
 
+
+    public void handleAddNewGroupIcon(MouseEvent mouseEvent) {
+
+        stageCoordinator.showAddNewGroupPopup();
+
+//        ObservableList<HBox> list = FXCollections.observableArrayList();
+//        list.add(new GroupControl("hello"));
+//        groupListView.setItems(list);
+    }
 }

@@ -14,6 +14,8 @@ public class LoginService {
     private ModelFactory modelFactory = ModelFactory.getInstance();
     private ContactService contactService = ContactService.getInstance();
     private UserDTO userDTO;
+    private GroupService groupService = GroupService.getInstance();
+
     private LoginService() {
     }
 
@@ -32,34 +34,17 @@ public class LoginService {
     }
 
     public void submitLogin(String id){
-        System.err.println(id);
-        if(userDTO == null){
-            try {
-                userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
-                modelFactory.fillUserModel(userDTO);
-                modelFactory.fillContactModels(userDTO.getContacts());
-                contactService.loadUserInvitations();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }else{
-            if(!userDTO.getPhoneNumber().equals(id)){
-                System.out.println(userDTO.getPhoneNumber().equals(id));
-                userDTO.getContacts().clear();
-                System.out.println(userDTO.getContacts().size());
-                modelFactory.fillContactModels(userDTO.getContacts());
-                try {
-                    userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
-                    modelFactory.fillUserModel(userDTO);
-                    modelFactory.fillContactModels(userDTO.getContacts());
-                    contactService.loadUserInvitations();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
+        UserDTO userDTO;
+        try {
+            userDTO =  remoteLoginService.getUser(id, new ClientCallbackImpl());
+            modelFactory.fillUserModel(userDTO);
+            modelFactory.fillContactModels(userDTO.getContacts());
+            contactService.loadUserInvitations();
+            groupService.loadGroups();
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
-
-
     }
 
 

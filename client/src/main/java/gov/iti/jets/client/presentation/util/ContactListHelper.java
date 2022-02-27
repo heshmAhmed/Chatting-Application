@@ -50,6 +50,7 @@ public class ContactListHelper {
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
         contactControl.getContactPhotoCircle().fillProperty().bindBidirectional(contactModel.imageCircleProperty().get().fillProperty());
         contactControl.getStatusIcon().fillProperty().bindBidirectional(contactModel.statusIconPropertyProperty().get().fillProperty());
+        contactControl.getContactNumberLabel().textProperty().bindBidirectional(contactModel.phoneNumberProperty());
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
         Platform.runLater(() -> {
