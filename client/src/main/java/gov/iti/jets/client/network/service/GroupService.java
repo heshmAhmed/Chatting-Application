@@ -5,10 +5,10 @@ import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.GroupListHelper;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.GroupDTO;
+import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.common.server.IRemoteGroupService;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GroupService {
@@ -37,13 +37,13 @@ public class GroupService {
 
     }
 
-    public void loadGroups(){
+    public void loadGroups() {
         try {
 
             List<GroupDTO> groups = iRemoteGroupService.getUserGroups(userModel.getPhoneNumber());
 
             groups.forEach(g-> {groupListHelper.getGroupDtosList().put(g.getId(),g);
-                groupListHelper.appenndGroup(g);
+                groupListHelper.appendGroup(g);
             });
 
         } catch (RemoteException e) {

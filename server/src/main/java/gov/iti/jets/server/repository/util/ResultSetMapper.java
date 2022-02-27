@@ -59,7 +59,7 @@ public class ResultSetMapper {
             GroupEntity groupEntity = new GroupEntity();
             groupEntity.setId(resultSet.getLong("id"));
             groupEntity.setName(resultSet.getString("group_name"));
-            groupEntity.setImg(resultSet.getString("group_img"));
+            groupEntity.setImg(imageUtility.readImage(resultSet.getString("group_img")));
             groupEntityOptional = Optional.of(groupEntity);
         } catch (SQLException e) {
             e.printStackTrace();

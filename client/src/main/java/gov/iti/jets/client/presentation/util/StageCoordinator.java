@@ -114,13 +114,11 @@ public class StageCoordinator {
         this.addNewContactPopupStage.close();
     }
 
-
     public void showAddNewGroupPopup(){
-
         AnchorPane pane = new NewGroupControl();
         addNewGroupPopupStage = new Stage();
         addNewGroupPopupStage.initStyle(StageStyle.UNDECORATED);
-        addNewGroupPopupStage.initModality(Modality.WINDOW_MODAL);
+        addNewGroupPopupStage.initModality(Modality.APPLICATION_MODAL);
         addNewGroupPopupStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(pane);
         addNewGroupPopupStage.setScene(scene);
