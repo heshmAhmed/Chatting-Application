@@ -18,8 +18,7 @@ public class ContactListHelper {
     private final ObservableList<HBox> contactList = FXCollections.observableArrayList();
     private final Map<String, ContactControl> contactControlMap = new HashMap<>();
 
-    private ContactListHelper(){
-    }
+    private ContactListHelper(){}
 
     public static ContactListHelper getInstance(){
         return  contactListHelper;

@@ -141,4 +141,11 @@ public class  GroupChatAreaControl extends BorderPane{
 
     }
 
+    public Circle getCurrentChatPhotoCircle() {
+        return currentChatPhotoCircle;
+    }
+
+    public void setCurrentChatPhotoCircle(Circle currentChatPhotoCircle) {
+        this.currentChatPhotoCircle = currentChatPhotoCircle;
+    }
 }

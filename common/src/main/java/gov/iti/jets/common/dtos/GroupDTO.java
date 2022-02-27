@@ -1,6 +1,8 @@
 package gov.iti.jets.common.dtos;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ public class GroupDTO implements Serializable {
     private String id;
     @NotNull
     private String name;
+    @NotNull @NotEmpty @Size(min=1)
     private String img;
 
     private List<String> contacts;

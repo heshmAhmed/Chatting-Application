@@ -16,33 +16,27 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class NewGroupControl extends AnchorPane{
-
-    StageCoordinator stageCoordinator = StageCoordinator.getInstance();
-    GroupListHelper groupListHelper = GroupListHelper.getInstance();
-
+    private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private FileChooser fileChooser;
     @FXML
     private TextField groupNameTextField;
-
     @FXML
     private ImageView groupPhotoImageView;
-
     @FXML
     private Button addButton;
-
     @FXML
     private Button cancelButton;
-
     @FXML
     private Label notValidLabel;
-
+    private Optional<File> fileOptional = Optional.empty();
 
     public NewGroupControl(){
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/newcontact/new-group-view.fxml"));
-
         loader.setRoot(this);
         loader.setController(this);
         try{
@@ -50,35 +44,24 @@ public class NewGroupControl extends AnchorPane{
         }catch(IOException ex){
             ex.printStackTrace();
         }
-
-
     }
-
 
     public void initialize(){
-
         groupNameTextField.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> notValidLabel.setText(""));
-
-
-
         addButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> handleAddbutton() );
-
-
         cancelButton.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e ->  stageCoordinator.closeAddNewGroupPopup());
-
         groupPhotoImageView.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e ->  handlePhotoImageView());
+        initFileChooser();
     }
-
 
     public void handleAddbutton(){
         String groupName = groupNameTextField.getText();
-
         if(groupName.length() > 0){
-            groupListHelper.createNewGroup(groupName, groupPhotoImageView.getImage());
+            groupListHelper.createNewGroup(groupName, fileOptional);
             stageCoordinator.closeAddNewGroupPopup();
         }else{
             notValidLabel.setText("Please enter a name");
@@ -86,15 +69,16 @@ public class NewGroupControl extends AnchorPane{
     }
 
     public void handlePhotoImageView(){
-        FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog(null);
-
-        if(selectedFile != null){
-            System.out.println(selectedFile.getPath());
-
-            Image image = new Image(String.valueOf(selectedFile.getAbsolutePath()));
-            groupPhotoImageView.setImage(image);
-        }
+        fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
+        fileOptional.ifPresent(file -> {
+            if (file.length() <= 3000000) {
+                groupPhotoImageView.setImage(new Image(file.getPath()));
+            }
+        });
     }
 
+    private void initFileChooser() {
+        this.fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
+    }
 }

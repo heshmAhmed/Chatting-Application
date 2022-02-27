@@ -40,4 +40,20 @@ public class ImageUtility {
         }
         return written;
     }
+
+    public String[] splitOverSpace(String encodedImage) {
+        int i = 0;
+        StringBuilder image = new StringBuilder();
+        StringBuilder imagePath = new StringBuilder();
+        while(encodedImage.charAt(i) != ' ') {
+            imagePath.append(encodedImage.charAt(i));
+            i++;
+        }
+        i++;
+        while(i < encodedImage.length()) {
+            image.append(encodedImage.charAt(i));
+            i++;
+        }
+        return new String[]{imagePath.toString(), image.toString()};
+    }
 }

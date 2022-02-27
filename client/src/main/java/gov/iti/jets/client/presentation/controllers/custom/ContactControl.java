@@ -1,12 +1,10 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
-import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -19,7 +17,6 @@ import java.io.IOException;
 public class ContactControl extends HBox{
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private ContactListHelper contactListHelper = ContactListHelper.getInstance();
-    private ContactModel contactModel;
     private ChatAreaControl myChatArea;
     private ObservableList<HBox> list;
     private final StringProperty status = new SimpleStringProperty();
@@ -66,27 +63,10 @@ public class ContactControl extends HBox{
         myChatArea.getCurrentChatName().textProperty().bindBidirectional(contactNameLabel.textProperty());
         myChatArea.getCurrentChatPhotoCircle().fillProperty().bindBidirectional(contactPhotoCircle.fillProperty());
         myChatArea.getChatStatusCircle().fillProperty().bindBidirectional(statusIcon.fillProperty());
-        contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
-//        contactPhotoCircle.setFill();
+        contactHBox.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> stageCoordinator.setChatScene(myChatArea));
         this.image = new ImageView();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////clean up
     public ChatAreaControl getChatArea (){
         return myChatArea;
     }
@@ -107,13 +87,6 @@ public class ContactControl extends HBox{
         this.contactListHelper = contactListHelper;
     }
 
-    public ContactModel getContactModel() {
-        return contactModel;
-    }
-
-    public void setContactModel(ContactModel contactModel) {
-        this.contactModel = contactModel;
-    }
 
     public ChatAreaControl getMyChatArea() {
         return myChatArea;
@@ -209,7 +182,6 @@ public class ContactControl extends HBox{
         return "ContactControl{" +
                 "stageCoordinator=" + stageCoordinator +
                 ", contactListHelper=" + contactListHelper +
-                ", contactModel=" + contactModel +
                 ", myChatArea=" + myChatArea +
                 ", list=" + list +
                 ", status=" + status +
