@@ -48,7 +48,8 @@ public class ModelFactory {
         userModel.setGender(userDTO.getGender());
         userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
         userModel.setStatus(userDTO.getStatus());
-        userModel.getUserImageCircle().setFill(new ImagePattern(decodeImage(userDTO.getImage())));
+        if(!userDTO.getImage().equals(""))
+            userModel.getUserImageCircle().setFill(new ImagePattern(decodeImage(userDTO.getImage())));
     }
 
     public ContactModel mapContactModelToDTO(ContactDTO contactDTO) {
@@ -56,7 +57,8 @@ public class ModelFactory {
         contactModel.setPhoneNumber(contactDTO.getPhoneNumber());
         contactModel.setUsername(contactDTO.getUsername());
         contactModel.setStatus(contactDTO.getStatus());
-        contactModel.getImageCircle().setFill(new ImagePattern(decodeImage(contactDTO.getImage())));
+        if(!contactDTO.getImage().equals(""))
+            contactModel.getImageCircle().setFill(new ImagePattern(decodeImage(contactDTO.getImage())));
         contactModel.setBio(contactDTO.getBio());
         return contactModel;
     }
