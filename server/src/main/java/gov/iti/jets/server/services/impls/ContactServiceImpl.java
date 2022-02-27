@@ -38,9 +38,7 @@ public class ContactServiceImpl implements IContactService {
         List<ContactEntity> contacts = contactRepository.getUserContacts(userId);
         List<ContactDTO> contactDTOS = new ArrayList<>();
         for (ContactEntity user : contacts) {
-            ContactDTO contactDTO = ContactDtoMapper.INSTANCE.contactEntityToDTO(user);
-            contactDTO.setImage(imageUtility.readImage(contactDTO.getImage()));
-            contactDTOS.add(contactDTO);
+            contactDTOS.add(ContactDtoMapper.INSTANCE.contactEntityToDTO(user));
         }
         System.out.println("contact service: " + contactDTOS);
         return contactDTOS;

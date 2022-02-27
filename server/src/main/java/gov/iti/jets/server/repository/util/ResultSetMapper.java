@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public class ResultSetMapper {
     private static final ResultSetMapper mapper = new ResultSetMapper();
+    private ImageUtility imageUtility = ImageUtility.getInstance();
     private ResultSetMapper() {}
 
     public static ResultSetMapper getInstance() {
@@ -22,7 +23,7 @@ public class ResultSetMapper {
             userEntity.setUsername(resultSet.getString("username"));
             userEntity.setEmail(resultSet.getString("email"));
             userEntity.setPassword(resultSet.getString("pass"));
-            userEntity.setImage(resultSet.getString("image"));
+            userEntity.setImage(imageUtility.readImage(resultSet.getString("image")));
             userEntity.setGender(resultSet.getString("gender"));
             userEntity.setCountry(resultSet.getString("country"));
             userEntity.setDateOfBirth(resultSet.getDate("date_of_birth").getTime());
@@ -43,7 +44,7 @@ public class ResultSetMapper {
             contactEntity.setUsername(resultSet.getString("username"));
             contactEntity.setStatus(resultSet.getString("user_status"));
             contactEntity.setBio(resultSet.getString("bio"));
-            contactEntity.setImage(resultSet.getString("image"));
+            contactEntity.setImage(imageUtility.readImage(resultSet.getString("image")));
             contactEntityOptional = Optional.of(contactEntity);
         } catch (SQLException e) {
             e.printStackTrace();
