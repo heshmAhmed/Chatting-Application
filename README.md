@@ -1,22 +1,49 @@
 # Chatting-Application
 
-ITI 9-months scholarship java track - JETS
+> JavaFx Chatting Application with RMI Client Server model - ITI 9-months scholarship java track - JETS
 
-JavaFx Chatting Application with rmi client server model
-
-## Layered architecture & Multi Module Project & Mysql db
+> Layered architecture & Multi Module Project & Mysql db
 
 ## Client project 
-  responsible for client side (Javafx GUI)
+  Responsible for client side (Javafx GUI)
 
 ## Server project
-  responsible for server side, rmi, admin app
+  Responsible for server side, rmi, admin app
 
 ## Common project 
-  responsible for handling interfaces and dtos used by client and server
+  Responsible for handling interfaces and dtos used by client and server
   
   
 ## DB
-using Hikaricp pooling to handle multiple connection to database
+Using Hikaricp pooling to handle multiple connection to database
 
+## Requirement
 
+##### Java SE 11
+##### Javafx 17.0.2
+##### Apache Maven 3.8.4
+
+## How to run
+
+#### Install the Common Project
+
+Go to the Common project & in your terminal
+
+```
+mvn clean compile install
+```
+
+#### Run the Server Project
+
+Go to the Server project & in your terminal
+
+```
+mvn clean compile javafx:run
+```
+
+#### Run the Client Project
+
+Go to the Client project & in your terminal
+``` 
+mvn clean compile javafx:run
+```
