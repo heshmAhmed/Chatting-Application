@@ -15,7 +15,6 @@ public class LoginServiceImpl implements ILoginService {
     private final RepoFactory repoFactory = RepoFactory.getInstance();
     private final IUserRepository userRepository = repoFactory.getUserRepo();
     private final HashingFactory hashPassword = HashingFactory.getInstance();
-    private final ImageUtility imageUtility = ImageUtility.getInstance();
 
     private LoginServiceImpl(){
 
@@ -46,10 +45,7 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public UserDTO getUserData(String phoneNumber) {
         Optional<UserEntity> user = userRepository.findUserByNumber(phoneNumber);
-        UserDTO userDTO = UserEntityMapper.INSTANCE.userEntityToDTO(user.orElseThrow());
-        userDTO.setImage(imageUtility.readImage(userDTO.getImage()));
-        System.out.println(userDTO);
-        return userDTO;
+        return UserEntityMapper.INSTANCE.userEntityToDTO(user.orElseThrow());
     }
 
 }
