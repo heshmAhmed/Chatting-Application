@@ -1,10 +1,7 @@
 package gov.iti.jets.client.network.impls;
 
 import gov.iti.jets.client.presentation.models.ContactModel;
-import gov.iti.jets.client.presentation.util.ContactListHelper;
-import gov.iti.jets.client.presentation.util.GroupListHelper;
-import gov.iti.jets.client.presentation.util.InvitationsListHelper;
-import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.*;
 import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.InvitationDTO;
@@ -54,6 +51,11 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
         System.out.println(messageDTO);
         groupListHelper.addMessageToList(messageDTO);
 
+    }
+
+    @Override
+    public void receiveAnnouncement(String announcement){
+        Popups.receiveNotification(announcement);
     }
 
 
