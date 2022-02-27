@@ -62,11 +62,8 @@ public class GroupListHelper {
 
 
     public void createNewGroup(String name, Image image){
-
         GroupDTO groupDTO = new GroupDTO();
-
         groupDTO.setName(name);
-
         groupDTO.getContacts().add(userModel.getPhoneNumber());
 
         /////////////////////// Image ///////////////////
@@ -74,11 +71,12 @@ public class GroupListHelper {
 
         try {
             groupDTO.setId(groupService.createGroup(groupDTO));
+            System.out.println("groupListHelper " + groupDTO.getId());
             groupService.addContactsToGroup(groupDTO.getId(), List.of(userModel.getPhoneNumber()));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
+        groupDtosList.put(groupDTO.getId(),groupDTO);
         appenndGroup(groupDTO);
 
     }
@@ -88,9 +86,9 @@ public class GroupListHelper {
         groupControl.getGroupNameLabel().setText(groupDTO.getName());
 
         groupList.add(groupControl);
-//        groupDtosList.put(groupDTO.getId(),groupDTO);
         groupControlMap.put(groupDTO.getId(), groupControl);
 
+        System.out.println(groupControlMap);
     }
 
     public void addContactsToGroup(String groupId, List<String> contacts){

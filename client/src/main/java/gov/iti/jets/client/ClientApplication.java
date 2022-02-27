@@ -1,17 +1,12 @@
 package gov.iti.jets.client;
 
-import gov.iti.jets.client.network.service.LoginService;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
 /* folders & packages start with small letter
  *  naming camelCase functions/variables/.......

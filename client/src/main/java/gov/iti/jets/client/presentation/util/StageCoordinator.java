@@ -1,7 +1,6 @@
 package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.presentation.controllers.custom.AddNewContactToGroupControl;
-import gov.iti.jets.client.presentation.controllers.custom.ChatAreaControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewContactControl;
 import gov.iti.jets.client.presentation.controllers.custom.NewGroupControl;
 import javafx.collections.ObservableList;
@@ -11,11 +10,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.util.*;
-
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 
 public class StageCoordinator {
