@@ -78,7 +78,7 @@ public class ChatAreaControl extends BorderPane {
     private String weight = "NORMAL";
     private String fontFamily = "Verdana ";
     private String fontSize = "18 px ";
-    private String messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+    private String messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
             "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
 
     public ChatAreaControl(ObservableList<HBox> list, String contactId) {
@@ -127,7 +127,7 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     void handleColor(ActionEvent event) {
         color = toHexString(colorPicker.getValue());
-        messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+        messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                 "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
         messageTextArea.setStyle(messageStyle);
 
@@ -137,7 +137,7 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     void handleFontFamily(ActionEvent event) {
         fontFamily = fontFamilyLBox.getSelectionModel().getSelectedItem().toString();
-        messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+        messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                 "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
         messageTextArea.setStyle(messageStyle);
     }
@@ -145,7 +145,7 @@ public class ChatAreaControl extends BorderPane {
     @FXML
     void handleFontSize(ActionEvent event) {
         fontSize = fonSizeBox.getSelectionModel().getSelectedItem().toString();
-        messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+        messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                 "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
         messageTextArea.setStyle(messageStyle);
     }
@@ -154,13 +154,13 @@ public class ChatAreaControl extends BorderPane {
     void handleBoldButton(ActionEvent event) {
         if (boldButton.isSelected()) {
             weight = "BOLD";
-            messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+            messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
             System.out.println(messageStyle);
         } else {
             weight = "NORMAL";
-            messageStyle = "-fx-text-fill : " + color + "; -fx-font-family : " + fontFamily + ";" +
+            messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
             System.out.println(messageStyle);

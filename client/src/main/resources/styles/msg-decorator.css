@@ -1,0 +1,11 @@
+.list-cell:even,
+.list-cell:odd {
+   -fx-font-size: 15;
+  -fx-background-color: transparent;
+  -fx-text-fill: black;
+}
+
+.list-cell:filled:hover:focused,
+.list-cell:filled:hover{
+    -fx-background-color:grey;
+}
