@@ -61,6 +61,7 @@ public class ChatController implements Initializable {
         this.userModel = ModelFactory.getInstance().getUserModel();
         statusIcon.fillProperty().bindBidirectional(userModel.statusIconPropertyProperty().get().fillProperty());
         contactListView.setItems(contactListHelper.getContactList());
+        this.userPhotoCircle.fillProperty().bindBidirectional(userModel.userImageCircleProperty().get().fillProperty());
         createContextMenu();
         handleEventsOnMenuItems();
     }

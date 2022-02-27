@@ -9,6 +9,14 @@ import gov.iti.jets.common.dtos.UserDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
@@ -40,6 +48,7 @@ public class ModelFactory {
         userModel.setGender(userDTO.getGender());
         userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
         userModel.setStatus(userDTO.getStatus());
+        userModel.getUserImageCircle().setFill(new ImagePattern(decodeImage(userDTO.getImage())));
     }
 
     public ContactModel mapContactModelToDTO(ContactDTO contactDTO) {
@@ -47,7 +56,7 @@ public class ModelFactory {
         contactModel.setPhoneNumber(contactDTO.getPhoneNumber());
         contactModel.setUsername(contactDTO.getUsername());
         contactModel.setStatus(contactDTO.getStatus());
-        // contactModel.setImage(getImageFromString(contactDTO.getImage()));
+        contactModel.getImageCircle().setFill(new ImagePattern(decodeImage(contactDTO.getImage())));
         contactModel.setBio(contactDTO.getBio());
         return contactModel;
     }
@@ -67,8 +76,9 @@ public class ModelFactory {
     }
 
     // under testing & need refactoring
-    public Image getImageFromString(String decodedImage) {
-        return new Image(Arrays.toString(Base64.getDecoder().decode(decodedImage)));
+    public Image decodeImage(String encodedImage) {
+        InputStream targetStream = new ByteArrayInputStream(Base64.getDecoder().decode(encodedImage));
+        return new Image(targetStream);
     }
 
 

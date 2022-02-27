@@ -6,6 +6,7 @@ import gov.iti.jets.server.repository.entity.ContactEntity;
 import gov.iti.jets.server.repository.entity.InvitationEntity;
 import gov.iti.jets.server.repository.interfaces.IContactRepository;
 import gov.iti.jets.server.repository.interfaces.IInvitationRepository;
+import gov.iti.jets.server.repository.util.ImageUtility;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IContactService;
 import gov.iti.jets.server.services.mapper.ContactDtoMapper;
@@ -22,6 +23,7 @@ public class ContactServiceImpl implements IContactService {
     private final IInvitationRepository invitationRepo = repoFactory.getInvitationRepo();
     private final static ContactServiceImpl contactService = new ContactServiceImpl();
     private final ServerUtil serverUtil = ServerUtil.getInstance();
+    private final ImageUtility imageUtility = ImageUtility.getInstance();
 
     private ContactServiceImpl() {
 
@@ -36,7 +38,9 @@ public class ContactServiceImpl implements IContactService {
         List<ContactEntity> contacts = contactRepository.getUserContacts(userId);
         List<ContactDTO> contactDTOS = new ArrayList<>();
         for (ContactEntity user : contacts) {
-            contactDTOS.add(ContactDtoMapper.INSTANCE.contactEntityToDTO(user));
+            ContactDTO contactDTO = ContactDtoMapper.INSTANCE.contactEntityToDTO(user);
+            contactDTO.setImage(imageUtility.readImage(contactDTO.getImage()));
+            contactDTOS.add(contactDTO);
         }
         System.out.println("contact service: " + contactDTOS);
         return contactDTOS;

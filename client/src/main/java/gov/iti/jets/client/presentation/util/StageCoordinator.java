@@ -141,4 +141,6 @@ public class StageCoordinator {
     public void closePrimaryStage() {
         this.primaryStage.close();
     }
+
+    public Stage getPrimaryStage() {return this.primaryStage;}
 }

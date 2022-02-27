@@ -48,9 +48,8 @@ public class ContactListHelper {
     public void loadContact(ContactModel contactModel) {
         ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());
-        contactControl.getImageView().imageProperty().bindBidirectional(contactModel.imageProperty());
+        contactControl.getContactPhotoCircle().fillProperty().bindBidirectional(contactModel.imageCircleProperty().get().fillProperty());
         contactControl.getStatusIcon().fillProperty().bindBidirectional(contactModel.statusIconPropertyProperty().get().fillProperty());
-        // testing
         contactControl.statusProperty().bindBidirectional(contactModel.statusProperty());
         contactControl.bioProperty().bindBidirectional(contactModel.bioProperty());
         Platform.runLater(() -> {

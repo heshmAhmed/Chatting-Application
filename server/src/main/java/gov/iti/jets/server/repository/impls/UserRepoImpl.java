@@ -130,4 +130,19 @@ public class UserRepoImpl implements IUserRepository {
         return updated;
     }
 
+    @Override
+    public boolean updateUserImage(String phoneNumber, String imgPath) {
+        PreparedStatement preparedStatement;
+        boolean updated = false;
+        try {
+            preparedStatement = connection.prepareStatement("update users set image = ? where phone_number = ?");
+            preparedStatement.setString(1, imgPath);
+            preparedStatement.setString(2, phoneNumber);
+            updated = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updated;
+    }
+
 }
