@@ -96,7 +96,6 @@ public class ChatAreaControl extends BorderPane {
     }
 
     public void initialize() {
-
         ObservableList<String> familyList = FXCollections.observableArrayList("Verdana", "Courier New", "Georgia ", "Times New Roman",
                 "Helvetica", "Comic Sans MS", "Impact", "Trebuchet MS", "Tahoma");
         fontFamilyLBox.setItems(familyList);
