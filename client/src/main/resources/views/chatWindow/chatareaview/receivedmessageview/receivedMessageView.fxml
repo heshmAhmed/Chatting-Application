@@ -11,7 +11,7 @@
 
 <fx:root id="receivedMessage" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="messageBox" alignment="BOTTOM_RIGHT" styleClass="message-box">
+      <VBox fx:id="messageBox" alignment="BOTTOM_RIGHT" style="-fx-background-color: #1A1A40;" styleClass="message-box">
          <HBox.margin>
             <Insets left="5.0" top="5.0" />
          </HBox.margin>

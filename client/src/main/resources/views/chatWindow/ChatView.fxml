@@ -25,13 +25,10 @@
                      <children>
                         <AnchorPane prefHeight="46.0" prefWidth="34.0">
                            <children>
-                              <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="114.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" radius="44.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
-                              <Button fx:id="statusButton" layoutX="119.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#handleStatusButton" style="-fx-background-color: none;">
-                                 <graphic>
-                                    <Circle fx:id="statusIcon" fill="#ffaf1f" onMouseClicked="#handleStatusIcon" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
-                                 </graphic>
-                              </Button>
-                              <Label fx:id="userNameLabel" layoutX="88.0" layoutY="101.0" prefHeight="8.0" prefWidth="51.0" text="myName" textFill="WHITE" />
+                              <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="114.0" layoutY="46.0" nodeOrientation="LEFT_TO_RIGHT" radius="44.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Button fx:id="statusButton" layoutX="119.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#handleStatusButton" style="-fx-background-color: none;" />
+                              <Label fx:id="userNameLabel" layoutX="93.0" layoutY="102.0" prefHeight="18.0" prefWidth="52.0" text="myName" textFill="WHITE" />
+                              <Circle fx:id="statusIcon" fill="#ffaf1f" layoutX="138.0" layoutY="80.0" onMouseClicked="#handleStatusIcon" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
                            </children>
                         </AnchorPane>
                      </children>
