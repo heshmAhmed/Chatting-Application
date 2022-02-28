@@ -2,20 +2,29 @@ package gov.iti.jets.server.presentation.controllers;
 
 import gov.iti.jets.server.presentation.util.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static javafx.stage.WindowEvent.WINDOW_SHOWING;
+import static javafx.stage.WindowEvent.WINDOW_SHOWN;
 
 public class AdminLoginController implements Initializable {
     private SessionManager sessionManager = SessionManager.getInstance();
     private StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private AdminLoginHelper adminLoginHelper = AdminLoginHelper.getInstance();
     private Validation validation = Validation.getInstance();
-
+    File session = sessionManager.createSession();
+    private EventType<WindowEvent> window = new EventType<>(WINDOW_SHOWN);
     @FXML
     private MFXButton loginButton;
 
@@ -34,41 +43,60 @@ public class AdminLoginController implements Initializable {
     @FXML
     private Label phoneLabel;
 
-    File session = sessionManager.createSession();
-
     @FXML
     void handelLoginAction(ActionEvent event) {
-        String phoneNumber = phoneFiled.getText().trim();
-        String currentPassword = passwordField.getText().trim();
-        if(validation.validatePhoneNumber(phoneFiled,phoneLabel) && validation.validatePassword(passwordField,passwordLabel)){
-            if(adminLoginHelper.getAdmin(phoneNumber,currentPassword)){
-                validAdminLabel.setText("");
-                passwordField.setText("");
-                sessionManager.saveSession(session,phoneNumber , currentPassword);
-            }else{
-                validAdminLabel.setText("Admin not exists");
-            }
-        }else{
-            validAdminLabel.setText("Something went wrong");
-        }
+        handelLoginAction();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.stageCoordinator = StageCoordinator.getInstance();
-        if(session.exists()){
+        if (session.exists()) {
             String str = sessionManager.readSession(session);
-            String[] text =  sessionManager.decryption(str);
-            if(text.length ==2){
-                System.out.println(text[0]);
-                System.out.println(text[1]);
-                phoneFiled.setText(text[0]);
-                passwordField.setText(text[1]);
-            }
+            setAdminInfo(str);
+        }
+    }
 
+    private void handelLoginAction() {
+        String phoneNumber = phoneFiled.getText().trim();
+        String currentPassword = passwordField.getText().trim();
+        if (validation.validatePhoneNumber(phoneFiled, phoneLabel) && validation.validatePassword(passwordField, passwordLabel)) {
+            if (adminLoginHelper.getAdmin(phoneNumber, currentPassword)) {
+                validAdminLabel.setText("");
+                passwordField.setText("");
+                sessionManager.saveSession(session, phoneNumber, currentPassword);
+            } else {
+                validAdminLabel.setText("Admin not exists");
+            }
+        } else {
+            validAdminLabel.setText("Something went wrong");
+        }
+    }
+
+    private void login(){
+        if (window.getSuperType() == WINDOW_SHOWN) {
+            System.out.println("WINDOW_SHOWN");
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    handelLoginAction();
+                }
+            });
+        }
+    }
+
+    private void setAdminInfo(String string){
+        String[] text = sessionManager.decryption(string);
+        if (text.length == 2) {
+            System.out.println(text[0]);
+            System.out.println(text[1]);
+            phoneFiled.setText(text[0]);
+            passwordField.setText(text[1]);
+            login();
         }
     }
 
 }
+
 
 

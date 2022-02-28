@@ -19,6 +19,7 @@ public class LoginController {
     private SessionManager sessionManager = SessionManager.getInstance();
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final LoginService myLoginService = LoginService.getInstance();
+    File session = sessionManager.createSession();
     boolean isPasswordFieldOn = true;
     private PasswordFieldControl passwordFieldControl;
     private LoginHelper loginHelper;
@@ -46,8 +47,6 @@ public class LoginController {
 
     @FXML
     private Hyperlink skipHyperlink;
-
-    File session = sessionManager.createSession();
 
     @FXML
     void handleSkipHyperLink(ActionEvent event) {
