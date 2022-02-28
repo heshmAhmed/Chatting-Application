@@ -12,9 +12,11 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
@@ -34,12 +36,21 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
-            <FontIcon fx:id="addContactIcon" iconColor="#718cbf" iconLiteral="fas-user-plus" iconSize="18" onMouseClicked="#handleAddNewContactIcon">
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </FontIcon>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <FontIcon fx:id="addContactIcon" iconColor="#718cbf" iconLiteral="fas-user-plus" iconSize="18" onMouseClicked="#handleAddNewContactIcon" wrappingWidth="22.5">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <StackPane>
+                     <children>
+                        <FontIcon fx:id="showGroupContacts" iconColor="#3c4969" iconLiteral="fas-user-friends" iconSize="25" />
+                        <ImageView fx:id="showGroupMembers" fitHeight="37.0" fitWidth="38.0" onMouseClicked="#handleShowGroupMembers" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
          </children>
       </HBox>
    </top>

@@ -17,6 +17,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +31,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.stream.Stream;
 
@@ -33,6 +39,10 @@ public class  GroupChatAreaControl extends BorderPane{
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
     private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+
+
+    @FXML
+    private ImageView showGroupMembers;
 
     @FXML
     private Label currentChatName;
@@ -72,11 +82,26 @@ public class  GroupChatAreaControl extends BorderPane{
 
     @FXML
     private ListView<HBox> chatAreaListView;
+    private String groupId;
+
+    @FXML
+    private void handleShowGroupMembers(MouseEvent event){
+        ContextMenu contextMenu = new ContextMenu();
+
+        GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
+
+        groupDTO.getContacts().forEach(c -> {
+             contextMenu.getItems().add(new MenuItem(c)) ;
+        });
+
+        contextMenu.show(this.showGroupMembers, event.getScreenX() + 5, event.getScreenY() + 5);
+    }
+
 
     @FXML
 
     private VBox chatAreaVBox;
-    private String groupId;
+
     private String contactId;
     private String color = "white";
     private String weight = "NORMAL";
