@@ -12,4 +12,5 @@ public interface IUserRepository {
     boolean deleteUser(String phoneNumber);
     boolean updateUser(UserEntity userEntity);
     boolean updateStatus(String phoneNumber, Status status);
+
 }

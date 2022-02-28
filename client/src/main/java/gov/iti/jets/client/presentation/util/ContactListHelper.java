@@ -9,30 +9,30 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ContactListHelper {
     private static final ContactListHelper contactListHelper = new ContactListHelper();
-    private final Map<String, ObservableList<HBox> > messageListMap = new HashMap<>();
+    private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
     private final ObservableList<HBox> contactList = FXCollections.observableArrayList();
     private final Map<String, ContactControl> contactControlMap = new HashMap<>();
 
-    private ContactListHelper(){
+    private ContactListHelper() {
     }
 
-    public static ContactListHelper getInstance(){
-        return  contactListHelper;
+    public static ContactListHelper getInstance() {
+        return contactListHelper;
     }
 
-    public ObservableList<HBox> getContactList(){
+    public ObservableList<HBox> getContactList() {
         return contactList;
     }
 
-    public ObservableList<HBox> createMessageList(String contactId){
+    public ObservableList<HBox> createMessageList(String contactId) {
         ObservableList<HBox> list;
-        if(messageListMap.containsKey(contactId))
-        {
+        if (messageListMap.containsKey(contactId)) {
             list = messageListMap.get(contactId);
         } else {
             list = FXCollections.observableArrayList();
@@ -42,7 +42,7 @@ public class ContactListHelper {
     }
 
     public void addMessageToList(MessageDTO messageDTO) {
-        Platform.runLater(()-> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
+        Platform.runLater(() -> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
     }
 
     public void loadContact(ContactModel contactModel) {
@@ -65,5 +65,13 @@ public class ContactListHelper {
 
     public void changeContactStatus(String phoneNumber, Status status) {
         this.contactControlMap.get(phoneNumber).setStatus(status.name());
+    }
+
+    public String getContactStatus(String phoneNumber) {
+        if (checkIfPhoneExist(phoneNumber)) {
+            return this.contactControlMap.get(phoneNumber).getStatus();
+        } else {
+            return "not Found";
+        }
     }
 }
