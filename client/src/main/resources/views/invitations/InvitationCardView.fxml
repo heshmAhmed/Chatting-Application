@@ -38,7 +38,7 @@
             <HBox alignment="TOP_RIGHT" spacing="10.0" VBox.vgrow="ALWAYS">
 
                <children>
-                  <MFXButton fx:id="acceptBtn" buttonType="RAISED" depthLevel="LEVEL4" prefHeight="32.0" prefWidth="95.0" rippleColor="#0c172b" text="Accept" textFill="#37334d" HBox.hgrow="ALWAYS">
+                  <MFXButton fx:id="acceptBtn" buttonType="RAISED" depthLevel="LEVEL4" prefHeight="32.0" prefWidth="95.0" rippleColor="#0c172b" style="-fx-background-color: #bf4080;" text="Accept" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -46,7 +46,7 @@
                         <Insets />
                      </HBox.margin>
                   </MFXButton>
-                  <MFXButton fx:id="denyBtn" buttonType="RAISED" depthLevel="LEVEL4" prefHeight="32.0" prefWidth="95.0" rippleColor="#0c172b" text="Deny" textFill="#37334d" HBox.hgrow="ALWAYS">
+                  <MFXButton fx:id="denyBtn" buttonType="RAISED" depthLevel="LEVEL4" prefHeight="32.0" prefWidth="95.0" rippleColor="#0c172b" style="-fx-background-color: #bf4080;" text="Deny" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

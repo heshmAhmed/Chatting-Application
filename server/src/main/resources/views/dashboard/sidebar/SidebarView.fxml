@@ -38,14 +38,6 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="usersListButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleUsersListButton" prefHeight="75.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="Users" textFill="#6b519e">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
             <Button fx:id="announcementButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleAnnouncement" prefHeight="77.0" prefWidth="194.0" stylesheets="@../../css/styling.css" text="Announcement" textFill="#6b519e">
                <font>
                   <Font name="System Bold" size="18.0" />
