@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import org.kordamp.ikonli.javafx.*?>
 
-<BorderPane prefHeight="611.0" prefWidth="270.0" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
+<BorderPane prefHeight="611.0" prefWidth="270.0" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
    <left>
     <VBox alignment="TOP_CENTER" maxWidth="270.0" minWidth="150.0" prefHeight="611.0" prefWidth="270.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
         <effect>
@@ -27,7 +24,7 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontIcon>
-                            <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="135.0" layoutY="63.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="5.0" />
+                            <Circle fx:id="userPhotoCircle" fill="#2395ff" layoutX="135.0" layoutY="63.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="5.0" />
                             <Label fx:id="usernameLabel" layoutX="95.0" layoutY="120.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />
@@ -53,7 +50,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </padding>
                             </Label>
-                            <Label fx:id="phoneLabel" layoutX="78.0" layoutY="156.0" text="+0201097961674" textFill="#acacac">
+                            <Label fx:id="phoneLabel" layoutX="95.0" layoutY="156.0" text="+0201097961674" textFill="#acacac">
                                 <font>
                                     <Font name="Agency FB Bold" size="19.0" />
                                 </font>

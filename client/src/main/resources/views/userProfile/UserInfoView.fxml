@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" style="-fx-background-color: #21325E;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
+<VBox alignment="CENTER" style="-fx-background-color: #000066;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -35,7 +31,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label disable="true" prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label disable="true" prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#f4f4f4" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -51,7 +47,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#f1f2f4" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -67,7 +63,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label disable="true" prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label disable="true" prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#f2f3f4" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -83,7 +79,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="167.0" text="Country:" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label prefHeight="27.0" prefWidth="167.0" text="Country:" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -103,7 +99,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="166.0" text="Date Of Birth :" textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label prefHeight="27.0" prefWidth="166.0" text="Date Of Birth :" textFill="#f8f9fa" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="22.0" />
                </font>
@@ -119,12 +115,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="32.0" prefWidth="171.0" text="Update Profile : " textFill="#0276f2" HBox.hgrow="ALWAYS">
+            <Label prefHeight="32.0" prefWidth="171.0" text="Update Profile : " textFill="#fafafa" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="26.0" />
                </font>
             </Label>
-            <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" rippleColor="#0276f2" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" rippleColor="#8ac4ff" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="23.0" />
                </font>
@@ -144,15 +140,4 @@
    <padding>
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
-   <effect>
-      <DropShadow>
-         <color>
-            <Color red="0.12941177189350128" green="0.19607843458652496" blue="0.3686274588108063" />
-         </color>
-      </DropShadow>
-   </effect>
-   <stylesheets>
-      <URL value="@../../styles/main-style.css" />
-      <URL value="@../../styles/UserInfoView.css" />
-   </stylesheets>
 </VBox>
