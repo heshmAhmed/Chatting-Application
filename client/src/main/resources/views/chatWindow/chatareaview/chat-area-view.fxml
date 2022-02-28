@@ -35,18 +35,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
-               <children>
-                  <MenuButton fx:id="currentChatOptionsMenuButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0" text="MenuButton">
-                     <items>
-                        <MenuItem fx:id="blockContactAction" mnemonicParsing="false" text="Block Contact" />
-                     </items>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </MenuButton>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </top>
