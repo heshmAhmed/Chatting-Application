@@ -116,11 +116,6 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="32.0" prefWidth="171.0" text="Update Profile : " textFill="#813a3a" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font name="Franklin Gothic Book" size="26.0" />
-               </font>
-            </Label>
             <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" rippleColor="#8ac4ff" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="23.0" />
@@ -128,6 +123,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
             </MFXButton>
          </children>
          <padding>
@@ -139,7 +137,7 @@
       </HBox>
    </children>
    <padding>
-      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+      <Insets bottom="20.0" left="50.0" right="50.0" top="50.0" />
    </padding>
    <stylesheets>
       <URL value="@../../styles/main-style.css" />
