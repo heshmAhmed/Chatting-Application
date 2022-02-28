@@ -2,13 +2,16 @@ package gov.iti.jets.client.presentation.util;
 
 import gov.iti.jets.client.network.service.LoginService;
 import gov.iti.jets.client.presentation.controllers.custom.PasswordFieldControl;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import java.rmi.RemoteException;
 
-public class LoginHelper{
+import java.io.File;
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ResourceBundle;
+
+public class LoginHelper implements Initializable {
 
     HBox passwordPlaceHolderHBox;
     Label validatePasswordLabel;
@@ -16,11 +19,13 @@ public class LoginHelper{
     TextField numberField;
     Button loginButton;
 
-    PasswordFieldControl passwordFieldControl;
+    private PasswordFieldControl passwordFieldControl;
     Validation validation = Validation.getInstance();
     ModelFactory modelFactory = ModelFactory.getInstance();
     LoginService myLoginService = LoginService.getInstance();
     StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private SessionManager sessionManager = SessionManager.getInstance();
+    File session = sessionManager.createSession();
     private static int COUNTER = 0 ;
 
     public LoginHelper(HBox passwordPlaceHolderHBox, Label validatePasswordLabel, Button loginButton){
@@ -28,6 +33,11 @@ public class LoginHelper{
         this.validatePasswordLabel = validatePasswordLabel;
         this.loginButton = loginButton;
     }
+
+    public PasswordFieldControl getPasswordFieldControl(){
+        return passwordFieldControl;
+    }
+
 
     public boolean handlePhoneNumberValidation(TextField numberField, Label validateUserLabel){
         this.validateUserLabel = validateUserLabel;
@@ -47,7 +57,7 @@ public class LoginHelper{
         if (myLoginService.validatePhoneNumber(phoneNumber)) {
             passwordFieldControl = new PasswordFieldControl(validatePasswordLabel);
             passwordPlaceHolderHBox.getChildren().add(passwordFieldControl);
-            while (COUNTER <= 0){
+            if (COUNTER <= 0){
                 numberField.setDisable(true);
                 COUNTER++;
             }
@@ -59,11 +69,10 @@ public class LoginHelper{
         }
     }
 
-
-
     public void handlePasswordValidation() throws RemoteException {
         if(myLoginService.validatePassword(numberField.getText(),passwordFieldControl.getPasswordFieldText())){
             myLoginService.submitLogin(numberField.getText());
+            sessionManager.saveSession(session, numberField.getText(), passwordFieldControl.getPasswordFieldText());
             stageCoordinator.switchToChatScene();
             passwordFieldControl.setPasswordFieldText("");
         }
@@ -72,4 +81,8 @@ public class LoginHelper{
         }
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

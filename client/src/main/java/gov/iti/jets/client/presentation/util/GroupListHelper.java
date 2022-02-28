@@ -36,8 +36,7 @@ public class GroupListHelper {
 
     private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
 
-    private GroupListHelper(){
-    }
+    private GroupListHelper(){}
 
     public static GroupListHelper getInstance(){
         return  groupListHelper;
@@ -82,6 +81,9 @@ public class GroupListHelper {
             e.printStackTrace();
         }
     }
+
+    public void clearGroupList(){groupList.clear();}
+
 
     public void appendGroup(GroupDTO groupDTO){
         GroupControl groupControl = new GroupControl(groupDTO.getId());

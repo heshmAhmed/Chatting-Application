@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 
 public class SidebarController implements Initializable {
     private SessionManager sessionManager = SessionManager.getInstance();
-    File session = sessionManager.createSession();
 
     @FXML
     private Button announcementButton;
@@ -44,7 +43,7 @@ public class SidebarController implements Initializable {
 
     @FXML
     void handleLogout(ActionEvent event) {
-        sessionManager.endSession(session);
+        sessionManager.endSession();
         stageCoordinator.switchToLoginScene();
     }
 

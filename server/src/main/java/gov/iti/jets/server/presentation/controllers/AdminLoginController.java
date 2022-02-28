@@ -4,18 +4,13 @@ import gov.iti.jets.server.presentation.util.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.*;
 import javafx.scene.control.*;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static javafx.stage.WindowEvent.WINDOW_SHOWING;
 import static javafx.stage.WindowEvent.WINDOW_SHOWN;
 
 public class AdminLoginController implements Initializable {

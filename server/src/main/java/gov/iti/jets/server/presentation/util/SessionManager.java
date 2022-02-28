@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SessionManager {
-
+    File file = new File("session.txt");
     public static final SessionManager sessionManager = new SessionManager();
 
     private SessionManager(){}
@@ -14,7 +14,6 @@ public class SessionManager {
     public static SessionManager getInstance(){return sessionManager;}
 
     public File createSession(){
-        File file = new File("session.txt");
         if(!file.exists()){
             try{
                 file.createNewFile();
@@ -65,7 +64,7 @@ public class SessionManager {
         return stringBuilder.toString();
     }
 
-    public void endSession(File file){
+    public void endSession(){
         if(file.exists()){
             file.delete();
             System.out.println("Session finish");

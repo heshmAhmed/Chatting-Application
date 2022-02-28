@@ -6,21 +6,25 @@ import gov.iti.jets.client.presentation.util.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.rmi.RemoteException;
+import static javafx.stage.WindowEvent.WINDOW_SHOWN;
 
 
 public class LoginController {
+    private EventType<WindowEvent> window = new EventType<>(WINDOW_SHOWN);
     private SessionManager sessionManager = SessionManager.getInstance();
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final LoginService myLoginService = LoginService.getInstance();
     File session = sessionManager.createSession();
-    boolean isPasswordFieldOn = true;
+    boolean isPasswordFieldOn;
     private PasswordFieldControl passwordFieldControl;
     private LoginHelper loginHelper;
 
@@ -56,43 +60,42 @@ public class LoginController {
 
     public void initialize() {
         loginHelper = new LoginHelper(passwordPlaceholderHBox, validatePasswordLabel,loginButton);
+        passwordFieldControl = new PasswordFieldControl(validatePasswordLabel);
         skipHyperlink.setTextFill(Color.LIGHTBLUE);
         validateUserLabel.setTextFill(Color.web("#e40808"));
         validatePasswordLabel.setTextFill(Color.web("#e40808"));
         passwordPlaceholderHBox.getChildren().add(validateUserLabel);
         loginButton.setText("next");
-        isPasswordFieldOn = false;
+        isPasswordFieldOn=false;
         numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
-//        if(session.exists()){
-//            String str = sessionManager.readSession(session);
-//            String[] text =  sessionManager.decryption(str);
-//            if(text.length ==2){
-//                System.out.println(text[0]);
-//                System.out.println(text[1]);
-//                numberField.setText(text[0]);
-//                .setText(text[1]);
-//            }
-//
-//        }
     }
-
 
     @FXML
     void loginClicked(ActionEvent event){
-            if(!isPasswordFieldOn){
-                isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
-            }else{
-                try {
-                    loginHelper.handlePasswordValidation();
-                //    sessionManager.saveSession(session,numberField.getText() , );
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+        System.out.println("inside loginClicked"); handelLoginAction();
+    }
+
+    private void handelLoginAction(){
+        System.out.println("inside handelLoginAction");
+        String phoneNumber = numberField.getText().trim();
+        if(!isPasswordFieldOn){
+            System.out.println("handle login if");
+            isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
+            sessionManager.saveSession(session, phoneNumber, "");
+        }else{
+            System.out.println("handle login else");
+            try {
+                loginHelper.handlePasswordValidation();
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
+        }
     }
 
     @FXML
     void registerClicked(ActionEvent event) {
         stageCoordinator.switchToRegistrationScene();
     }
+
 }
