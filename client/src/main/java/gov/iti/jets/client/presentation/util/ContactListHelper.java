@@ -45,6 +45,10 @@ public class ContactListHelper {
         Platform.runLater(()-> messageListMap.get(messageDTO.getSenderId()).add(new ReceivedMessageControl(messageDTO)));
     }
 
+    public void clearContactList(){
+        contactList.clear();
+    }
+
     public void loadContact(ContactModel contactModel) {
         ContactControl contactControl = new ContactControl(contactModel.getPhoneNumber());
         contactControl.getContactNameLabel().textProperty().bindBidirectional(contactModel.usernameProperty());

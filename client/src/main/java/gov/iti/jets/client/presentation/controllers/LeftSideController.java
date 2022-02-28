@@ -2,28 +2,26 @@ package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
-import gov.iti.jets.client.presentation.util.ModelFactory;
-import gov.iti.jets.client.presentation.util.PaneCoordinator;
-import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.client.presentation.util.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.io.FileFilter;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
+    ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    GroupListHelper getContactListHelper = GroupListHelper.getInstance();
+    SessionManager sessionManager = SessionManager.getInstance();
     public Label imageValidationLabel;
     private UserModel userModel;
     private PaneCoordinator paneCoordinator;
@@ -52,6 +50,7 @@ public class LeftSideController implements Initializable {
     public Circle userPhotoCircle;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         stageCoordinator = StageCoordinator.getInstance();
         paneCoordinator = PaneCoordinator.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
@@ -64,7 +63,10 @@ public class LeftSideController implements Initializable {
     }
 
     @FXML
-    void logoutClicked(MouseEvent event) {
+    private void logoutClicked(MouseEvent event) {
+        contactListHelper.clearContactList();
+        getContactListHelper.clearGroupList();
+        sessionManager.endSession();
         stageCoordinator.switchToLoginScene();
     }
 
