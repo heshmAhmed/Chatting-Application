@@ -73,9 +73,9 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     @Override
     public void serverDisconnected() throws RemoteException {
 
-        Popups.alert("☠ Server is down!!");
+        System.out.println("server disconnected");
+        Platform.runLater(() ->Popups.alert("☠ Server is down!!"));
 
-       System.out.println("server disconnected");
     }
 
 

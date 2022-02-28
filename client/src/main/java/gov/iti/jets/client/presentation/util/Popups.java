@@ -19,7 +19,6 @@ public class Popups {
 
     public static void alert(String alertBody){
 
-        Platform.runLater(()-> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setContentText(alertBody);
             alert.setTitle("☠");
@@ -27,6 +26,6 @@ public class Popups {
             alert.showAndWait()
                     .filter(response -> response == ButtonType.OK)
                     .ifPresent(response -> System.exit(0));
-        });
-    }
+        }
+
 }

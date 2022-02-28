@@ -36,7 +36,7 @@ public class RegistryFactory {
         } catch (RemoteException | NotBoundException e) {
 
             Popups.alert(" 😴 Server is DOWN!!!");
-
+//            Thread.sleep();
             e.printStackTrace();
         }
         return remoteLoginService;
