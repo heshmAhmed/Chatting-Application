@@ -162,6 +162,8 @@ public class StageCoordinator {
     }
 
 
+
+
     ////////////this is a pane coordinator task will be modified later////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void setChatScene(BorderPane myChatArea){

@@ -1,6 +1,12 @@
 package gov.iti.jets.client.network.util;
 
+import gov.iti.jets.client.presentation.util.Popups;
 import gov.iti.jets.common.server.*;
+import io.github.palexdev.materialfx.controls.MFXIconWrapper;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,6 +20,7 @@ public class RegistryFactory {
         try {
             registry = LocateRegistry.getRegistry(6000);
         } catch (RemoteException e) {
+
             e.printStackTrace();
         }
     }
@@ -27,6 +34,9 @@ public class RegistryFactory {
         try {
             remoteLoginService = (IRemoteLoginService) registry.lookup("RemoteLoginService");
         } catch (RemoteException | NotBoundException e) {
+
+            Popups.alert(" 😴 Server is DOWN!!!");
+
             e.printStackTrace();
         }
         return remoteLoginService;
