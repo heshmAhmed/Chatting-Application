@@ -24,20 +24,22 @@ public class ClientApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loginViewLoader = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml"));
-        Scene scene = new Scene(loginViewLoader.load());
-        stageCoordinator.init(primaryStage);
-        primaryStage.setTitle("Hello Client");
-        primaryStage.setScene(scene);
-        primaryStage.setMinWidth(950);
-        primaryStage.setMinHeight(630);
-        primaryStage.show();
+//        FXMLLoader loginViewLoader = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml"));
+//        Scene scene = new Scene(loginViewLoader.load());
 
-        Notifications.create()
-                .title("Notification")
-                .text("👻 hello")
-                .threshold(3, Notifications.create().title("Collapsed Notification"))
-                .show();
+        stageCoordinator.init(primaryStage);
+        stageCoordinator.switchToLoginScene();
+//        primaryStage.setTitle("Hello Client");
+//        primaryStage.setScene(scene);
+//        primaryStage.setMinWidth(950);
+//        primaryStage.setMinHeight(630);
+       primaryStage.show();
+
+//        Notifications.create()
+//                .title("Notification")
+//                .text("👻 hello")
+//                .threshold(3, Notifications.create().title("Collapsed Notification"))
+//                .show();
 
 
     }
