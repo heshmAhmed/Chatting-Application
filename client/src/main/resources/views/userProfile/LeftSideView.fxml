@@ -28,7 +28,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor></FontIcon>
                             <Circle fx:id="userPhotoCircle" fill="#2395ff" layoutX="135.0" layoutY="63.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
-                            <Label fx:id="usernameLabel" layoutX="96.0" layoutY="138.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="138.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />
                                 </font>
