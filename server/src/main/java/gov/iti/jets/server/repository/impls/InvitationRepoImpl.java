@@ -13,16 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InvitationRepoImpl implements IInvitationRepository {
-    private Connection connection;
     private final static InvitationRepoImpl invitationRepo = new InvitationRepoImpl();
 
-    private InvitationRepoImpl() {
-        try {
-            connection = DataSourceFactory.getInstance().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    private InvitationRepoImpl() {}
 
     public static InvitationRepoImpl getInstance() {
         return invitationRepo;
@@ -33,7 +26,7 @@ public class InvitationRepoImpl implements IInvitationRepository {
         String query = "select * \n" +
                 " from user_invitations \n" +
                 " where sender_number = ?  and reciever_number = ?;";
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, receiverPhoneNumber);
             statement.setString(2, senderPhoneNumber);
@@ -52,7 +45,7 @@ public class InvitationRepoImpl implements IInvitationRepository {
         String query = "DELETE FROM user_invitations \n" +
                 "WHERE sender_number= ? and reciever_number= ? ;";
         int row = 0;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, senderPhoneNumber);
             statement.setString(2, receiverPhoneNumber);
@@ -68,7 +61,7 @@ public class InvitationRepoImpl implements IInvitationRepository {
         String query = "INSERT INTO user_invitations " +
                 "(sender_number, reciever_number, date) VALUES (?, ?, ?);";
         int rowsInserted = 0;
-        try {
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, senderPhoneNumber);
             statement.setString(2, receiverPhoneNumber);
@@ -91,8 +84,7 @@ public class InvitationRepoImpl implements IInvitationRepository {
                 "inner join users d on us.reciever_number = d.phone_number\n" +
                 "where d.phone_number = ? ;";
 
-        try {
-
+        try (Connection connection = DataSourceFactory.getInstance().getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, userPhoneNumber);
             ResultSet resultSet = statement.executeQuery();
@@ -108,7 +100,6 @@ public class InvitationRepoImpl implements IInvitationRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return entityList;
     }
 

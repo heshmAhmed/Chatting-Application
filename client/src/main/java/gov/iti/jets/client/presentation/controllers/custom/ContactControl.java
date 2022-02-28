@@ -29,8 +29,17 @@ public class ContactControl extends HBox{
     private Label contactNameLabel;
     @FXML
     private HBox contactHBox;
+
+    public Label getContactNumberLabel() {
+        return contactNumberLabel;
+    }
+
+    public void setContactNumberLabel(Label contactNumberLabel) {
+        this.contactNumberLabel = contactNumberLabel;
+    }
+
     @FXML
-    private Label contactMessageLabel;
+    private Label contactNumberLabel;
     @FXML
     private Circle contactPhotoCircle;
     @FXML
@@ -135,14 +144,6 @@ public class ContactControl extends HBox{
         this.contactHBox = contactHBox;
     }
 
-    public Label getContactMessageLabel() {
-        return contactMessageLabel;
-    }
-
-    public void setContactMessageLabel(Label contactMessageLabel) {
-        this.contactMessageLabel = contactMessageLabel;
-    }
-
     public Circle getContactPhotoCircle() {
         return contactPhotoCircle;
     }
@@ -212,7 +213,7 @@ public class ContactControl extends HBox{
                 ", bio=" + bio +
                 ", contactNameLabel=" + contactNameLabel +
                 ", contactHBox=" + contactHBox +
-                ", contactMessageLabel=" + contactMessageLabel +
+                ", contactMessageLabel=" + contactNameLabel +
                 ", contactPhotoCircle=" + contactPhotoCircle +
                 ", statusIcon=" + statusIcon +
                 ", image=" + image +

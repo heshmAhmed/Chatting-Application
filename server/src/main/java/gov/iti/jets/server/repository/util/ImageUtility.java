@@ -5,30 +5,39 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Objects;
 
 
 public class ImageUtility {
-    ImageUtility imageUtility = new ImageUtility();
-
-    private ImageUtility(){
-
-    }
-
-    public ImageUtility getInstance(){
+    private final static ImageUtility imageUtility = new ImageUtility();
+    private final String folderPath = "src/main/resources/usersImages/";
+    private ImageUtility(){}
+    public static ImageUtility getInstance(){
         return imageUtility;
     }
 
 
-    public static String readImage( String filePath ) throws IOException {
-        byte[] fileContent = FileUtils.readFileToByteArray(new File(filePath));
-        String encodedString = Base64.getEncoder().encodeToString(fileContent);
-        return encodedString;
+    public String readImage(String imagePath)  {
+        byte[] fileContent = new byte[0];
+        try {
+            fileContent = FileUtils.readFileToByteArray(new File(folderPath + imagePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Base64.getEncoder().encodeToString(fileContent);
     }
 
-
-    public static boolean writeImageToDisk(String image_path, String encodedString) throws IOException {
+    public boolean writeImageToDisk(String imagePath, String encodedString) {
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-        FileUtils.writeByteArrayToFile(new File(image_path), decodedBytes);
-        return false;
+        boolean written = false;
+        try {
+            File file = new File(folderPath + imagePath);
+            System.out.println(file.getPath());
+            FileUtils.writeByteArrayToFile(file, decodedBytes);
+            written = true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return written;
     }
 }

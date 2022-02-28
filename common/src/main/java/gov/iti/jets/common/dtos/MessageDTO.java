@@ -2,7 +2,7 @@ package gov.iti.jets.common.dtos;
 
 import java.io.Serializable;
 
-public class MessageDTO implements Serializable{
+public class MessageDTO implements Serializable {
 
     private String senderId;
     private String receiverId;
@@ -42,4 +42,13 @@ public class MessageDTO implements Serializable{
     }
 
 
+    @Override
+    public String toString() {
+        return "MessageDTO{" +
+                "senderId='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", messageText='" + messageText + '\'' +
+                ", messageStyle='" + messageStyle + '\'' +
+                '}';
+    }
 }

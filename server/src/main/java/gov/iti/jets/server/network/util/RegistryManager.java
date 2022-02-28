@@ -30,17 +30,21 @@ public class RegistryManager {
 
     public void publishServices() {
         try {
+
             IRemoteLoginService iRemoteLoginService = new RemoteLoginServiceImpl();
             IRemoteRegistrationService iRemoteRegistrationService = new RemoteRegistrationServiceImpl();
             IRemoteMessageHandler iRemoteMessageHandler = new RemoteMessageHandelImpl();
             IRemoteProfileService iRemoteProfileService = new RemoteProfileServiceImpl();
             IRemoteContactService iRemoteContactService = new RemoteContactServiceImpl();
+            IRemoteGroupService iRemoteGroupService = new RemoteGroupServiceImpl();
 
             registry.rebind("RemoteLoginService", iRemoteLoginService);
             registry.rebind("RemoteRegistrationService", iRemoteRegistrationService);
             registry.rebind("RemoteMessageHandler", iRemoteMessageHandler);
             registry.rebind("RemoteProfileService", iRemoteProfileService);
             registry.rebind("RemoteContactService", iRemoteContactService);
+            registry.rebind("RemoteGroupService", iRemoteGroupService);
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }

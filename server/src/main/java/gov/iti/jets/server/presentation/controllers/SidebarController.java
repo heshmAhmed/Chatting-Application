@@ -69,7 +69,9 @@ public class SidebarController implements Initializable {
     }
 
     @FXML
-    public void handleOnOffButton(ActionEvent event){ }
+    public void handleOnOffButton(ActionEvent event){
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
