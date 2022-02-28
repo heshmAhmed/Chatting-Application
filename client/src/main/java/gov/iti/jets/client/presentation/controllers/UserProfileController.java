@@ -8,20 +8,14 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -50,7 +44,7 @@ public class UserProfileController implements Initializable {
         this.countryField.getItems().addAll(Stream.of(Country.values()).map(Enum::name).collect(Collectors.toList()));
         this.emailField.setDisable(true);
         this.phoneField.setDisable(true);
-        validationSupport = new ValidationSupport();
+        this.validationSupport = new ValidationSupport();
         this.profileService = ProfileService.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.usernameField.textProperty().bindBidirectional(userModel.usernameProperty());
@@ -61,8 +55,6 @@ public class UserProfileController implements Initializable {
         this.dateField.valueProperty().bindBidirectional(userModel.dobProperty());
     }
 
-    
-
     @FXML
     void onClick(ActionEvent event){
         validationSupport.registerValidator(usernameField, Validator.createPredicateValidator(s->usernameField.getText().length()>3,"4 characters at least"));
@@ -71,7 +63,6 @@ public class UserProfileController implements Initializable {
                 .text("Updated")
                 .darkStyle().show();
     }
-
 
     @FXML
     void showInformation(MouseEvent event) {

@@ -27,8 +27,14 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ImageView>
-      <Button fx:id="cancelButton" layoutX="83.0" layoutY="173.0" mnemonicParsing="false" style="-fx-background-color: #bf4080;" text="Cancel" textFill="#faf9f9" />
-      <Button fx:id="addButton" layoutX="209.0" layoutY="173.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #bf4080;" text="Add" textFill="WHITE" />
+      <Button fx:id="cancelButton" layoutX="83.0" layoutY="173.0" mnemonicParsing="false" style="-fx-background-color: #bf4080;" text="Cancel" textFill="#faf9f9">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="addButton" layoutX="209.0" layoutY="173.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="61.0" style="-fx-background-color: #bf4080;" text="Add" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="notValidLabel" layoutX="221.0" layoutY="91.0" textFill="#efeeee">
          <font>
             <Font size="14.0" />

@@ -3,6 +3,7 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.*;
+import gov.iti.jets.common.dtos.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,9 +20,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
-    ContactListHelper contactListHelper = ContactListHelper.getInstance();
-    GroupListHelper getContactListHelper = GroupListHelper.getInstance();
-    SessionManager sessionManager = SessionManager.getInstance();
+    private ContactListHelper contactListHelper;
+    private GroupListHelper groupListHelper;
+    private SessionManager sessionManager;
     public Label imageValidationLabel;
     private UserModel userModel;
     private PaneCoordinator paneCoordinator;
@@ -48,11 +49,14 @@ public class LeftSideController implements Initializable {
     private Button update;
     @FXML
     public Circle userPhotoCircle;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        stageCoordinator = StageCoordinator.getInstance();
-        paneCoordinator = PaneCoordinator.getInstance();
+        this.contactListHelper = ContactListHelper.getInstance();
+        this.sessionManager = SessionManager.getInstance();
+        this.groupListHelper =  GroupListHelper.getInstance();
+        this.stageCoordinator = StageCoordinator.getInstance();
+        this.paneCoordinator = PaneCoordinator.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.usernameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
         this.phoneLabel.textProperty().bindBidirectional(userModel.phoneNumberProperty());
@@ -64,8 +68,9 @@ public class LeftSideController implements Initializable {
 
     @FXML
     private void logoutClicked(MouseEvent event) {
+        profileService.changeStatus(Status.OFFLINE);
         contactListHelper.clearContactList();
-        getContactListHelper.clearGroupList();
+        groupListHelper.clearGroupList();
         sessionManager.endSession();
         stageCoordinator.switchToLoginScene();
     }
@@ -112,6 +117,7 @@ public class LeftSideController implements Initializable {
     }
     private void initFileChooser() {
         this.fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter
+                ("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
     }
 }
