@@ -1,5 +1,6 @@
 package gov.iti.jets.server.presentation.controllers;
 
+import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.PaneCoordinator;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
 import io.github.palexdev.materialfx.controls.MFXToggleButton;
@@ -30,6 +31,7 @@ public class SidebarController implements Initializable {
     private PaneCoordinator paneCoordinator;
 
     private StageCoordinator stageCoordinator;
+    private final RegistryManager registryManager = RegistryManager.getInstance();
 
     @FXML
     void handleAnnouncement(ActionEvent event) {
@@ -62,8 +64,12 @@ public class SidebarController implements Initializable {
     }
 
     @FXML
-    public void handleOnOffButton(ActionEvent event){
-
+    public void handleOnOffButton(ActionEvent event) {
+        if (onOffButton.isSelected()) {
+            registryManager.publishServices();
+        } else {
+            registryManager.unPublishServices();
+        }
     }
 
     @Override

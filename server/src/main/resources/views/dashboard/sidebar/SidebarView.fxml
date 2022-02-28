@@ -51,7 +51,7 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <MFXToggleButton fx:id="onOffButton" gap="10.0" onAction="#handleOnOffButton" text="Swith" textFill="#611363b4">
+                  <MFXToggleButton fx:id="onOffButton" gap="10.0" onAction="#handleOnOffButton" selected="true" text="Swith" textFill="#611363b4">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

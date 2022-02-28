@@ -6,7 +6,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IClientCallback extends Remote {
-    void receiveMessage(MessageDTO messageDTO) throws RemoteException;
+    public void receiveMessage(MessageDTO messageDTO) throws RemoteException;
+    public void serverDisconnected()throws RemoteException;
     void receiveInvitation(InvitationDTO invitationDTO)throws RemoteException;
     void receiveNewContact(ContactDTO contactDTO) throws RemoteException;
     void receiveStatusChange(String phoneNumber, Status status) throws RemoteException;
