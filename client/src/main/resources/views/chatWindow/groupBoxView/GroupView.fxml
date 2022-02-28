@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="39.0">
          <children>
-            <Circle fx:id="groupPhotoCircle" fill="DODGERBLUE" layoutX="27.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" radius="22.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="3.0" />
+            <Circle fx:id="groupPhotoCircle" fill="DODGERBLUE" layoutX="27.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" radius="22.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
       <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">

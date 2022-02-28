@@ -11,8 +11,8 @@
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="39.0">
          <children>
-            <Circle fx:id="contactPhotoCircle" fill="DODGERBLUE" layoutX="24.0" layoutY="24.0" nodeOrientation="LEFT_TO_RIGHT" radius="19.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="3.0" />
-            <Circle fx:id="statusIcon" fill="#ffaf1f" layoutX="36.0" layoutY="36.0" radius="6.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+            <Circle fx:id="contactPhotoCircle" fill="DODGERBLUE" layoutX="24.0" layoutY="24.0" nodeOrientation="LEFT_TO_RIGHT" radius="19.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="statusIcon" fill="#ffaf1f" layoutX="36.0" layoutY="36.0" radius="6.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
       <VBox prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">

@@ -26,8 +26,8 @@
          <children>
             <AnchorPane prefHeight="54.0" prefWidth="56.0">
                <children>
-                  <Circle fx:id="currentChatPhotoCircle" fill="DODGERBLUE" layoutX="27.0" layoutY="30.0" nodeOrientation="LEFT_TO_RIGHT" radius="27.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="3.0" />
-                  <Circle fx:id="chatStatusCircle" fill="#ffaf1f" layoutX="42.0" layoutY="46.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
+                  <Circle fx:id="currentChatPhotoCircle" fill="DODGERBLUE" layoutX="27.0" layoutY="30.0" nodeOrientation="LEFT_TO_RIGHT" radius="27.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Circle fx:id="chatStatusCircle" fill="#ffaf1f" layoutX="42.0" layoutY="46.0" radius="8.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="0.0" />
                </children>
             </AnchorPane>
             <Label fx:id="currentChatName" text="name">

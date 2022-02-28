@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <TextField fx:id="usernameField" prefHeight="50.0" prefWidth="300.0" />
@@ -30,7 +34,7 @@
          <children>
             <Label disable="true" prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <TextField fx:id="emailField" disable="true" prefHeight="50.0" prefWidth="300.0" />
@@ -44,9 +48,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#f1f2f4" HBox.hgrow="ALWAYS">
+            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <TextField fx:id="bioField" prefHeight="50.0" prefWidth="300.0" />
@@ -60,9 +64,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label disable="true" prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#f2f3f4" HBox.hgrow="ALWAYS">
+            <Label disable="true" prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
                <HBox.margin>
                   <Insets left="5.0" />
@@ -76,9 +80,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="167.0" text="Country:" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="27.0" prefWidth="167.0" text="Country:" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="countryField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" styleClass="text-field" HBox.hgrow="ALWAYS">
@@ -96,9 +100,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="166.0" text="Date Of Birth :" textFill="#f8f9fa" HBox.hgrow="ALWAYS">
+            <Label prefHeight="27.0" prefWidth="166.0" text="Date Of Birth :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <DatePicker fx:id="dateField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
@@ -112,9 +116,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="32.0" prefWidth="171.0" text="Update Profile : " textFill="#fafafa" HBox.hgrow="ALWAYS">
+            <Label prefHeight="32.0" prefWidth="171.0" text="Update Profile : " textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="26.0" />
+                  <Font name="Franklin Gothic Book" size="26.0" />
                </font>
             </Label>
             <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" rippleColor="#8ac4ff" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
