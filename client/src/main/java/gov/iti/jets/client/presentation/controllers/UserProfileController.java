@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +17,7 @@ import org.controlsfx.control.Notifications;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -53,15 +55,14 @@ public class UserProfileController implements Initializable {
         this.emailField.textProperty().bindBidirectional(userModel.emailProperty());
         this.phoneField.textProperty().bindBidirectional(userModel.phoneNumberProperty());
         this.dateField.valueProperty().bindBidirectional(userModel.dobProperty());
-    }
-
-    @FXML
-    void onClick(ActionEvent event){
-        validationSupport.registerValidator(usernameField, Validator.createPredicateValidator(s->usernameField.getText().length()>3,"4 characters at least"));
-        Notifications.create()
-                .title("Feedback")
-                .text("Updated")
-                .darkStyle().show();
+        dateField.setValue(LocalDate.of(2011,10,1));
+        dateField.setDayCellFactory(param -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.of(2011,10,1)) > 0 );
+            }
+        });
     }
 
     @FXML
@@ -81,6 +82,15 @@ public class UserProfileController implements Initializable {
 
     @FXML
     public void handleSaveButton(ActionEvent actionEvent) {
-        profileService.updateProfile();
+        String errorMsg = "4 characters at least";
+        if(!validationSupport.
+                registerValidator(usernameField, Validator.createPredicateValidator(s->usernameField.getText().length()>3,errorMsg)))
+        {
+            profileService.updateProfile();
+            Notifications.create()
+                .title("Feedback")
+                .text("Updated")
+                .show();
+        }
     }
 }
