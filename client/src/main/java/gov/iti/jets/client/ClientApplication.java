@@ -31,12 +31,12 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stageCoordinator.init(primaryStage);
+
         String str = sessionManager.readSession(session);
         String[] text = sessionManager.decryption(str);
         if(text.length == 2){
             loginService.submitLogin(text[0]);
             stageCoordinator.switchToChatScene();
-
         }else{
             stageCoordinator.switchToLoginScene();
         }
@@ -52,6 +52,12 @@ public class ClientApplication extends Application {
 
     }
 
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        System.exit(0);
+    }
     public static void main(String[] args) throws RemoteException {
         launch();
     }
