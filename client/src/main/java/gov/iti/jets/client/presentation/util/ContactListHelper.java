@@ -18,7 +18,8 @@ public class ContactListHelper {
     private final ObservableList<HBox> contactList = FXCollections.observableArrayList();
     private final Map<String, ContactControl> contactControlMap = new HashMap<>();
 
-    private ContactListHelper(){}
+    private ContactListHelper(){
+    }
 
     public static ContactListHelper getInstance(){
         return  contactListHelper;
@@ -64,5 +65,13 @@ public class ContactListHelper {
 
     public void changeContactStatus(String phoneNumber, Status status) {
         this.contactControlMap.get(phoneNumber).setStatus(status.name());
+    }
+
+    public String getContactStatus(String phoneNumber) {
+        if (checkIfPhoneExist(phoneNumber)) {
+            return this.contactControlMap.get(phoneNumber).getStatus();
+        } else {
+            return "not Found";
+        }
     }
 }
