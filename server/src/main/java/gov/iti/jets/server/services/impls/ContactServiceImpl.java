@@ -40,7 +40,6 @@ public class ContactServiceImpl implements IContactService {
         for (ContactEntity user : contacts) {
             contactDTOS.add(ContactDtoMapper.INSTANCE.contactEntityToDTO(user));
         }
-        System.out.println("contact service: " + contactDTOS);
         return contactDTOS;
     }
 

@@ -46,7 +46,7 @@ create table user_invitations (
 create table chat_groups (
 	id int auto_increment primary key,
 	group_name varchar(250) not null,
-    group_img text
+    group_img text not null default("group.png")
 );
 
 create table group_users (

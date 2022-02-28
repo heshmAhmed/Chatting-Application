@@ -1,6 +1,7 @@
 package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.util.RegistryFactory;
+import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.presentation.util.GroupListHelper;
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.server.IRemoteMessageHandler;
@@ -17,6 +18,7 @@ public class SendMessageService {
     private RegistryFactory registryFactory = RegistryFactory.getInstance();
     private IRemoteMessageHandler iRemoteMessageHandler = registryFactory.getRemoteMessageHandler();
     GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private ContactListHelper contactListHelper = ContactListHelper.getInstance();
     private SendMessageService(){}
 
     public static SendMessageService getInstance(){

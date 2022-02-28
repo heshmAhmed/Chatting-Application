@@ -2,10 +2,10 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -62,45 +62,46 @@
                   <Insets bottom="5.0" top="3.0" />
                </padding>
             </HBox>
-            <ScrollPane id="contactList" fitToHeight="true" fitToWidth="true" style="-fx-background-color: #1A1A40;" stylesheets="@../../styles/chat-view-style.css" VBox.vgrow="ALWAYS">
-               <content>
-                  <VBox id="contactVBox" fx:id="contactListVBox" style="-fx-background-color: #1A1A40;">
-                     <children>
-                        <Label text="contacts" textFill="#f7f5f5">
-                           <font>
-                              <Font name="Franklin Gothic Heavy Italic" size="12.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <FontIcon iconColor="WHITE" iconLiteral="fas-user-plus" iconSize="18" onMouseClicked="#handleAddNewContactIcon" />
-                           </graphic>
-                        </Label>
-                        <ListView fx:id="contactListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
-                     </children></VBox>
-               </content>
-            </ScrollPane>
-            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: #1A1A40;" VBox.vgrow="ALWAYS">
-               <content>
-                  <VBox id="contactVBox" fx:id="contactListVBox1" style="-fx-background-color: #1A1A40;">
-                     <children>
-                        <Label text="groups" textFill="#f7f5f5">
-                           <font>
-                              <Font name="Franklin Gothic Heavy Italic" size="12.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="20.0" />
-                           </VBox.margin>
-                           <graphic>
-                              <FontIcon iconColor="#fcf9f9" iconLiteral="fas-user-friends" iconSize="20" onMouseClicked="#handleAddNewGroupIcon" wrappingWidth="26.60000467300415" />
-                           </graphic>
-                        </Label>
-                        <ListView fx:id="groupListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
+            <VBox id="contactVBox" fx:id="contactListVBox" style="-fx-background-color: #1A1A40;">
+               <children>
+                  <Label text="contacts" textFill="#f7f5f5">
+                     <font>
+                        <Font name="Franklin Gothic Heavy Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-user-plus" iconSize="18" onMouseClicked="#handleAddNewContactIcon">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontIcon>
+                     </graphic>
+                  </Label>
+                  <ListView fx:id="contactListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <VBox id="contactVBox" fx:id="contactListVBox1" style="-fx-background-color: #1A1A40;">
+               <children>
+                  <Label text="groups" textFill="#f7f5f5">
+                     <font>
+                        <Font name="Franklin Gothic Heavy Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <FontIcon iconColor="#fcf9f9" iconLiteral="fas-user-friends" iconSize="20" onMouseClicked="#handleAddNewGroupIcon" wrappingWidth="26.60000467300415">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </FontIcon>
+                     </graphic>
+                  </Label>
+                  <ListView fx:id="groupListView" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
             <HBox alignment="CENTER">
                <VBox.margin>
                   <Insets bottom="5.0" />

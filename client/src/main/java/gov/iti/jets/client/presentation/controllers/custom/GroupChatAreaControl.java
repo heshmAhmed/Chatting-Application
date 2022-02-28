@@ -198,4 +198,11 @@ public class  GroupChatAreaControl extends BorderPane{
         return String.format("#%08X", (r + g + b + a));
     }
 
+    public Circle getCurrentChatPhotoCircle() {
+        return currentChatPhotoCircle;
+    }
+
+    public void setCurrentChatPhotoCircle(Circle currentChatPhotoCircle) {
+        this.currentChatPhotoCircle = currentChatPhotoCircle;
+    }
 }

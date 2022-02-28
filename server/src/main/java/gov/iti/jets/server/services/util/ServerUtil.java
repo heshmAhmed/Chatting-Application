@@ -43,6 +43,14 @@ public class ServerUtil {
     }
 
     public void sendAnnouncement(String announcement) {
+        System.out.println("Test announcement from server util: "+ announcement);
 
+        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+            try {
+                entry.getValue().receiveAnnouncement(announcement);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

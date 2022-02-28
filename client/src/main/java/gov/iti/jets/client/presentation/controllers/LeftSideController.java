@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
@@ -98,7 +99,7 @@ public class LeftSideController implements Initializable {
     public void handleChangeProfilePictureIcon(MouseEvent mouseClicked) {
         Optional<File> fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
         fileOptional.ifPresent(file -> {
-            if(file.length() <= 1000000)
+            if(file.length() <= 3000000)
                 profileService.updateProfilePicture(file, file.getName());
         });
     }
