@@ -5,6 +5,7 @@ import gov.iti.jets.client.presentation.util.StageCoordinator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -33,6 +34,8 @@ public class NewGroupControl extends AnchorPane{
     private Button cancelButton;
     @FXML
     private Label notValidLabel;
+    @FXML
+    private Label imageValidationLabel;
     private Optional<File> fileOptional = Optional.empty();
 
     public NewGroupControl(){
@@ -64,15 +67,20 @@ public class NewGroupControl extends AnchorPane{
             groupListHelper.createNewGroup(groupName, fileOptional);
             stageCoordinator.closeAddNewGroupPopup();
         }else{
-            notValidLabel.setText("Please enter a name");
+            notValidLabel.setText("please enter a name");
         }
     }
 
     public void handlePhotoImageView(){
         fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
         fileOptional.ifPresent(file -> {
-            if (file.length() <= 3000000) {
+            if (file.length() <= 500000) {
                 groupPhotoImageView.setImage(new Image(file.getPath()));
+                this.imageValidationLabel.setText("");
+            }
+            else {
+                this.imageValidationLabel.setText("image size exceeded 500kb");
+                fileOptional = Optional.empty();
             }
         });
     }

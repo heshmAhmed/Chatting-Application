@@ -28,7 +28,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor></FontIcon>
                             <Circle fx:id="userPhotoCircle" fill="#2395ff" layoutX="135.0" layoutY="63.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
-                            <Label fx:id="usernameLabel" layoutX="95.0" layoutY="120.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                            <Label fx:id="usernameLabel" layoutX="96.0" layoutY="138.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="29.0" />
                                 </font>
@@ -53,11 +53,12 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </padding>
                             </Label>
-                            <Label fx:id="phoneLabel" layoutX="95.0" layoutY="156.0" text="+0201097961674" textFill="#acacac">
+                            <Label fx:id="phoneLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="99.0" layoutY="175.0" prefHeight="23.0" text="1097961674" textAlignment="CENTER" textFill="#acacac">
                                 <font>
                                     <Font name="Agency FB Bold" size="19.0" />
                                 </font>
                             </Label>
+                        <Label fx:id="imageValidationLabel" layoutX="62.0" layoutY="120.0" prefHeight="18.0" prefWidth="145.0" textAlignment="CENTER" textFill="RED" />
                         </children>
                     </AnchorPane>
                 </children>

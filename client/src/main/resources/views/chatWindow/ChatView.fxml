@@ -29,7 +29,10 @@
                               <Button fx:id="statusButton" layoutX="155.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#handleStatusButton" style="-fx-background-color: none;">
                                  <graphic>
                                     <Circle fx:id="statusIcon" fill="#ffaf1f" onMouseClicked="#handleStatusIcon" radius="8.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
-                                 </graphic></Button>
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                               <Label fx:id="userNameLabel" layoutX="113.0" layoutY="107.0" prefHeight="18.0" prefWidth="52.0" text="myName" textFill="WHITE" />
                            </children>
                         </AnchorPane>
@@ -44,6 +47,9 @@
                            <VBox.margin>
                               <Insets right="5.0" top="5.0" />
                            </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </FontIcon>
                      </children>
                   </VBox>

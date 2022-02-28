@@ -24,6 +24,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
+    public Label imageValidationLabel;
     private UserModel userModel;
     private PaneCoordinator paneCoordinator;
     private StageCoordinator stageCoordinator ;
@@ -99,8 +100,12 @@ public class LeftSideController implements Initializable {
     public void handleChangeProfilePictureIcon(MouseEvent mouseClicked) {
         Optional<File> fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
         fileOptional.ifPresent(file -> {
-            if(file.length() <= 3000000)
+            if(file.length() <= 500000) {
                 profileService.updateProfilePicture(file, file.getName());
+                this.imageValidationLabel.setText("");
+            }
+            else
+                this.imageValidationLabel.setText("image size exceeded 500kb");
         });
     }
     private void initFileChooser() {

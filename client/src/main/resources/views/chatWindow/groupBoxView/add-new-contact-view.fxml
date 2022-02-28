@@ -11,12 +11,12 @@
       <ListView fx:id="contactsList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
       <HBox alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" style="-fx-background-color: #bf4080;" stylesheets="@../../../styles/main-style.css" text="Cancel">
+            <Button fx:id="addButton" minWidth="60.0" mnemonicParsing="false" onAction="#handleAddButton" style="-fx-background-color: #bf4080;" stylesheets="@../../../styles/main-style.css" text="add" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelButton" style="-fx-background-color: #bf4080;" stylesheets="@../../../styles/main-style.css" text="cancel">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddButton" style="-fx-background-color: #bf4080;" stylesheets="@../../../styles/main-style.css" text="add" />
          </children>
          <padding>
             <Insets bottom="5.0" right="5.0" top="5.0" />
