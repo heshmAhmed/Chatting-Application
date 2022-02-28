@@ -21,7 +21,7 @@ import java.rmi.RemoteException;
 import java.util.*;
 
 public class GroupListHelper {
-//    private final GroupService groupService = GroupService.getInstance();
+//  private final GroupService groupService = GroupService.getInstance();
     private final IRemoteGroupService groupService = RegistryFactory.getInstance().getRemoteGroupService();
     private static final GroupListHelper groupListHelper = new GroupListHelper();
     private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
@@ -29,12 +29,12 @@ public class GroupListHelper {
     private final Map<String, GroupControl> groupControlMap = new HashMap<>();
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
     private final ModelFactory modelFactory = ModelFactory.getInstance();
+    private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
+
 
     public Map<String, GroupDTO> getGroupDtosList() {
         return groupDtosList;
     }
-
-    private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
 
     private GroupListHelper(){}
 
@@ -82,9 +82,6 @@ public class GroupListHelper {
         }
     }
 
-    public void clearGroupList(){groupList.clear();}
-
-
     public void appendGroup(GroupDTO groupDTO){
         GroupControl groupControl = new GroupControl(groupDTO.getId());
         groupControl.getGroupNameLabel().setText(groupDTO.getName());
@@ -99,8 +96,13 @@ public class GroupListHelper {
     }
 
     public void addMessageToList(MessageDTO messageDTO) {
-
         Platform.runLater(()-> messageListMap.get(messageDTO.getReceiverId()).add(new ReceivedMessageControl(messageDTO)));
+    }
 
+    public void clearData() {
+        this.groupControlMap.clear();
+        this.groupDtosList.clear();
+        this.messageListMap.clear();
+        this.groupList.clear();
     }
 }

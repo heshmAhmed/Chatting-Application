@@ -6,8 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SessionManager {
-    File file = new File("session.txt");
-    public static final SessionManager sessionManager = new SessionManager();
+    private final File file = new File("session.txt");
+    private static final SessionManager sessionManager = new SessionManager();
 
     private SessionManager(){}
 

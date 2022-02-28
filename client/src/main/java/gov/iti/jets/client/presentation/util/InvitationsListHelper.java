@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InvitationsListHelper {
-    public static final InvitationsListHelper invitationsListHelper = new InvitationsListHelper();
+    private static final InvitationsListHelper invitationsListHelper = new InvitationsListHelper();
     private final ObservableList<HBox> invitationsList = FXCollections.observableArrayList();
     private final Map<String, HBox> invitationsListMap = new HashMap<>();
 
@@ -29,6 +29,11 @@ public class InvitationsListHelper {
         InvitationCardControl invitationCardControl = new InvitationCardControl(invitationDTO);
         invitationsList.add(invitationCardControl);
         invitationsListMap.put(invitationDTO.getSenderPhoneNumber(), invitationCardControl);
+    }
+
+    public void clearData() {
+        this.invitationsListMap.clear();
+        this.invitationsList.clear();
     }
 
 }

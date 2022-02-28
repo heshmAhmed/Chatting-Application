@@ -2,8 +2,9 @@ package gov.iti.jets.client.network.service;
 
 import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.models.UserModel;
-import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.*;
 import gov.iti.jets.client.util.DateHandler;
+import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteProfileService;
@@ -21,6 +22,10 @@ public class ProfileService {
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
     private final DateHandler dateHandler = DateHandler.getInstance();
     private final ModelFactory modelFactory = ModelFactory.getInstance();
+    private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private final SessionManager sessionManager = SessionManager.getInstance();
+    private final InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
 
     private ProfileService(){};
 
@@ -57,6 +62,21 @@ public class ProfileService {
             iRemoteProfileService.updateUserImage(userModel.getPhoneNumber(), imageName, encodedImage);
             this.userModel.getUserImageCircle().setFill(new ImagePattern(new Image(imageFile.getPath())));
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void logout() {
+        System.out.println(modelFactory.getContactList());
+        profileService.changeStatus(Status.OFFLINE);
+        contactListHelper.clearData();
+        groupListHelper.clearData();
+        sessionManager.endSession();
+        invitationsListHelper.clearData();
+        modelFactory.clearDate();
+        try {
+            iRemoteProfileService.logMeOut(userModel.getPhoneNumber());
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
     }

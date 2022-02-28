@@ -123,7 +123,6 @@ public class StageCoordinator {
         Scene scene = new Scene(pane);
         addNewGroupPopupStage.setScene(scene);
         addNewGroupPopupStage.showAndWait();
-
     }
 
     public void closeAddNewGroupPopup() {
@@ -131,9 +130,7 @@ public class StageCoordinator {
     }
 
     public void showAddContactToGroupPopup(String groupId,ObservableList<String> list){
-
         VBox pane =  new AddNewContactToGroupControl(groupId ,list);
-
         addNewGroupPopupStage = new Stage();
         addNewGroupPopupStage.initStyle(StageStyle.UNDECORATED);
         addNewGroupPopupStage.initModality(Modality.WINDOW_MODAL);
@@ -161,8 +158,9 @@ public class StageCoordinator {
         }
     }
 
-
-
+    public void removeChatScene() {
+        this.sceneMap.remove(CHAT_SCENE);
+    }
 
     ////////////this is a pane coordinator task will be modified later////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -171,7 +169,6 @@ public class StageCoordinator {
         BorderPane bp = (BorderPane) chatScene.getRoot();
         bp.setCenter(myChatArea);
     }
-
 
     public void closePrimaryStage() {
         this.primaryStage.close();

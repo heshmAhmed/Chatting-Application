@@ -20,9 +20,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
-    private ContactListHelper contactListHelper;
-    private GroupListHelper groupListHelper;
-    private SessionManager sessionManager;
     public Label imageValidationLabel;
     private UserModel userModel;
     private PaneCoordinator paneCoordinator;
@@ -52,9 +49,6 @@ public class LeftSideController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.contactListHelper = ContactListHelper.getInstance();
-        this.sessionManager = SessionManager.getInstance();
-        this.groupListHelper =  GroupListHelper.getInstance();
         this.stageCoordinator = StageCoordinator.getInstance();
         this.paneCoordinator = PaneCoordinator.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
@@ -68,10 +62,8 @@ public class LeftSideController implements Initializable {
 
     @FXML
     private void logoutClicked(MouseEvent event) {
-        profileService.changeStatus(Status.OFFLINE);
-        contactListHelper.clearContactList();
-        groupListHelper.clearGroupList();
-        sessionManager.endSession();
+        profileService.logout();
+        stageCoordinator.removeChatScene();
         stageCoordinator.switchToLoginScene();
     }
 

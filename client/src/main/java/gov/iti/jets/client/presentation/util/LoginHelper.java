@@ -58,7 +58,7 @@ public class LoginHelper implements Initializable {
             passwordFieldControl = new PasswordFieldControl(validatePasswordLabel);
             passwordPlaceHolderHBox.getChildren().add(passwordFieldControl);
             if (COUNTER <= 0){
-                numberField.setDisable(true);
+               // numberField.setDisable(true);
                 COUNTER++;
             }
             loginButton.setText("login");
