@@ -93,7 +93,7 @@ public class ChatAreaControl extends BorderPane {
 
 
     private String contactId;
-    private String color = "#000000FF";
+    private String color = "white";
     private String weight = "NORMAL";
     private String fontFamily = "Verdana ";
     private String fontSize = "18 px ";
@@ -156,8 +156,6 @@ public class ChatAreaControl extends BorderPane {
         messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                 "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
         messageTextArea.setStyle(messageStyle);
-
-
     }
 
     @FXML
@@ -191,7 +189,6 @@ public class ChatAreaControl extends BorderPane {
             messageTextArea.setStyle(messageStyle);
             System.out.println(messageStyle);
         }
-
     }
 
     private static String toHexString(Color color) {

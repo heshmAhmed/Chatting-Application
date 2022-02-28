@@ -25,7 +25,7 @@
                <children>
                   <Text fx:id="textOfMessage" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message-text" text="sentMessage">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="14.0" />
                      </font></Text>
                </children>
                <padding>

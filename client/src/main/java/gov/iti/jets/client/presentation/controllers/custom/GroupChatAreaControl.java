@@ -76,7 +76,7 @@ public class  GroupChatAreaControl extends BorderPane{
     private VBox chatAreaVBox;
     private String groupId;
     private String contactId;
-    private String color = "#000000FF";
+    private String color = "white";
     private String weight = "NORMAL";
     private String fontFamily = "Verdana ";
     private String fontSize = "18 px ";
