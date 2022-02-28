@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
+<VBox alignment="CENTER" minWidth="828.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
       <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>

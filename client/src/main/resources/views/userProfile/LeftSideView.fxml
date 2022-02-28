@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane minHeight="714.0" minWidth="294.0" prefHeight="714.0" prefWidth="294.0" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
+<BorderPane minHeight="720.0" minWidth="1128.0" prefHeight="714.0" prefWidth="294.0" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
    <left>
     <VBox alignment="TOP_CENTER" maxWidth="335.0" minWidth="0.0" prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
         <effect>
