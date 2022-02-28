@@ -17,6 +17,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -173,16 +175,37 @@ public class  GroupChatAreaControl extends BorderPane{
         sendMessageButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (EventHandler<MouseEvent>) e -> {
             sendMessage();
         });
+
+        messageTextArea.addEventFilter(KeyEvent.KEY_PRESSED,  new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent e) {
+
+
+                if (e.getCode() == KeyCode.ENTER) {
+                    if(e.isShiftDown())
+                    {
+                        messageTextArea.appendText("\n");
+                        return;
+                    }
+                    sendMessage();
+                    e.consume();
+                }
+            }
+        });
+
+
+
+
     }
 
     private void sendMessage(){
         String message = messageTextArea.getText();
-        MessageDTO myMessageDTO = new MessageDTO();
-        myMessageDTO.setMessageText(message);
-        myMessageDTO.setMessageStyle(messageStyle);
-        myMessageDTO.setReceiverId(groupId);
-        myMessageDTO.setSenderId(userModel.getPhoneNumber());
         if(!(message.equals(""))){
+
+            MessageDTO myMessageDTO = new MessageDTO();
+            myMessageDTO.setMessageText(message);
+            myMessageDTO.setMessageStyle(messageStyle);
+            myMessageDTO.setReceiverId(groupId);
+            myMessageDTO.setSenderId(userModel.getPhoneNumber());
             list.add(new SentMessageControl(myMessageDTO));
             sendMessageService.sendGroupMessage(myMessageDTO);
             messageTextArea.setText("");
