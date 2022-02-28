@@ -8,10 +8,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.validation.ValidationSupport;
@@ -31,7 +28,7 @@ public class UserProfileController implements Initializable {
     @FXML
     public TextField emailField;
     @FXML
-    public TextField bioField;
+    public TextArea bioTextArea;
     @FXML
     public TextField phoneField;
     @FXML
@@ -50,7 +47,7 @@ public class UserProfileController implements Initializable {
         this.profileService = ProfileService.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.usernameField.textProperty().bindBidirectional(userModel.usernameProperty());
-        this.bioField.textProperty().bindBidirectional(userModel.bioProperty());
+        this.bioTextArea.textProperty().bindBidirectional(userModel.bioProperty());
         this.countryField.valueProperty().bindBidirectional(userModel.countryProperty());
         this.emailField.textProperty().bindBidirectional(userModel.emailProperty());
         this.phoneField.textProperty().bindBidirectional(userModel.phoneNumberProperty());

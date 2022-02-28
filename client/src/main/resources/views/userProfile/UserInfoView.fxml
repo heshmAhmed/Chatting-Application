@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,9 +15,25 @@
 
 <VBox alignment="CENTER" minWidth="650.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
+      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label disable="true" prefHeight="30.0" prefWidth="169.0" text="Phone number :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Franklin Gothic Book" size="22.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="phoneField" disable="true" prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Username :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Franklin Gothic Book" size="22.0" />
                </font>
@@ -32,7 +49,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label disable="true" prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+            <Label disable="true" prefHeight="30.0" prefWidth="169.0" text="Email :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Franklin Gothic Book" size="22.0" />
                </font>
@@ -46,14 +63,14 @@
             <Insets left="25.0" right="15.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Bio :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="bioField" prefHeight="50.0" prefWidth="300.0" />
+            <TextArea fx:id="bioTextArea" prefColumnCount="70" prefHeight="50.0" prefRowCount="2" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -62,25 +79,9 @@
             <Insets left="25.0" right="15.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label disable="true" prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="#813a3a" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font name="Franklin Gothic Book" size="22.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="phoneField" disable="true" prefHeight="50.0" prefWidth="300.0" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
-      </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="167.0" text="Country:" textFill="#813a3a" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Country:" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Franklin Gothic Book" size="22.0" />
                </font>
@@ -100,7 +101,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="27.0" prefWidth="166.0" text="Date Of Birth :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Date Of Birth :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Franklin Gothic Book" size="22.0" />
                </font>
