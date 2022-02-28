@@ -66,9 +66,9 @@ public class SidebarController implements Initializable {
     @FXML
     public void handleOnOffButton(ActionEvent event) {
         if (onOffButton.isSelected()) {
-            registryManager.publishServices();
+            registryManager.startServer();
         } else {
-            registryManager.unPublishServices();
+            registryManager.stopServer();
         }
     }
 

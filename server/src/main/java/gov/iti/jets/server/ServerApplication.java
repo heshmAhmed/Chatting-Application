@@ -46,13 +46,13 @@ public class ServerApplication extends Application {
     @Override
     public void init() throws Exception {
         super.init();
-        registryManager.createRegistry(5000);
-        registryManager.publishServices();
+        registryManager.startServer();
     }
 
     @Override
     public void stop() throws Exception {
         super.stop();
+        registryManager.stopServer();
     }
 
     public static void main(String[] args) throws RemoteException {

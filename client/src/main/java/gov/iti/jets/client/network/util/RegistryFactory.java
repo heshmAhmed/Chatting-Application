@@ -12,7 +12,7 @@ public class RegistryFactory {
 
     private RegistryFactory(){
         try {
-            registry = LocateRegistry.getRegistry(5000);
+            registry = LocateRegistry.getRegistry(6000);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

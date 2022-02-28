@@ -12,10 +12,13 @@ import gov.iti.jets.server.network.RemoteMessageHandelImpl;
 import gov.iti.jets.server.network.RemoteProfileServiceImpl;
 import gov.iti.jets.server.network.RemoteRegistrationServiceImpl;
 import gov.iti.jets.server.services.util.ServerUtil;
+
+import java.rmi.NoSuchObjectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Map;
 
 public class RegistryManager {
@@ -28,6 +31,7 @@ public class RegistryManager {
     private IRemoteProfileService iRemoteProfileService;
     private IRemoteContactService iRemoteContactService;
     private IRemoteGroupService iRemoteGroupService;
+    private final int port = 6000;
 
     private RegistryManager() {}
 
@@ -35,7 +39,13 @@ public class RegistryManager {
         return registryManager;
     }
 
-    public void createRegistry(int port) {
+    public void startServer() {
+        createRegistry();
+        publishServices();
+        System.out.println("server is up");
+    }
+
+    private void createRegistry() {
         try {
             registry = LocateRegistry.createRegistry(port);
         } catch (RemoteException e) {
@@ -47,7 +57,19 @@ public class RegistryManager {
         }
     }
 
-    public void publishServices() {
+    public void stopServer() {
+        try {
+            unPublishServices();
+            unExportRemoteServices();
+           // UnicastRemoteObject.unexportObject(registry, true);
+           // registry = null;
+            System.out.println("Server is down");
+        } catch (NoSuchObjectException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void publishServices() {
         try {
             iRemoteLoginService = new RemoteLoginServiceImpl();
             iRemoteRegistrationService = new RemoteRegistrationServiceImpl();
@@ -66,27 +88,35 @@ public class RegistryManager {
         }
     }
 
-    public void unPublishServices() {
+    private void unPublishServices() {
         if (registry != null) {
             try {
                 String[] services = registry.list();
-                for (String name :services){
+                for (String name : services) {
                     System.out.println(name);
                 }
                 for (String service : services) {
-                   this.registry.unbind(service);
-                    System.out.println("================== RMI Registry Service " + service + " Unbounded ============");
+                    this.registry.unbind(service);
+                   System.out.println("================== RMI Registry Service " + service + " Unbounded ============");
                 }
-                for (Map.Entry<String, IClientCallback> entry : serverUtil.onlineUsers.entrySet()) {
+                for (Map.Entry<String, IClientCallback> entry : serverUtil.onlineUsers.entrySet())
                     entry.getValue().serverDisconnected();
-                }
             } catch (RemoteException | NotBoundException e) {
                 e.printStackTrace();
             }
         }else {
             System.out.println("===================RMI Registry Connection Already Stopped=============");
         }
+        serverUtil.clearMap();
+    }
 
+    private void unExportRemoteServices() throws NoSuchObjectException {
+        UnicastRemoteObject.unexportObject(iRemoteContactService,true);
+        UnicastRemoteObject.unexportObject(iRemoteGroupService, true);
+        UnicastRemoteObject.unexportObject(iRemoteLoginService,true);
+        UnicastRemoteObject.unexportObject(iRemoteProfileService, true);
+        UnicastRemoteObject.unexportObject(iRemoteRegistrationService,true);
+        UnicastRemoteObject.unexportObject(iRemoteMessageHandler, true);
     }
 
 }

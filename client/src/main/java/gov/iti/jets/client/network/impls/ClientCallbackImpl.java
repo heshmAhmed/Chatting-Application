@@ -66,28 +66,9 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
         Popups.receiveNotification("Announcement!","📢 "+announcement);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public void serverDisconnected() throws RemoteException {
-
+        System.out.println("server disconnected");
     }
 
 

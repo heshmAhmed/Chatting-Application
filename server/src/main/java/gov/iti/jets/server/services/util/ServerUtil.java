@@ -23,16 +23,6 @@ public class ServerUtil {
 
     public void addUserToOnline(String phoneNumber, IClientCallback callback) {
         onlineUsers.put(phoneNumber, callback);
-
-        //////test remove later////////////////////
-
-//        try {
-//            callback.receiveMessage(new MessageDTO());
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
-
-        ///////////////////////////////////////////////
         for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
             System.out.println(entry.getKey() + ":" + entry.getValue());
         }
@@ -52,5 +42,9 @@ public class ServerUtil {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void clearMap() {
+        this.onlineUsers.clear();
     }
 }
