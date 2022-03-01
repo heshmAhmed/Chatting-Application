@@ -7,6 +7,10 @@ import gov.iti.jets.common.dtos.ContactDTO;
 import gov.iti.jets.common.dtos.InvitationDTO;
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.dtos.Status;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -68,7 +72,10 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void serverDisconnected() throws RemoteException {
+
         System.out.println("server disconnected");
+        Platform.runLater(() ->Popups.alert("☠ Server is down!!"));
+
     }
 
 
