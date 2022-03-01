@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -80,24 +81,18 @@ public class RegistrationController implements Initializable {
             String phone = phoneField.getText();
             String password = passwordField.getText();
             String confirmedPassword = confirmPasswordField.getText();
-            String email = emailField.getText();
+            String email = emailField.getText().toLowerCase();
             String country = (String) countryBox.getValue();
             String gender = (String) genderBox.getValue();
             LocalDate dob =  datePicker.getValue();
             long dobLong =  dateHandler.localDateToMillis(dob);
             user = new UserDTO(phone,email,name,password,gender,dobLong,country);
-
             check = service.createNewUser(user);
-            System.out.println(check);
             if(check){
-                System.err.println("Succissful reg");
                 stageCoordinator.switchToLoginScene();
             }else{
-                System.err.println("not succissful");
                 validateLabel.setText("Already exists");
             }
-        }else{
-            System.out.println(check);
         }
     }
 

@@ -6,4 +6,5 @@ import java.util.List;
 public interface IMessageService {
     public void sendMessage (MessageDTO messageDTO);
     public void sendMsgToGroup(MessageDTO messageDTO,  List<String> groupContacts);
+    public  void sendFileService(String senderName ,String receiverPhone,byte[] sentFileAsBytes ,String fileName);
 }

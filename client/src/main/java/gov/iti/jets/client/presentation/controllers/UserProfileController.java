@@ -3,25 +3,19 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.Validation;
 import gov.iti.jets.common.dtos.Country;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,7 +29,7 @@ public class UserProfileController implements Initializable {
     @FXML
     public TextField emailField;
     @FXML
-    public TextField bioField;
+    public TextArea bioTextArea;
     @FXML
     public TextField phoneField;
     @FXML
@@ -50,28 +44,24 @@ public class UserProfileController implements Initializable {
         this.countryField.getItems().addAll(Stream.of(Country.values()).map(Enum::name).collect(Collectors.toList()));
         this.emailField.setDisable(true);
         this.phoneField.setDisable(true);
-        validationSupport = new ValidationSupport();
+        this.validationSupport = new ValidationSupport();
         this.profileService = ProfileService.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.usernameField.textProperty().bindBidirectional(userModel.usernameProperty());
-        this.bioField.textProperty().bindBidirectional(userModel.bioProperty());
+        this.bioTextArea.textProperty().bindBidirectional(userModel.bioProperty());
         this.countryField.valueProperty().bindBidirectional(userModel.countryProperty());
         this.emailField.textProperty().bindBidirectional(userModel.emailProperty());
         this.phoneField.textProperty().bindBidirectional(userModel.phoneNumberProperty());
         this.dateField.valueProperty().bindBidirectional(userModel.dobProperty());
+        dateField.setValue(LocalDate.of(2011,10,1));
+        dateField.setDayCellFactory(param -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.of(2011,10,1)) > 0 );
+            }
+        });
     }
-
-    
-
-    @FXML
-    void onClick(ActionEvent event){
-        validationSupport.registerValidator(usernameField, Validator.createPredicateValidator(s->usernameField.getText().length()>3,"4 characters at least"));
-        Notifications.create()
-                .title("Feedback")
-                .text("Updated")
-                .darkStyle().show();
-    }
-
 
     @FXML
     void showInformation(MouseEvent event) {
@@ -90,6 +80,15 @@ public class UserProfileController implements Initializable {
 
     @FXML
     public void handleSaveButton(ActionEvent actionEvent) {
-        profileService.updateProfile();
+        validationSupport.registerValidator(usernameField,
+                Validator.createPredicateValidator(s->usernameField.getText().length()>3,"4 characters at least"));
+        if(!validationSupport.isInvalid())
+        {
+            profileService.updateProfile();
+            Notifications.create()
+                .title("Feedback")
+                .text("Updated")
+                .show();
+        }
     }
 }

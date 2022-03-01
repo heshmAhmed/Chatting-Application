@@ -1,6 +1,5 @@
 package gov.iti.jets.client.presentation.util;
 
-import gov.iti.jets.client.presentation.controllers.custom.ContactControl;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.util.DateHandler;
@@ -10,15 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import javafx.scene.shape.Circle;
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -26,11 +20,6 @@ public class ModelFactory {
     private final static ModelFactory modelFactory = new ModelFactory();
     private final UserModel userModel = new UserModel();
     private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
-
-    public ObservableList<ContactModel> getContactModels() {
-        return contactModels;
-    }
-
     private final ObservableList<ContactModel> contactModels = FXCollections.observableArrayList();
     private final DateHandler dateHandler = DateHandler.getInstance();
 
@@ -53,8 +42,14 @@ public class ModelFactory {
         userModel.setGender(userDTO.getGender());
         userModel.setDob(dateHandler.millisToLocalDate(userDTO.getDob()));
         userModel.setStatus(userDTO.getStatus());
-        if(!userDTO.getImage().equals(""))
-            userModel.getUserImageCircle().setFill(new ImagePattern(decodeImage(userDTO.getImage())));
+        handleUserImage(userDTO.getImage());
+    }
+
+    private void handleUserImage(String encodedImage) {
+        if(encodedImage.equals(""))
+            userModel.setUserImageCircle(new Circle());
+        else
+            userModel.getUserImageCircle().setFill(new ImagePattern(decodeImage(encodedImage)));
     }
 
     public ContactModel mapContactModelToDTO(ContactDTO contactDTO) {
@@ -88,8 +83,16 @@ public class ModelFactory {
         return new Image(targetStream);
     }
 
-
     public void addToContactModels(ContactModel contactModel) {
         this.contactModels.add(contactModel);
     }
+
+    public ObservableList<ContactModel> getContactModels() {
+        return contactModels;
+    }
+
+    public void clearDate() {
+        this.contactModels.clear();
+    }
+
 }

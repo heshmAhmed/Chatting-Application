@@ -23,19 +23,9 @@ public class ServerUtil {
 
     public void addUserToOnline(String phoneNumber, IClientCallback callback) {
         onlineUsers.put(phoneNumber, callback);
-
-        //////test remove later////////////////////
-
-//        try {
-//            callback.receiveMessage(new MessageDTO());
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
+//        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+//            System.out.println(entry.getKey() + ":" + entry.getValue());
 //        }
-
-        ///////////////////////////////////////////////
-        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
-        }
     }
 
     public void removeUserFromOnline(String phoneNumber) {
@@ -43,6 +33,16 @@ public class ServerUtil {
     }
 
     public void sendAnnouncement(String announcement) {
+        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+            try {
+                entry.getValue().receiveAnnouncement(announcement);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    public void clearMap() {
+        this.onlineUsers.clear();
     }
 }

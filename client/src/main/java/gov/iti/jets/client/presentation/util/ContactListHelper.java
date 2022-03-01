@@ -66,4 +66,26 @@ public class ContactListHelper {
     public void changeContactStatus(String phoneNumber, Status status) {
         this.contactControlMap.get(phoneNumber).setStatus(status.name());
     }
+
+    public String getContactStatus(String phoneNumber) {
+        if (checkIfPhoneExist(phoneNumber)) {
+            return this.contactControlMap.get(phoneNumber).getStatus();
+        } else {
+            return "not Found";
+        }
+    }
+
+
+    public String getNameById(String id){
+        if(contactControlMap.containsKey(id))
+            return contactControlMap.get(id).getContactNameLabel().getText();
+
+        return id;
+
+    }
+    public void clearData() {
+        this.contactControlMap.clear();
+        this.contactList.clear();
+        this.messageListMap.clear();
+    }
 }

@@ -56,15 +56,11 @@ public class AddNewContactToGroupControl extends VBox{
 
     @FXML
     void handleAddButton(ActionEvent event){
-
         List<String> selected = new ArrayList<>(contactsList.getSelectionModel().getSelectedItems());
-
         StageCoordinator.getInstance().closeAddContactToGroupPopup();
-
         if(selected.size() > 0){
             groupService.addContactToGroup(id, selected);
         }
-
     }
 
     @FXML

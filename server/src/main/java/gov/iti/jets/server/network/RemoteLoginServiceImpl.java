@@ -41,10 +41,13 @@ public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemo
     public UserDTO getUser(String phoneNumber, IClientCallback clientCallback) throws RemoteException {
         UserDTO userDTO = loginService.getUserData(phoneNumber);
         userDTO.setContacts(contactService.getAllUserContacts(phoneNumber));
-
-        System.out.println(userDTO);
-
         serverUtil.addUserToOnline(phoneNumber, clientCallback);
         return userDTO;
     }
+
+    @Override
+    public boolean isUserOnline(String phoneNumber) {
+        return serverUtil.onlineUsers.containsKey(phoneNumber);
+    }
+
 }

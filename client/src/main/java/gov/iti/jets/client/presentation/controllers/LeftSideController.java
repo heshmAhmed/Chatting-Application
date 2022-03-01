@@ -2,9 +2,8 @@ package gov.iti.jets.client.presentation.controllers;
 
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
-import gov.iti.jets.client.presentation.util.ModelFactory;
-import gov.iti.jets.client.presentation.util.PaneCoordinator;
-import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.client.presentation.util.*;
+import gov.iti.jets.common.dtos.Status;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,14 +14,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import org.controlsfx.control.Notifications;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.io.FileFilter;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LeftSideController implements Initializable {
+    public Label imageValidationLabel;
     private UserModel userModel;
     private PaneCoordinator paneCoordinator;
     private StageCoordinator stageCoordinator ;
@@ -48,10 +46,11 @@ public class LeftSideController implements Initializable {
     private Button update;
     @FXML
     public Circle userPhotoCircle;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        stageCoordinator = StageCoordinator.getInstance();
-        paneCoordinator = PaneCoordinator.getInstance();
+        this.stageCoordinator = StageCoordinator.getInstance();
+        this.paneCoordinator = PaneCoordinator.getInstance();
         this.userModel = ModelFactory.getInstance().getUserModel();
         this.usernameLabel.textProperty().bindBidirectional(userModel.usernameProperty());
         this.phoneLabel.textProperty().bindBidirectional(userModel.phoneNumberProperty());
@@ -62,7 +61,9 @@ public class LeftSideController implements Initializable {
     }
 
     @FXML
-    void logoutClicked(MouseEvent event) {
+    private void logoutClicked(MouseEvent event) {
+        profileService.logout();
+        stageCoordinator.removeChatScene();
         stageCoordinator.switchToLoginScene();
     }
 
@@ -98,12 +99,17 @@ public class LeftSideController implements Initializable {
     public void handleChangeProfilePictureIcon(MouseEvent mouseClicked) {
         Optional<File> fileOptional = Optional.ofNullable(fileChooser.showOpenDialog(stageCoordinator.getPrimaryStage()));
         fileOptional.ifPresent(file -> {
-            if(file.length() <= 1000000)
+            if(file.length() <= 500000) {
                 profileService.updateProfilePicture(file, file.getName());
+                this.imageValidationLabel.setText("");
+            }
+            else
+                this.imageValidationLabel.setText("image size exceeded 500kb");
         });
     }
     private void initFileChooser() {
         this.fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter
+                ("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
     }
 }

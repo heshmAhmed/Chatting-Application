@@ -3,6 +3,8 @@ package gov.iti.jets.client.network.service;
 import gov.iti.jets.client.network.impls.ClientCallbackImpl;
 import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.Popups;
+import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.common.dtos.UserDTO;
 import gov.iti.jets.common.server.IRemoteLoginService;
 import java.rmi.RemoteException;
@@ -25,6 +27,9 @@ public class LoginService {
         return loginService;
     }
 
+    public boolean isUserOnline(String phoneNumber) throws RemoteException {
+        return remoteLoginService.isUserOnline(phoneNumber);
+    }
     public boolean validatePhoneNumber(String phoneNumber) throws RemoteException {
         return remoteLoginService.checkUserPhoneNumber(phoneNumber);
     }

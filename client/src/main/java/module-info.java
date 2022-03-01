@@ -9,6 +9,7 @@ module gov.iti.jets.client {
     requires common;
     requires org.apache.commons.io;
     requires java.rmi;
+    requires com.google;
 
     exports gov.iti.jets.client;
 }

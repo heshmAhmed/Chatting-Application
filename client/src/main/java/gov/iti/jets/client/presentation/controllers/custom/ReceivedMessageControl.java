@@ -1,5 +1,6 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
+import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class ReceivedMessageControl extends HBox {
+        ContactListHelper contactListHelper = ContactListHelper.getInstance();
         DateHandler dateHandler;
         MessageDTO messageDTO;
 
@@ -48,7 +50,7 @@ public class ReceivedMessageControl extends HBox {
                 this.dateHandler = DateHandler.getInstance();
                 textOfMessage.setText(messageDTO.getMessageText());
                 textOfMessage.setStyle(messageDTO.getMessageStyle());
-                nameLabel.setText(messageDTO.getSenderId());
+                nameLabel.setText(contactListHelper.getNameById(messageDTO.getSenderId()));
                 messageTimeLabel.setText(DateHandler.getInstance().getCurrentTime());
         }
 }

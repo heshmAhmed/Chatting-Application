@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -11,14 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <fx:root onMouseDragged="#handleOnMouseDragged" onMousePressed="#handleOnMousePressed" style="-fx-background-color: #1A1A40;" type="ToolBar" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="322.0" prefWidth="485.0" style="-fx-background-color: #1A1A40;">
          <content>
             <VBox fx:id="vbox" alignment="TOP_RIGHT" style="-fx-padding: 20; -fx-background-color: #1A1A40;" stylesheets="@../../styles/main-style.css">
                <children>
-                  <FontIcon iconColor="WHITE" iconLiteral="far-window-close" iconSize="19" onMouseClicked="#handleCloseIcon" textAlignment="CENTER" />
+                  <FontIcon iconColor="WHITE" iconLiteral="far-window-close" iconSize="19" onMouseClicked="#handleCloseIcon" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></FontIcon>
                   <HBox alignment="CENTER">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="Add new contact" textAlignment="CENTER" textFill="WHITE">
@@ -33,7 +36,10 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER">
                      <children>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-plus-circle" iconSize="32" onMouseClicked="#handlePlusIcon" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-plus-circle" iconSize="32" onMouseClicked="#handlePlusIcon">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></FontIcon>
                         <TextField fx:id="phoneNumberField" alignment="CENTER" onAction="#handlePhoneNumberField" prefColumnCount="20" prefHeight="33.0" prefWidth="333.0" promptText="Enter phone number">
                            <font>
                               <Font name="Bookshelf Symbol 7" size="18.0" />
@@ -42,19 +48,22 @@
                               <Insets left="15.0" right="15.0" />
                            </HBox.margin>
                         </TextField>
-                        <MFXButton minHeight="34.0" minWidth="60.0" onAction="#handleSendButton" style="-fx-background-color: #bf4080;" text="Send" textFill="WHITE">
+                        <MFXButton fx:id="sendButton" minHeight="34.0" minWidth="60.0" onAction="#handleSendButton" style="-fx-background-color: #bf4080;" text="Send" textFill="WHITE">
                            <font>
                               <Font name="Bookman Old Style Bold" size="12.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </MFXButton>
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="444.0">
                      <children>
-                        <Label fx:id="phoneNumberLabel" textAlignment="JUSTIFY" textFill="#e40808">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
+                        <Label fx:id="phoneNumberLabel" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER" textFill="#e40808">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </Label>
                      </children>
                   </HBox>

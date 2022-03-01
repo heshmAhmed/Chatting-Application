@@ -6,22 +6,29 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
 <fx:root fx:id="groupHBox" onMouseClicked="#handleGroupBox" styleClass="body" stylesheets="@../../../styles/contact-box-style.css" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="46.0" prefWidth="39.0">
          <children>
-            <Circle fx:id="groupPhotoCircle" fill="DODGERBLUE" layoutX="20.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" radius="15.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+            <Circle fx:id="groupPhotoCircle" fill="DODGERBLUE" layoutX="27.0" layoutY="23.0" nodeOrientation="LEFT_TO_RIGHT" radius="22.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
          </children>
       </AnchorPane>
       <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="138.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="groupNameLabel" text="contactName" textFill="WHITE">
+            <Label fx:id="groupNameLabel" text="contactName" textFill="WHITE" wrapText="true">
                <VBox.margin>
                   <Insets top="3.0" />
                </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
          </children>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
       </VBox>
    </children>
    <padding>

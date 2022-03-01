@@ -54,14 +54,13 @@ public class GroupControl extends HBox{
     }
 
     public void initialize(){
+
         list = groupListHelper.createMessageList(groupId);
         myChatArea = new GroupChatAreaControl(list, groupId);
         myChatArea.getCurrentChatName().textProperty().bind(groupNameLabel.textProperty());
-
-//        groupNameLabel.setText("dummy name");
+        myChatArea.getCurrentChatPhotoCircle().fillProperty().bindBidirectional(groupPhotoCircle.fillProperty());
         groupHBox.addEventHandler(MouseEvent.MOUSE_CLICKED,
                 (EventHandler<MouseEvent>) e -> stageCoordinator.setChatScene(myChatArea));
-////        contactPhotoCircle.setFill();
     }
 
     @FXML
@@ -69,4 +68,11 @@ public class GroupControl extends HBox{
 
     }
 
+    public Circle getGroupPhotoCircle() {
+        return groupPhotoCircle;
+    }
+
+    public void setGroupPhotoCircle(Circle groupPhotoCircle) {
+        this.groupPhotoCircle = groupPhotoCircle;
+    }
 }

@@ -2,10 +2,16 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.InvitationsListController">
    <center>
-      <ListView fx:id="listView" BorderPane.alignment="CENTER" />
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <FontIcon iconLiteral="fas-inbox" iconSize="200" selectionFill="#130000" />
+            <ListView fx:id="listView" style="-fx-background-color: none;" />
+         </children>
+      </StackPane>
    </center>
 </BorderPane>

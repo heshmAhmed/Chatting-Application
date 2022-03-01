@@ -11,7 +11,7 @@
 
 <fx:root id="sentMessage" alignment="TOP_RIGHT" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="messageBox" maxWidth="600.0" styleClass="message-box">
+      <VBox fx:id="messageBox" maxWidth="600.0" style="-fx-background-color: #1A1A40;" styleClass="message-box">
          <HBox.margin>
             <Insets right="5.0" top="5.0" />
          </HBox.margin>
@@ -25,7 +25,7 @@
                <children>
                   <Text fx:id="textOfMessage" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="message-text" text="sentMessage">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="14.0" />
                      </font></Text>
                </children>
                <padding>

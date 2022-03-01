@@ -10,6 +10,7 @@ import gov.iti.jets.client.presentation.util.Validation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
@@ -21,12 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewContactControl extends ToolBar {
-    @FXML
-    private TextField phoneNumberField;
-    @FXML
-    public VBox vbox;
-    @FXML
-    private Label phoneNumberLabel;
     private StageCoordinator stageCoordinator;
     private List<String> contactList;
     private Validation validation;
@@ -34,6 +29,14 @@ public class NewContactControl extends ToolBar {
     private ContactListHelper contactListHelper;
     private LoginService loginService;
     private ContactService contactService;
+    @FXML
+    private TextField phoneNumberField;
+    @FXML
+    public VBox vbox;
+    @FXML
+    private Label phoneNumberLabel;
+    @FXML
+    private Button sendButton;
 
     public NewContactControl() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/newcontact/NewContactViewControl.fxml"));
@@ -54,6 +57,7 @@ public class NewContactControl extends ToolBar {
         this.contactListHelper = ContactListHelper.getInstance();
         this.loginService = LoginService.getInstance();
         this.contactService = ContactService.getInstance();
+        this.sendButton.setDisable(true);
     }
 
     @FXML
@@ -68,13 +72,14 @@ public class NewContactControl extends ToolBar {
             return;
         // check if phone already exist in the contact list
         else if(contactListHelper.checkIfPhoneExist(phoneNumberField.getText())){
-            phoneNumberLabel.setText("contact already exist!");
+            phoneNumberLabel.setText("Contact already exist!");
             return;
         }
         // check if phone number is in the system
         else if(loginService.validatePhoneNumber(phoneNumberField.getText())) {
             if(!this.contactList.contains(phoneNumberField.getText())) {
                 this.contactList.add(phoneNumberField.getText());
+                this.sendButton.setDisable(false);
                 this.addPhoneNumberToVbox();
             }
             this.phoneNumberField.setText("");
@@ -107,7 +112,7 @@ public class NewContactControl extends ToolBar {
     private void validateAddedPhoneNumber() {
         if(validation.validatePhoneNumber(userModel.getPhoneNumber(), phoneNumberField, phoneNumberLabel)
                 && contactListHelper.checkIfPhoneExist(phoneNumberField.getText())) {
-            phoneNumberLabel.setText("contact already exist!");
+            phoneNumberLabel.setText("Contact already exist!");
         }
     }
 

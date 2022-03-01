@@ -35,4 +35,12 @@ public class DateHandler {
                 .toFormatter(Locale.US);
         return LocalDateTime.now().format(fmt);
     }
+
+    public String getDateWithFormat(long millis) {
+        DateTimeFormatter fmt = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .appendPattern("EEEE, h:mm a")
+                .toFormatter(Locale.US);
+        return  Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDateTime().format(fmt);
+    }
 }

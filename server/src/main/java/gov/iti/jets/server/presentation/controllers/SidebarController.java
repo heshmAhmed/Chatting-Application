@@ -1,6 +1,9 @@
 package gov.iti.jets.server.presentation.controllers;
 
+import gov.iti.jets.server.network.util.RegistryManager;
 import gov.iti.jets.server.presentation.util.PaneCoordinator;
+
+import gov.iti.jets.server.presentation.util.SessionManager;
 import gov.iti.jets.server.presentation.util.StageCoordinator;
 import io.github.palexdev.materialfx.controls.MFXToggleButton;
 import javafx.event.ActionEvent;
@@ -8,10 +11,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SidebarController implements Initializable {
+    private SessionManager sessionManager = SessionManager.getInstance();
+
     @FXML
     private Button announcementButton;
 
@@ -30,6 +36,7 @@ public class SidebarController implements Initializable {
     private PaneCoordinator paneCoordinator;
 
     private StageCoordinator stageCoordinator;
+    private final RegistryManager registryManager = RegistryManager.getInstance();
 
     @FXML
     void handleAnnouncement(ActionEvent event) {
@@ -38,6 +45,7 @@ public class SidebarController implements Initializable {
 
     @FXML
     void handleLogout(ActionEvent event) {
+        sessionManager.endSession();
         stageCoordinator.switchToLoginScene();
     }
 
@@ -62,8 +70,12 @@ public class SidebarController implements Initializable {
     }
 
     @FXML
-    public void handleOnOffButton(ActionEvent event){
-
+    public void handleOnOffButton(ActionEvent event) {
+        if (onOffButton.isSelected()) {
+            registryManager.startServer();
+        } else {
+            registryManager.stopServer();
+        }
     }
 
     @Override

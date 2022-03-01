@@ -7,20 +7,35 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" style="-fx-background-color: #21325E;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
+<VBox alignment="CENTER" minWidth="828.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.UserProfileController">
    <children>
+      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label disable="true" prefHeight="30.0" prefWidth="169.0" text="Phone number :" textFill="#813a3a" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font name="Franklin Gothic Book" size="22.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="phoneField" disable="true" prefHeight="50.0" prefWidth="300.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="15.0" />
+         </VBox.margin>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Username :" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Username :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <TextField fx:id="usernameField" prefHeight="50.0" prefWidth="300.0" />
@@ -34,12 +49,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Email :" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label disable="true" prefHeight="30.0" prefWidth="169.0" text="Email :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" prefHeight="50.0" prefWidth="300.0" />
+            <TextField fx:id="emailField" disable="true" prefHeight="50.0" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -48,14 +63,14 @@
             <Insets left="25.0" right="15.0" />
          </padding>
       </HBox>
-      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER" layoutX="111.0" layoutY="153.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Bio :" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Bio :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="bioField" prefHeight="50.0" prefWidth="300.0" />
+            <TextArea fx:id="bioTextArea" prefColumnCount="41" prefHeight="50.0" prefRowCount="4" prefWidth="300.0" />
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -63,34 +78,19 @@
          <padding>
             <Insets left="25.0" right="15.0" />
          </padding>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="60.0" layoutY="288.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label prefHeight="30.0" prefWidth="162.0" text="Phone number :" textFill="WHITE" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font name="Agency FB Bold" size="22.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </Label>
-            <TextField fx:id="phoneField" prefHeight="50.0" prefWidth="300.0" />
-         </children>
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Country:" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Country:" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <ChoiceBox fx:id="countryField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" styleClass="text-field" HBox.hgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ChoiceBox>
+               </cursor>
+            </ChoiceBox>
          </children>
          <VBox.margin>
             <Insets bottom="15.0" />
@@ -101,9 +101,9 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="85.0" layoutY="262.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="158.0" text="Date Of Birth :" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label prefHeight="30.0" prefWidth="169.0" text="Date Of Birth :" textFill="#813a3a" HBox.hgrow="ALWAYS">
                <font>
-                  <Font name="Agency FB Bold" size="22.0" />
+                  <Font name="Franklin Gothic Book" size="22.0" />
                </font>
             </Label>
             <DatePicker fx:id="dateField" focusTraversable="false" prefHeight="50.0" prefWidth="300.0" style="-fx-background-radius: 5;" HBox.hgrow="ALWAYS" />
@@ -117,18 +117,16 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="507.0" prefHeight="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label prefHeight="38.0" prefWidth="160.0" text="Update Profile : " textFill="WHITE" HBox.hgrow="ALWAYS">
-               <font>
-                  <Font name="Agency FB Bold" size="26.0" />
-               </font>
-            </Label>
-            <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <MFXButton fx:id="saveButton" onAction="#handleSaveButton" prefHeight="50.0" prefWidth="300.0" rippleColor="#8ac4ff" style="-fx-background-color: #777cff;" text="Save changes" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Agency FB" size="23.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
             </MFXButton>
          </children>
          <padding>
@@ -140,15 +138,8 @@
       </HBox>
    </children>
    <padding>
-      <Insets right="50.0" top="150.0" />
+      <Insets bottom="20.0" left="50.0" right="50.0" top="50.0" />
    </padding>
-   <effect>
-      <DropShadow>
-         <color>
-            <Color red="0.12941177189350128" green="0.19607843458652496" blue="0.3686274588108063" />
-         </color>
-      </DropShadow>
-   </effect>
    <stylesheets>
       <URL value="@../../styles/main-style.css" />
       <URL value="@../../styles/UserInfoView.css" />

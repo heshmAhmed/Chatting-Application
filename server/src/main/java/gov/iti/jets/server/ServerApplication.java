@@ -40,19 +40,21 @@ public class ServerApplication extends Application {
         stage.setMinHeight(600);
         stage.setTitle("Hello Admin!");
         stage.setScene(scene);
+        stage.setMinWidth(1140);
+        stage.setMinHeight(720);
         stage.show();
     }
 
     @Override
     public void init() throws Exception {
         super.init();
-        registryManager.createRegistry(5000);
-        registryManager.publishServices();
+        registryManager.startServer();
     }
 
     @Override
     public void stop() throws Exception {
         super.stop();
+        registryManager.stopServer();
     }
 
     public static void main(String[] args) throws RemoteException {

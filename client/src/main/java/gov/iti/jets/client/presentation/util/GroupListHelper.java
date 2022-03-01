@@ -1,6 +1,5 @@
 package gov.iti.jets.client.presentation.util;
 
-import gov.iti.jets.client.network.service.GroupService;
 import gov.iti.jets.client.network.util.RegistryFactory;
 import gov.iti.jets.client.presentation.controllers.custom.GroupControl;
 import gov.iti.jets.client.presentation.controllers.custom.ReceivedMessageControl;
@@ -13,30 +12,31 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
-import org.controlsfx.control.PropertySheet;
+import javafx.scene.paint.ImagePattern;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GroupListHelper {
-//    private final GroupService groupService = GroupService.getInstance();
-    IRemoteGroupService groupService = RegistryFactory.getInstance().getRemoteGroupService();
+//  private final GroupService groupService = GroupService.getInstance();
+    private final IRemoteGroupService groupService = RegistryFactory.getInstance().getRemoteGroupService();
     private static final GroupListHelper groupListHelper = new GroupListHelper();
     private final Map<String, ObservableList<HBox>> messageListMap = new HashMap<>();
     private final ObservableList<HBox> groupList = FXCollections.observableArrayList();
     private final Map<String, GroupControl> groupControlMap = new HashMap<>();
-    UserModel userModel = ModelFactory.getInstance().getUserModel();
+    private final UserModel userModel = ModelFactory.getInstance().getUserModel();
+    private final ModelFactory modelFactory = ModelFactory.getInstance();
+    private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
+
 
     public Map<String, GroupDTO> getGroupDtosList() {
         return groupDtosList;
     }
 
-    private final Map<String, GroupDTO> groupDtosList = new HashMap<>();
-
-    private GroupListHelper(){
-    }
+    private GroupListHelper(){}
 
     public static GroupListHelper getInstance(){
         return  groupListHelper;
@@ -59,47 +59,57 @@ public class GroupListHelper {
         return list;
     }
 
-
-
-    public void createNewGroup(String name, Image image){
+    public void createNewGroup(String name, Optional<File> fileOptional){
         GroupDTO groupDTO = new GroupDTO();
+        groupDTO.setImg("");
         groupDTO.setName(name);
         groupDTO.getContacts().add(userModel.getPhoneNumber());
-
-        /////////////////////// Image ///////////////////
-        groupDTO.setImg(new String("encodedImage"));
-
+        fileOptional.ifPresent(file -> {
+            try {
+                groupDTO.setImg(file.getName() + " " + Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(file)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         try {
             groupDTO.setId(groupService.createGroup(groupDTO));
-            System.out.println("groupListHelper " + groupDTO.getId());
             groupService.addContactsToGroup(groupDTO.getId(), List.of(userModel.getPhoneNumber()));
+//            groupDtosList.put(groupDTO.getId(),groupDTO);
+//            groupDTO.setImg(groupDTO.getImg().substring(groupDTO.getImg().indexOf(" ") + 1));
+            //appendGroup(groupDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        groupDtosList.put(groupDTO.getId(),groupDTO);
-        appenndGroup(groupDTO);
-
     }
 
-    public void appenndGroup(GroupDTO groupDTO){
+    public void appendGroup(GroupDTO groupDTO){
         GroupControl groupControl = new GroupControl(groupDTO.getId());
         groupControl.getGroupNameLabel().setText(groupDTO.getName());
 
-        groupList.add(groupControl);
+        Platform.runLater(()->groupList.add(groupControl));
         groupControlMap.put(groupDTO.getId(), groupControl);
-
-        System.out.println(groupControlMap);
+        if(!groupDTO.getImg().equals(""))
+            groupControl.getGroupPhotoCircle().setFill(new ImagePattern(modelFactory.decodeImage(groupDTO.getImg())));
     }
 
     public void addContactsToGroup(String groupId, List<String> contacts){
         groupDtosList.get(groupId).getContacts().addAll(contacts);
     }
 
-
     public void addMessageToList(MessageDTO messageDTO) {
-
         Platform.runLater(()-> messageListMap.get(messageDTO.getReceiverId()).add(new ReceivedMessageControl(messageDTO)));
-
     }
 
+    public void clearData() {
+        this.groupControlMap.clear();
+        this.groupDtosList.clear();
+        this.messageListMap.clear();
+        Platform.runLater(this.groupList::clear);
+    }
+
+    public void clearGroups() {
+        this.groupControlMap.clear();
+        this.groupDtosList.clear();
+        Platform.runLater(this.groupList::clear);
+    }
 }

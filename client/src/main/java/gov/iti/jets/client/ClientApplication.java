@@ -1,10 +1,20 @@
 package gov.iti.jets.client;
 
+import gov.iti.jets.client.network.service.LoginService;
+import gov.iti.jets.client.network.service.ProfileService;
+import gov.iti.jets.client.network.util.RegistryFactory;
+import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.SessionManager;
 import gov.iti.jets.client.presentation.util.StageCoordinator;
+import gov.iti.jets.common.dtos.Status;
+import gov.iti.jets.common.server.IRemoteProfileService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
+
+import java.io.File;
 import java.io.IOException;
 import java.rmi.RemoteException;
 
@@ -18,20 +28,49 @@ import java.rmi.RemoteException;
  */
 
 public class ClientApplication extends Application {
+    private LoginService loginService = LoginService.getInstance();
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
+    private SessionManager sessionManager = SessionManager.getInstance();
+    private ProfileService profileService = ProfileService.getInstance();
+
+    File session = sessionManager.createSession();
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loginViewLoader = new FXMLLoader(ClientApplication.class.getResource("/views/login/LoginView.fxml"));
-        Scene scene = new Scene(loginViewLoader.load());
         stageCoordinator.init(primaryStage);
-        primaryStage.setTitle("Hello Client");
-        primaryStage.setScene(scene);
-        primaryStage.setMinWidth(950);
-        primaryStage.setMinHeight(630);
+        String str = sessionManager.readSession(session);
+        String[] text = sessionManager.decryption(str);
+        if(text.length == 2){
+            loginService.submitLogin(text[0]);
+            stageCoordinator.switchToChatScene();
+        }else{
+            stageCoordinator.switchToLoginScene();
+        }
+        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(1130);
         primaryStage.show();
+
+        Notifications.create()
+                .title("Notification")
+                .text("👻 hello")
+                .threshold(3, Notifications.create().title("Collapsed Notification"))
+                .show();
     }
 
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+
+        if(ModelFactory.getInstance().getUserModel().getPhoneNumber() !=  null){
+            profileService.changeStatus(Status.OFFLINE);
+            profileService.logout();
+        }
+        System.out.println("stop called");
+
+        System.exit(0);
+
+    }
     public static void main(String[] args) throws RemoteException {
         launch();
     }

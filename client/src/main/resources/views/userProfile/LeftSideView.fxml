@@ -12,28 +12,28 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
+<BorderPane minHeight="720.0" minWidth="1128.0" prefHeight="714.0" prefWidth="294.0" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.LeftSideController">
    <left>
-    <VBox alignment="TOP_CENTER" maxWidth="240.0" minWidth="150.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
+    <VBox alignment="TOP_CENTER" maxWidth="335.0" minWidth="0.0" prefHeight="700.0" prefWidth="300.0" style="-fx-background-color: #1A1A40;" BorderPane.alignment="CENTER">
         <effect>
             <DropShadow />
         </effect>
         <children>
             <HBox prefHeight="311.0" prefWidth="240.0">
                 <children>
-                    <AnchorPane maxHeight="-Infinity" prefHeight="313.0" prefWidth="240.0">
+                    <AnchorPane maxHeight="-Infinity" prefHeight="311.0" prefWidth="338.0">
                         <children>
-                        <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="25" layoutX="144.0" layoutY="110.0" onMouseClicked="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125">
+                        <FontIcon fx:id="ChangeProfilePictureIcon" iconColor="WHITE" iconLiteral="fas-camera" iconSize="25" layoutX="195.0" layoutY="109.0" onMouseClicked="#handleChangeProfilePictureIcon" text="" wrappingWidth="19.20001220703125">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontIcon>
-                            <Circle fx:id="userPhotoCircle" fill="DODGERBLUE" layoutX="112.0" layoutY="59.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                            <Label fx:id="usernameLabel" layoutX="79.0" layoutY="120.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                            <Circle fx:id="userPhotoCircle" fill="#2395ff" layoutX="156.0" layoutY="63.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
+                            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="129.0" prefHeight="36.0" prefWidth="299.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                 <font>
-                                    <Font name="Agency FB Bold" size="29.0" />
+                                    <Font name="Agency FB" size="29.0" />
                                 </font>
                             </Label>
-                            <Label layoutX="14.0" layoutY="175.0" prefHeight="36.0" prefWidth="49.0" text="Bio" textFill="WHITE">
+                            <Label layoutX="23.0" layoutY="169.0" prefHeight="36.0" prefWidth="49.0" text="Bio" textFill="WHITE">
                                 <font>
                                     <Font name="Agency FB Bold" size="15.0" />
                                 </font>
@@ -45,7 +45,7 @@
                                     </FontIcon>
                                 </graphic>
                             </Label>
-                            <Label fx:id="bioLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="210.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="216.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
+                            <Label fx:id="bioLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="17.0" layoutY="205.0" lineSpacing="2.0" prefHeight="78.0" prefWidth="278.0" style="-fx-background-color: #0c172b; -fx-background-radius: 5;" text="my name is hossam" textAlignment="CENTER" textFill="#ece6e6" wrapText="true">
                                 <font>
                                     <Font size="13.0" />
                                 </font>
@@ -53,45 +53,23 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                 </padding>
                             </Label>
-                            <Label fx:id="phoneLabel" layoutX="62.0" layoutY="156.0" text="+0201097961674" textFill="#acacac">
+                            <Label fx:id="phoneLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="175.0" prefHeight="23.0" text="1097961674" textAlignment="CENTER" textFill="#acacac">
                                 <font>
-                                    <Font name="Agency FB Bold" size="19.0" />
+                                    <Font name="Agency FB" size="19.0" />
                                 </font>
                             </Label>
+                        <Label fx:id="imageValidationLabel" layoutX="62.0" layoutY="120.0" prefHeight="18.0" prefWidth="145.0" textAlignment="CENTER" textFill="RED" />
                         </children>
                     </AnchorPane>
                 </children>
             </HBox>
-            <HBox VBox.vgrow="ALWAYS">
+            <HBox prefHeight="402.0" prefWidth="307.0" VBox.vgrow="ALWAYS">
                 <children>
-                    <AnchorPane HBox.hgrow="ALWAYS">
+                    <AnchorPane prefHeight="402.0" prefWidth="298.0" HBox.hgrow="ALWAYS">
                         <children>
-                            <VBox prefHeight="300.0" prefWidth="240.0" spacing="15.0">
+                            <VBox prefHeight="410.0" prefWidth="300.0" spacing="15.0">
                                 <children>
-                                    <HBox fx:id="notifications" alignment="CENTER" onMouseClicked="#showNotification" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;" styleClass="nav">
-                                        <children>
-                                            <FontIcon iconColor="#f7f1f1" iconLiteral="fas-bell" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
-                                                <font>
-                                                    <Font size="27.0" />
-                                                </font>
-                                                <cursor>
-                                                    <Cursor fx:constant="HAND" />
-                                                </cursor>
-                                            </FontIcon>
-                                            <Label alignment="TOP_LEFT" text="Notificatins" textFill="#f2f2f2">
-                                                <font>
-                                                    <Font name="System Bold" size="22.0" />
-                                                </font>
-                                                <cursor>
-                                                    <Cursor fx:constant="HAND" />
-                                                </cursor>
-                                            </Label>
-                                        </children>
-                                        <cursor>
-                                            <Cursor fx:constant="HAND" />
-                                        </cursor>
-                                    </HBox>
-                                    <HBox fx:id="information" alignment="CENTER" onMouseClicked="#showInformation" prefHeight="58.0" prefWidth="240.0" spacing="25.0" style="-fx-border-insets: 5;" styleClass="nav">
+                                    <HBox fx:id="information" alignment="CENTER" onMouseClicked="#showInformation" prefHeight="58.0" prefWidth="265.0" spacing="25.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
                                             <FontIcon iconColor="#f7f1f1" iconLiteral="fas-id-card-alt" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
@@ -114,7 +92,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </HBox>
-                              <HBox fx:id="invitations" alignment="CENTER" layoutX="10.0" layoutY="84.0" onMouseClicked="#showInvitations" prefHeight="58.0" prefWidth="240.0" spacing="40.0" style="-fx-border-insets: 5;" styleClass="nav">
+                              <HBox fx:id="invitations" alignment="CENTER" layoutX="10.0" layoutY="84.0" onMouseClicked="#showInvitations" prefHeight="58.0" prefWidth="314.0" spacing="40.0" style="-fx-border-insets: 5;" styleClass="nav">
                                  <children>
                                     <FontIcon iconColor="#f7f1f1" iconLiteral="fas-inbox" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                        <font>
@@ -137,7 +115,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </HBox>
-                                    <HBox fx:id="chat" alignment="CENTER" onMouseClicked="#backToChat" prefHeight="58.0" prefWidth="240.0" spacing="30.0" style="-fx-border-insets: 5;" styleClass="nav">
+                                    <HBox fx:id="chat" alignment="CENTER" onMouseClicked="#backToChat" prefHeight="58.0" prefWidth="310.0" spacing="30.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
                                             <FontIcon iconColor="#f7f1f1" iconLiteral="fas-comments" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>
@@ -160,7 +138,7 @@
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </HBox>
-                                    <HBox fx:id="logout" alignment="CENTER" onMouseClicked="#logoutClicked" prefHeight="58.0" prefWidth="240.0" spacing="75.0" style="-fx-border-insets: 5;" styleClass="nav">
+                                    <HBox fx:id="logout" alignment="CENTER" onMouseClicked="#logoutClicked" prefHeight="58.0" prefWidth="308.0" spacing="75.0" style="-fx-border-insets: 5;" styleClass="nav">
                                         <children>
                                             <FontIcon iconColor="#f7f1f1" iconLiteral="fas-door-open" iconSize="32" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="icon" tabSize="25" wrappingWidth="34.13671875" HBox.hgrow="ALWAYS">
                                                 <font>

@@ -46,42 +46,57 @@ create table user_invitations (
 create table chat_groups (
 	id int auto_increment primary key,
 	group_name varchar(250) not null,
-    group_img text
+    group_img text not null default("group.png")
 );
 
 create table group_users (
 	user_number varchar(30) not null,
     group_id int not null,
     foreign key (user_number) references users(phone_number),
-    foreign key (group_id) references chat_groups(id)
+    foreign key (group_id) references chat_groups(id),
+    primary key(user_number, group_id)
 );
 
 -- ----------- seed ------------------------------------
 
 
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01151303667', 'hesham', 'hesham901@gmail.com', 'user.png', 'Male', 'VIENNA', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01151303667', 'hesham', 'hesham901@gmail.com', 'user.png', 'Male', 'VIENNA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('0115928056', ' Elsisi', 'elsisi@gmail.com', 'user.png', 'Male', 'AUSTRALIA', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('0115928056', ' Elsisi', 'elsisi@gmail.com', 'user.png', 'Male', 'AUSTRALIA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01555528056', 'hosaam', 'hosam1@gmail.com', 'user.png', 'Male', 'KSA', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01555528056', 'hosaam', 'hosam1@gmail.com', 'user.png', 'Male', 'KSA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01002528056', 'hatem', 'hatem@gmail.com', 'user.png', 'Male', 'ANGOLA', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01002528056', 'hatem', 'hatem@gmail.com', 'user.png', 'Male', 'ANGOLA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('01095201234', 'shawky', 'eshawky@gmail.com', 'user.png', 'Male', 'ALGERIA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('0109524587', 'hamdii', 'isi901@gmail.com', 'user.png', 'Male', 'ALBANIA', '2022-02-18', 'hello', 'AVAILABLE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('0109524587', 'hamdii', 'isi901@gmail.com', 'user.png', 'Male', 'ALBANIA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01245879114', 'MAGJ', 'eMAGJisi901@gmail.com', 'user.png', 'Male', 'AFGHANISTAN', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01245879114', 'MAGJ', 'eMAGJisi901@gmail.com', 'user.png', 'Male', 'AFGHANISTAN', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01095012457', 'essam', 'essam901@gmail.com', 'user.png', 'Male', 'EGYPT', '2022-02-18', 'hello', 'AVAILABLE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01095012457', 'essam', 'essam901@gmail.com', 'user.png', 'Male', 'EGYPT', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01012458888', 'tarek', 'tareki901@gmail.com', 'user.png', 'Male', 'KSA', '2022-02-18', 'hello', 'AWAY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ VALUES ('01012458888', 'tarek', 'tareki901@gmail.com', 'user.png', 'Male', 'KSA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
  VALUES ('01142799371', 'Marwa', 'marwa@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
  INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
- VALUES ('01148834043', 'Mariam', 'mariam@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'BUSY', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
- 
+ VALUES ('01148834043', 'Mariam', 'mariam@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01188834043', 'Noura', 'noura@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01148034043', 'yasmeen', 'yasmeen@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01148734043', 'jana', 'jana@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01158834043', 'mohammed', 'mohammed@gmail.com', 'user.png', 'male', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01188934043', 'hala', 'hala@gmail.com', 'user.png', 'Female', 'USA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01198834043', 'hamada', 'hamada@gmail.com', 'user.png', 'Male', 'KSA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+ INSERT INTO `chatting_application`.`users` (`phone_number`, `username`, `email`, `image`, `gender`, `country`, `date_of_birth`, `bio`, `user_status`, `pass`)
+ VALUES ('01146834043', 'Mariam', 'mariam77@gmail.com', 'user.png', 'Female', 'KSA', '2022-02-18', 'hello', 'OFFLINE', '-115-106-98-17110-54-45-62-1025898-110-128-26-122-4912639390-122-81-13-5418212-11058-36108-110');
+
 
 insert into user_contacts values('01555528056','01151303667');
 insert into user_contacts values('01151303667','01555528056');

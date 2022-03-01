@@ -26,9 +26,9 @@
                             <children>
                                 <AnchorPane maxHeight="-Infinity" prefHeight="325.0" prefWidth="240.0">
                                     <children>
-                                        <Circle fill="DODGERBLUE" layoutX="118.0" layoutY="65.0" opacity="0.91" radius="49.0" stroke="#f7efef" strokeType="INSIDE" strokeWidth="5.0" />
-                                        <Circle fill="#ffaf1f" layoutX="148.0" layoutY="99.0" radius="9.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="3.0" />
-                                        <Label layoutX="79.0" layoutY="99.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
+                                        <Circle fill="DODGERBLUE" layoutX="118.0" layoutY="65.0" opacity="0.91" radius="49.0" stroke="DODGERBLUE" strokeType="INSIDE" strokeWidth="0.0" />
+                                        <Circle fill="#ffaf1f" layoutX="148.0" layoutY="99.0" radius="9.0" stroke="#ececec" strokeType="INSIDE" strokeWidth="0.0" />
+                                        <Label layoutX="88.0" layoutY="99.0" prefHeight="58.0" prefWidth="88.0" text="Hossam" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="Agency FB Bold" size="29.0" />
                                             </font>
@@ -53,12 +53,12 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                             </padding>
                                         </Label>
-                                        <Label layoutX="62.0" layoutY="141.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
+                                        <Label layoutX="71.0" layoutY="145.0" prefHeight="23.0" prefWidth="122.0" text="+0201097961674" textFill="#acacac">
                                             <font>
                                                 <Font name="Agency FB Bold" size="19.0" />
                                             </font>
                                         </Label>
-                              <Button layoutX="35.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #434445; -fx-border-radius: 5;" text="Resuest" textFill="#fafafa">
+                              <Button layoutX="35.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #bf4080; -fx-border-radius: 5;" text="Resuest" textFill="#fafafa">
                                  <font>
                                     <Font name="Agency FB Bold" size="14.0" />
                                  </font>
@@ -66,7 +66,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Button layoutX="126.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #434445; -fx-border-radius: 5;" text="Block" textFill="#fafafa">
+                              <Button layoutX="126.0" layoutY="177.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" style="-fx-background-color: #bf4080; -fx-border-radius: 5;" text="Block" textFill="#fafafa">
                                  <font>
                                     <Font name="Agency FB Bold" size="14.0" />
                                  </font>
