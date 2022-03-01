@@ -96,7 +96,7 @@ public class ChatAreaControl extends BorderPane {
 
 
     private String contactId;
-    private String color = "white";
+    private String color = "lightgrey";
     private String weight = "NORMAL";
     private String fontFamily = "Verdana ";
     private String fontSize = "18 px ";
