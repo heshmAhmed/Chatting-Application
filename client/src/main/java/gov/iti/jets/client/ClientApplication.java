@@ -31,7 +31,6 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stageCoordinator.init(primaryStage);
-
         String str = sessionManager.readSession(session);
         String[] text = sessionManager.decryption(str);
         if(text.length == 2){
