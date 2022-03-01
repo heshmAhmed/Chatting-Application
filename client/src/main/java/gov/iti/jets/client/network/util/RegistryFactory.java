@@ -7,26 +7,44 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import java.io.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Properties;
+import java.util.Scanner;
 
 public class RegistryFactory {
     private Registry registry;
+    private final static String configFilePath = System.getProperty("user.dir") + "/network.properties";
     private static final RegistryFactory registryFactory = new RegistryFactory();
 
+    public static RegistryFactory getInstance() {
+        return registryFactory;
+    }
+
+    private Properties readNetworkProperties() {
+        Properties properties = new Properties();
+        try (InputStream fileInputStream = new FileInputStream(configFilePath);) {
+            properties.load(fileInputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+
     private RegistryFactory(){
+        Properties properties = readNetworkProperties();
+        String host = properties.getProperty("host");
+        int port = Integer.parseInt(properties.getProperty("port"));
+        System.out.println(port);
         try {
-            registry = LocateRegistry.getRegistry(5000);
+            registry = LocateRegistry.getRegistry(host, port);
         } catch (RemoteException e) {
 
             e.printStackTrace();
         }
-    }
-
-    public static RegistryFactory getInstance() {
-        return registryFactory;
     }
 
     public IRemoteLoginService getRemoteLoginService() {

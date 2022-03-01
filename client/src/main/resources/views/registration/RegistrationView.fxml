@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<VBox alignment="CENTER" minHeight="720.0" minWidth="1128.0" prefHeight="720.0" prefWidth="1128.0" style="-fx-background-color: #1A1A40;" stylesheets="@../../styles/main-style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.RegistrationController">
+<VBox alignment="CENTER" minHeight="720.0" minWidth="1128.0" prefHeight="720.0" prefWidth="1128.0" style="-fx-background-color: #1A1A40;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.iti.jets.client.presentation.controllers.RegistrationController">
    <children>
       <HBox alignment="TOP_CENTER" style="-fx-padding: 0;">
          <children>
@@ -229,4 +230,8 @@
          </padding>
       </HBox>
    </children>
+   <stylesheets>
+      <URL value="@../../styles/main-style.css" />
+      <URL value="@../../styles/msg-decorator.css" />
+   </stylesheets>
 </VBox>

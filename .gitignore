@@ -1,6 +1,7 @@
 ## A complete .gitignore file for Java.
 
-*.properties
+server/session.txt
+client/session.txt
 ##############################
 ## Java
 ##############################
