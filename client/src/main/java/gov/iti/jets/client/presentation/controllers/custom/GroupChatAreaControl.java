@@ -84,6 +84,9 @@ public class  GroupChatAreaControl extends BorderPane{
         ContextMenu contextMenu = new ContextMenu();
         GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
         groupDTO.getContacts().forEach(c -> {
+            if(userModel.getPhoneNumber() == c)
+                contextMenu.getItems().add(new MenuItem("me"));
+            else
              contextMenu.getItems().add(new MenuItem(contactListHelper.getNameById(c))) ;
         });
         contextMenu.show(this.showGroupMembers, event.getScreenX() + 5, event.getScreenY() + 5);
@@ -94,10 +97,10 @@ public class  GroupChatAreaControl extends BorderPane{
         GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
         ObservableList<String> list = FXCollections.observableArrayList();
         ModelFactory.getInstance().getContactModels().forEach(c -> {
+            System.out.println((groupDTO.getContacts()));
             if(!(groupDTO.getContacts().contains(c.getPhoneNumber())))
             {
-                System.out.println(c +"---" + groupDTO.getContacts());
-                list.add(contactListHelper.getNameById(c.getPhoneNumber()));
+                list.add(c.getPhoneNumber());
             }
         });
         StageCoordinator.getInstance().showAddContactToGroupPopup(groupId , list);
@@ -134,13 +137,11 @@ public class  GroupChatAreaControl extends BorderPane{
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         } else {
             weight = "NORMAL";
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         }
 
     }

@@ -87,18 +87,12 @@ public class RegistrationController implements Initializable {
             LocalDate dob =  datePicker.getValue();
             long dobLong =  dateHandler.localDateToMillis(dob);
             user = new UserDTO(phone,email,name,password,gender,dobLong,country);
-
             check = service.createNewUser(user);
-            System.out.println(check);
             if(check){
-                System.err.println("Succissful reg");
                 stageCoordinator.switchToLoginScene();
             }else{
-                System.err.println("not succissful");
                 validateLabel.setText("Already exists");
             }
-        }else{
-            System.out.println(check);
         }
     }
 

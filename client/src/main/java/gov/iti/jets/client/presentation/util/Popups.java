@@ -8,9 +8,7 @@ import org.controlsfx.control.Notifications;
 public class Popups {
 
     public static void receiveNotification(String title,String body){
-
-        System.out.println("notification received:" + body);
-       Platform.runLater( () -> Notifications.create()
+        Platform.runLater( () -> Notifications.create()
                 .title(title)
                 .text(body)
                 .threshold(3, Notifications.create().title("Collapsed Notification"))

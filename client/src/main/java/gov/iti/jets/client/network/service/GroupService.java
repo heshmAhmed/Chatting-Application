@@ -26,8 +26,6 @@ public class GroupService {
     }
 
     public void addContactToGroup(String groupId, List<String> selectedContacts){
-
-        System.out.println(selectedContacts + " group ");
         try {
             iRemoteGroupService.addContactsToGroup(groupId, selectedContacts);
         } catch (RemoteException e) {

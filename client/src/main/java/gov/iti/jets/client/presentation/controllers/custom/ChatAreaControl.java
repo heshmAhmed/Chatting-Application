@@ -207,13 +207,11 @@ public void scrollList(){
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         } else {
             weight = "NORMAL";
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         }
     }
 

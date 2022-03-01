@@ -41,8 +41,6 @@ public class SessionManager {
             c-=5;
             stringBuilder.append(c);
         }
-        System.err.println(string);
-        System.out.println(stringBuilder);
         String[] arr = stringBuilder.toString().split(":");
         return arr;
     }

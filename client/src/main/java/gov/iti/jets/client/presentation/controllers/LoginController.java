@@ -82,18 +82,15 @@ public class LoginController {
 
     @FXML
     void loginClicked(ActionEvent event){
-        System.out.println("inside loginClicked"); handelLoginAction();
+        handelLoginAction();
     }
 
     private void handelLoginAction(){
-        System.out.println("inside handelLoginAction");
         String phoneNumber = numberField.getText().trim();
         if(!isPasswordFieldOn){
-            System.out.println("handle login if");
             isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
             sessionManager.saveSession(session, phoneNumber, "");
         }else{
-            System.out.println("handle login else");
             try {
                 loginHelper.handlePasswordValidation();
 

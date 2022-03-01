@@ -29,7 +29,6 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException {
-        System.out.println("receiveMessage invoked");
         contactListHelper.addMessageToList(messageDTO);
         Popups.receiveNotification("Message notification","📩 New message from "+ contactListHelper.getNameById(messageDTO.getSenderId()));
 
@@ -37,14 +36,12 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void receiveInvitation(InvitationDTO invitationDTO) throws RemoteException {
-        System.out.println("receive invitation invoked");
         invitationsListHelper.loadInvitation(invitationDTO);
         Popups.receiveNotification("Invitation notification","🤝 New invitation received");
     }
 
     @Override
     public void receiveNewContact(ContactDTO contactDTO) throws RemoteException {
-        System.out.println("recieved new contact");
         ContactModel contactModel = modelFactory.mapContactModelToDTO(contactDTO);
         modelFactory.addToContactModels(contactModel);
         contactListHelper.loadContact(contactModel);
@@ -54,14 +51,12 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void receiveStatusChange(String phoneNumber, Status status) throws RemoteException {
-        System.out.println("status changed for user " + phoneNumber + " with status " + status);
         contactListHelper.changeContactStatus(phoneNumber, status);
         Popups.receiveNotification("Status notification","🎭 " + phoneNumber +" changed their status");
 
     }
     @Override
     public void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException {
-        System.out.println(messageDTO);
         groupListHelper.addMessageToList(messageDTO);
         Popups.receiveNotification("Message notification","👨‍👩‍👧‍👧 New group message");
 
@@ -80,10 +75,8 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
 
     @Override
     public void serverDisconnected() throws RemoteException {
-
         System.out.println("server disconnected");
         Platform.runLater(() ->Popups.alert("☠ Server is down!!"));
-
     }
 
 

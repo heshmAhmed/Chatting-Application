@@ -83,8 +83,6 @@ public class AdminLoginController implements Initializable {
     private void setAdminInfo(String string){
         String[] text = sessionManager.decryption(string);
         if (text.length == 2) {
-            System.out.println(text[0]);
-            System.out.println(text[1]);
             phoneFiled.setText(text[0]);
             passwordField.setText(text[1]);
             login();
