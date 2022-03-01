@@ -49,4 +49,5 @@ public class RemoteLoginServiceImpl extends UnicastRemoteObject implements IRemo
     public boolean isUserOnline(String phoneNumber) {
         return serverUtil.onlineUsers.containsKey(phoneNumber);
     }
+
 }

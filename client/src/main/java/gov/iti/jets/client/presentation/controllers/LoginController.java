@@ -67,7 +67,17 @@ public class LoginController {
         passwordPlaceholderHBox.getChildren().add(validateUserLabel);
         loginButton.setText("next");
         isPasswordFieldOn=false;
-        numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
+        numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");
+
+            if(isPasswordFieldOn){
+                passwordPlaceholderHBox.getChildren().clear();
+                passwordPlaceholderHBox.getChildren().add(validateUserLabel);
+                isPasswordFieldOn = false;
+                loginButton.setText("next");
+            }
+
+
+        });
     }
 
     @FXML

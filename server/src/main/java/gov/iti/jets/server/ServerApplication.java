@@ -55,6 +55,7 @@ public class ServerApplication extends Application {
     public void stop() throws Exception {
         super.stop();
         registryManager.stopServer();
+        System.out.println("pressed the X button!!");
     }
 
     public static void main(String[] args) throws RemoteException {
