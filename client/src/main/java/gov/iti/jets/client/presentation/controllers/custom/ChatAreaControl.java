@@ -5,6 +5,7 @@ import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -146,7 +147,9 @@ public class ChatAreaControl extends BorderPane {
 
     }
 
+public void scrollList(){
 
+}
     public void sendMessage() {
         String message = messageTextArea.getText();
             if (!(message.equals(""))) {
@@ -157,10 +160,13 @@ public class ChatAreaControl extends BorderPane {
                 myMessageDTO.setMessageStyle(messageStyle);
 
             list.add(new SentMessageControl(myMessageDTO));
+            chatAreaListView.scrollTo(chatAreaListView.getItems().size() - 1);
             sendMessageService.sendMessage(myMessageDTO);
             messageTextArea.setText("");
         }
     }
+
+
 
     public Circle getChatStatusCircle() {
         return chatStatusCircle;
