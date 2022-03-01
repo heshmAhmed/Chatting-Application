@@ -27,7 +27,7 @@
       </VBox>
       <VBox alignment="TOP_RIGHT" spacing="40.0" HBox.hgrow="ALWAYS">
          <children>
-            <Label fx:id="invitationTime" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="18.0" prefWidth="104.0" textAlignment="CENTER" textFill="#fcfcfc" VBox.vgrow="ALWAYS">
+            <Label fx:id="invitationTime" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" textAlignment="CENTER" textFill="#fcfcfc" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Agency FB Bold" size="18.0" />
                </font>
