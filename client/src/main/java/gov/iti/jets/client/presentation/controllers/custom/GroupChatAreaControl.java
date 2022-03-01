@@ -84,7 +84,7 @@ public class  GroupChatAreaControl extends BorderPane{
         ContextMenu contextMenu = new ContextMenu();
         GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
         groupDTO.getContacts().forEach(c -> {
-            if(userModel.getPhoneNumber() == c)
+            if(userModel.getPhoneNumber().equals(c))
                 contextMenu.getItems().add(new MenuItem("me"));
             else
              contextMenu.getItems().add(new MenuItem(contactListHelper.getNameById(c))) ;
