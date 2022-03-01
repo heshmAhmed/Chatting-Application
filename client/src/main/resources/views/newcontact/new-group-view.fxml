@@ -11,12 +11,12 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="366.0" style="-fx-background-color: #1A1A40;" stylesheets="@../../styles/main-style.css" type="AnchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="36.0" layoutY="50.0" prefHeight="34.0" prefWidth="110.0" text="Group name" textFill="#fffefe">
+      <Label layoutX="36.0" layoutY="43.0" prefHeight="34.0" prefWidth="110.0" text="Group name" textFill="#fffefe">
          <font>
             <Font name="Bauhaus 93" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="groupNameTextField" layoutX="144.0" layoutY="54.0" prefHeight="26.0" prefWidth="188.0" />
+      <TextField fx:id="groupNameTextField" layoutX="144.0" layoutY="43.0" prefHeight="26.0" prefWidth="188.0" />
       <Label layoutX="36.0" layoutY="102.0" text="Grouop photo" textFill="#fffcfc">
          <font>
             <Font name="Bauhaus 93" size="18.0" />
@@ -35,7 +35,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Label fx:id="notValidLabel" layoutX="221.0" layoutY="91.0" textFill="#efeeee">
+      <Label fx:id="notValidLabel" layoutX="207.0" layoutY="71.0" textFill="#efeeee">
          <font>
             <Font size="14.0" />
          </font>
