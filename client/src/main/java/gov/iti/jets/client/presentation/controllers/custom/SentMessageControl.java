@@ -1,5 +1,7 @@
 package gov.iti.jets.client.presentation.controllers.custom;
 
+import gov.iti.jets.client.presentation.models.UserModel;
+import gov.iti.jets.client.presentation.util.ModelFactory;
 import gov.iti.jets.client.util.DateHandler;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.fxml.FXML;
@@ -15,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SentMessageControl extends HBox {
+    UserModel userModel = ModelFactory.getInstance().getUserModel();
     MessageDTO messageDTO;
 
     @FXML
@@ -50,7 +53,7 @@ public class SentMessageControl extends HBox {
 
     public void initialize() {
         textOfMessage.setText(messageDTO.getMessageText());
-        nameLabel.setText(messageDTO.getSenderId());
+        nameLabel.setText(userModel.getUsername());
         timeLabel.setText(DateHandler.getInstance().getCurrentTime());
         textOfMessage.setStyle(messageDTO.getMessageStyle());
     }

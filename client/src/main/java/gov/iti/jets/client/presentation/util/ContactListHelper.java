@@ -75,6 +75,14 @@ public class ContactListHelper {
         }
     }
 
+
+    public String getNameById(String id){
+        if(contactControlMap.containsKey(id))
+            return contactControlMap.get(id).getContactNameLabel().getText();
+
+        return id;
+
+    }
     public void clearData() {
         this.contactControlMap.clear();
         this.contactList.clear();
