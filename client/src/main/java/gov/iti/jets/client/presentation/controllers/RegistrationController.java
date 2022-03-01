@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -80,7 +81,7 @@ public class RegistrationController implements Initializable {
             String phone = phoneField.getText();
             String password = passwordField.getText();
             String confirmedPassword = confirmPasswordField.getText();
-            String email = emailField.getText();
+            String email = emailField.getText().toLowerCase();
             String country = (String) countryBox.getValue();
             String gender = (String) genderBox.getValue();
             LocalDate dob =  datePicker.getValue();

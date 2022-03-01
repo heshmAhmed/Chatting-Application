@@ -155,7 +155,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                      <children>
-                        <ComboBox fx:id="genderBox" prefWidth="150.0" styleClass="text-field" />
+                        <ComboBox fx:id="genderBox" prefWidth="150.0" style="-fx-text-fill: black;" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
@@ -190,7 +190,7 @@
                         <Insets />
                      </HBox.margin>
                   </FontIcon>
-                  <ComboBox fx:id="countryBox" prefWidth="150.0" styleClass="text-field" />
+                  <ComboBox fx:id="countryBox" prefWidth="150.0" />
                </children>
             </HBox>
             <Label fx:id="countryLabel" text="" textFill="#e40808">

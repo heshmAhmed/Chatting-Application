@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
@@ -38,16 +39,22 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <FontIcon fx:id="addContactIcon" iconColor="#718cbf" iconLiteral="fas-user-plus" iconSize="18" onMouseClicked="#handleAddNewContactIcon" wrappingWidth="22.5">
+                  <FontIcon fx:id="addContactIcon" iconColor="#3c4969" iconLiteral="fas-user-plus" iconSize="25" onMouseClicked="#handleAddNewContactIcon" wrappingWidth="22.5">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </FontIcon>
                   <StackPane>
                      <children>
                         <FontIcon fx:id="showGroupContacts" iconColor="#3c4969" iconLiteral="fas-user-friends" iconSize="25" />
                         <ImageView fx:id="showGroupMembers" fitHeight="37.0" fitWidth="38.0" onMouseClicked="#handleShowGroupMembers" pickOnBounds="true" preserveRatio="true" />
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </StackPane>
                </children>
             </HBox>

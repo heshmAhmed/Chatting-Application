@@ -55,7 +55,7 @@ public class InvitationCardControl extends HBox {
             loader.load();
             this.invitationDTO = invitationDTO;
             this.getInvitationBody().setText(invitationDTO.getSenderName()+": Sent an invitation");
-            this.getInvitationTime().setText(dateHandler.millisToLocalDate(invitationDTO.getDate()).toString());
+            this.getInvitationTime().setText(dateHandler.getDateWithFormat(invitationDTO.getDate()));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

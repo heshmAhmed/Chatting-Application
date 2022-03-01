@@ -3,6 +3,7 @@ package gov.iti.jets.client.presentation.controllers;
 import gov.iti.jets.client.network.service.ProfileService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.Validation;
 import gov.iti.jets.common.dtos.Country;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -79,9 +80,9 @@ public class UserProfileController implements Initializable {
 
     @FXML
     public void handleSaveButton(ActionEvent actionEvent) {
-        String errorMsg = "4 characters at least";
-        if(!validationSupport.
-                registerValidator(usernameField, Validator.createPredicateValidator(s->usernameField.getText().length()>3,errorMsg)))
+        validationSupport.registerValidator(usernameField,
+                Validator.createPredicateValidator(s->usernameField.getText().length()>3,"4 characters at least"));
+        if(!validationSupport.isInvalid())
         {
             profileService.updateProfile();
             Notifications.create()
