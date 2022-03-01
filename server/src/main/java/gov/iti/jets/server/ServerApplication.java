@@ -40,6 +40,8 @@ public class ServerApplication extends Application {
         stage.setMinHeight(600);
         stage.setTitle("Hello Admin!");
         stage.setScene(scene);
+        stage.setMinWidth(1140);
+        stage.setMinHeight(720);
         stage.show();
     }
 
