@@ -40,8 +40,9 @@ public class ClientApplication extends Application {
         }else{
             stageCoordinator.switchToLoginScene();
         }
-
-       primaryStage.show();
+        primaryStage.setMinHeight(800);
+        primaryStage.setMinWidth(1130);
+        primaryStage.show();
 
         Notifications.create()
                 .title("Notification")
