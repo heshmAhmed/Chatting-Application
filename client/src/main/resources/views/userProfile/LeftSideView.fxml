@@ -58,7 +58,7 @@
                                     <Font name="Agency FB" size="19.0" />
                                 </font>
                             </Label>
-                        <Label fx:id="imageValidationLabel" layoutX="62.0" layoutY="120.0" prefHeight="18.0" prefWidth="145.0" textAlignment="CENTER" textFill="RED" />
+                        <Label fx:id="imageValidationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="120.0" prefHeight="18.0" prefWidth="298.0" textAlignment="CENTER" textFill="RED" />
                         </children>
                     </AnchorPane>
                 </children>
