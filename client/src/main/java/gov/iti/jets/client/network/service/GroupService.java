@@ -10,6 +10,7 @@ import gov.iti.jets.common.server.IRemoteGroupService;
 
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GroupService {
 
@@ -25,14 +26,20 @@ public class GroupService {
         return groupService;
     }
 
-    public void addContactToGroup(String groupId, List<String> selectedContacts){
+    public void addContactToGroup(String groupId, List<String> selectedContacts) {
+//        List<String> contacts =
+//                groupListHelper.getGroupDtosList().get(groupId).getContacts().stream()
+//                        .filter(contact -> !contact.equals(userModel.getPhoneNumber()))
+//                        .collect(Collectors.toList());
+//        contacts.addAll(selectedContacts);
+//        System.out.println("user model number: " + userModel.getPhoneNumber());
+//        System.out.println("contacts: " + contacts);
         try {
             iRemoteGroupService.addContactsToGroup(groupId, selectedContacts);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        groupListHelper.addContactsToGroup(groupId, selectedContacts);
-
+        //groupListHelper.addContactsToGroup(groupId, selectedContacts);
     }
 
     public void loadGroups() {

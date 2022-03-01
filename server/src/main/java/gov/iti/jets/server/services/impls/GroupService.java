@@ -50,17 +50,12 @@ public class GroupService implements IGroupService {
 
     @Override
     public boolean addUserToGroup(String phoneNumber, String groupId) {
-        boolean added = groupChatRepo.addUserToGroup(phoneNumber, Long.parseLong(groupId));
-        if(added) {
-            IClientCallback iClientCallback = serverUtil.onlineUsers.get(phoneNumber);
-            if(iClientCallback != null) {
-                try {
-                    iClientCallback.receiveNewGroup();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return added;
+        return groupChatRepo.addUserToGroup(phoneNumber, Long.parseLong(groupId));
     }
+
+    @Override
+    public List<String> getGroupUsers(String groupId) {
+        return groupChatRepo.getGroupUsers(Long.parseLong(groupId));
+    }
+
 }

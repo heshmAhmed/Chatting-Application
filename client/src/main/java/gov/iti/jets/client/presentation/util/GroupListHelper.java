@@ -74,8 +74,8 @@ public class GroupListHelper {
         try {
             groupDTO.setId(groupService.createGroup(groupDTO));
             groupService.addContactsToGroup(groupDTO.getId(), List.of(userModel.getPhoneNumber()));
-            groupDtosList.put(groupDTO.getId(),groupDTO);
-            groupDTO.setImg(groupDTO.getImg().substring(groupDTO.getImg().indexOf(" ") + 1));
+//            groupDtosList.put(groupDTO.getId(),groupDTO);
+//            groupDTO.setImg(groupDTO.getImg().substring(groupDTO.getImg().indexOf(" ") + 1));
             //appendGroup(groupDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class GroupListHelper {
         GroupControl groupControl = new GroupControl(groupDTO.getId());
         groupControl.getGroupNameLabel().setText(groupDTO.getName());
 
-       Platform.runLater(()->groupList.add(groupControl));
+        Platform.runLater(()->groupList.add(groupControl));
         groupControlMap.put(groupDTO.getId(), groupControl);
         if(!groupDTO.getImg().equals(""))
             groupControl.getGroupPhotoCircle().setFill(new ImagePattern(modelFactory.decodeImage(groupDTO.getImg())));

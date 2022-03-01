@@ -97,7 +97,7 @@ public class  GroupChatAreaControl extends BorderPane{
         GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
         ObservableList<String> list = FXCollections.observableArrayList();
         ModelFactory.getInstance().getContactModels().forEach(c -> {
-            System.out.println((groupDTO.getContacts()));
+//            System.out.println((groupDTO.getContacts()));
             if(!(groupDTO.getContacts().contains(c.getPhoneNumber())))
             {
                 list.add(c.getPhoneNumber());

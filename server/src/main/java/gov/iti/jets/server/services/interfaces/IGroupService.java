@@ -7,4 +7,5 @@ public interface IGroupService {
     String createGroup(GroupDTO groupDTO);
     List<GroupDTO> getUserGroups(String phoneNumber);
     boolean addUserToGroup(String phoneNumber, String groupId);
+    List<String> getGroupUsers(String groupId);
 }
