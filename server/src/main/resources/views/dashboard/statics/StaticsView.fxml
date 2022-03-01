@@ -16,9 +16,9 @@
    <children>
       <HBox prefHeight="57.0" prefWidth="998.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox prefHeight="148.0" prefWidth="198.0" HBox.hgrow="ALWAYS">
+            <HBox prefHeight="133.0" prefWidth="228.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="266.0" style="-fx-background-color: #fff;">
+                  <Pane prefHeight="133.0" prefWidth="234.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
                      <children>
                         <Label alignment="CENTER" layoutX="68.0" layoutY="21.0" text="Available" textFill="#9a9a9a">
                            <font>
@@ -35,9 +35,9 @@
                   </Pane>
                </children>
             </HBox>
-            <HBox prefHeight="148.0" prefWidth="186.0" HBox.hgrow="ALWAYS">
+            <HBox prefHeight="133.0" prefWidth="258.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Pane prefHeight="148.0" prefWidth="224.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+                  <Pane prefHeight="133.0" prefWidth="219.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
                      <children>
                         <FontIcon iconColor="#d95555" iconLiteral="fas-minus-circle" iconSize="30" layoutX="41.0" layoutY="88.0" />
                         <Label layoutX="71.0" layoutY="19.0" prefHeight="15.0" prefWidth="60.0" text="Busy" textFill="#9a9a9a">
@@ -54,24 +54,28 @@
                   </Pane>
                </children>
             </HBox>
-            <Pane prefHeight="148.0" prefWidth="203.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <HBox prefHeight="133.0" prefWidth="224.0" HBox.hgrow="ALWAYS">
                <children>
-                  <FontIcon iconColor="#fbff0b" iconLiteral="far-clock" iconSize="30" layoutX="42.0" layoutY="91.0" />
-                  <Label layoutX="79.0" layoutY="19.0" text="Away" textFill="#9a9a9a">
-                     <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="noAwayLabel" layoutX="80.0" layoutY="53.0" prefHeight="43.0" prefWidth="73.0" text="0" textFill="#9a9a9a">
-                     <font>
-                        <Font name="Segoe UI" size="36.0" />
-                     </font>
-                  </Label>
+                  <Pane prefHeight="133.0" prefWidth="246.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <FontIcon iconColor="#fbff0b" iconLiteral="far-clock" iconSize="30" layoutX="42.0" layoutY="91.0" />
+                        <Label layoutX="79.0" layoutY="19.0" text="Away" textFill="#9a9a9a">
+                           <font>
+                              <Font name="Segoe UI Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="noAwayLabel" layoutX="80.0" layoutY="53.0" prefHeight="43.0" prefWidth="73.0" text="0" textFill="#9a9a9a">
+                           <font>
+                              <Font name="Segoe UI" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
-            <HBox>
+            </HBox>
+            <HBox prefHeight="133.0" prefWidth="251.0">
                <children>
-                  <Pane prefHeight="148.0" prefWidth="203.0" style="-fx-background-color: #fff;">
+                  <Pane prefHeight="148.0" prefWidth="203.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
                      <children>
                         <FontIcon iconColor="#796a6a" iconLiteral="fas-times-circle" iconSize="30" layoutX="27.0" layoutY="85.0" />
                         <Label fx:id="femaleLabel" layoutX="79.0" layoutY="19.0" text="Offline" textFill="#9a9a9a">
