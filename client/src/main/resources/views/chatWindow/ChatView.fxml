@@ -33,7 +33,7 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Button>
-                              <Label fx:id="userNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="107.0" maxWidth="150.0" prefHeight="18.0" text="myName" textFill="WHITE">
+                              <Label fx:id="userNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="107.0" maxWidth="270.0" prefHeight="30.0" prefWidth="270.0" textFill="WHITE">
                                  <font>
                                     <Font name="Agency FB" size="24.0" />
                                  </font></Label>

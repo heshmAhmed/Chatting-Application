@@ -16,10 +16,6 @@ public class ImageUtility {
         return imageUtility;
     }
 
-    public static void main(String[] args) {
-        System.out.println(System.getProperty("user.dir"));
-    }
-
     public String readImage(String imagePath)  {
         byte[] fileContent = new byte[0];
         try {
