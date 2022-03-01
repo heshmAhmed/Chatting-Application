@@ -37,7 +37,7 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     @Override
     public void receiveInvitation(InvitationDTO invitationDTO) throws RemoteException {
         invitationsListHelper.loadInvitation(invitationDTO);
-        Popups.receiveNotification("Invitation notification","🤝 New invitation received");
+        Popups.receiveNotification("Invitation notification","🤝 New invitation from "+ invitationDTO.getSenderName());
     }
 
     @Override
@@ -45,14 +45,14 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
         ContactModel contactModel = modelFactory.mapContactModelToDTO(contactDTO);
         modelFactory.addToContactModels(contactModel);
         contactListHelper.loadContact(contactModel);
-        Popups.receiveNotification("Contact notification","🥳 New contact added");
+        Popups.receiveNotification("Contact notification","🥳 "+ contactDTO.getUsername() + " was added");
 
     }
 
     @Override
     public void receiveStatusChange(String phoneNumber, Status status) throws RemoteException {
         contactListHelper.changeContactStatus(phoneNumber, status);
-        Popups.receiveNotification("Status notification","🎭 " + phoneNumber +" changed their status");
+        Popups.receiveNotification("Status notification","🎭 " + contactListHelper.getNameById(phoneNumber) +" changed their status!");
 
     }
     @Override
