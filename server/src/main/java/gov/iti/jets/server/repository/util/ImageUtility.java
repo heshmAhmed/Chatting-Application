@@ -22,7 +22,8 @@ public class ImageUtility {
         try {
             fileContent = FileUtils.readFileToByteArray(new File(folderPath + imagePath));
         } catch (IOException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
+            System.out.println("image not found on disk");
         }
         return Base64.getEncoder().encodeToString(fileContent);
     }
