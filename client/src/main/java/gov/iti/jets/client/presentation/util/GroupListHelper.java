@@ -76,7 +76,7 @@ public class GroupListHelper {
             groupService.addContactsToGroup(groupDTO.getId(), List.of(userModel.getPhoneNumber()));
             groupDtosList.put(groupDTO.getId(),groupDTO);
             groupDTO.setImg(groupDTO.getImg().substring(groupDTO.getImg().indexOf(" ") + 1));
-            appendGroup(groupDTO);
+            //appendGroup(groupDTO);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -85,7 +85,8 @@ public class GroupListHelper {
     public void appendGroup(GroupDTO groupDTO){
         GroupControl groupControl = new GroupControl(groupDTO.getId());
         groupControl.getGroupNameLabel().setText(groupDTO.getName());
-        groupList.add(groupControl);
+
+       Platform.runLater(()->groupList.add(groupControl));
         groupControlMap.put(groupDTO.getId(), groupControl);
         if(!groupDTO.getImg().equals(""))
             groupControl.getGroupPhotoCircle().setFill(new ImagePattern(modelFactory.decodeImage(groupDTO.getImg())));
@@ -103,6 +104,12 @@ public class GroupListHelper {
         this.groupControlMap.clear();
         this.groupDtosList.clear();
         this.messageListMap.clear();
-        this.groupList.clear();
+        Platform.runLater(this.groupList::clear);
+    }
+
+    public void clearGroups() {
+        this.groupControlMap.clear();
+        this.groupDtosList.clear();
+        Platform.runLater(this.groupList::clear);
     }
 }

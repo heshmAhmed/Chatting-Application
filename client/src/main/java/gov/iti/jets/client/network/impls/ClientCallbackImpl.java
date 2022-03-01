@@ -1,5 +1,6 @@
 package gov.iti.jets.client.network.impls;
 
+import gov.iti.jets.client.network.service.GroupService;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.*;
 import gov.iti.jets.common.client.IClientCallback;
@@ -16,10 +17,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCallback, Serializable {
-    ContactListHelper contactListHelper = ContactListHelper.getInstance();
-    ModelFactory modelFactory = ModelFactory.getInstance();
-    InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
-    GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    private final ModelFactory modelFactory = ModelFactory.getInstance();
+    private final InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
+    private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private final GroupService groupService = GroupService.getInstance();
 
     public ClientCallbackImpl() throws RemoteException {
         super();
@@ -68,6 +70,12 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     @Override
     public void receiveAnnouncement(String announcement){
         Popups.receiveNotification("Announcement!","📢 "+announcement);
+    }
+
+    @Override
+    public void receiveNewGroup() throws RemoteException {
+        groupListHelper.clearGroups();
+        groupService.loadGroups();
     }
 
     @Override

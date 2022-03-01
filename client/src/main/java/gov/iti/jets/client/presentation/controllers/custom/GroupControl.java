@@ -54,6 +54,7 @@ public class GroupControl extends HBox{
     }
 
     public void initialize(){
+
         list = groupListHelper.createMessageList(groupId);
         myChatArea = new GroupChatAreaControl(list, groupId);
         myChatArea.getCurrentChatName().textProperty().bind(groupNameLabel.textProperty());

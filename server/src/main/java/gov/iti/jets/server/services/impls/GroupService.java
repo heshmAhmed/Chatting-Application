@@ -1,11 +1,15 @@
 package gov.iti.jets.server.services.impls;
 
+import gov.iti.jets.common.client.IClientCallback;
 import gov.iti.jets.common.dtos.GroupDTO;
 import gov.iti.jets.server.repository.interfaces.IGroupChatRepo;
 import gov.iti.jets.server.repository.util.ImageUtility;
 import gov.iti.jets.server.repository.util.RepoFactory;
 import gov.iti.jets.server.services.interfaces.IGroupService;
 import gov.iti.jets.server.services.mapper.GroupMapper;
+import gov.iti.jets.server.services.util.ServerUtil;
+
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +18,7 @@ public class GroupService implements IGroupService {
     private final IGroupChatRepo groupChatRepo = RepoFactory.getInstance().getGroupChatRepo();
     private final static GroupService groupService = new GroupService();
     private final ImageUtility imageUtility = ImageUtility.getInstance();
+    private final ServerUtil serverUtil = ServerUtil.getInstance();
     private GroupService() {}
 
     public static GroupService getInstance() {
@@ -45,6 +50,17 @@ public class GroupService implements IGroupService {
 
     @Override
     public boolean addUserToGroup(String phoneNumber, String groupId) {
-        return groupChatRepo.addUserToGroup(phoneNumber, Long.parseLong(groupId));
+        boolean added = groupChatRepo.addUserToGroup(phoneNumber, Long.parseLong(groupId));
+        if(added) {
+            IClientCallback iClientCallback = serverUtil.onlineUsers.get(phoneNumber);
+            if(iClientCallback != null) {
+                try {
+                    iClientCallback.receiveNewGroup();
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return added;
     }
 }

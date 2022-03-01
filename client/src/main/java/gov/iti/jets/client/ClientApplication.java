@@ -38,14 +38,15 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stageCoordinator.init(primaryStage);
-        String str = sessionManager.readSession(session);
-        String[] text = sessionManager.decryption(str);
-        if(text.length == 2){
-            loginService.submitLogin(text[0]);
-            stageCoordinator.switchToChatScene();
-        }else{
-            stageCoordinator.switchToLoginScene();
-        }
+//        String str = sessionManager.readSession(session);
+//        String[] text = sessionManager.decryption(str);
+//        if(text.length == 2){
+//            loginService.submitLogin(text[0]);
+//            stageCoordinator.switchToChatScene();
+//        }else{
+//            stageCoordinator.switchToLoginScene();
+//        }
+        stageCoordinator.switchToLoginScene();
         primaryStage.setMinHeight(800);
         primaryStage.setMinWidth(1130);
         primaryStage.show();
