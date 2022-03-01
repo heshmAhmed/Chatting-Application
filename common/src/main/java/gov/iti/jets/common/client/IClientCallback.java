@@ -13,4 +13,5 @@ public interface IClientCallback extends Remote {
     void receiveStatusChange(String phoneNumber, Status status) throws RemoteException;
     void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException;
     void receiveAnnouncement(String announcement) throws RemoteException;
+    void receiveFile(String senderName,byte []file , String fileName)throws RemoteException;
 }

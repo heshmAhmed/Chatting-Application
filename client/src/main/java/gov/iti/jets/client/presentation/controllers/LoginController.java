@@ -20,10 +20,10 @@ import static javafx.stage.WindowEvent.WINDOW_SHOWN;
 
 public class LoginController {
     private EventType<WindowEvent> window = new EventType<>(WINDOW_SHOWN);
-    private SessionManager sessionManager = SessionManager.getInstance();
+   // private SessionManager sessionManager = SessionManager.getInstance();
     private final StageCoordinator stageCoordinator = StageCoordinator.getInstance();
     private final LoginService myLoginService = LoginService.getInstance();
-    File session = sessionManager.createSession();
+    //File session = sessionManager.createSession();
     boolean isPasswordFieldOn;
     private PasswordFieldControl passwordFieldControl;
     private LoginHelper loginHelper;
@@ -81,7 +81,7 @@ public class LoginController {
         if(!isPasswordFieldOn){
             System.out.println("handle login if");
             isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
-            sessionManager.saveSession(session, phoneNumber, "");
+           // sessionManager.saveSession(session, phoneNumber, "");
         }else{
             System.out.println("handle login else");
             try {

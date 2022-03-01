@@ -3,6 +3,7 @@ package gov.iti.jets.client.presentation.controllers.custom;
 import gov.iti.jets.client.network.service.SendMessageService;
 import gov.iti.jets.client.presentation.models.UserModel;
 import gov.iti.jets.client.presentation.util.ModelFactory;
+import gov.iti.jets.client.presentation.util.StageCoordinator;
 import gov.iti.jets.common.dtos.MessageDTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -20,8 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 
 public class ChatAreaControl extends BorderPane {
@@ -31,7 +35,7 @@ public class ChatAreaControl extends BorderPane {
     private final ObservableList<HBox> list;
 
     @FXML
-    private MenuButton attachButton;
+    private Button attachButton;
 
     @FXML
     private MenuItem attachMenuItem1;
@@ -47,6 +51,8 @@ public class ChatAreaControl extends BorderPane {
 
     @FXML
     private Circle chatStatusCircle;
+
+    private FileChooser fileChooser;
 
     public Label getCurrentChatName() {
         return currentChatName;
@@ -164,6 +170,31 @@ public void scrollList(){
             sendMessageService.sendMessage(myMessageDTO);
             messageTextArea.setText("");
         }
+    }
+
+
+    @FXML
+    public void handleSendFile(ActionEvent e){
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose File to Send");
+        fileChooser.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("All Files",
+                        "*.txt","*.png","*.jpeg","*.jpg","*.doc","*.docx","*.pdf","*.java","*.css","*.html"),
+                new FileChooser.ExtensionFilter("Videos","*.mp4"),
+                new FileChooser.ExtensionFilter("Audios",".mp3",".wav")
+        );
+        File chosenFileToSend = fileChooser.showOpenDialog(null);
+        if (chosenFileToSend != null){
+            try {
+                String senderName = userModel.getUsername();
+                String receiverPhone = contactId;
+                byte[] sentFileAsBytes = Files.readAllBytes(chosenFileToSend.toPath());
+                String fileName = chosenFileToSend.getName();
+                sendMessageService.sendFile( senderName , receiverPhone, sentFileAsBytes , fileName);
+            } catch (IOException a) {
+                a.printStackTrace();
+            }
+        }
+        System.out.println("handleSendFile>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " );
     }
 
 

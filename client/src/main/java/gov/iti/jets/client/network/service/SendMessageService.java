@@ -8,7 +8,10 @@ import gov.iti.jets.client.presentation.util.ContactListHelper;
 import gov.iti.jets.common.dtos.MessageDTO;
 import gov.iti.jets.common.dtos.Status;
 import gov.iti.jets.common.server.IRemoteMessageHandler;
+
+import java.lang.reflect.Array;
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.List;
 
 public class SendMessageService {
@@ -33,6 +36,7 @@ public class SendMessageService {
             messageDTO.setSenderId(messageDTO.getReceiverId());
             messageDTO.setReceiverId(temp);
             contactListHelper.addMessageToList(messageDTO);
+
         } else {
 
             try {
@@ -53,5 +57,15 @@ public class SendMessageService {
             e.printStackTrace();
         }
     }
+
+    public  void sendFile(String senderName ,String receiverPhone,  byte[] sentFileAsBytes , String fileName){
+        try {
+            iRemoteMessageHandler.sendFile(senderName, receiverPhone, sentFileAsBytes, fileName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
