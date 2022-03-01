@@ -27,6 +27,9 @@ public class LoginService {
         return loginService;
     }
 
+    public boolean isUserOnline(String phoneNumber) throws RemoteException {
+        return remoteLoginService.isUserOnline(phoneNumber);
+    }
     public boolean validatePhoneNumber(String phoneNumber) throws RemoteException {
         return remoteLoginService.checkUserPhoneNumber(phoneNumber);
     }

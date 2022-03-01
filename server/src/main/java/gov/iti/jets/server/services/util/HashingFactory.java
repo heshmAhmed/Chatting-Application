@@ -28,7 +28,6 @@ public  class HashingFactory {
         }catch (NoSuchAlgorithmException e){
             e.printStackTrace();
         }
-        System.out.println("Hashed ---->");
         return stringBuilder.toString();
     }
 }

@@ -31,7 +31,7 @@ public class RegistryManager {
     private IRemoteProfileService iRemoteProfileService;
     private IRemoteContactService iRemoteContactService;
     private IRemoteGroupService iRemoteGroupService;
-    private final int port = 6000;
+    private final int port = 5000;
 
     private RegistryManager() {}
 

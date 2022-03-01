@@ -54,7 +54,11 @@ public class LoginHelper implements Initializable {
 
     private boolean checkPhoneNumberValidity(TextField numberField) throws RemoteException {
         String phoneNumber = numberField.getText();
-        if (myLoginService.validatePhoneNumber(phoneNumber)) {
+        if(myLoginService.isUserOnline(phoneNumber)){
+            validateUserLabel.setText("User already logged in!");
+            return false;
+        }
+        else if (myLoginService.validatePhoneNumber(phoneNumber)) {
             passwordFieldControl = new PasswordFieldControl(validatePasswordLabel);
             passwordPlaceHolderHBox.getChildren().add(passwordFieldControl);
             if (COUNTER <= 0){

@@ -39,69 +39,7 @@ public class  GroupChatAreaControl extends BorderPane{
     private final SendMessageService sendMessageService = SendMessageService.getInstance();
     private final UserModel userModel = ModelFactory.getInstance().getUserModel();
     private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
-
-
-    @FXML
-    private ImageView showGroupMembers;
-
-    @FXML
-    private Label currentChatName;
-
-    @FXML
-    private Circle currentChatPhotoCircle;
-
-    @FXML
-    private TextArea messageTextArea;
-
-    @FXML
-    private Button sendMessageButton;
-
-    @FXML
-    private ComboBox<String> fonSizeBox;
-
-    @FXML
-    private ComboBox<String> fontFamilyLBox;
-
-    @FXML
-    private ToggleButton boldButton;
-
-    @FXML
-    private ColorPicker colorPicker;
-
-    @FXML
-    private final ObservableList<HBox> list;
-
-    @FXML
-    private MenuButton attachButton;
-
-    @FXML
-    private MenuItem attachMenuItem1;
-
-    @FXML
-    private MenuItem attachMenuItem2;
-
-    @FXML
-    private ListView<HBox> chatAreaListView;
-    private String groupId;
-
-    @FXML
-    private void handleShowGroupMembers(MouseEvent event){
-        ContextMenu contextMenu = new ContextMenu();
-
-        GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
-
-        groupDTO.getContacts().forEach(c -> {
-             contextMenu.getItems().add(new MenuItem(c)) ;
-        });
-
-        contextMenu.show(this.showGroupMembers, event.getScreenX() + 5, event.getScreenY() + 5);
-    }
-
-
-    @FXML
-
-    private VBox chatAreaVBox;
-
+    private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
     private String contactId;
     private String color = "white";
     private String weight = "NORMAL";
@@ -109,15 +47,59 @@ public class  GroupChatAreaControl extends BorderPane{
     private String fontSize = "18 px ";
     private String messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
             "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
+    private String groupId;
+    @FXML
+    private ImageView showGroupMembers;
+    @FXML
+    private Label currentChatName;
+    @FXML
+    private Circle currentChatPhotoCircle;
+    @FXML
+    private TextArea messageTextArea;
+    @FXML
+    private Button sendMessageButton;
+    @FXML
+    private ComboBox<String> fonSizeBox;
+    @FXML
+    private ComboBox<String> fontFamilyLBox;
+    @FXML
+    private ToggleButton boldButton;
+    @FXML
+    private ColorPicker colorPicker;
+    @FXML
+    private final ObservableList<HBox> list;
+    @FXML
+    private MenuButton attachButton;
+    @FXML
+    private MenuItem attachMenuItem1;
+    @FXML
+    private MenuItem attachMenuItem2;
+    @FXML
+    private ListView<HBox> chatAreaListView;
+    @FXML
+    private VBox chatAreaVBox;
+
+    @FXML
+    private void handleShowGroupMembers(MouseEvent event){
+        ContextMenu contextMenu = new ContextMenu();
+        GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
+        groupDTO.getContacts().forEach(c -> {
+            if(userModel.getPhoneNumber().equals(c))
+                contextMenu.getItems().add(new MenuItem("me"));
+            else
+             contextMenu.getItems().add(new MenuItem(contactListHelper.getNameById(c))) ;
+        });
+        contextMenu.show(this.showGroupMembers, event.getScreenX() + 5, event.getScreenY() + 5);
+    }
 
     @FXML
     void handleAddNewContactIcon(MouseEvent event) {
         GroupDTO groupDTO = groupListHelper.getGroupDtosList().get(groupId);
         ObservableList<String> list = FXCollections.observableArrayList();
         ModelFactory.getInstance().getContactModels().forEach(c -> {
+//            System.out.println((groupDTO.getContacts()));
             if(!(groupDTO.getContacts().contains(c.getPhoneNumber())))
             {
-                System.out.println(c +"---" + groupDTO.getContacts());
                 list.add(c.getPhoneNumber());
             }
         });
@@ -155,13 +137,11 @@ public class  GroupChatAreaControl extends BorderPane{
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         } else {
             weight = "NORMAL";
             messageStyle = "-fx-text-fill : " + color +"; -fx-fill:" + color + "; -fx-font-family : " + fontFamily + ";" +
                     "-fx-font-weight:" + weight + ";-fx-font-size:" + fontSize + ";";
             messageTextArea.setStyle(messageStyle);
-            System.out.println(messageStyle);
         }
 
     }
@@ -216,10 +196,6 @@ public class  GroupChatAreaControl extends BorderPane{
                 }
             }
         });
-
-
-
-
     }
 
     private void sendMessage(){

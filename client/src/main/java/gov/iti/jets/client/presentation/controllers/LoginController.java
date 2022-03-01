@@ -67,23 +67,30 @@ public class LoginController {
         passwordPlaceholderHBox.getChildren().add(validateUserLabel);
         loginButton.setText("next");
         isPasswordFieldOn=false;
-        numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");});
+        numberField.setOnMouseClicked(event -> {validateUserLabel.setText("");
+
+            if(isPasswordFieldOn){
+                passwordPlaceholderHBox.getChildren().clear();
+                passwordPlaceholderHBox.getChildren().add(validateUserLabel);
+                isPasswordFieldOn = false;
+                loginButton.setText("next");
+            }
+
+
+        });
     }
 
     @FXML
     void loginClicked(ActionEvent event){
-        System.out.println("inside loginClicked"); handelLoginAction();
+        handelLoginAction();
     }
 
     private void handelLoginAction(){
-        System.out.println("inside handelLoginAction");
         String phoneNumber = numberField.getText().trim();
         if(!isPasswordFieldOn){
-            System.out.println("handle login if");
             isPasswordFieldOn = loginHelper.handlePhoneNumberValidation(numberField, validateUserLabel);
            // sessionManager.saveSession(session, phoneNumber, "");
         }else{
-            System.out.println("handle login else");
             try {
                 loginHelper.handlePasswordValidation();
 

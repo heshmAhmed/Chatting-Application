@@ -34,9 +34,7 @@ public class AdminLoginHelper {
             preparedStatement.setString(2, phone);
             preparedStatement.executeUpdate();
             stageCoordinator.switchToLoginScene();
-            System.out.println("password changed");
         }catch(SQLException e){
-            System.out.println("password not changed");
             e.printStackTrace();
             try {
                 connection.close();
@@ -67,7 +65,6 @@ public class AdminLoginHelper {
                     return false;
                 }
             }else{
-                System.out.println("Admin not exists");
                 return false;
             }
         } catch (SQLException e) {

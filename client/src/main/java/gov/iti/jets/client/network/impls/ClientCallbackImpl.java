@@ -1,5 +1,6 @@
 package gov.iti.jets.client.network.impls;
 
+import gov.iti.jets.client.network.service.GroupService;
 import gov.iti.jets.client.presentation.models.ContactModel;
 import gov.iti.jets.client.presentation.util.*;
 import gov.iti.jets.common.client.IClientCallback;
@@ -22,10 +23,11 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Optional;
 
 public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCallback, Serializable {
-    ContactListHelper contactListHelper = ContactListHelper.getInstance();
-    ModelFactory modelFactory = ModelFactory.getInstance();
-    InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
-    GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private final ContactListHelper contactListHelper = ContactListHelper.getInstance();
+    private final ModelFactory modelFactory = ModelFactory.getInstance();
+    private final InvitationsListHelper invitationsListHelper = InvitationsListHelper.getInstance();
+    private final GroupListHelper groupListHelper = GroupListHelper.getInstance();
+    private final GroupService groupService = GroupService.getInstance();
 
     public ClientCallbackImpl() throws RemoteException {
         super();
@@ -35,7 +37,7 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveMessage(MessageDTO messageDTO) throws RemoteException {
         System.out.println("receiveMessage invoked");
         contactListHelper.addMessageToList(messageDTO);
-        Popups.receiveNotification("Message notification", "📩 New message");
+        Popups.receiveNotification("Message notification","📩 New message from "+ contactListHelper.getNameById(messageDTO.getSenderId()));
 
     }
 
@@ -43,7 +45,7 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveInvitation(InvitationDTO invitationDTO) throws RemoteException {
         System.out.println("receive invitation invoked");
         invitationsListHelper.loadInvitation(invitationDTO);
-        Popups.receiveNotification("Invitation notification", "🤝 New invitation received");
+        Popups.receiveNotification("Invitation notification","🤝 New invitation received");
     }
 
     @Override
@@ -52,7 +54,7 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
         ContactModel contactModel = modelFactory.mapContactModelToDTO(contactDTO);
         modelFactory.addToContactModels(contactModel);
         contactListHelper.loadContact(contactModel);
-        Popups.receiveNotification("Contact notification", "🥳 New contact added");
+        Popups.receiveNotification("Contact notification","🥳 New contact added");
 
     }
 
@@ -60,21 +62,26 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void receiveStatusChange(String phoneNumber, Status status) throws RemoteException {
         System.out.println("status changed for user " + phoneNumber + " with status " + status);
         contactListHelper.changeContactStatus(phoneNumber, status);
-        Popups.receiveNotification("Status notification", "🎭 " + phoneNumber + " changed their status");
+        Popups.receiveNotification("Status notification","🎭 " + phoneNumber +" changed their status");
 
     }
-
     @Override
     public void receiveGroupMessage(MessageDTO messageDTO) throws RemoteException {
         System.out.println(messageDTO);
         groupListHelper.addMessageToList(messageDTO);
-        Popups.receiveNotification("Message notification", "👨‍👩‍👧‍👧 New group message");
+        Popups.receiveNotification("Message notification","👨‍👩‍👧‍👧 New group message");
 
     }
 
     @Override
-    public void receiveAnnouncement(String announcement) {
-        Popups.receiveNotification("Announcement!", "📢 " + announcement);
+    public void receiveAnnouncement(String announcement){
+        Popups.receiveNotification("Announcement!","📢 "+announcement);
+    }
+
+    @Override
+    public void receiveNewGroup() throws RemoteException {
+        groupListHelper.clearGroups();
+        groupService.loadGroups();
     }
 
     @Override
@@ -113,8 +120,7 @@ public class ClientCallbackImpl extends UnicastRemoteObject implements IClientCa
     public void serverDisconnected() throws RemoteException {
 
         System.out.println("server disconnected");
-        Platform.runLater(() -> Popups.alert("☠ Server is down!!"));
-
+        Platform.runLater(() ->Popups.alert("☠ Server is down!!"));
     }
 
 

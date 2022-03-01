@@ -32,19 +32,11 @@ public class ChatBot {
     private static String getBotPath() {
         String botPath = ChatBot.class.getResource( "/chatBots" ).toString();
         botPath = botPath.substring( 0, botPath.length() - 1 ).replace( "file:/", "" );
-
         if (botPath.contains( "jar" )){
             botPath = System.getProperty( "user.dir" );
         }
-
         return botPath;
     }
 
-//    private static String getResourcesPath() {
-//        String url = ChatBot.class.getResource("/chatBots").toString();
-//        String path = url.substring(60, url.length() - 1);
-//        System.out.println(path);
-//        return path;
-//    }
 
 }

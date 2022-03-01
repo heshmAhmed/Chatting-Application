@@ -32,7 +32,6 @@ public class ImageUtility {
         boolean written = false;
         try {
             File file = new File(folderPath + imagePath);
-            System.out.println(file.getPath());
             FileUtils.writeByteArrayToFile(file, decodedBytes);
             written = true;
         } catch (IOException e) {

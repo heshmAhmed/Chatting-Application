@@ -21,13 +21,14 @@ public class MessageServiceImpl implements IMessageService {
 
     @Override
     public void sendMessage(MessageDTO messageDTO) {
-        try {
-            serverUtil.onlineUsers.get(messageDTO.getReceiverId()).receiveMessage(messageDTO);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        if (serverUtil.onlineUsers.containsKey(messageDTO.getReceiverId())) {
+            try {
+                serverUtil.onlineUsers.get(messageDTO.getReceiverId()).receiveMessage(messageDTO);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
-
     @Override
     public void sendMsgToGroup(MessageDTO messageDTO, List<String> contacts) {
         contacts.forEach(contact -> {

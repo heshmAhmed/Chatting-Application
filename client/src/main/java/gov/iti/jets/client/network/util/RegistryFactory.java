@@ -38,7 +38,6 @@ public class RegistryFactory {
         Properties properties = readNetworkProperties();
         String host = properties.getProperty("host");
         int port = Integer.parseInt(properties.getProperty("port"));
-        System.out.println(port);
         try {
             registry = LocateRegistry.getRegistry(host, port);
         } catch (RemoteException e) {

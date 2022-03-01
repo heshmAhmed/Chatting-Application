@@ -23,9 +23,9 @@ public class ServerUtil {
 
     public void addUserToOnline(String phoneNumber, IClientCallback callback) {
         onlineUsers.put(phoneNumber, callback);
-        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
-            System.out.println(entry.getKey() + ":" + entry.getValue());
-        }
+//        for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
+//            System.out.println(entry.getKey() + ":" + entry.getValue());
+//        }
     }
 
     public void removeUserFromOnline(String phoneNumber) {
@@ -33,8 +33,6 @@ public class ServerUtil {
     }
 
     public void sendAnnouncement(String announcement) {
-        System.out.println("Test announcement from server util: "+ announcement);
-
         for (Map.Entry<String, IClientCallback> entry : onlineUsers.entrySet()) {
             try {
                 entry.getValue().receiveAnnouncement(announcement);

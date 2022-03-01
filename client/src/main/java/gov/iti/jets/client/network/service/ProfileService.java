@@ -67,7 +67,6 @@ public class ProfileService {
     }
 
     public void logout() {
-        System.out.println(modelFactory.getContactList());
         profileService.changeStatus(Status.OFFLINE);
         contactListHelper.clearData();
         groupListHelper.clearData();
