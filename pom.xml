@@ -28,7 +28,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-    
+
   <dependencies>
     <dependency>
       <groupId>org.mapstruct</groupId>
@@ -46,7 +46,7 @@
       <artifactId>javafx-controls</artifactId>
       <version>17.0.2</version>
     </dependency>
-        
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
@@ -58,7 +58,7 @@
       <artifactId>javafx-web</artifactId>
       <version>17.0.2</version>
     </dependency>
-        
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -74,7 +74,7 @@
           <groupId>org.openjfx</groupId>
           <artifactId>javafx-graphics</artifactId>
         </exclusion>
-                
+
         <exclusion>
           <groupId>org.openjfx</groupId>
           <artifactId>javafx-swing</artifactId>
@@ -106,20 +106,20 @@
         </exclusion>
       </exclusions>
     </dependency>
-        
+
     <!-- https://mvnrepository.com/artifact/org.controlsfx/controlsfx -->
-        
+
     <dependency>
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
       <version>11.1.1</version>
     </dependency>
-
     <dependency>
       <groupId>org.kordamp.ikonli</groupId>
-      <artifactId>ikonli-core</artifactId>
+      <artifactId>ikonli-fontawesome5-pack</artifactId>
       <version>12.3.0</version>
     </dependency>
+
 
     <dependency>
       <groupId>org.kordamp.ikonli</groupId>
@@ -129,15 +129,22 @@
 
     <dependency>
       <groupId>org.kordamp.ikonli</groupId>
-      <artifactId>ikonli-fontawesome5-pack</artifactId>
+      <artifactId>ikonli-core</artifactId>
       <version>12.3.0</version>
     </dependency>
   </dependencies>
 
   <build>
     <pluginManagement>
-
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.4</version>
+        </plugin>
+      </plugins>
     </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -157,7 +164,7 @@
       </plugin>
     </plugins>
   </build>
-    
+
   <modules>
     <module>server</module>
     <module>client</module>
