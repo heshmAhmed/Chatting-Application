@@ -53,7 +53,8 @@ create table group_users (
 	user_number varchar(30) not null,
     group_id int not null,
     foreign key (user_number) references users(phone_number),
-    foreign key (group_id) references chat_groups(id)
+    foreign key (group_id) references chat_groups(id),
+    primary key(user_number, group_id)
 );
 
 -- ----------- seed ------------------------------------
