@@ -11,7 +11,7 @@
 
 <fx:root id="receivedMessage" type="HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="messageBox" alignment="BOTTOM_RIGHT" style="-fx-background-color: #0719a1;" styleClass="message-box">
+      <VBox fx:id="messageBox" alignment="BOTTOM_RIGHT" style="-fx-background-color: #1A1A40;" styleClass="message-box">
          <HBox.margin>
             <Insets left="5.0" top="5.0" />
          </HBox.margin>
@@ -32,7 +32,7 @@
                   <Insets bottom="5.0" left="5.0" right="3.0" top="3.0" />
                </padding>
             </TextFlow>
-            <Label fx:id="messageTimeLabel" alignment="BOTTOM_RIGHT" styleClass="message-date" text="time" textFill="#efefef">
+            <Label fx:id="messageTimeLabel" alignment="BOTTOM_RIGHT" styleClass="message-date" text="time" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="2.0" right="4.0" />
                </VBox.margin>
