@@ -10,12 +10,15 @@ import java.util.Objects;
 
 public class ImageUtility {
     private final static ImageUtility imageUtility = new ImageUtility();
-    private final String folderPath = "src/main/resources/usersImages/";
+    private final String folderPath = System.getProperty("user.dir") + "/userImages/";
     private ImageUtility(){}
     public static ImageUtility getInstance(){
         return imageUtility;
     }
 
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
+    }
 
     public String readImage(String imagePath)  {
         byte[] fileContent = new byte[0];
