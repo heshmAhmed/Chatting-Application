@@ -22,7 +22,7 @@ create table users (
 	country varchar(20) not null,
 	date_of_birth datetime not null,
 	bio varchar(200),
-    user_status varchar(20) not null default("AVAILABLE")
+    user_status varchar(20) not null default("OFFLINE")
 );
 
 create table user_contacts (
